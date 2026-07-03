@@ -1,0 +1,186 @@
+{
+  "entities": [
+    {
+      "name": "Jean Valjean",
+      "type": "personnage",
+      "aliases": [
+        "Valjean",
+        "M. Madeleine",
+        "l'homme prospère",
+        "le maire",
+        "forçat connu au bagne de Toulon"
+      ],
+      "attributes": {
+        "statut juridique": "forçat libéré",
+        "durée de la détention": "dix-neuf ans de bagne",
+        "lieu du bagne": "Toulon",
+        "profession": "directeur de fabrique de perles noires",
+        "fonction": "maire"
+      }
+    },
+    {
+      "name": "Digne",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Myriel",
+      "type": "personnage",
+      "aliases": [
+        "monseigneur Bienvenu",
+        "l'évêque Myriel"
+      ],
+      "attributes": {
+        "fonction": "évangélique",
+        "titres d'appel/populaires": "monseigneur Bienvenu"
+      }
+    },
+    {
+      "name": "toutes les auberges",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "gendarmes",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Montreuil-sur-Mer",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Javert",
+      "type": "personnage",
+      "aliases": [
+        "l'inspecteur Javert"
+      ],
+      "attributes": {
+        "profession": "inspecteur",
+        "caractère": "inflexible",
+        "lieu de naissance": "prison"
+      }
+    },
+    {
+      "name": "Toulon",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "fabrique de perles noires",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "la force herculéenne de Madeleine",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "name": "arrive à",
+      "source": "Jean Valjean",
+      "target": "Digne",
+      "attributes": {
+        "moment": "un soir d'octobre"
+      }
+    },
+    {
+      "name": "refuse l'hébergement à",
+      "source": "toutes les auberges",
+      "target": "Jean Valjean",
+      "attributes": {
+        "motif": "à cause de son passeport jaune"
+      }
+    },
+    {
+      "name": "accueille chez soi",
+      "source": "Myriel",
+      "target": "Jean Valjean",
+      "attributes": {
+        "actes d'accueil": "offre le couvert et le lit"
+      }
+    },
+    {
+      "name": "vole",
+      "source": "Jean Valjean",
+      "target": "Myriel",
+      "attributes": {
+        "objet du vol": "l'argenterie",
+        "moment": "dans la nuit"
+      }
+    },
+    {
+      "name": "arrête",
+      "source": "gendarmes",
+      "target": "Jean Valjean",
+      "attributes": {}
+    },
+    {
+      "name": "rapporte devant",
+      "source": "gendarmes",
+      "target": "Myriel",
+      "attributes": {
+        "sujet": "Jean Valjean"
+      }
+    },
+    {
+      "name": "déclare avoir donné à",
+      "source": "Myriel",
+      "target": "Jean Valjean",
+      "attributes": {
+        "objets reconnus comme donations": "les couverts et deux chandeliers d'argent",
+        "nature symbolique de l'action": "acheter ainsi son âme au bien"
+      }
+    },
+    {
+      "name": "est en fait",
+      "source": "Jean Valjean",
+      "target": "Jean Valjean",
+      "attributes": {}
+    },
+    {
+      "name": "exerce la fonction de",
+      "source": "Jean Valjean",
+      "target": "Montreuil-sur-Mer",
+      "attributes": {
+        "poste": "maire"
+      }
+    },
+    {
+      "name": "dirige",
+      "source": "Jean Valjean",
+      "target": "fabrique de perles noires",
+      "attributes": {}
+    },
+    {
+      "name": "travaille dans la même ville que",
+      "source": "Jean Valjean",
+      "target": "Javert",
+      "attributes": {}
+    },
+    {
+      "name": "soupçonne",
+      "source": "Javert",
+      "target": "Jean Valjean",
+      "attributes": {}
+    },
+    {
+      "name": "rappelle à",
+      "source": "la force herculéenne de Madeleine",
+      "target": "Jean Valjean",
+      "attributes": {
+        "objet du rappel": "force herculéenne"
+      }
+    }
+  ]
+}
