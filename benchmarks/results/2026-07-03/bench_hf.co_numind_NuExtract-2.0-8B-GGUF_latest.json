@@ -1,0 +1,74 @@
+{
+  "entities": [
+    {
+      "name": "string",
+      "type": "verbatim-string",
+      "aliases": [],
+      "attributes": {
+        "string": "string"
+      }
+    },
+    {
+      "name": "verbatim-string",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "string": "string"
+      }
+    },
+    {
+      "name": "M. Madeleine",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "jean valjean",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "mairie of montreuil-sur-mer",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "javert",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "name": "string",
+      "source": "verbatim-string",
+      "target": "verbatim-string",
+      "attributes": {
+        "string": "string"
+      }
+    },
+    {
+      "name": "string",
+      "source": "string",
+      "target": "string",
+      "attributes": {
+        "string": "string"
+      }
+    },
+    {
+      "name": "verbatim-string",
+      "source": "M. Madeleine",
+      "target": "jean valjean",
+      "attributes": {}
+    },
+    {
+      "name": "worked in",
+      "source": "mairie of montreuil-sur-mer",
+      "target": "javert",
+      "attributes": {}
+    }
+  ]
+}

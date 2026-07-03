@@ -1,0 +1,337 @@
+{
+  "entities": [
+    {
+      "name": "Jean Valjean",
+      "type": "personnage",
+      "aliases": [
+        "Valjean",
+        "Madeleine",
+        "M. Madeleine"
+      ],
+      "attributes": {
+        "statut juridique": "forçat libéré",
+        "durée du bagne": "dix-neuf ans",
+        "lieu du bagne": "Toulon",
+        "fonction": "maire deMontreuil-sur-Mer",
+        "caractéristique physique/fortesse": "force herculéenne",
+        "statut": "démasqué",
+        "procès": "Champmathieu",
+        "action après démasquage": "s'échappa"
+      }
+    },
+    {
+      "name": "Digne",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Monseigneur Bienvenu",
+      "type": "personnage",
+      "aliases": [
+        "Myriel",
+        "l'évêque Myriel"
+      ],
+      "attributes": {
+        "titre": "évêque",
+        "nom de famille": "Myriel"
+      }
+    },
+    {
+      "name": "toutes les auberges",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "MonseigneurBienvenu",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "gendarmes",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Montreuil-sur-Mer",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Javert",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "profession": "inspecteur",
+        "caractéristique morale": "inflexible",
+        "lieu de naissance": "prison",
+        "rôle dans l’événement": "dénonce/identifie Jean Valjean au procès de Champmathieu"
+      }
+    },
+    {
+      "name": "Toulon",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "bagne de Toulon",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {
+        "statut": "lieu où Jean Valjean a séjourné en tant que forçat"
+      }
+    },
+    {
+      "name": "forçat connu au bagne de Toulon",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "statut": "ancien condamné",
+        "attribut physique évoqué": "force herculéenne"
+      }
+    },
+    {
+      "name": "fabrique de perles noires",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "maire de Montreuil-sur-Mer",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "force herculéenne de Madeleine",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Fantine",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "profession": "ouvrière",
+        "lieu de travail": "fabrique de perles noires",
+        "statut social": "tombée dans la misère",
+        "enfants": "Cosette"
+      }
+    },
+    {
+      "name": "Cosette",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "âge initial": "8 ans",
+        "statut auprès des Thénardier": "maltraitée, servante"
+      }
+    },
+    {
+      "name": "Thénardier",
+      "type": "personnage",
+      "aliases": [
+        "époux Thénardier",
+        "épouse Thénardier"
+      ],
+      "attributes": {
+        "profession": "aubergiste",
+        "localité": "Montfermeil"
+      }
+    },
+    {
+      "name": "Montfermeil",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Champmathieu",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "contexte": "faux Jean Valjean, victime d’erreur judiciaire"
+      }
+    }
+  ],
+  "relations": [
+    {
+      "name": "arriva à",
+      "source": "Jean Valjean",
+      "target": "Digne",
+      "attributes": {
+        "moment": "un soir d'octobre"
+      }
+    },
+    {
+      "name": "ferma porte à cause de",
+      "source": "toutes les auberges",
+      "target": "Jean Valjean",
+      "attributes": {
+        "raison": "son passeport jaune"
+      }
+    },
+    {
+      "name": "accueillit dans sa maison",
+      "source": "Monseigneur Bienvenu",
+      "target": "Jean Valjean",
+      "attributes": {}
+    },
+    {
+      "name": "offrit",
+      "source": "MonseigneurBienvenu",
+      "target": "Jean Valjean",
+      "attributes": {
+        "objets offerts": "le couvert et le lit"
+      }
+    },
+    {
+      "name": "vol",
+      "source": "Jean Valjean",
+      "target": "Monseigneur Bienvenu",
+      "attributes": {
+        "objet volé": "l'argenterie",
+        "action suivante": "s'enfuit"
+      }
+    },
+    {
+      "name": "arrêta",
+      "source": "gendarmes",
+      "target": "Jean Valjean",
+      "attributes": {}
+    },
+    {
+      "name": "ramena devant",
+      "source": "gendarmes",
+      "target": "Monseigneur Bienvenu",
+      "attributes": {
+        "accompagné": "Jean Valjean"
+      }
+    },
+    {
+      "name": "déclara avoir donné",
+      "source": "Monseigneur Bienvenu",
+      "target": "Jean Valjean",
+      "attributes": {
+        "objet mentionné": "les couverts",
+        "objet ajouté": "deux chandeliers d'argent"
+      }
+    },
+    {
+      "name": "acheta",
+      "source": "Monseigneur Bienvenu",
+      "target": "Jean Valjean",
+      "attributes": {
+        "ce qui est acheté": "son âme",
+        "destination": "au bien"
+      }
+    },
+    {
+      "name": "est identique à",
+      "source": "Jean Valjean",
+      "target": "Jean Valjean",
+      "attributes": {
+        "statut secret": "inconnu de tous"
+      }
+    },
+    {
+      "name": "dirige",
+      "source": "Jean Valjean",
+      "target": "fabrique de perles noires",
+      "attributes": {}
+    },
+    {
+      "name": "devient",
+      "source": "Jean Valjean",
+      "target": "maire de Montreuil-sur-Mer",
+      "attributes": {}
+    },
+    {
+      "name": "exerce",
+      "source": "Javert",
+      "target": "Montreuil-sur-Mer",
+      "attributes": {
+        "profession": "inspecteur",
+        "statut sentimental envers la ville": "servitude"
+      }
+    },
+    {
+      "name": "soupçonne",
+      "source": "Javert",
+      "target": "Jean Valjean",
+      "attributes": {}
+    },
+    {
+      "name": "rappelle à",
+      "source": "force herculéenne de Madeleine",
+      "target": "forçat connu au bagne de Toulon",
+      "attributes": {}
+    },
+    {
+      "name": "a confié sa fille à",
+      "source": "Fantine",
+      "target": "Thénardier",
+      "attributes": {
+        "fille": "Cosette",
+        "âge de la fille": "8 ans"
+      }
+    },
+    {
+      "name": "maltraite et fait travailler comme",
+      "source": "Thénardier",
+      "target": "Cosette",
+      "attributes": {
+        "rôle": "servante"
+      }
+    },
+    {
+      "name": "revient à Montfermeil avec",
+      "source": "Jean Valjean",
+      "target": "Cosette",
+      "attributes": {
+        "date approximate du départ": "veille de Noël",
+        "destination finale": "Paris"
+      }
+    },
+    {
+      "name": "paye pour emmener",
+      "source": "Jean Valjean",
+      "target": "Thénardier",
+      "attributes": {
+        "montant": "mille cinq cents francs",
+        "objet du paiement": "pension de Cosette"
+      }
+    },
+    {
+      "name": "élève comme sa propre fille",
+      "source": "Jean Valjean",
+      "target": "Cosette",
+      "attributes": {
+        "type d’éducation": "filiale/adoptante"
+      }
+    },
+    {
+      "name": "promet de veiller sur",
+      "source": "Jean Valjean",
+      "target": "Fantine",
+      "attributes": {
+        "sous-condition": "mourante",
+        "objet de la promesse": "Cosette"
+      }
+    },
+    {
+      "name": "démasque à",
+      "source": "Javert",
+      "target": "Jean Valjean",
+      "attributes": {
+        "lieu/événement": "procès de Champmathieu"
+      }
+    }
+  ]
+}

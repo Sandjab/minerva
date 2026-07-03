@@ -126,5 +126,47 @@
     "expected_relations": 0,
     "expected_relations_total": 6,
     "valjean_madeleine_merged": false
+  },
+  {
+    "model": "qwen3-coder-next:latest",
+    "load_s": 4.3,
+    "time_s": 37.8,
+    "n_entities": 19,
+    "n_relations": 22,
+    "n_entity_attrs": 26,
+    "n_relation_attrs": 24,
+    "expected_entities": 10,
+    "expected_entities_total": 11,
+    "missing_entities": [
+      "Paris"
+    ],
+    "expected_relations": 5,
+    "expected_relations_total": 6,
+    "valjean_madeleine_merged": true
+  },
+  {
+    "model": "hf.co/numind/NuExtract-2.0-8B-GGUF:latest",
+    "load_s": 1.6,
+    "time_s": 5.8,
+    "n_entities": 6,
+    "n_relations": 4,
+    "n_entity_attrs": 2,
+    "n_relation_attrs": 2,
+    "expected_entities": 2,
+    "expected_entities_total": 11,
+    "missing_entities": [
+      "Myriel",
+      "Fantine",
+      "Cosette",
+      "Thénardier",
+      "Toulon",
+      "Digne",
+      "Montreuil-sur-Mer",
+      "Montfermeil",
+      "Paris"
+    ],
+    "expected_relations": 0,
+    "expected_relations_total": 6,
+    "valjean_madeleine_merged": false
   }
 ]
