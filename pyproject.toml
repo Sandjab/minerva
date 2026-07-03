@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "minerva"
+version = "0.1.0"
+description = "NER with dynamic attributes and rules"
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic>=2",
+    "anthropic>=0.90",
+    "openai>=1.50",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+minerva = "minerva.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/minerva"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
