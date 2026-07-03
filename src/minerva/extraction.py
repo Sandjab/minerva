@@ -5,8 +5,8 @@ from __future__ import annotations
 from collections.abc import Callable
 
 from .chunking import DEFAULT_CHUNK_SIZE, split_text
-from .llm import LLMBackend
-from .model import KnowledgeGraph
+from .llm import ExtractionResult, LLMBackend
+from .model import Entity, KnowledgeGraph, Relation
 
 MAX_KNOWN_ENTITIES_IN_PROMPT = 200
 
@@ -41,6 +41,17 @@ def build_user_prompt(chunk: str, known_entities: list[str]) -> str:
     return "\n\n".join(parts)
 
 
+def sanitize(result: ExtractionResult) -> tuple[list[Entity], list[Relation]]:
+    """Écarte le bruit LLM : entités sans nom, relations incomplètes."""
+    entities = [e.to_entity() for e in result.entities if e.name.strip()]
+    relations = [
+        r.to_relation()
+        for r in result.relations
+        if r.name.strip() and r.source.strip() and r.target.strip()
+    ]
+    return entities, relations
+
+
 def extract_graph(
     text: str,
     backend: LLMBackend,
@@ -53,10 +64,7 @@ def extract_graph(
     for i, chunk in enumerate(chunks):
         known = [e.name for e in graph.entities]
         result = backend.extract(SYSTEM_PROMPT, build_user_prompt(chunk, known))
-        graph.merge(
-            [e.to_entity() for e in result.entities],
-            [r.to_relation() for r in result.relations],
-        )
+        graph.merge(*sanitize(result))
         if on_progress:
             on_progress(i + 1, len(chunks))
     return graph
