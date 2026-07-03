@@ -102,5 +102,29 @@
     "expected_relations": 6,
     "expected_relations_total": 6,
     "valjean_madeleine_merged": true
+  },
+  {
+    "model": "hf.co/bartowski/zai-org_GLM-4.7-Flash-GGUF:Q8_0",
+    "load_s": 11.4,
+    "time_s": 626.6,
+    "n_entities": 8,
+    "n_relations": 0,
+    "n_entity_attrs": 2,
+    "n_relation_attrs": 0,
+    "expected_entities": 3,
+    "expected_entities_total": 11,
+    "missing_entities": [
+      "Myriel",
+      "Javert",
+      "Thénardier",
+      "Toulon",
+      "Digne",
+      "Montreuil-sur-Mer",
+      "Montfermeil",
+      "Paris"
+    ],
+    "expected_relations": 0,
+    "expected_relations_total": 6,
+    "valjean_madeleine_merged": false
   }
 ]

@@ -1,0 +1,57 @@
+{
+  "entities": [
+    {
+      "name": "Jean Valjean",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Toulon (bagne)",
+      "type": "lieu / pénitencier",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Fantine",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Cosette",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "âge": "'8 ans'"
+      }
+    },
+    {
+      "name": ".../span>...<",
+      "type": "'",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "_Thénardier",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "'profession'": "'aubergiste'"
+      }
+    },
+    {
+      "name": "'Montfermeil'",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "'",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    }
+  ],
+  "relations": []
+}

@@ -109,7 +109,13 @@ def main(models: list[str]) -> None:
     out_dir = HERE / "results" / datetime.date.today().isoformat()
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    results: list[dict] = []
+    # Fusionne avec les résultats existants du jour : une nouvelle passe sur un
+    # modèle remplace son entrée, les autres sont conservées.
+    results_path = out_dir / "bench_results.json"
+    previous: list[dict] = (
+        json.loads(results_path.read_text(encoding="utf-8")) if results_path.exists() else []
+    )
+    results: list[dict] = [e for e in previous if e.get("model") not in models]
     for model in models:
         print(f"=== {model} ===", flush=True)
         entry: dict = {"model": model}
@@ -139,7 +145,7 @@ def main(models: list[str]) -> None:
         results.append(entry)
         print(json.dumps(entry, ensure_ascii=False), flush=True)
 
-    (out_dir / "bench_results.json").write_text(
+    results_path.write_text(
         json.dumps(results, ensure_ascii=False, indent=2), encoding="utf-8"
     )
     print(f"TERMINÉ -> {out_dir}", flush=True)
