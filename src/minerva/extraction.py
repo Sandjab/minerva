@@ -63,7 +63,7 @@ def extract_graph(
     chunks = split_text(text, chunk_size)
     for i, chunk in enumerate(chunks):
         known = [e.name for e in graph.entities]
-        result = backend.extract(SYSTEM_PROMPT, build_user_prompt(chunk, known))
+        result = backend.parse(SYSTEM_PROMPT, build_user_prompt(chunk, known), ExtractionResult)
         graph.merge(*sanitize(result))
         if on_progress:
             on_progress(i + 1, len(chunks))

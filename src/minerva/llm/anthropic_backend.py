@@ -1,12 +1,15 @@
-"""Backend d'extraction via l'API Claude (SDK anthropic officiel)."""
+"""Backend à sortie structurée via l'API Claude (SDK anthropic officiel)."""
 
 from __future__ import annotations
 
-import anthropic
+from typing import TypeVar
 
-from . import ExtractionResult
+import anthropic
+from pydantic import BaseModel
 
 DEFAULT_MODEL = "claude-opus-4-8"
+
+T = TypeVar("T", bound=BaseModel)
 
 
 class AnthropicBackend:
@@ -16,14 +19,14 @@ class AnthropicBackend:
         self._client = anthropic.Anthropic()
         self._model = model or DEFAULT_MODEL
 
-    def extract(self, system: str, user: str) -> ExtractionResult:
+    def parse(self, system: str, user: str, output_model: type[T]) -> T:
         response = self._client.messages.parse(
             model=self._model,
             max_tokens=16000,
             thinking={"type": "adaptive"},
             system=system,
             messages=[{"role": "user", "content": user}],
-            output_format=ExtractionResult,
+            output_format=output_model,
         )
         parsed = response.parsed_output
         if parsed is None:

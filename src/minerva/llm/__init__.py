@@ -8,11 +8,13 @@ attributs dynamiques sont donc transportés comme listes de paires
 
 from __future__ import annotations
 
-from typing import Protocol
+from typing import Protocol, TypeVar
 
 from pydantic import BaseModel, Field
 
 from ..model import Entity, Relation
+
+T = TypeVar("T", bound=BaseModel)
 
 
 class ExtractedAttribute(BaseModel):
@@ -56,7 +58,13 @@ class ExtractionResult(BaseModel):
 
 
 class LLMBackend(Protocol):
-    def extract(self, system: str, user: str) -> ExtractionResult: ...
+    """Backend LLM à sortie structurée générique.
+
+    `parse` renvoie une instance validée de `output_model` (n'importe quel
+    modèle Pydantic : extraction, arbitrage, etc.).
+    """
+
+    def parse(self, system: str, user: str, output_model: type[T]) -> T: ...
 
 
 def make_backend(

@@ -1,0 +1,204 @@
+{
+  "entities": [
+    {
+      "name": "Jean Valjean",
+      "type": "personnage",
+      "aliases": [
+        "M. Madeleine",
+        "Valjean",
+        "Madeleine"
+      ],
+      "attributes": {
+        "statut": "libéré",
+        "profession": "forçat",
+        "durée de bagne": "19 ans",
+        "lieu du bagne": "Toulon",
+        "description": "homme prospère",
+        "statut pénal": "forçat libéré",
+        "durée de détention": "dix-neuf ans",
+        "passeport": "jaune",
+        "identité secrète": "ancien forçat",
+        "fonction": "maire"
+      }
+    },
+    {
+      "name": "Toulon",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {
+        "type d'établissement": "bagne"
+      }
+    },
+    {
+      "name": "Digne",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "évêque Myriel",
+      "type": "personnage",
+      "aliases": [
+        "monseigneur Bienvenu",
+        "l'évêque Myriel"
+      ],
+      "attributes": {
+        "fonction": "évêque",
+        "surnom": "Bienvenu"
+      }
+    },
+    {
+      "name": "gendarmes",
+      "type": "organisation",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Montreuil‑sur‑Mer",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Javert",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "profession": "inspecteur",
+        "caractéristique": "policier inflexible",
+        "lieu de naissance": "prison",
+        "caractéristique morale": "inflexible",
+        "origine sociale": "né dans une prison"
+      }
+    }
+  ],
+  "relations": [
+    {
+      "name": "bagné à",
+      "source": "Jean Valjean",
+      "target": "Toulon",
+      "attributes": {
+        "durée": "19 ans"
+      }
+    },
+    {
+      "name": "arrive à",
+      "source": "Jean Valjean",
+      "target": "Digne",
+      "attributes": {}
+    },
+    {
+      "name": "accueille",
+      "source": "évêque Myriel",
+      "target": "Jean Valjean",
+      "attributes": {}
+    },
+    {
+      "name": "offre le couvert et le lit à",
+      "source": "évêque Myriel",
+      "target": "Jean Valjean",
+      "attributes": {}
+    },
+    {
+      "name": "arrête",
+      "source": "gendarmes",
+      "target": "Jean Valjean",
+      "attributes": {}
+    },
+    {
+      "name": "ramène devant",
+      "source": "gendarmes",
+      "target": "évêque Myriel",
+      "attributes": {
+        "personne": "Jean Valjean",
+        "prisonnier": "Jean Valjean"
+      }
+    },
+    {
+      "name": "travaille à",
+      "source": "Javert",
+      "target": "Montreuil‑sur‑Mer",
+      "attributes": {}
+    },
+    {
+      "name": "soupçonne",
+      "source": "Javert",
+      "target": "Jean Valjean",
+      "attributes": {}
+    },
+    {
+      "name": "démasque",
+      "source": "Javert",
+      "target": "Jean Valjean",
+      "attributes": {
+        "événement": "procès de Champmathieu"
+      }
+    },
+    {
+      "name": "a libéré",
+      "source": "Jean Valjean",
+      "target": "Toulon",
+      "attributes": {
+        "durée": "dix-neuf ans"
+      }
+    },
+    {
+      "name": "est arrivé à",
+      "source": "Jean Valjean",
+      "target": "Digne",
+      "attributes": {
+        "moment": "un soir d'octobre"
+      }
+    },
+    {
+      "name": "accueille chez soi",
+      "source": "évêque Myriel",
+      "target": "Jean Valjean",
+      "attributes": {
+        "prestations": "couvert et lit"
+      }
+    },
+    {
+      "name": "volé par",
+      "source": "évêque Myriel",
+      "target": "Jean Valjean",
+      "attributes": {
+        "objet du vol": "argenterie",
+        "moment": "dans la nuit"
+      }
+    },
+    {
+      "name": "déclare avoir donné à",
+      "source": "évêque Myriel",
+      "target": "Jean Valjean",
+      "attributes": {
+        "objets déclarés": "couverts",
+        "objets ajoutés": "deux chandeliers d'argent",
+        "motif": "acheter son âme au bien"
+      }
+    },
+    {
+      "name": "exerce à",
+      "source": "Javert",
+      "target": "Montreuil‑sur‑Mer",
+      "attributes": {}
+    },
+    {
+      "name": "souvenez-vous de",
+      "source": "Javert",
+      "target": "Jean Valjean",
+      "attributes": {
+        "via": "caractéristique physique (force herculéenne)",
+        "connu sous": "forçat"
+      }
+    },
+    {
+      "name": "passé à",
+      "source": "Jean Valjean",
+      "target": "Toulon",
+      "attributes": {
+        "lieu": "bagne de Toulon"
+      }
+    }
+  ]
+}

@@ -18,7 +18,7 @@ class FakeBackend:
         self._results = list(results)
         self.prompts = []
 
-    def extract(self, system, user):
+    def parse(self, system, user, output_model):
         self.prompts.append(user)
         return self._results.pop(0)
 

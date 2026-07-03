@@ -1,0 +1,395 @@
+{
+  "entities": [
+    {
+      "name": "Jean Valjean",
+      "type": "personnage",
+      "aliases": [
+        "Valjean",
+        "M. Madeleine",
+        "Madeleine",
+        "Jean Valjean (identité cachée)"
+      ],
+      "attributes": {
+        "statut juridique": "forçat libéré",
+        "durée du bagne": "dix-neuf ans",
+        "lieu du bagne": "Toulon",
+        "fonction": "maire de Montreuil-sur-Mer",
+        "apparence physique": "force herculéenne"
+      }
+    },
+    {
+      "name": "Digne",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Monseigneur Bienvenu",
+      "type": "personnage",
+      "aliases": [
+        "L'évêque Myriel",
+        "Myriel"
+      ],
+      "attributes": {
+        "Titre": "évêque",
+        "surnom local": "monseigneur Bienvenu"
+      }
+    },
+    {
+      "name": "passeport jaune",
+      "type": "objet",
+      "aliases": [],
+      "attributes": {
+        "fonction": "marqueur d'ancienneté de bagne (stigmatisation)"
+      }
+    },
+    {
+      "name": "argenterie",
+      "type": "objet",
+      "aliases": [],
+      "attributes": {
+        "propriétaire": "L'évêque Myriel"
+      }
+    },
+    {
+      "name": "gendarmes",
+      "type": "organisation",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "deux chandeliers d'argent",
+      "type": "objet",
+      "aliases": [
+        "chandeliers d'argent"
+      ],
+      "attributes": {
+        "propriétaire initial": "L'évêque Myriel",
+        "destinataire après donation": "Jean Valjean"
+      }
+    },
+    {
+      "name": "Toulon",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "fonction": "bagne"
+      }
+    },
+    {
+      "name": "Toutes les auberges",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Montreuil-sur-Mer",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "fabrication de perles noires",
+      "type": "organisation",
+      "aliases": [],
+      "attributes": {
+        "activité": " fabrication de perles noires",
+        "directionnaire": "M. Madeleine"
+      }
+    },
+    {
+      "name": "Javert",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "profession": "inspecteur de police",
+        "caractère": "inflexible",
+        "naissance": "prison"
+      }
+    },
+    {
+      "name": "force herculéenne de M. Madeleine",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "forçat connu au bagne de Toulon",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "forçat connu au bagne",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Fantine",
+      "type": "personnage",
+      "aliases": [
+        "ouvrière de la fabrique"
+      ],
+      "attributes": {}
+    },
+    {
+      "name": "Cosette",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "âge": "8 ans"
+      }
+    },
+    {
+      "name": "Thénardier (mari)",
+      "type": "personnage",
+      "aliases": [
+        "époux Thénardier"
+      ],
+      "attributes": {
+        "profession": "aubergiste"
+      }
+    },
+    {
+      "name": "Thénardier (femme)",
+      "type": "personnage",
+      "aliases": [
+        "épouse Thénardier"
+      ],
+      "attributes": {}
+    },
+    {
+      "name": "Montfermeil",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {
+        "statut": "où résident les Thénardier"
+      }
+    },
+    {
+      "name": "cheveux de Fantine",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "dents de Fantine",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "procès de Champmathieu",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "name": "a libéré",
+      "source": "Jean Valjean",
+      "target": "Toulon",
+      "attributes": {
+        "durée de la détention": "dix-neuf ans"
+      }
+    },
+    {
+      "name": "est arrivé à",
+      "source": "Jean Valjean",
+      "target": "Digne",
+      "attributes": {
+        "temporalité": "un soir d'octobre"
+      }
+    },
+    {
+      "name": "ferme la porte à",
+      "source": "Toutes les auberges",
+      "target": "Jean Valjean",
+      "attributes": {
+        "motif": "passeport jaune"
+      }
+    },
+    {
+      "name": "accueille chez soi",
+      "source": "Monseigneur Bienvenu",
+      "target": "Jean Valjean",
+      "attributes": {
+        "prestations fournies": "couvert et lit"
+      }
+    },
+    {
+      "name": "vole",
+      "source": "Jean Valjean",
+      "target": "argenterie",
+      "attributes": {
+        "propriétaire de l'objet volé": "L'évêque Myriel"
+      }
+    },
+    {
+      "name": "arrête",
+      "source": "gendarmes",
+      "target": "Jean Valjean",
+      "attributes": {}
+    },
+    {
+      "name": "ramène devant",
+      "source": "gendarmes",
+      "target": "Monseigneur Bienvenu",
+      "attributes": {
+        "personne ramenée": "Jean Valjean"
+      }
+    },
+    {
+      "name": "donne (bienfaisance)",
+      "source": "Monseigneur Bienvenu",
+      "target": "Jean Valjean",
+      "attributes": {
+        "objet donné": "deux chandeliers d'argent",
+        "déclaration faite aux gendarmes": "avoir déjà donné les couverts à Valjean",
+        "intention spirituelle alléguée": "acheter ainsi son âme au bien"
+      }
+    },
+    {
+      "name": "cache son identité en tant que",
+      "source": "Jean Valjean",
+      "target": "Jean Valjean",
+      "attributes": {}
+    },
+    {
+      "name": "dirige",
+      "source": "Jean Valjean",
+      "target": "fabrication de perles noires",
+      "attributes": {}
+    },
+    {
+      "name": "devient maire de",
+      "source": "Jean Valjean",
+      "target": "Montreuil-sur-Mer",
+      "attributes": {}
+    },
+    {
+      "name": "serve à",
+      "source": "Javert",
+      "target": "Montreuil-sur-Mer",
+      "attributes": {
+        "rôle": "inspecteur"
+      }
+    },
+    {
+      "name": "soupçonne",
+      "source": "Javert",
+      "target": "Jean Valjean",
+      "attributes": {}
+    },
+    {
+      "name": "rapporte à (par ressemblance physique)",
+      "source": "force herculéenne de M. Madeleine",
+      "target": "forçat connu au bagne de Toulon",
+      "attributes": {
+        "émetteur": "Javert"
+      }
+    },
+    {
+      "name": "a lieu dans (bagne)",
+      "source": "Toulon",
+      "target": "forçat connu au bagne",
+      "attributes": {}
+    },
+    {
+      "name": "mettre en pension",
+      "source": "Fantine",
+      "target": "Cosette",
+      "attributes": {
+        "avec": "Thénardier (mari)",
+        "et": "Thénardier (femme)",
+        "lieu": "Montfermeil",
+        "montant": "non précisé"
+      }
+    },
+    {
+      "name": "maltraiter",
+      "source": "Thénardier (mari)",
+      "target": "Cosette",
+      "attributes": {}
+    },
+    {
+      "name": "faire travailler",
+      "source": "Thénardier (mari)",
+      "target": "Cosette",
+      "attributes": {
+        "comme": "servante"
+      }
+    },
+    {
+      "name": "vendre",
+      "source": "Fantine",
+      "target": "cheveux de Fantine",
+      "attributes": {}
+    },
+    {
+      "name": "vendre",
+      "source": "Fantine",
+      "target": "dents de Fantine",
+      "attributes": {}
+    },
+    {
+      "name": "payer",
+      "source": "Fantine",
+      "target": "Thénardier (mari)",
+      "attributes": {
+        "objet": "pension de Cosette"
+      }
+    },
+    {
+      "name": "promettre",
+      "source": "Jean Valjean",
+      "target": "Fantine",
+      "attributes": {
+        "contenu": "veiller sur Cosette"
+      }
+    },
+    {
+      "name": "s’échapper de",
+      "source": "Jean Valjean",
+      "target": "procès de Champmathieu",
+      "attributes": {}
+    },
+    {
+      "name": "rendre",
+      "source": "Jean Valjean",
+      "target": "Montfermeil",
+      "attributes": {
+        " après": "mort de Fantine",
+        " suite à": "démasquage par Javert"
+      }
+    },
+    {
+      "name": "payer",
+      "source": "Jean Valjean",
+      "target": "Thénardier (mari)",
+      "attributes": {
+        "montant": "1500 francs",
+        "objet": "Cosette"
+      }
+    },
+    {
+      "name": "emmener",
+      "source": "Jean Valjean",
+      "target": "Cosette",
+      "attributes": {
+        "lieu": "Paris",
+        "moment": "veille de Noël"
+      }
+    },
+    {
+      "name": "élever",
+      "source": "Jean Valjean",
+      "target": "Cosette",
+      "attributes": {
+        "comme": "fille adoptive"
+      }
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+[
+  {
+    "config": "exactitude/union",
+    "wall_s": 170.7,
+    "detail": "",
+    "n_entities": 18,
+    "n_relations": 33,
+    "n_entity_attrs": 26,
+    "n_relation_attrs": 26,
+    "expected_entities": 11,
+    "expected_entities_total": 11,
+    "missing_entities": [],
+    "expected_relations": 6,
+    "expected_relations_total": 6,
+    "valjean_madeleine_merged": true
+  },
+  {
+    "config": "exactitude/vote2",
+    "wall_s": 170.7,
+    "detail": "",
+    "n_entities": 7,
+    "n_relations": 17,
+    "n_entity_attrs": 18,
+    "n_relation_attrs": 15,
+    "expected_entities": 6,
+    "expected_entities_total": 11,
+    "missing_entities": [
+      "Fantine",
+      "Cosette",
+      "Thénardier",
+      "Montfermeil",
+      "Paris"
+    ],
+    "expected_relations": 2,
+    "expected_relations_total": 6,
+    "valjean_madeleine_merged": true
+  },
+  {
+    "config": "exactitude/arbitré",
+    "wall_s": 178.4,
+    "detail": "arbitre=qwen3-coder-next:latest",
+    "n_entities": 17,
+    "n_relations": 32,
+    "n_entity_attrs": 26,
+    "n_relation_attrs": 25,
+    "expected_entities": 11,
+    "expected_entities_total": 11,
+    "missing_entities": [],
+    "expected_relations": 6,
+    "expected_relations_total": 6,
+    "valjean_madeleine_merged": true
+  },
+  {
+    "config": "efficacité/majorité2sur3",
+    "wall_s": 106.3,
+    "detail": "",
+    "n_entities": 12,
+    "n_relations": 23,
+    "n_entity_attrs": 15,
+    "n_relation_attrs": 8,
+    "expected_entities": 10,
+    "expected_entities_total": 11,
+    "missing_entities": [
+      "Thénardier"
+    ],
+    "expected_relations": 3,
+    "expected_relations_total": 6,
+    "valjean_madeleine_merged": true
+  },
+  {
+    "config": "efficacité/union3",
+    "wall_s": 106.3,
+    "detail": "",
+    "n_entities": 25,
+    "n_relations": 51,
+    "n_entity_attrs": 17,
+    "n_relation_attrs": 24,
+    "expected_entities": 11,
+    "expected_entities_total": 11,
+    "missing_entities": [],
+    "expected_relations": 6,
+    "expected_relations_total": 6,
+    "valjean_madeleine_merged": true
+  },
+  {
+    "config": "efficacité/arbitré",
+    "wall_s": 131.9,
+    "detail": "arbitre=gpt-oss:20b",
+    "n_entities": 23,
+    "n_relations": 49,
+    "n_entity_attrs": 17,
+    "n_relation_attrs": 22,
+    "expected_entities": 11,
+    "expected_entities_total": 11,
+    "missing_entities": [],
+    "expected_relations": 6,
+    "expected_relations_total": 6,
+    "valjean_madeleine_merged": true
+  },
+  {
+    "config": "référence/coder-next_seul",
+    "wall_s": 41.6,
+    "detail": "",
+    "n_entities": 23,
+    "n_relations": 27,
+    "n_entity_attrs": 20,
+    "n_relation_attrs": 25,
+    "expected_entities": 10,
+    "expected_entities_total": 11,
+    "missing_entities": [
+      "Paris"
+    ],
+    "expected_relations": 6,
+    "expected_relations_total": 6,
+    "valjean_madeleine_merged": true
+  }
+]

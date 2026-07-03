@@ -1,0 +1,260 @@
+{
+  "entities": [
+    {
+      "name": "Jean Valjean",
+      "type": "personnage",
+      "aliases": [
+        "M. Madeleine",
+        "Madeleine"
+      ],
+      "attributes": {
+        "profession": "forçat",
+        "libération": "après dix-neuf ans de bagne à Toulon",
+        "arrivée à Digne": "un soir d'octobre",
+        "activité": "fabrication de perles noires",
+        "état": "libéré",
+        "détention antérieure": "bagne à Toulon (dix-neuf ans)",
+        "détail de profession": "libéré après dix-neuf ans de bagne à Toulon",
+        "action": "a promis de veiller sur Cosette"
+      }
+    },
+    {
+      "name": "Toulon",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {
+        "caractère": "là où Jean Valjean a fait dix-neuf ans de bagne"
+      }
+    },
+    {
+      "name": "Digne",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Evêque Myriel",
+      "type": "personnage",
+      "aliases": [
+        "monseigneur Bienvenu"
+      ],
+      "attributes": {
+        "autre nom": "l'évêque Myriel, les habitants appelé"
+      }
+    },
+    {
+      "name": "Montreuil-sur-Mer",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Javert",
+      "type": "personne",
+      "aliases": [],
+      "attributes": {
+        "profession": "inspecteur",
+        "action": "démasqua Jean Valjean lors du procès de Champmathieu"
+      }
+    },
+    {
+      "name": "Fabrique de perles noires",
+      "type": "entreprise",
+      "aliases": [
+        "la fabrique"
+      ],
+      "attributes": {}
+    },
+    {
+      "name": "Fantine",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "métier": "ouvrière",
+        "profession": "ouvrière de la fabrique"
+      }
+    },
+    {
+      "name": "Cosette",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "âge": "huit ans"
+      }
+    },
+    {
+      "name": "Montfermeil",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Champmathieu",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Paris",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "name": "maire",
+      "source": "Jean Valjean",
+      "target": "Montreuil-sur-Mer",
+      "attributes": {}
+    },
+    {
+      "name": "suspecte",
+      "source": "Javert",
+      "target": "Jean Valjean",
+      "attributes": {}
+    },
+    {
+      "name": "travaille à",
+      "source": "Fantine",
+      "target": "Fabrique de perles noires",
+      "attributes": {}
+    },
+    {
+      "name": "mère de",
+      "source": "Fantine",
+      "target": "Cosette",
+      "attributes": {}
+    },
+    {
+      "name": "demasqué",
+      "source": "Javert",
+      "target": "Jean Valjean",
+      "attributes": {
+        "lieu": "Champmathieu"
+      }
+    },
+    {
+      "name": "parent de adoptif",
+      "source": "Jean Valjean",
+      "target": "Cosette",
+      "attributes": {
+        "type": "adoptif"
+      }
+    },
+    {
+      "name": "promet de veiller sur",
+      "source": "Jean Valjean",
+      "target": "Cosette",
+      "attributes": {}
+    },
+    {
+      "name": "se rend à",
+      "source": "Jean Valjean",
+      "target": "Montfermeil",
+      "attributes": {}
+    },
+    {
+      "name": "arrive à",
+      "source": "Jean Valjean",
+      "target": "Digne",
+      "attributes": {
+        "époque": "un soir d'octobre"
+      }
+    },
+    {
+      "name": "dirigeait une fabrique de perles noires à",
+      "source": "Jean Valjean",
+      "target": "Montreuil-sur-Mer",
+      "attributes": {}
+    },
+    {
+      "name": "est devenu maire de",
+      "source": "Jean Valjean",
+      "target": "Montreuil-sur-Mer",
+      "attributes": {}
+    },
+    {
+      "name": "soupçonnait le maire, qui était",
+      "source": "Javert",
+      "target": "Jean Valjean",
+      "attributes": {}
+    },
+    {
+      "name": "confie la garde de",
+      "source": "Fantine",
+      "target": "Cosette",
+      "attributes": {}
+    },
+    {
+      "name": "va se rendre à",
+      "source": "Jean Valjean",
+      "target": "Montfermeil",
+      "attributes": {}
+    },
+    {
+      "name": "s'installe avec",
+      "source": "Jean Valjean",
+      "target": "Cosette",
+      "attributes": {
+        "": "la veille de Noël"
+      }
+    },
+    {
+      "name": "élève comme sa propre fille à",
+      "source": "Jean Valjean",
+      "target": "Cosette",
+      "attributes": {
+        "": "Paris"
+      }
+    },
+    {
+      "name": "arriva à",
+      "source": "Jean Valjean",
+      "target": "Digne",
+      "attributes": {
+        "date": "un soir d'octobre"
+      }
+    },
+    {
+      "name": "était maire de",
+      "source": "Jean Valjean",
+      "target": "Montreuil-sur-Mer",
+      "attributes": {}
+    },
+    {
+      "name": "confie",
+      "source": "Fantine",
+      "target": "Cosette",
+      "attributes": {
+        "depuis": "huit années"
+      }
+    },
+    {
+      "name": "renvoye",
+      "source": "Fantine",
+      "target": "Fabrique de perles noires",
+      "attributes": {}
+    },
+    {
+      "name": "emmener",
+      "source": "Jean Valjean",
+      "target": "Cosette",
+      "attributes": {
+        "date": "la veille de Noël"
+      }
+    },
+    {
+      "name": "installe avec",
+      "source": "Jean Valjean",
+      "target": "Cosette",
+      "attributes": {}
+    },
+    {
+      "name": "éleva comme sa propre fille",
+      "source": "Jean Valjean",
+      "target": "Cosette",
+      "attributes": {}
+    }
+  ]
+}
