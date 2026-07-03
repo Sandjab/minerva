@@ -1,0 +1,261 @@
+{
+  "entities": [
+    {
+      "name": "Jean Valjean",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "âge": "plus de trente ans (19 ans de bagne)",
+        "statut": "démasqué au procès de Champmathieu"
+      }
+    },
+    {
+      "name": "Toulon",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {
+        "bagne": ""
+      }
+    },
+    {
+      "name": "Digne",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {
+        "ville": ""
+      }
+    },
+    {
+      "name": "Bienvenu",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "titre": "évêque Myriel"
+      }
+    },
+    {
+      "name": "gendarmerie",
+      "type": "organisation",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "gendarmes",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "monseigneur Bienvenu",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Bienvenu (evêque Myriel)",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "évêque Myriel",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "M. Madeleine",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Montreuil-sur-Mer",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "inspecteur Javert",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "lieu de naissance": "prison"
+      }
+    },
+    {
+      "name": "Fantine",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Cosette",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Thénardier(s)",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "statut": "aubergistes à Montfermeil"
+      }
+    },
+    {
+      "name": "Monseigneur Bienvenu (évêque Myriel)",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "profession": "évêque"
+      }
+    },
+    {
+      "name": "Javert (inspecteur Javert)",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "name": "fut arrêté par",
+      "source": "Jean Valjean",
+      "target": "gendarmes",
+      "attributes": {}
+    },
+    {
+      "name": "accueillit",
+      "source": "monseigneur Bienvenu",
+      "target": "Jean Valjean",
+      "attributes": {
+        "ce qu'il lui offrit": "l'accueil, le couvert et un lit"
+      }
+    },
+    {
+      "name": "père de",
+      "source": "Bienvenu (evêque Myriel)",
+      "target": "Jean Valjean",
+      "attributes": {
+        "comment": "lui a donné l'argent de l'argenterie et des chandeliers d' argent"
+      }
+    },
+    {
+      "name": "vol",
+      "source": "Jean Valjean",
+      "target": "évêque Myriel",
+      "attributes": {
+        "ce qu'il vola": "l'argenterie et les chandeliers d' argent"
+      }
+    },
+    {
+      "name": "est maire de",
+      "source": "M. Madeleine",
+      "target": "Montreuil-sur-Mer",
+      "attributes": {}
+    },
+    {
+      "name": "est maire de",
+      "source": "Bienvenu (evêque Myriel)",
+      "target": "Digne",
+      "attributes": {
+        "lieu": ""
+      }
+    },
+    {
+      "name": "a perdu son identité",
+      "source": "M. Madeleine",
+      "target": "Jean Valjean",
+      "attributes": {}
+    },
+    {
+      "name": "soupçonne d'être un forçat",
+      "source": "inspecteur Javert",
+      "target": "M. Madeleine",
+      "attributes": {
+        "motif": "force herculéenne"
+      }
+    },
+    {
+      "name": "a servi au bagne de Toulon",
+      "source": "Jean Valjean",
+      "target": "Toulon",
+      "attributes": {
+        "relation": "connu"
+      }
+    },
+    {
+      "name": "fille_de",
+      "source": "Cosette",
+      "target": "Fantine",
+      "attributes": {}
+    },
+    {
+      "name": "maltraitent",
+      "source": "Thénardier(s)",
+      "target": "Cosette",
+      "attributes": {}
+    },
+    {
+      "name": "faire_travailler",
+      "source": "Thénardier(s)",
+      "target": "Cosette",
+      "attributes": {
+        "mode": "comme une servante"
+      }
+    },
+    {
+      "name": "payer_pension",
+      "source": "Fantine",
+      "target": "Thénardier(s)",
+      "attributes": {
+        "pour": "paye la pension de sa fille",
+        "somme": "ses cheveux et ses dents vendus"
+      }
+    },
+    {
+      "name": "recevoir_promesse",
+      "source": "Fantine",
+      "target": "M. Madeleine",
+      "attributes": {}
+    },
+    {
+      "name": "démasquer",
+      "source": "Javert (inspecteur Javert)",
+      "target": "Jean Valjean",
+      "attributes": {
+        "lieu": "au procès de Champmathieu"
+      }
+    },
+    {
+      "name": "échapper",
+      "source": "Jean Valjean",
+      "target": "Javert (inspecteur Javert)",
+      "attributes": {}
+    },
+    {
+      "name": "rendre_auprès_de",
+      "source": "Jean Valjean",
+      "target": "Cosette",
+      "attributes": {
+        "lieu": "à Paris",
+        "date": "la veille de Noël"
+      }
+    },
+    {
+      "name": "élever_comme_fille",
+      "source": "Jean Valjean",
+      "target": "Cosette",
+      "attributes": {}
+    },
+    {
+      "name": "rémunérer",
+      "source": "M. Madeleine",
+      "target": "Thénardier(s)",
+      "attributes": {
+        "somme": "mille cinq cents francs"
+      }
+    }
+  ]
+}

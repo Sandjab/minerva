@@ -1,0 +1,226 @@
+{
+  "entities": [
+    {
+      "name": "Jean Valjean",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "profession": "forçat",
+        "statut": "libéré",
+        "durée d'emprisonnement": "dix-neuf ans",
+        "lieu d'emprisonnement": "Toulon",
+        "passeport": "jaune"
+      }
+    },
+    {
+      "name": "Digne",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "l'évêque Myriel",
+      "type": "personnage",
+      "aliases": [
+        "monseigneur Bienvenu"
+      ],
+      "attributes": {
+        "profession": "évêque"
+      }
+    },
+    {
+      "name": "Les gendarmes",
+      "type": "organisation",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "l'argenterie de l'évêque",
+      "type": "objet",
+      "aliases": [
+        "l'argenterie"
+      ],
+      "attributes": {}
+    },
+    {
+      "name": "Fantine",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "profession": "ouvrière de la fabrique"
+      }
+    },
+    {
+      "name": "Cosette",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "âge": "huit ans"
+      }
+    },
+    {
+      "name": "Les époux Thénardier",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "profession": "aubergistes"
+      }
+    },
+    {
+      "name": "Montfermeil",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Champmathieu",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Javert",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "M. Madeleine",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Paris",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "name": "arriver à",
+      "source": "Jean Valjean",
+      "target": "Digne",
+      "attributes": {}
+    },
+    {
+      "name": "accueillir",
+      "source": "l'évêque Myriel",
+      "target": "Jean Valjean",
+      "attributes": {}
+    },
+    {
+      "name": "offrir",
+      "source": "l'évêque Myriel",
+      "target": "Jean Valjean",
+      "attributes": {
+        "objets": "le couvert, le lit"
+      }
+    },
+    {
+      "name": "voler",
+      "source": "Jean Valjean",
+      "target": "l'argenterie de l'évêque",
+      "attributes": {}
+    },
+    {
+      "name": "appartenir à",
+      "source": "l'argenterie de l'évêque",
+      "target": "l'évêque Myriel",
+      "attributes": {}
+    },
+    {
+      "name": "arrêter",
+      "source": "Les gendarmes",
+      "target": "Jean Valjean",
+      "attributes": {}
+    },
+    {
+      "name": "ramener devant",
+      "source": "Jean Valjean",
+      "target": "l'évêque Myriel",
+      "attributes": {}
+    },
+    {
+      "name": "donner",
+      "source": "l'évêque Myriel",
+      "target": "Jean Valjean",
+      "attributes": {
+        "objets": "le couvert, le lit, deux chandeliers d'argent"
+      }
+    },
+    {
+      "name": "confié comme fille",
+      "source": "Fantine",
+      "target": "Cosette",
+      "attributes": {}
+    },
+    {
+      "name": "maltraitent",
+      "source": "Les époux Thénardier",
+      "target": "Cosette",
+      "attributes": {}
+    },
+    {
+      "name": "est dans",
+      "source": "Les époux Thénardier",
+      "target": "Montfermeil",
+      "attributes": {}
+    },
+    {
+      "name": "démasque",
+      "source": "Javert",
+      "target": "Jean Valjean",
+      "attributes": {
+        "lieu": "Champmathieu"
+      }
+    },
+    {
+      "name": "paie",
+      "source": "Jean Valjean",
+      "target": "Les époux Thénardier",
+      "attributes": {
+        "montant": "mille cinq cents francs",
+        "destination": "emmener Cosette",
+        "date": "la veille de Noël"
+      }
+    },
+    {
+      "name": "emmène",
+      "source": "Jean Valjean",
+      "target": "Cosette",
+      "attributes": {
+        "date": "la veille de Noël"
+      }
+    },
+    {
+      "name": "habite à",
+      "source": "Jean Valjean",
+      "target": "Paris",
+      "attributes": {}
+    },
+    {
+      "name": "habite à",
+      "source": "Cosette",
+      "target": "Paris",
+      "attributes": {}
+    },
+    {
+      "name": "promet",
+      "source": "M. Madeleine",
+      "target": "Cosette",
+      "attributes": {
+        "objectif": "veiller sur"
+      }
+    },
+    {
+      "name": "recevoir promesse de",
+      "source": "Fantine",
+      "target": "M. Madeleine",
+      "attributes": {
+        "objet": "veiller sur Cosette"
+      }
+    }
+  ]
+}

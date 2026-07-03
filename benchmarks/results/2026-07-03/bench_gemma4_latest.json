@@ -1,0 +1,280 @@
+{
+  "entities": [
+    {
+      "name": "Jean Valjean",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "professionnel": "pourvoyeur de travail forcé",
+        "détention": "ancien bagne à Toulon"
+      }
+    },
+    {
+      "name": "Toulon",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Digne",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "L'évêque Myriel",
+      "type": "personnage",
+      "aliases": [
+        "monseigneur Bienvenu"
+      ],
+      "attributes": {}
+    },
+    {
+      "name": "Valjean",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "les gendarmes",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "les couverts de Valjean",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "M. Madeleine",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "activité": "dirigeait une fabrique de perles noires",
+        "lieu d'exercice": "Montreuil-sur-Mer",
+        "fonction": "maire"
+      }
+    },
+    {
+      "name": "L'inspecteur Javert",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "profession": "policier inflexible",
+        "origine": "né dans une prison"
+      }
+    },
+    {
+      "name": "Montreuil-sur-Mer",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "fabrique de perles noires",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "maire",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Fantine",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "profession": "ouvrière de la fabrique"
+      }
+    },
+    {
+      "name": "Cosette",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "les époux Thénardier",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "métier": "aubergistes"
+      }
+    },
+    {
+      "name": "Montfermeil",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Javert",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Paris",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "name": "anciennement détenu dans",
+      "source": "Jean Valjean",
+      "target": "Toulon",
+      "attributes": {
+        "durée": "dix-neuf ans"
+      }
+    },
+    {
+      "name": "arrive à",
+      "source": "Jean Valjean",
+      "target": "Digne",
+      "attributes": {
+        "moment": "un soir d'octobre"
+      }
+    },
+    {
+      "name": "accueille",
+      "source": "L'évêque Myriel",
+      "target": "Jean Valjean",
+      "attributes": {
+        "lieu": "sa maison",
+        "actions": "offrir le couvert et le lit"
+      }
+    },
+    {
+      "name": "vole de l'argenterie appartenant à",
+      "source": "Valjean",
+      "target": "L'évêque Myriel",
+      "attributes": {
+        "moment": "dans la nuit"
+      }
+    },
+    {
+      "name": "est arrêté par",
+      "source": "Valjean",
+      "target": "les gendarmes",
+      "attributes": {}
+    },
+    {
+      "name": "déclare avoir donné (et enrichi avec)",
+      "source": "L'évêque Myriel",
+      "target": "les couverts de Valjean",
+      "attributes": {
+        "ajout": "deux chandeliers d'argent"
+      }
+    },
+    {
+      "name": "achète symboliquement (son âme au bien)",
+      "source": "L'évêque Myriel",
+      "target": "Jean Valjean",
+      "attributes": {
+        "nature_de_l_acte": "don de l'argenterie"
+      }
+    },
+    {
+      "name": "dirigeait dans",
+      "source": "M. Madeleine",
+      "target": "fabrique de perles noires",
+      "attributes": {}
+    },
+    {
+      "name": "situé à",
+      "source": "fabrique de perles noires",
+      "target": "Montreuil-sur-Mer",
+      "attributes": {}
+    },
+    {
+      "name": "occupait la fonction de",
+      "source": "M. Madeleine",
+      "target": "maire",
+      "attributes": {
+        "ville": "Montreuil-sur-Mer"
+      }
+    },
+    {
+      "name": "est en réalité",
+      "source": "M. Madeleine",
+      "target": "Jean Valjean",
+      "attributes": {}
+    },
+    {
+      "name": "servait dans",
+      "source": "L'inspecteur Javert",
+      "target": "Montreuil-sur-Mer",
+      "attributes": {}
+    },
+    {
+      "name": "soupçonnait le maire (M. Madeleine)",
+      "source": "L'inspecteur Javert",
+      "target": "M. Madeleine",
+      "attributes": {}
+    },
+    {
+      "name": "a confié sa fille à",
+      "source": "Fantine",
+      "target": "les époux Thénardier",
+      "attributes": {}
+    },
+    {
+      "name": "concerne la personne",
+      "source": "Cosette",
+      "target": "les époux Thénardier",
+      "attributes": {
+        "action": "la maltraitaient et la faisaient travailler comme une servante"
+      }
+    },
+    {
+      "name": "a vendu pour payer la pension de",
+      "source": "Fantine",
+      "target": "Cosette",
+      "attributes": {
+        "éléments vendus": "ses cheveux et ses dents"
+      }
+    },
+    {
+      "name": "a promis de veiller sur",
+      "source": "M. Madeleine",
+      "target": "Cosette",
+      "attributes": {
+        "moment": "mourante"
+      }
+    },
+    {
+      "name": "s'est rendu à",
+      "source": "Jean Valjean",
+      "target": "Montfermeil",
+      "attributes": {}
+    },
+    {
+      "name": "a payé pour emmener Cosette de",
+      "source": "Jean Valjean",
+      "target": "les époux Thénardier",
+      "attributes": {
+        "montant": "mille cinq cents francs",
+        "occasion": "la veille de Noël"
+      }
+    },
+    {
+      "name": "s'est installé avec Cosette à",
+      "source": "Jean Valjean",
+      "target": "Paris",
+      "attributes": {}
+    },
+    {
+      "name": "a élevé comme sa propre fille",
+      "source": "Jean Valjean",
+      "target": "Cosette",
+      "attributes": {}
+    }
+  ]
+}

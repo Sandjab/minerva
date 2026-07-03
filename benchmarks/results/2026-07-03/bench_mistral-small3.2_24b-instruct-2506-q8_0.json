@@ -1,0 +1,159 @@
+{
+  "entities": [
+    {
+      "name": "Jean Valjean",
+      "type": "personnage",
+      "aliases": [
+        "Valjean",
+        "il"
+      ],
+      "attributes": {
+        "statut": "forçat",
+        "durée de bagne": "dix-neuf ans",
+        "lieu de bagne": "Toulon"
+      }
+    },
+    {
+      "name": "Digne",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "évêque Myriel",
+      "type": "personnage",
+      "aliases": [
+        "Monseigneur Bienvenu",
+        "Myriel"
+      ],
+      "attributes": {
+        "rôle": "évêque"
+      }
+    },
+    {
+      "name": "auberges de Digne",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "passeport jaune",
+      "type": "objet",
+      "aliases": [],
+      "attributes": {
+        "couleur": "jaune"
+      }
+    },
+    {
+      "name": "argentie de l'évêque Myriel",
+      "type": "objet",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "gendarmes",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "chandeliers d'argent",
+      "type": "objet",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "argentie et chandeliers d'argent de l'évêque Myriel",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "M. Madeleine",
+      "type": "personnage",
+      "aliases": [
+        "Madeleine"
+      ],
+      "attributes": {
+        "profession": "dirigeant une fabrique",
+        "riche": "oui"
+      }
+    },
+    {
+      "name": "fabrique de perles noires à Montreuil-sur-Mer",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {
+        "situation géographique": "Montreuil-sur-Mer"
+      }
+    },
+    {
+      "name": "l'inspecteur Javert.",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "profession": "policier inflexible "
+      }
+    },
+    {
+      "name": "Montreuil-sur-Mer",
+      "type": "ville",
+      "aliases": [
+        "cette même ville"
+      ],
+      "attributes": {}
+    },
+    {
+      "name": "toulon",
+      "type": "lieu",
+      "aliases": [
+        "bagne de Toulon"
+      ],
+      "attributes": {
+        "situation géographique": "Toulon"
+      }
+    }
+  ],
+  "relations": [
+    {
+      "name": "arrive dans",
+      "source": "Jean Valjean",
+      "target": "Digne",
+      "attributes": {
+        "temps": "un soir de octobre"
+      }
+    },
+    {
+      "name": "ferme la porte à",
+      "source": "auberges de Digne",
+      "target": "Jean Valjean",
+      "attributes": {}
+    },
+    {
+      "name": "accueille",
+      "source": "évêque Myriel",
+      "target": "Jean Valjean",
+      "attributes": {
+        "donne": "le couvert et le lit"
+      }
+    },
+    {
+      "name": "voudrait à",
+      "source": "Jean Valjean",
+      "target": "argentie de l'évêque Myriel",
+      "attributes": {}
+    },
+    {
+      "name": "arrête",
+      "source": "gendarmes",
+      "target": "Jean Valjean",
+      "attributes": {}
+    },
+    {
+      "name": "déclare avoir donné au voleure, en y ajoutant autre chose",
+      "source": "évêque Myriel",
+      "target": "argentie et chandeliers d'argent de l'évêque Myriel",
+      "attributes": {}
+    }
+  ]
+}
