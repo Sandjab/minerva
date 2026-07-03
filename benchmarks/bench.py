@@ -10,7 +10,6 @@ Prérequis : un serveur Ollama local sur http://localhost:11434.
 
 import datetime
 import json
-import sys
 import time
 import traceback
 from pathlib import Path
@@ -105,42 +104,84 @@ def score(graph: KnowledgeGraph) -> dict:
     }
 
 
-def main(models: list[str]) -> None:
+def _aggregate(per_run: list[dict]) -> dict:
+    """Moyenne/écart-type/bornes des métriques clés sur N runs."""
+    import statistics
+
+    agg: dict = {"per_run": per_run}
+    for key in ("time_s", "expected_entities", "expected_relations", "n_entities", "n_relations"):
+        values = [r[key] for r in per_run]
+        agg[f"{key}_mean"] = round(statistics.mean(values), 2)
+        agg[f"{key}_std"] = round(statistics.stdev(values), 2) if len(values) > 1 else 0.0
+        agg[f"{key}_min"] = min(values)
+        agg[f"{key}_max"] = max(values)
+    merged = sum(1 for r in per_run if r["valjean_madeleine_merged"])
+    agg["alias_merge_rate"] = f"{merged}/{len(per_run)}"
+    return agg
+
+
+def run_model(
+    model: str, out_dir: Path, runs: int = 1, temperature: float | None = None
+) -> dict:
+    entry: dict = {"model": model, "temperature": temperature, "runs": runs}
+    backend = OpenAIBackend(
+        model=model, base_url="http://localhost:11434/v1", temperature=temperature
+    )
+    # échauffement : charge le modèle en mémoire hors chrono
+    t0 = time.monotonic()
+    backend._client.chat.completions.create(
+        model=model, messages=[{"role": "user", "content": "Réponds : ok"}]
+    )
+    entry["load_s"] = round(time.monotonic() - t0, 1)
+
+    safe = model.replace(":", "_").replace("/", "_")
+    suffix = "" if temperature is None else f"_t{temperature:g}"
+    per_run: list[dict] = []
+    for i in range(runs):
+        t0 = time.monotonic()
+        graph = extract_graph(
+            TEXT, backend, chunk_size=CHUNK_SIZE,
+            on_progress=lambda d, t: print(f"  run {i + 1}/{runs} chunk {d}/{t}", flush=True),
+        )
+        run_entry = {"time_s": round(time.monotonic() - t0, 1)}
+        run_entry.update(score(graph))
+        per_run.append(run_entry)
+        run_suffix = suffix + (f"_run{i + 1}" if runs > 1 else "")
+        (out_dir / f"bench_{safe}{run_suffix}.json").write_text(
+            json.dumps(graph.to_dict(), ensure_ascii=False, indent=2), encoding="utf-8"
+        )
+
+    if runs == 1:  # format historique : métriques à plat
+        entry.update(per_run[0])
+    else:
+        entry.update(_aggregate(per_run))
+    return entry
+
+
+def main(models: list[str], runs: int = 1, temperature: float | None = None) -> None:
     out_dir = HERE / "results" / datetime.date.today().isoformat()
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    # Fusionne avec les résultats existants du jour : une nouvelle passe sur un
-    # modèle remplace son entrée, les autres sont conservées.
+    # Fusionne avec les résultats existants du jour : une nouvelle passe
+    # remplace l'entrée de même (modèle, température, runs), conserve le reste.
     results_path = out_dir / "bench_results.json"
     previous: list[dict] = (
         json.loads(results_path.read_text(encoding="utf-8")) if results_path.exists() else []
     )
-    results: list[dict] = [e for e in previous if e.get("model") not in models]
-    for model in models:
-        print(f"=== {model} ===", flush=True)
-        entry: dict = {"model": model}
-        try:
-            backend = OpenAIBackend(model=model, base_url="http://localhost:11434/v1")
-            # échauffement : charge le modèle en mémoire hors chrono
-            t0 = time.monotonic()
-            backend._client.chat.completions.create(
-                model=model, messages=[{"role": "user", "content": "Réponds : ok"}]
-            )
-            entry["load_s"] = round(time.monotonic() - t0, 1)
 
-            t0 = time.monotonic()
-            graph = extract_graph(
-                TEXT, backend, chunk_size=CHUNK_SIZE,
-                on_progress=lambda d, t: print(f"  chunk {d}/{t}", flush=True),
-            )
-            entry["time_s"] = round(time.monotonic() - t0, 1)
-            entry.update(score(graph))
-            safe = model.replace(":", "_").replace("/", "_")
-            (out_dir / f"bench_{safe}.json").write_text(
-                json.dumps(graph.to_dict(), ensure_ascii=False, indent=2), encoding="utf-8"
-            )
+    def entry_key(e: dict) -> tuple:
+        return (e.get("model"), e.get("temperature"), e.get("runs", 1))
+
+    new_keys = {(m, temperature, runs) for m in models}
+    results: list[dict] = [e for e in previous if entry_key(e) not in new_keys]
+
+    for model in models:
+        print(f"=== {model} (runs={runs}, temp={temperature}) ===", flush=True)
+        try:
+            entry = run_model(model, out_dir, runs=runs, temperature=temperature)
         except Exception as exc:
-            entry["error"] = f"{type(exc).__name__}: {exc}"
+            entry = {"model": model, "temperature": temperature, "runs": runs,
+                     "error": f"{type(exc).__name__}: {exc}"}
             traceback.print_exc()
         results.append(entry)
         print(json.dumps(entry, ensure_ascii=False), flush=True)
@@ -152,4 +193,12 @@ def main(models: list[str]) -> None:
 
 
 if __name__ == "__main__":
-    main(sys.argv[1:] or DEFAULT_MODELS)
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Bench d'extraction minerva sur Ollama")
+    parser.add_argument("models", nargs="*", default=DEFAULT_MODELS)
+    parser.add_argument("--runs", type=int, default=1, help="nombre de runs par modèle")
+    parser.add_argument("--temperature", type=float, default=None,
+                        help="température d'échantillonnage (défaut : celle d'Ollama, 0.7)")
+    args = parser.parse_args()
+    main(args.models or DEFAULT_MODELS, runs=args.runs, temperature=args.temperature)

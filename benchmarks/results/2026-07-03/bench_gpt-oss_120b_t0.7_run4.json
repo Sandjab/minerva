@@ -1,0 +1,336 @@
+{
+  "entities": [
+    {
+      "name": "Jean Valjean",
+      "type": "personnage",
+      "aliases": [
+        "M. Madeleine",
+        "le maire"
+      ],
+      "attributes": {
+        "profession": "forçat",
+        "durée de détention": "dix‑neuf ans",
+        "lieu de détention": "Toulon"
+      }
+    },
+    {
+      "name": "Digne",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Toulon",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Évêque Myriel",
+      "type": "personnage",
+      "aliases": [
+        "monseigneur Bienvenu"
+      ],
+      "attributes": {
+        "titre": "évêque"
+      }
+    },
+    {
+      "name": "les gendarmes",
+      "type": "organisation",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "argenterie de l'évêque",
+      "type": "objet",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "deux chandeliers d'argent",
+      "type": "objet",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "les auberges",
+      "type": "organisation",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Montreuil-sur-Mer",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Fabrique de perles noires",
+      "type": "organisation",
+      "aliases": [
+        "la fabrique"
+      ],
+      "attributes": {
+        "localisation": "Montreuil-sur-Mer"
+      }
+    },
+    {
+      "name": "Javert",
+      "type": "personnage",
+      "aliases": [
+        "inspecteur Javert"
+      ],
+      "attributes": {}
+    },
+    {
+      "name": "Fantine",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "profession": "ouvrière de la Fabrique de perles noires",
+        "statut": "mourante (à la fin du texte)"
+      }
+    },
+    {
+      "name": "Cosette",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "âge": "8 ans"
+      }
+    },
+    {
+      "name": "Époux Thénardier",
+      "type": "personnage",
+      "aliases": [
+        "les Thénardier"
+      ],
+      "attributes": {
+        "profession": "aubergistes",
+        "lieu d'activité": "Montfermeil"
+      }
+    },
+    {
+      "name": "Montfermeil",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Champmathieu",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Paris",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "name": "arrive à",
+      "source": "Jean Valjean",
+      "target": "Digne",
+      "attributes": {}
+    },
+    {
+      "name": "accueille",
+      "source": "Évêque Myriel",
+      "target": "Jean Valjean",
+      "attributes": {}
+    },
+    {
+      "name": "offre",
+      "source": "Évêque Myriel",
+      "target": "Jean Valjean",
+      "attributes": {
+        "objet": "couvert"
+      }
+    },
+    {
+      "name": "vole",
+      "source": "Jean Valjean",
+      "target": "argenterie de l'évêque",
+      "attributes": {}
+    },
+    {
+      "name": "arrête",
+      "source": "les gendarmes",
+      "target": "Jean Valjean",
+      "attributes": {}
+    },
+    {
+      "name": "ramène devant",
+      "source": "les gendarmes",
+      "target": "Jean Valjean",
+      "attributes": {
+        "personne": "Évêque Myriel"
+      }
+    },
+    {
+      "name": "déclare avoir donné",
+      "source": "Évêque Myriel",
+      "target": "Jean Valjean",
+      "attributes": {
+        "objet": "couverts"
+      }
+    },
+    {
+      "name": "ajoute",
+      "source": "Évêque Myriel",
+      "target": "deux chandeliers d'argent",
+      "attributes": {}
+    },
+    {
+      "name": "ferme porte à",
+      "source": "les auberges",
+      "target": "Jean Valjean",
+      "attributes": {
+        "cause": "passeport jaune"
+      }
+    },
+    {
+      "name": "dirige",
+      "source": "Jean Valjean",
+      "target": "Fabrique de perles noires",
+      "attributes": {
+        "lieu": "Montreuil-sur-Mer"
+      }
+    },
+    {
+      "name": "situé à",
+      "source": "Fabrique de perles noires",
+      "target": "Montreuil-sur-Mer",
+      "attributes": {}
+    },
+    {
+      "name": "maire de",
+      "source": "Jean Valjean",
+      "target": "Montreuil-sur-Mer",
+      "attributes": {
+        "période": "des années plus tard"
+      }
+    },
+    {
+      "name": "sert dans",
+      "source": "Javert",
+      "target": "Montreuil-sur-Mer",
+      "attributes": {}
+    },
+    {
+      "name": "soupçonne",
+      "source": "Javert",
+      "target": "Jean Valjean",
+      "attributes": {
+        "raison": "sa force herculéenne rappelait un forçat connu au bagne de Toulon"
+      }
+    },
+    {
+      "name": "rappelait à",
+      "source": "Jean Valjean",
+      "target": "Javert",
+      "attributes": {
+        "comparaison": "forçat du bagne de Toulon"
+      }
+    },
+    {
+      "name": "confie",
+      "source": "Fantine",
+      "target": "Époux Thénardier",
+      "attributes": {
+        "personne": "Cosette"
+      }
+    },
+    {
+      "name": "maltraite",
+      "source": "Époux Thénardier",
+      "target": "Cosette",
+      "attributes": {}
+    },
+    {
+      "name": "fait travailler",
+      "source": "Époux Thénardier",
+      "target": "Cosette",
+      "attributes": {
+        "poste": "servante"
+      }
+    },
+    {
+      "name": "promet de veiller sur",
+      "source": "Jean Valjean",
+      "target": "Fantine",
+      "attributes": {
+        "personne protégée": "Cosette"
+      }
+    },
+    {
+      "name": "démasque",
+      "source": "Javert",
+      "target": "Jean Valjean",
+      "attributes": {
+        "contexte": "procès de Champmathieu"
+      }
+    },
+    {
+      "name": "se rend à",
+      "source": "Jean Valjean",
+      "target": "Montfermeil",
+      "attributes": {}
+    },
+    {
+      "name": "paie",
+      "source": "Jean Valjean",
+      "target": "Époux Thénardier",
+      "attributes": {
+        "montant": "1500 francs",
+        "but": "emmener Cosette"
+      }
+    },
+    {
+      "name": "emmène",
+      "source": "Époux Thénardier",
+      "target": "Cosette",
+      "attributes": {}
+    },
+    {
+      "name": "s'installe avec",
+      "source": "Jean Valjean",
+      "target": "Cosette",
+      "attributes": {
+        "lieu": "Paris"
+      }
+    },
+    {
+      "name": "élève",
+      "source": "Jean Valjean",
+      "target": "Cosette",
+      "attributes": {
+        "relation": "fille adoptive"
+      }
+    },
+    {
+      "name": "est fille de",
+      "source": "Cosette",
+      "target": "Fantine",
+      "attributes": {}
+    },
+    {
+      "name": "travaille pour",
+      "source": "Fantine",
+      "target": "Fabrique de perles noires",
+      "attributes": {
+        "poste": "ouvrière"
+      }
+    },
+    {
+      "name": "renvoyée de",
+      "source": "Fantine",
+      "target": "Fabrique de perles noires",
+      "attributes": {}
+    }
+  ]
+}

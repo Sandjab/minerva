@@ -16,7 +16,9 @@ from .model import KnowledgeGraph
 
 def _cmd_extract(args: argparse.Namespace) -> int:
     text = Path(args.input).read_text(encoding="utf-8")
-    backend = make_backend(args.provider, model=args.model, base_url=args.base_url)
+    backend = make_backend(
+        args.provider, model=args.model, base_url=args.base_url, temperature=args.temperature
+    )
 
     def progress(done: int, total: int) -> None:
         print(f"chunk {done}/{total}", file=sys.stderr)
@@ -76,6 +78,8 @@ def build_parser() -> argparse.ArgumentParser:
     p_extract.add_argument("--model", default=None, help="identifiant du modèle")
     p_extract.add_argument("--base-url", default=None, help="URL d'un serveur compatible OpenAI (ex. http://localhost:11434/v1)")
     p_extract.add_argument("--chunk-size", type=int, default=DEFAULT_CHUNK_SIZE)
+    p_extract.add_argument("--temperature", type=float, default=None,
+                           help="température d'échantillonnage (backend openai/Ollama uniquement)")
     p_extract.set_defaults(func=_cmd_extract)
 
     p_show = sub.add_parser("show", help="afficher le contenu d'une base")

@@ -68,7 +68,10 @@ class LLMBackend(Protocol):
 
 
 def make_backend(
-    provider: str, model: str | None = None, base_url: str | None = None
+    provider: str,
+    model: str | None = None,
+    base_url: str | None = None,
+    temperature: float | None = None,
 ) -> LLMBackend:
     """Fabrique un backend d'extraction.
 
@@ -76,11 +79,16 @@ def make_backend(
     serveur compatible OpenAI via base_url).
     """
     if provider == "anthropic":
+        if temperature is not None:
+            raise ValueError(
+                "temperature n'est pas configurable sur le backend anthropic "
+                "(les modèles Claude récents rejettent ce paramètre)"
+            )
         from .anthropic_backend import AnthropicBackend
 
         return AnthropicBackend(model=model)
     if provider == "openai":
         from .openai_backend import OpenAIBackend
 
-        return OpenAIBackend(model=model, base_url=base_url)
+        return OpenAIBackend(model=model, base_url=base_url, temperature=temperature)
     raise ValueError(f"Provider inconnu : {provider!r} (attendu : anthropic ou openai)")

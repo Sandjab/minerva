@@ -53,7 +53,8 @@ def main(results_dir: Path) -> None:
     recorded = {
         e["model"]: e
         for e in json.loads(results_path.read_text(encoding="utf-8"))
-        if "error" not in e
+        # les entrées agrégées multi-runs n'ont pas un graphe unique à re-scorer
+        if "error" not in e and "per_run" not in e
     }
 
     rescored = []
