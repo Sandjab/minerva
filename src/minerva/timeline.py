@@ -9,6 +9,7 @@ dérivés recalculables à volonté, jamais une précision inventée.
 
 from __future__ import annotations
 
+import heapq
 import logging
 
 from pydantic import BaseModel, Field
@@ -133,3 +134,93 @@ class Timeline:
         copy._constraints = [c.model_copy(deep=True) for c in self._constraints]
         copy._appearances = {k: set(v) for k, v in self._appearances.items()}
         return copy
+
+    def resolve(self) -> None:
+        """Calcule resolved_order / resolved_days (dérivés, recalculables).
+
+        1. Regroupe les moments liés par SIMULTANE/PENDANT (union-find).
+        2. Tri topologique stable des groupes sur les arêtes AVANT
+           (tie-break : ordre de lecture) ; cycle signalé et cassé au profit
+           de l'ordre de lecture.
+        3. Propagation des écarts quantifiés depuis le premier groupe résolu
+           (jour 0) ; moment non relié par un chemin quantifié -> days None.
+        """
+        moments = sorted(self._moments.values(), key=Moment.reading_key)
+        if not moments:
+            return
+
+        parent = {m.id: m.id for m in moments}
+
+        def find(x: int) -> int:
+            while parent[x] != x:
+                parent[x] = parent[parent[x]]
+                x = parent[x]
+            return x
+
+        for c in self._constraints:
+            if c.relation in (SIMULTANE, PENDANT):
+                parent[find(c.source_id)] = find(c.target_id)
+
+        groups: dict[int, list[Moment]] = {}
+        for m in moments:
+            groups.setdefault(find(m.id), []).append(m)
+        reading = {g: min(m.reading_key() for m in ms) for g, ms in groups.items()}
+
+        succ: dict[int, set[int]] = {g: set() for g in groups}
+        remaining = {g: 0 for g in groups}
+        quantified: list[tuple[int, int, float]] = []
+        for c in self._constraints:
+            if c.relation != AVANT:
+                continue
+            a, b = find(c.source_id), find(c.target_id)
+            if a == b:
+                logger.warning("contrainte 'avant' interne à un groupe simultané, ignorée : %s", c)
+                continue
+            if b not in succ[a]:
+                succ[a].add(b)
+                remaining[b] += 1
+            if c.gap.days is not None:
+                quantified.append((a, b, c.gap.days))
+
+        heap = [(reading[g], g) for g in groups if remaining[g] == 0]
+        heapq.heapify(heap)
+        group_order: dict[int, int] = {}
+        while len(group_order) < len(groups):
+            if not heap:  # cycle : on repêche le groupe le plus tôt en lecture
+                g = min((g for g in groups if g not in group_order), key=lambda g: reading[g])
+                logger.warning("cycle temporel détecté ; cassé au profit de l'ordre de lecture (groupe %s)", g)
+                heapq.heappush(heap, (reading[g], g))
+            _, g = heapq.heappop(heap)
+            if g in group_order:
+                continue
+            group_order[g] = len(group_order)
+            for s in succ[g]:
+                remaining[s] -= 1
+                if remaining[s] == 0:
+                    heapq.heappush(heap, (reading[s], s))
+
+        ordered = sorted(moments, key=lambda m: (group_order[find(m.id)], m.reading_key()))
+        for i, m in enumerate(ordered):
+            m.resolved_order = i
+
+        days: dict[int, float] = {find(ordered[0].id): 0.0}
+        adjacency: dict[int, list[tuple[int, float]]] = {}
+        for a, b, d in quantified:
+            adjacency.setdefault(a, []).append((b, d))
+            adjacency.setdefault(b, []).append((a, -d))
+        stack = list(days)
+        while stack:
+            g = stack.pop()
+            for h, d in adjacency.get(g, []):
+                candidate = days[g] + d
+                if h in days:
+                    if abs(days[h] - candidate) > 0.5:
+                        logger.warning(
+                            "écarts quantifiés incompatibles (groupe %s : %.1f vs %.1f jours)",
+                            h, days[h], candidate,
+                        )
+                    continue
+                days[h] = candidate
+                stack.append(h)
+        for m in moments:
+            m.resolved_days = days.get(find(m.id))
