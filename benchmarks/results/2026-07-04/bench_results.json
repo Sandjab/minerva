@@ -1,0 +1,211 @@
+[
+  {
+    "model": "gpt-oss:120b",
+    "temperature": null,
+    "runs": 5,
+    "load_s": 23.6,
+    "per_run": [
+      {
+        "time_s": 107.6,
+        "n_entities": 19,
+        "n_relations": 30,
+        "n_entity_attrs": 11,
+        "n_relation_attrs": 6,
+        "expected_entities": 10,
+        "expected_entities_total": 11,
+        "missing_entities": [
+          "Toulon"
+        ],
+        "expected_relations": 5,
+        "expected_relations_total": 6,
+        "valjean_madeleine_merged": false
+      },
+      {
+        "time_s": 144.8,
+        "n_entities": 20,
+        "n_relations": 27,
+        "n_entity_attrs": 10,
+        "n_relation_attrs": 9,
+        "expected_entities": 11,
+        "expected_entities_total": 11,
+        "missing_entities": [],
+        "expected_relations": 5,
+        "expected_relations_total": 6,
+        "valjean_madeleine_merged": false
+      },
+      {
+        "time_s": 109.8,
+        "n_entities": 24,
+        "n_relations": 32,
+        "n_entity_attrs": 14,
+        "n_relation_attrs": 7,
+        "expected_entities": 11,
+        "expected_entities_total": 11,
+        "missing_entities": [],
+        "expected_relations": 6,
+        "expected_relations_total": 6,
+        "valjean_madeleine_merged": false
+      },
+      {
+        "time_s": 146.7,
+        "n_entities": 23,
+        "n_relations": 27,
+        "n_entity_attrs": 16,
+        "n_relation_attrs": 13,
+        "expected_entities": 10,
+        "expected_entities_total": 11,
+        "missing_entities": [
+          "Toulon"
+        ],
+        "expected_relations": 5,
+        "expected_relations_total": 6,
+        "valjean_madeleine_merged": true
+      },
+      {
+        "time_s": 91.3,
+        "n_entities": 17,
+        "n_relations": 25,
+        "n_entity_attrs": 8,
+        "n_relation_attrs": 10,
+        "expected_entities": 11,
+        "expected_entities_total": 11,
+        "missing_entities": [],
+        "expected_relations": 5,
+        "expected_relations_total": 6,
+        "valjean_madeleine_merged": true
+      }
+    ],
+    "time_s_mean": 120.04,
+    "time_s_std": 24.54,
+    "time_s_min": 91.3,
+    "time_s_max": 146.7,
+    "expected_entities_mean": 10.6,
+    "expected_entities_std": 0.55,
+    "expected_entities_min": 10,
+    "expected_entities_max": 11,
+    "expected_relations_mean": 5.2,
+    "expected_relations_std": 0.45,
+    "expected_relations_min": 5,
+    "expected_relations_max": 6,
+    "n_entities_mean": 20.6,
+    "n_entities_std": 2.88,
+    "n_entities_min": 17,
+    "n_entities_max": 24,
+    "n_relations_mean": 28.2,
+    "n_relations_std": 2.77,
+    "n_relations_min": 25,
+    "n_relations_max": 32,
+    "alias_merge_rate": "2/5"
+  },
+  {
+    "model": "qwen3-coder-next:latest",
+    "temperature": null,
+    "runs": 5,
+    "load_s": 18.2,
+    "per_run": [
+      {
+        "time_s": 38.9,
+        "n_entities": 15,
+        "n_relations": 4,
+        "n_entity_attrs": 27,
+        "n_relation_attrs": 3,
+        "expected_entities": 7,
+        "expected_entities_total": 11,
+        "missing_entities": [
+          "Thénardier",
+          "Toulon",
+          "Montfermeil",
+          "Paris"
+        ],
+        "expected_relations": 0,
+        "expected_relations_total": 6,
+        "valjean_madeleine_merged": false
+      },
+      {
+        "time_s": 22.9,
+        "n_entities": 13,
+        "n_relations": 9,
+        "n_entity_attrs": 12,
+        "n_relation_attrs": 4,
+        "expected_entities": 8,
+        "expected_entities_total": 11,
+        "missing_entities": [
+          "Javert",
+          "Montreuil-sur-Mer",
+          "Paris"
+        ],
+        "expected_relations": 1,
+        "expected_relations_total": 6,
+        "valjean_madeleine_merged": false
+      },
+      {
+        "time_s": 37.8,
+        "n_entities": 20,
+        "n_relations": 22,
+        "n_entity_attrs": 24,
+        "n_relation_attrs": 11,
+        "expected_entities": 10,
+        "expected_entities_total": 11,
+        "missing_entities": [
+          "Toulon"
+        ],
+        "expected_relations": 4,
+        "expected_relations_total": 6,
+        "valjean_madeleine_merged": false
+      },
+      {
+        "time_s": 41.1,
+        "n_entities": 12,
+        "n_relations": 0,
+        "n_entity_attrs": 30,
+        "n_relation_attrs": 0,
+        "expected_entities": 10,
+        "expected_entities_total": 11,
+        "missing_entities": [
+          "Paris"
+        ],
+        "expected_relations": 0,
+        "expected_relations_total": 6,
+        "valjean_madeleine_merged": false
+      },
+      {
+        "time_s": 32.0,
+        "n_entities": 21,
+        "n_relations": 20,
+        "n_entity_attrs": 18,
+        "n_relation_attrs": 10,
+        "expected_entities": 8,
+        "expected_entities_total": 11,
+        "missing_entities": [
+          "Thénardier",
+          "Toulon",
+          "Montreuil-sur-Mer"
+        ],
+        "expected_relations": 2,
+        "expected_relations_total": 6,
+        "valjean_madeleine_merged": false
+      }
+    ],
+    "time_s_mean": 34.54,
+    "time_s_std": 7.32,
+    "time_s_min": 22.9,
+    "time_s_max": 41.1,
+    "expected_entities_mean": 8.6,
+    "expected_entities_std": 1.34,
+    "expected_entities_min": 7,
+    "expected_entities_max": 10,
+    "expected_relations_mean": 1.4,
+    "expected_relations_std": 1.67,
+    "expected_relations_min": 0,
+    "expected_relations_max": 4,
+    "n_entities_mean": 16.2,
+    "n_entities_std": 4.09,
+    "n_entities_min": 12,
+    "n_entities_max": 21,
+    "n_relations_mean": 11,
+    "n_relations_std": 9.7,
+    "n_relations_min": 0,
+    "n_relations_max": 22,
+    "alias_merge_rate": "0/5"
+  }
+]

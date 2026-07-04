@@ -1,0 +1,589 @@
+{
+  "entities": [
+    {
+      "name": "Jean Valjean",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "statut_pénal": "forçat libéré",
+        "durée_bagne": "dix-neuf ans",
+        "lieu_dernier_bagne": "Toulon",
+        "date_arrivée_Digne": "un soir d’octobre",
+        "action_nuit_": "vol de l’argenterie de Myriel",
+        "action_ultérieure": "s’enfuit",
+        "identité empruntée": "M. Madeleine",
+        "type de détention": "forçat"
+      }
+    },
+    {
+      "name": "Digne",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "type_lieu": "ville"
+      }
+    },
+    {
+      "name": "monseigneur Bienvenu",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "les habitants de Digne",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Myriel",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "fonction": "évêque de Digne",
+        "action_devant_les_gendarmes": "déclara avoir donné l’argenterie à Jean Valjean",
+        "don_supplémentaire": "ajouta deux chandeliers d’argent achetés avec son propre argent"
+      }
+    },
+    {
+      "name": "les gendarmes",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "geste de Myriel",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "M. Madeleine",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "statut connu par les habitants": "homme prospère",
+        "garder": "Cosette"
+      }
+    },
+    {
+      "name": "Montreuil-sur-Mer",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Javert",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "origine": "né dans une prison",
+        "description physique évoquée": "force herculéenne"
+      }
+    },
+    {
+      "name": "Jean Valjean (sous l’identité de M. Madeleine)",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "véritable identité": "ancien forçat",
+        "montant": "1500 francs"
+      }
+    },
+    {
+      "name": "Fantine",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "statut professionnel": "ouvrière de la fabrique dirigée par M. Madeleine",
+        "gardienne de": "Cosette",
+        "situation sociale finale": "renvoyée de la fabrique, dans la misère",
+        "payer": "pension de Cosette chez les Thénardier",
+        "état final dans ce moment": "mourante"
+      }
+    },
+    {
+      "name": "Cosette",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "âge": "8 ans",
+        "comme": "sa propre fille"
+      }
+    },
+    {
+      "name": "Thénardier (époux)",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "profession": "aubergistes à Montfermeil",
+        "statut": "servante"
+      }
+    },
+    {
+      "name": "Champmathieu",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "name": "alias",
+      "source": "monseigneur Bienvenu",
+      "target": "Myriel",
+      "attributes": {}
+    },
+    {
+      "name": "habitude_nommage",
+      "source": "les habitants de Digne",
+      "target": "monseigneur Bienvenu",
+      "attributes": {
+        "pour": "Myriel"
+      }
+    },
+    {
+      "name": "intervention",
+      "source": "les gendarmes",
+      "target": "Jean Valjean",
+      "attributes": {
+        "à l’occasion de": "le vol de Myriel"
+      }
+    },
+    {
+      "name": "signification_symbolique",
+      "source": "geste de Myriel",
+      "target": "Jean Valjean",
+      "attributes": {
+        "en vue de": "acheter son âme au bien"
+      }
+    }
+  ],
+  "moments": [
+    {
+      "id": 1,
+      "chunk_index": 0,
+      "seq": 0,
+      "summary": "Jean Valjean arrive à Digne un soir d’octobre après dix-neuf ans de bagne, est rejeté par les auberges en raison de son passeport jaune, puis accueilli par l’évêque Myriel.",
+      "resolved_order": 0,
+      "resolved_days": 0.0
+    },
+    {
+      "id": 2,
+      "chunk_index": 0,
+      "seq": 1,
+      "summary": "Jean Valjean vola l’argenterie de l’évêque la nuit même, s’enfuit, fut arrêté par les gendarmes et ramené devant l’évêque, qui lui offrit en réalité les couverts et deux chandeliers d’argent.",
+      "resolved_order": 1,
+      "resolved_days": null
+    },
+    {
+      "id": 3,
+      "chunk_index": 1,
+      "seq": 0,
+      "summary": "Vingt ans plus tard : Jean Valjean, sous l’identité d’un homme prospère nommé M. Madeleine, dirige unefabrique de perles noires à Montreuil-sur-Mer et en est devenu maire ; l’inspecteur Javert le soupçonne.",
+      "resolved_order": 2,
+      "resolved_days": null
+    },
+    {
+      "id": 4,
+      "chunk_index": 2,
+      "seq": 0,
+      "summary": "Fantine confie Cosette aux Thénardier, se dégrade moralement et physique pour payer leur pension ; M. Madeleine lui promet de veiller sur Cosette avant sa mort.",
+      "resolved_order": 3,
+      "resolved_days": null
+    },
+    {
+      "id": 5,
+      "chunk_index": 2,
+      "seq": 1,
+      "summary": "Jean Valjean, démasqué puis échappé de Javert au procès de Champmathieu, se rend à Montfermeil, rachète Cosette aux Thénardier pour 1 500 francs et l’emporte à Paris pour l’élever comme sa fille.",
+      "resolved_order": 4,
+      "resolved_days": null
+    }
+  ],
+  "constraints": [
+    {
+      "source_id": 1,
+      "relation": "avant",
+      "target_id": 2,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 2,
+      "relation": "avant",
+      "target_id": 3,
+      "gap": {
+        "text": "Des années plus tard",
+        "days": null
+      }
+    },
+    {
+      "source_id": 3,
+      "relation": "avant",
+      "target_id": 4,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 4,
+      "relation": "avant",
+      "target_id": 5,
+      "gap": {
+        "text": "Après la mort de Fantine",
+        "days": null
+      }
+    }
+  ],
+  "appearances": {
+    "1": [
+      "Digne",
+      "Jean Valjean",
+      "Myriel",
+      "les habitants de Digne",
+      "monseigneur Bienvenu"
+    ],
+    "2": [
+      "Jean Valjean",
+      "Myriel",
+      "geste de Myriel",
+      "les gendarmes"
+    ],
+    "3": [
+      "Javert",
+      "Jean Valjean",
+      "Jean Valjean (sous l’identité de M. Madeleine)",
+      "M. Madeleine",
+      "Montreuil-sur-Mer"
+    ],
+    "4": [
+      "Cosette",
+      "Fantine",
+      "M. Madeleine",
+      "Thénardier (époux)"
+    ],
+    "5": [
+      "Champmathieu",
+      "Cosette",
+      "Javert",
+      "Jean Valjean (sous l’identité de M. Madeleine)",
+      "Thénardier (époux)"
+    ]
+  },
+  "assertions": [
+    {
+      "entity": "Jean Valjean",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "statut_pénal",
+      "value": "forçat libéré",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Jean Valjean",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "durée_bagne",
+      "value": "dix-neuf ans",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Jean Valjean",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "lieu_dernier_bagne",
+      "value": "Toulon",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Jean Valjean",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "date_arrivée_Digne",
+      "value": "un soir d’octobre",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Digne",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "type_lieu",
+      "value": "ville",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "alias",
+      "relation_source": "monseigneur Bienvenu",
+      "relation_target": "Myriel",
+      "attribute": "",
+      "value": "",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Myriel",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "fonction",
+      "value": "évêque de Digne",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "habitude_nommage",
+      "relation_source": "les habitants de Digne",
+      "relation_target": "monseigneur Bienvenu",
+      "attribute": "pour",
+      "value": "Myriel",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Jean Valjean",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "action_nuit_",
+      "value": "vol de l’argenterie de Myriel",
+      "moment_id": 2,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Jean Valjean",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "action_ultérieure",
+      "value": "s’enfuit",
+      "moment_id": 2,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "intervention",
+      "relation_source": "les gendarmes",
+      "relation_target": "Jean Valjean",
+      "attribute": "à l’occasion de",
+      "value": "le vol de Myriel",
+      "moment_id": 2,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Myriel",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "action_devant_les_gendarmes",
+      "value": "déclara avoir donné l’argenterie à Jean Valjean",
+      "moment_id": 2,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Myriel",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "don_supplémentaire",
+      "value": "ajouta deux chandeliers d’argent achetés avec son propre argent",
+      "moment_id": 2,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "signification_symbolique",
+      "relation_source": "geste de Myriel",
+      "relation_target": "Jean Valjean",
+      "attribute": "en vue de",
+      "value": "acheter son âme au bien",
+      "moment_id": 2,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Jean Valjean",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "identité empruntée",
+      "value": "M. Madeleine",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "M. Madeleine",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "statut connu par les habitants",
+      "value": "homme prospère",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Jean Valjean (sous l’identité de M. Madeleine)",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "véritable identité",
+      "value": "ancien forçat",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Javert",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "origine",
+      "value": "né dans une prison",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Javert",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "description physique évoquée",
+      "value": "force herculéenne",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Jean Valjean",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "type de détention",
+      "value": "forçat",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Fantine",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "statut professionnel",
+      "value": "ouvrière de la fabrique dirigée par M. Madeleine",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Fantine",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "gardienne de",
+      "value": "Cosette",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Cosette",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "âge",
+      "value": "8 ans",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Thénardier (époux)",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "profession",
+      "value": "aubergistes à Montfermeil",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Thénardier (époux)",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "statut",
+      "value": "servante",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Fantine",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "situation sociale finale",
+      "value": "renvoyée de la fabrique, dans la misère",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Fantine",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "payer",
+      "value": "pension de Cosette chez les Thénardier",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "M. Madeleine",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "garder",
+      "value": "Cosette",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Fantine",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "état final dans ce moment",
+      "value": "mourante",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Jean Valjean (sous l’identité de M. Madeleine)",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "montant",
+      "value": "1500 francs",
+      "moment_id": 5,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Cosette",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "comme",
+      "value": "sa propre fille",
+      "moment_id": 5,
+      "chunk_index": 2
+    }
+  ]
+}
