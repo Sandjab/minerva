@@ -59,12 +59,18 @@ relation est qualifiée, ex. depuis / l'enfance).
 
 Règles sur les entités :
 - `name` : nom canonique le plus complet dans le texte (« Jean Valjean », pas \
-« il »). Les autres désignations vont dans `aliases`.
+« il »).
+- Si un même référent apparaît sous PLUSIEURS noms (titre, surnom, identité \
+d'emprunt — ex. « M. Madeleine » est Jean Valjean), crée UNE SEULE entité \
+sous le nom le plus complet et mets TOUTES les autres désignations dans \
+`aliases`. Ne crée jamais deux entités pour le même référent.
 - `type` : catégorie libre en français, en minuscules (ex. « personnage », \
 « lieu », « objet », « organisation »).
 - Noms d'attributs en français, en minuscules.
 - Réutilise EXACTEMENT les noms des entités déjà connues et les identifiants \
-des moments déjà connus quand l'extrait les concerne.\
+des moments déjà connus quand l'extrait les concerne.
+- Une entité est un référent nommé (personnage, lieu, objet, organisation) — \
+jamais une action, un événement ou une périphrase.\
 """
 
 _MOMENT_REF = re.compile(r"^M(\d+)$")
