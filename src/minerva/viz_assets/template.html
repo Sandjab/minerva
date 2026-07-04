@@ -107,7 +107,7 @@ function linkTooltip(l) {
   const r = D.relations[l.i];
   let h = `<b>${esc(r.source)} —${esc(r.name)}→ ${esc(r.target)}</b>`;
   for (const a of r.assertions)
-    h += `<br>${esc(a.attribute)} = ${esc(a.value)}` + (a.moment_id != null ? ` (M${a.moment_id})` : "");
+    h += `<br>${esc(a.attribute)} = ${esc(a.value)}` + (a.moment_id != null ? ` (M${Number(a.moment_id)})` : "");
   return h;
 }
 
@@ -222,6 +222,12 @@ function renderTimeline() {
                                 opacity: state.selected && t.entity !== state.selected ? 0.25 : 0.85 });
       clip.addEventListener("click", () =>
         select(state.selected === t.entity ? null : t.entity));
+      clip.addEventListener("mousemove", ev => {
+        const o = Math.floor((ev.clientX - tlSvg.getBoundingClientRect().left - LEFT) / COLW);
+        const m = D.moments[Math.max(0, Math.min(o, D.moments.length - 1))];
+        showTip(`<b>${esc(t.entity)}</b> · M${Number(m.id)} — ${esc(m.summary)}`, ev.clientX, ev.clientY);
+      });
+      clip.addEventListener("mouseleave", hideTip);
       tlSvg.appendChild(clip);
     });
   });
@@ -297,7 +303,11 @@ document.getElementById("hide-single").addEventListener("change", ev => {
 document.getElementById("search").addEventListener("input", ev => {
   state.query = ev.target.value.trim().toLowerCase(); applyFilters();
 });
-function applyFilters() { repaintGraph(); renderTimeline(); }
+function applyFilters() {
+  if (state.selected && !passesFilters(byName[state.selected])) { select(null); return; }
+  repaintGraph();
+  renderTimeline();
+}
 
 renderTimeline();
 </script>
