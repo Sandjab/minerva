@@ -193,9 +193,18 @@ def test_render_html_est_autonome():
     assert '<link rel="stylesheet" href="http' not in html
 
 
-def test_render_html_echappe_les_fins_de_script_dans_les_donnees():
+def test_render_html_les_donnees_ne_peuvent_pas_alterer_le_parsing_du_script():
     g = _graph()
     g.add_assertion(Assertion(entity="Valjean", attribute="note",
                               value="</script><script>alert(1)"))
+    g.add_assertion(Assertion(entity="Valjean", attribute="piège",
+                              value="avant <!--<ScRiPt> milieu"))
     html = render_html(build_payload(g))
     assert "</script><script>alert" not in html
+    assert "<!--<ScRiPt" not in html
+
+
+def test_render_html_la_lib_vendoree_ne_contient_pas_les_marqueurs():
+    from importlib.resources import files
+    lib = files("minerva").joinpath("viz_assets/force-graph.min.js").read_text(encoding="utf-8")
+    assert "__MINERVA_DATA__" not in lib and "__FORCE_GRAPH_JS__" not in lib

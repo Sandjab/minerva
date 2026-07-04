@@ -106,12 +106,13 @@ def build_payload(graph: KnowledgeGraph) -> dict:
 def render_html(payload: dict) -> str:
     """Assemble la page autonome : template + lib vendorée + données.
 
-    Le JSON est inséré dans un <script> : les séquences `</` sont échappées
-    en `<\\/` pour qu'une valeur contenant `</script>` ne ferme pas le tag."""
+    Le JSON est inséré dans un <script> : tous les `<` des données sont
+    échappés en `\\u003c` pour qu'aucune valeur (`</script>`, `<!--<script`…)
+    ne puisse altérer le parsing du script inline."""
     assets = files("minerva").joinpath("viz_assets")
     template = assets.joinpath("template.html").read_text(encoding="utf-8")
     lib = assets.joinpath("force-graph.min.js").read_text(encoding="utf-8")
-    data = json.dumps(payload, ensure_ascii=False).replace("</", "<\\/")
+    data = json.dumps(payload, ensure_ascii=False).replace("<", "\\u003c")
     return template.replace("__FORCE_GRAPH_JS__", lib).replace("__MINERVA_DATA__", data)
 
 
