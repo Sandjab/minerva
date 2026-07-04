@@ -4,7 +4,7 @@ jamais un axe absolu : on ne stocke que ce que le texte affirme."""
 import pytest
 
 from minerva.timeline import (
-    AVANT, PENDANT, SIMULTANE, Gap, Moment, TemporalConstraint, Timeline, gap_to_days,
+    AVANT, PENDANT, SIMULTANE, Gap, Timeline, gap_to_days,
 )
 
 
@@ -145,3 +145,48 @@ def test_resolve_est_stable_et_recalculable():
     first = [(m.resolved_order, m.resolved_days) for m in tl.moments]
     tl.resolve()
     assert [(m.resolved_order, m.resolved_days) for m in tl.moments] == first
+
+
+def test_resolve_ecarts_incompatibles_signale_et_garde_la_premiere_valeur(caplog):
+    # Deux chemins quantifiés vers M3 qui se contredisent : direct 10 jours,
+    # via M2 : 2 + 20 = 22 jours. Bruit LLM : on signale, on ne plante pas.
+    tl = _tl(3)
+    tl.add_constraint(1, AVANT, 3, Gap(text="dix jours après", days=10.0))
+    tl.add_constraint(1, AVANT, 2, Gap(text="deux jours après", days=2.0))
+    tl.add_constraint(2, AVANT, 3, Gap(text="vingt jours après", days=20.0))
+    with caplog.at_level("WARNING"):
+        tl.resolve()
+    assert "incompatibles" in caplog.text
+    # Première valeur découverte conservée (comportement documenté).
+    assert tl.moment(1).resolved_days == 0.0
+    assert tl.moment(2).resolved_days == 2.0
+    assert tl.moment(3).resolved_days == 10.0
+
+
+def test_clone_est_independant_de_l_original():
+    tl = Timeline()
+    m = tl.add_moment(0, 0, "scène")
+    tl.add_appearance(m.id, "Cosette")
+    copy = tl.clone()
+    m2 = copy.add_moment(1, 0, "ajout au clone")
+    copy.add_appearance(m.id, "Javert")
+    copy.add_constraint(m.id, AVANT, m2.id)
+    # L'original n'a pas bougé : pas de set/list partagé.
+    assert [mo.id for mo in tl.moments] == [1]
+    assert tl.appearances == {1: {"Cosette"}}
+    assert tl.constraints == []
+    assert copy.appearances == {1: {"Cosette", "Javert"}}
+
+
+def test_rename_entity_renomme_dans_toutes_les_appearances():
+    tl = Timeline()
+    m1 = tl.add_moment(0, 0, "a")
+    m2 = tl.add_moment(1, 0, "b")
+    tl.add_appearance(m1.id, "évêque Myriel")
+    tl.add_appearance(m1.id, "Cosette")
+    tl.add_appearance(m2.id, "évêque Myriel")
+    tl.rename_entity("évêque Myriel", "Monseigneur Bienvenu")
+    assert tl.appearances == {
+        m1.id: {"Monseigneur Bienvenu", "Cosette"},  # les autres noms sont intacts
+        m2.id: {"Monseigneur Bienvenu"},
+    }
