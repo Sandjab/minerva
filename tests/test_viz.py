@@ -131,3 +131,50 @@ def test_states_le_premier_rang_d_une_relation_gagne():
                               value="une nuit", moment_id=3))
     p = build_payload(g)
     assert 0 in p["states"][1]["relations"]
+
+
+def test_payload_base_sans_moments_se_degrade_sans_crash():
+    g = KnowledgeGraph()
+    g.add_entity(Entity(name="Javert", type="personnage"))
+    g.add_relation(Relation(name="traque", source="Javert", target="Valjean"))
+    p = build_payload(g)
+    assert p["moments"] == [] and p["states"] == [] and p["tracks"] == []
+    assert {e["name"] for e in p["entities"]} == {"Javert", "Valjean"}
+
+
+def test_payload_resolved_days_tous_none_reste_ordinal():
+    g = KnowledgeGraph()
+    m1 = g.timeline.add_moment(0, 0, "un")
+    m2 = g.timeline.add_moment(0, 1, "deux")
+    g.timeline.add_constraint(m1.id, AVANT, m2.id)  # aucun écart quantifié
+    g.add_entity(Entity(name="X", type="inconnu"))
+    g.timeline.add_appearance(m1.id, "X")
+    p = build_payload(g)
+    assert [m["order"] for m in p["moments"]] == [0, 1]
+    assert p["gaps"] == {}
+
+
+def test_payload_entite_isolee_a_une_piste_mais_pas_de_relation():
+    g = _graph()
+    g.add_entity(Entity(name="Fantine", type="personnage"))
+    g.timeline.add_appearance(3, "Fantine")  # m3
+    p = build_payload(g)
+    assert "Fantine" in {t["entity"] for t in p["tracks"]}
+    assert all("Fantine" not in (r["source"], r["target"]) for r in p["relations"])
+
+
+def test_payload_les_jours_ne_sont_pas_inventes():
+    # Fixture : m1 est l'origine ancrée (0.0) ; m2 n'a aucun chemin quantifié
+    # vers m1 ; m3 est à 3650 j de m2 donc lui non plus. La page ne doit
+    # afficher que ce que le résolveur garantit.
+    p = build_payload(_graph())
+    assert [m["days"] for m in p["moments"]] == [0.0, None, None]
+
+
+def test_payload_gap_quantifie_non_consecutif_ignore():
+    g = _graph()
+    # contrainte quantifiée m1 -> m3 : ordres 0 -> 2, non consécutifs
+    g.timeline.add_constraint(1, AVANT, 3, Gap(text="plus tard", days=99.0))
+    p = build_payload(g)
+    assert "0" not in p["gaps"]
+    assert p["gaps"] == {"1": 3650.0}
