@@ -181,3 +181,4 @@ cython_debug/
 .cursorindexingignore
 # Sessions du compagnon visuel (brainstorming)
 .superpowers/
+.playwright-mcp/
