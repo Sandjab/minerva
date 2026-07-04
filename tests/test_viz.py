@@ -73,3 +73,11 @@ def test_payload_tracks_triees_par_nombre_de_moments_decroissant():
     p = build_payload(_graph())
     assert p["tracks"][0]["entity"] == "Valjean"
     assert p["tracks"][0]["count"] == 3
+
+
+def test_payload_tracks_un_trou_coupe_le_run():
+    g = _graph()
+    g.timeline.add_appearance(3, "Digne")  # m3 : Digne réapparaît après un trou
+    p = build_payload(g)
+    by_name = {t["entity"]: t for t in p["tracks"]}
+    assert by_name["Digne"]["runs"] == [[0, 0], [2, 2]]
