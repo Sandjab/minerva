@@ -86,6 +86,25 @@ def test_retour_reference_un_moment_connu_du_prompt():
                for c in graph.timeline.constraints)
 
 
+def test_retour_avec_ref_locale_minuscule_pas_encore_definie_ne_s_ancre_pas_globalement():
+    # Un moment global d'id 2 existe (chunk précédent), mais le chunk courant
+    # n'a pas encore défini de ref locale "m2" au moment où la transition est
+    # résolue : elle ne doit PAS être confondue avec le moment global 2.
+    r1 = TimelineExtractionResult(moments=[_moment("m1", "premier")])
+    r2 = TimelineExtractionResult(moments=[_moment("m1", "deuxième")])
+    r3 = TimelineExtractionResult(
+        moments=[
+            _moment("m1", "troisième"),
+            _moment("m2", "cible = ref locale 'm2', pas encore définie dans ce chunk",
+                    transition=ExtractedTransition(type="retour", target="m2")),
+        ],
+    )
+    graph = extract_graph("Un.\n\nDeux.\n\nTroi.", FakeBackend([r1, r2, r3]), chunk_size=5)
+    kinds = {(c.source_id, c.relation, c.target_id) for c in graph.timeline.constraints}
+    assert (3, AVANT, 4) in kinds       # repli : ancré sur le moment précédent (id 3)
+    assert (2, AVANT, 4) not in kinds   # pas d'ancre douteuse sur le moment global 2
+
+
 def test_parallele_genere_simultane_et_ref_irresoluble_se_replie():
     r = TimelineExtractionResult(
         moments=[

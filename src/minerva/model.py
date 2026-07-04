@@ -94,6 +94,13 @@ class KnowledgeGraph:
 
     Règle de fusion : les valeurs déjà présentes sont préservées (première
     extraction gagne) ; les attributs et alias nouveaux sont ajoutés.
+
+    Cette règle décrit les dicts `Entity.attributes` / `Relation.attributes`,
+    mais ce ne sont qu'une VUE « première extraction gagne » maintenue en
+    écriture par le chemin unique `add_assertion`. La source de vérité est le
+    journal de constats (`assertions`), bitemporel : voir `entity_state` /
+    `relation_state` pour dériver d'autres vues (dernière valeur en ordre
+    diégétique résolu, snapshot à un moment donné via `at=`).
     """
 
     def __init__(self) -> None:
@@ -249,20 +256,32 @@ class KnowledgeGraph:
             view.setdefault(a.attribute, a.value)
         return a
 
-    def entity_state(self, policy: str = "first") -> dict[str, dict[str, str]]:
+    def entity_state(
+        self, policy: str = "first", at: int | None = None
+    ) -> dict[str, dict[str, str]]:
         """Snapshot {entité: {attribut: valeur}}. « first » = première
         extraction gagne (comportement historique) ; « final » = dernière
-        valeur en ordre diégétique résolu (non daté = avant tout)."""
+        valeur en ordre diégétique résolu (non daté = avant tout).
+
+        `at` (id de moment, uniquement avec policy="final") restreint le
+        snapshot à ce qu'on sait au moment `at` inclus : seules les
+        assertions dont le rang est <= celui de `at` sont considérées (les
+        assertions non datées, toujours de rang -1, restent incluses)."""
         if policy == "first":
+            if at is not None:
+                raise ValueError("at= exige policy='final'")
             return {e.name: dict(e.attributes) for e in self.entities}
         if policy != "final":
             raise ValueError(f"policy inconnue : {policy!r}")
         rank = self._moment_ranks()
+        at_rank = self._at_rank(at, rank)
         best: dict[tuple[str, str], tuple[int, str]] = {}
         for a in self._assertions:
             if not (a.entity and a.attribute):
                 continue
             r = rank.get(a.moment_id, -1)
+            if at_rank is not None and r > at_rank:
+                continue
             k = (a.entity, a.attribute)
             if k not in best or r > best[k][0]:
                 best[k] = (r, a.value)
@@ -272,19 +291,25 @@ class KnowledgeGraph:
         return state
 
     def relation_state(
-        self, policy: str = "first"
+        self, policy: str = "first", at: int | None = None
     ) -> dict[tuple[str, str, str], dict[str, str]]:
-        """Snapshot {(nom, source, cible): {attribut: valeur}} des relations."""
+        """Snapshot {(nom, source, cible): {attribut: valeur}} des relations.
+        `at` : voir entity_state."""
         if policy == "first":
+            if at is not None:
+                raise ValueError("at= exige policy='final'")
             return {(r.name, r.source, r.target): dict(r.attributes) for r in self.relations}
         if policy != "final":
             raise ValueError(f"policy inconnue : {policy!r}")
         rank = self._moment_ranks()
+        at_rank = self._at_rank(at, rank)
         best: dict[tuple, tuple[int, str]] = {}
         for a in self._assertions:
             if a.entity or not a.attribute or not a.relation_name:
                 continue
             r = rank.get(a.moment_id, -1)
+            if at_rank is not None and r > at_rank:
+                continue
             k = ((a.relation_name, a.relation_source, a.relation_target), a.attribute)
             if k not in best or r > best[k][0]:
                 best[k] = (r, a.value)
@@ -301,6 +326,15 @@ class KnowledgeGraph:
         for m in self.timeline.moments:
             ranks[m.id] = m.resolved_order if m.resolved_order is not None else -1
         return ranks
+
+    def _at_rank(self, at: int | None, rank: dict[int | None, int]) -> int | None:
+        """Rang du moment `at`, ou None si `at` n'est pas fourni. ValueError
+        si `at` ne désigne aucun moment existant."""
+        if at is None:
+            return None
+        if at not in rank:
+            raise ValueError(f"moment inexistant : {at!r}")
+        return rank[at]
 
     def track(self, name: str) -> list[tuple[Moment, list[Assertion]]]:
         """Piste d'une entité : ses moments (présence ou constat), en ordre

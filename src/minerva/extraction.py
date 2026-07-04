@@ -67,7 +67,7 @@ Règles sur les entités :
 des moments déjà connus quand l'extrait les concerne.\
 """
 
-_MOMENT_REF = re.compile(r"^[mM](\d+)$")
+_MOMENT_REF = re.compile(r"^M(\d+)$")
 
 
 def build_user_prompt(

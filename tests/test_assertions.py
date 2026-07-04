@@ -3,6 +3,8 @@ n'en sont qu'une vue « première extraction gagne », maintenue par un chemin
 d'écriture unique (add_assertion). C'est ce qui permet à un attribut de
 changer entre deux moments (Cosette : 8 ans -> 18 ans) sans rien casser."""
 
+import pytest
+
 from minerva.model import Assertion, Entity, KnowledgeGraph, Relation
 from minerva.timeline import AVANT, Gap
 
@@ -93,6 +95,28 @@ def test_entity_state_final_une_valeur_datee_supplante_une_valeur_sans_moment():
     g.add_assertion(Assertion(entity="X", attribute="âge", value="18 ans", moment_id=1))
     assert g.entity_state("final")["X"]["âge"] == "18 ans"
     assert g.entity_state("first")["X"]["âge"] == "8 ans"
+
+
+def test_entity_state_final_at_limite_le_snapshot_au_moment_donne():
+    g = _graph_with_moments(2)
+    g.add_assertion(Assertion(entity="Cosette", attribute="âge", value="8 ans", moment_id=1))
+    g.add_assertion(Assertion(entity="Cosette", attribute="âge", value="18 ans", moment_id=2))
+    assert g.entity_state("final", at=1)["Cosette"]["âge"] == "8 ans"
+    assert g.entity_state("final", at=2)["Cosette"]["âge"] == "18 ans"
+
+
+def test_entity_state_final_at_garde_les_constats_non_dates():
+    g = _graph_with_moments(1)
+    g.add_entity(Entity(name="X", type="personnage", attributes={"nom": "Cosette"}))  # moment NULL
+    assert g.entity_state("final", at=1)["X"]["nom"] == "Cosette"
+
+
+def test_entity_state_at_invalide_ou_avec_policy_first_leve_valueerror():
+    g = _graph_with_moments(1)
+    with pytest.raises(ValueError):
+        g.entity_state("final", at=999)
+    with pytest.raises(ValueError):
+        g.entity_state("first", at=1)
 
 
 def test_relation_state_first_et_final():

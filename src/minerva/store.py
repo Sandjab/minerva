@@ -158,7 +158,7 @@ def load(path: str | Path) -> KnowledgeGraph:
 
 def _load_identities(conn: sqlite3.Connection, graph: KnowledgeGraph) -> tuple[dict, dict]:
     entity_names: dict[int, str] = {}
-    for eid, name, etype in conn.execute("SELECT id, name, type FROM entities"):
+    for eid, name, etype in conn.execute("SELECT id, name, type FROM entities ORDER BY id"):
         entity_names[eid] = name
         aliases = [
             row[0]
@@ -169,7 +169,7 @@ def _load_identities(conn: sqlite3.Connection, graph: KnowledgeGraph) -> tuple[d
         graph.add_entity(Entity(name=name, type=etype, aliases=aliases))
     relation_keys: dict[int, tuple[str, str, str]] = {}
     for rid, name, source_id, target_id in conn.execute(
-        "SELECT id, name, source_id, target_id FROM relations"
+        "SELECT id, name, source_id, target_id FROM relations ORDER BY id"
     ):
         relation = graph.add_relation(
             Relation(name=name, source=entity_names[source_id], target=entity_names[target_id])
@@ -219,7 +219,7 @@ def _load_journal(conn: sqlite3.Connection) -> KnowledgeGraph:
 def _load_legacy(conn: sqlite3.Connection) -> KnowledgeGraph:
     graph = KnowledgeGraph()
     names: dict[int, str] = {}
-    for eid, name, etype in conn.execute("SELECT id, name, type FROM entities"):
+    for eid, name, etype in conn.execute("SELECT id, name, type FROM entities ORDER BY id"):
         names[eid] = name
         aliases = [
             row[0]
@@ -234,7 +234,7 @@ def _load_legacy(conn: sqlite3.Connection) -> KnowledgeGraph:
         )
         graph.add_entity(Entity(name=name, type=etype, aliases=aliases, attributes=attributes))
     for rid, name, source_id, target_id in conn.execute(
-        "SELECT id, name, source_id, target_id FROM relations"
+        "SELECT id, name, source_id, target_id FROM relations ORDER BY id"
     ):
         attributes = dict(
             conn.execute(
