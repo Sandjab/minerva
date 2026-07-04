@@ -1,4 +1,4 @@
-"""CLI : minerva extract | show | export."""
+"""CLI : minerva extract | show | export | timeline | viz."""
 
 from __future__ import annotations
 
@@ -109,6 +109,19 @@ def _cmd_export(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_viz(args: argparse.Namespace) -> int:
+    from . import viz
+
+    graph = store.load(args.database)
+    payload = viz.build_payload(graph)
+    Path(args.output).write_text(viz.render_html(payload), encoding="utf-8")
+    print(
+        f"{len(payload['entities'])} entités, {len(payload['moments'])} moments"
+        f" -> {args.output}"
+    )
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="minerva", description="Extraction d'entités et de relations d'un texte")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -137,6 +150,11 @@ def build_parser() -> argparse.ArgumentParser:
     p_timeline = sub.add_parser("timeline", help="afficher les moments narratifs résolus")
     p_timeline.add_argument("database", help="base SQLite")
     p_timeline.set_defaults(func=_cmd_timeline)
+
+    p_viz = sub.add_parser("viz", help="exporter une page HTML de visualisation (forcegraph + timeline)")
+    p_viz.add_argument("database", help="base SQLite")
+    p_viz.add_argument("-o", "--output", required=True, help="fichier HTML de sortie")
+    p_viz.set_defaults(func=_cmd_viz)
 
     return parser
 

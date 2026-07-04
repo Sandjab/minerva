@@ -2,6 +2,7 @@
 contenir tout ce que la base sait, sous une forme prête à rendre — les
 transformations se font en Python, jamais dans le JS de la page."""
 
+from minerva import store
 from minerva.model import Assertion, Entity, KnowledgeGraph, Relation
 from minerva.timeline import AVANT, Gap
 from minerva.viz import build_payload, render_html
@@ -208,3 +209,13 @@ def test_render_html_la_lib_vendoree_ne_contient_pas_les_marqueurs():
     from importlib.resources import files
     lib = files("minerva").joinpath("viz_assets/force-graph.min.js").read_text(encoding="utf-8")
     assert "__MINERVA_DATA__" not in lib and "__FORCE_GRAPH_JS__" not in lib
+
+
+def test_cli_viz_ecrit_une_page_autonome(tmp_path):
+    from minerva.cli import main
+    db = tmp_path / "base.sqlite"
+    store.save(_graph(), str(db))
+    out = tmp_path / "page.html"
+    assert main(["viz", str(db), "-o", str(out)]) == 0
+    html = out.read_text(encoding="utf-8")
+    assert "MINERVA_DATA" in html and "Valjean" in html
