@@ -71,7 +71,7 @@ _MOMENT_REF = re.compile(r"^[mM](\d+)$")
 
 
 def build_user_prompt(
-    chunk: str, known_entities: list[str], known_moments: list[Moment] = []
+    chunk: str, known_entities: list[str], known_moments: tuple[Moment, ...] = ()
 ) -> str:
     parts = []
     if known_entities:
@@ -84,7 +84,7 @@ def build_user_prompt(
     return "\n\n".join(parts)
 
 
-def sanitize(result: "ExtractionResult") -> tuple[list[Entity], list["Relation"]]:
+def sanitize(result: ExtractionResult) -> tuple[list[Entity], list[Relation]]:
     """Écarte le bruit LLM : entités sans nom, relations incomplètes.
     (Utilisé par la passe de complétude de refine.py.)"""
     entities = [e.to_entity() for e in result.entities if e.name.strip()]

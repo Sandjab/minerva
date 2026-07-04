@@ -102,6 +102,18 @@ def test_parallele_genere_simultane_et_ref_irresoluble_se_replie():
     assert (2, AVANT, 3) in kinds  # repli : relatif au moment précédent
 
 
+def test_parallele_sans_cible_ne_pose_aucune_contrainte():
+    r = TimelineExtractionResult(
+        moments=[
+            _moment("m1", "fil A"),
+            _moment("m2", "ailleurs, au même moment",
+                    transition=ExtractedTransition(type="parallèle")),
+        ],
+    )
+    graph = extract_graph("Texte.", FakeBackend([r]), chunk_size=100)
+    assert graph.timeline.constraints == []
+
+
 def test_faits_relationnels_crees_avec_observation_datee():
     r = TimelineExtractionResult(
         moments=[_moment("m1", "scène", facts=[
