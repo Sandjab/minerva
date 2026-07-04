@@ -143,3 +143,30 @@ def test_canonicalize_graph_end_to_end_with_fake_backend():
 
     assert "évêque Myriel" in backend.prompts[0] and "Monseigneur Bienvenu" in backend.prompts[0]
     assert len(merged.entities) == 2
+
+
+def test_canonicalisation_preserve_le_journal_temporel():
+    from minerva.model import Assertion
+    from minerva.refine import MergeGroup, apply_canonicalization
+
+    graph = KnowledgeGraph()
+    m = graph.timeline.add_moment(0, 0, "à Digne")
+    graph.add_entity(Entity(name="évêque Myriel", type="personnage"))
+    graph.add_entity(Entity(name="Monseigneur Bienvenu", type="personnage"))
+    graph.timeline.add_appearance(m.id, "évêque Myriel")
+    graph.add_assertion(
+        Assertion(entity="évêque Myriel", attribute="ville", value="Digne", moment_id=m.id)
+    )
+
+    merged = apply_canonicalization(
+        graph,
+        [MergeGroup(canonical="Monseigneur Bienvenu",
+                    members=["Monseigneur Bienvenu", "évêque Myriel"])],
+    )
+
+    assert len(merged.entities) == 1
+    [a] = merged.assertions
+    assert a.entity == "Monseigneur Bienvenu"
+    assert a.moment_id == m.id
+    assert merged.timeline.appearances == {m.id: {"Monseigneur Bienvenu"}}
+    assert merged.resolve("Monseigneur Bienvenu").attributes == {"ville": "Digne"}
