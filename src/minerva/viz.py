@@ -11,6 +11,7 @@ import json
 from importlib.resources import files
 
 from .model import KnowledgeGraph
+from .timeline import AVANT
 
 
 def build_payload(graph: KnowledgeGraph) -> dict:
@@ -28,7 +29,9 @@ def build_payload(graph: KnowledgeGraph) -> dict:
 
     gaps: dict[str, float] = {}
     for c in graph.timeline.constraints:
-        if c.gap.days is None or c.source_id not in rank or c.target_id not in rank:
+        if c.relation != AVANT or c.gap.days is None:
+            continue
+        if c.source_id not in rank or c.target_id not in rank:
             continue
         if rank[c.target_id] == rank[c.source_id] + 1:
             gaps[str(rank[c.source_id])] = c.gap.days

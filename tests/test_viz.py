@@ -37,6 +37,8 @@ def test_payload_contient_toutes_les_entites_relations_moments():
     }
     assert [m["order"] for m in p["moments"]] == [0, 1, 2]
     assert p["moments"][0]["summary"] == "arrivée à Digne"
+    valjean = next(e for e in p["entities"] if e["name"] == "Valjean")
+    assert valjean["aliases"] == ["Jean Valjean"]
 
 
 def test_payload_moments_portent_les_jours_quand_connus():
