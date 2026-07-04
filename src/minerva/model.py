@@ -328,13 +328,16 @@ class KnowledgeGraph:
 
     def adopt_journal(self, other: "KnowledgeGraph") -> None:
         """Reprend le journal d'un autre graphe en résolvant les sujets dans
-        CE graphe (usage : canonicalisation, qui reconstruit les identités)."""
+        CE graphe (usage : canonicalisation, qui reconstruit les identités).
+        Le graphe destination ne doit pas déjà porter de journal."""
+        if self.timeline.moments or self._assertions:
+            raise ValueError("adopt_journal exige un graphe destination sans journal")
         self.timeline = other.timeline.clone()
-        for mid, names in other.timeline.appearances.items():
-            for n in names:
-                resolved = self.resolve(n)
-                if resolved is not None and resolved.name != n:
-                    self.timeline.rename_entity(n, resolved.name)
+        all_names = {n for names in other.timeline.appearances.values() for n in names}
+        for n in all_names:
+            resolved = self.resolve(n)
+            if resolved is not None and resolved.name != n:
+                self.timeline.rename_entity(n, resolved.name)
         for a in other.assertions:
             self.add_assertion(a)
 

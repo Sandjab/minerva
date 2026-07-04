@@ -42,6 +42,13 @@ def test_dedup_stricte_sujet_attribut_valeur_moment():
     assert len(g.assertions) == 1
 
 
+def test_moment_id_invalide_est_neutralise_et_deduplique_avec_moment_null():
+    g = KnowledgeGraph()
+    g.add_assertion(Assertion(entity="X", attribute="âge", value="8 ans"))
+    assert g.add_assertion(Assertion(entity="X", attribute="âge", value="8 ans", moment_id=999)) is None
+    assert len(g.assertions) == 1
+
+
 def test_valeurs_contradictoires_au_meme_moment_toutes_conservees():
     g = _graph_with_moments(1)
     g.add_assertion(Assertion(entity="X", attribute="âge", value="8 ans", moment_id=1))
