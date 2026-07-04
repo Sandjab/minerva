@@ -36,6 +36,13 @@ def build_payload(graph: KnowledgeGraph) -> dict:
         if rank[c.target_id] == rank[c.source_id] + 1:
             gaps[str(rank[c.source_id])] = c.gap.days
 
+    tracks = []
+    for e in graph.entities:
+        orders = sorted({rank[m.id] for m, _ in graph.track(e.name) if m.id in rank})
+        if orders:
+            tracks.append({"entity": e.name, "count": len(orders), "runs": _runs(orders)})
+    tracks.sort(key=lambda t: (-t["count"], t["entity"]))
+
     return {
         "entities": [
             {"name": e.name, "type": e.type, "aliases": e.aliases,
@@ -54,6 +61,17 @@ def build_payload(graph: KnowledgeGraph) -> dict:
             for m in moments
         ],
         "gaps": gaps,
-        "tracks": [],   # Task 3
+        "tracks": tracks,
         "states": [],   # Task 4
     }
+
+
+def _runs(orders: list[int]) -> list[list[int]]:
+    """Fusionne une liste triée d'ordres en runs consécutifs [début, fin]."""
+    runs: list[list[int]] = []
+    for o in orders:
+        if runs and o == runs[-1][1] + 1:
+            runs[-1][1] = o
+        else:
+            runs.append([o, o])
+    return runs

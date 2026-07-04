@@ -59,3 +59,17 @@ def test_payload_relations_portent_leurs_assertions_sources():
     p = build_payload(_graph())
     rel = p["relations"][0]
     assert rel["assertions"] == [{"attribute": "lieu", "value": "évêché", "moment_id": 2}]
+
+
+def test_payload_tracks_fusionne_les_moments_consecutifs():
+    p = build_payload(_graph())
+    by_name = {t["entity"]: t for t in p["tracks"]}
+    assert by_name["Valjean"]["runs"] == [[0, 2]]   # présent aux ordres 0,1,2
+    assert by_name["Myriel"]["runs"] == [[1, 1]]
+    assert by_name["Digne"]["runs"] == [[0, 0]]
+
+
+def test_payload_tracks_triees_par_nombre_de_moments_decroissant():
+    p = build_payload(_graph())
+    assert p["tracks"][0]["entity"] == "Valjean"
+    assert p["tracks"][0]["count"] == 3
