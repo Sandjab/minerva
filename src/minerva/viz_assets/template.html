@@ -106,6 +106,7 @@ function nodeTooltip(n) {
 function linkTooltip(l) {
   const r = D.relations[l.i];
   let h = `<b>${esc(r.source)} —${esc(r.name)}→ ${esc(r.target)}</b>`;
+  for (const [k, v] of Object.entries(r.attributes)) h += `<br>${esc(k)} : ${esc(v)}`;
   for (const a of r.assertions)
     h += `<br>${esc(a.attribute)} = ${esc(a.value)}` + (a.moment_id != null ? ` (M${Number(a.moment_id)})` : "");
   return h;
@@ -121,8 +122,11 @@ function nodeColor(n) {
 }
 function linkColor(l) {
   if (state.visR && !state.visR.has(l.i)) return "rgba(160,168,185,0.08)";
-  if (state.selected)
-    return (l.source.id === state.selected || l.target.id === state.selected) ? "#e15759" : "rgba(160,168,185,0.25)";
+  if (state.selected) {
+    const s = typeof l.source === "object" ? l.source.id : l.source;
+    const t = typeof l.target === "object" ? l.target.id : l.target;
+    return (s === state.selected || t === state.selected) ? "#e15759" : "rgba(160,168,185,0.25)";
+  }
   return "#99a";
 }
 const graphEl = document.getElementById("graph");
@@ -182,7 +186,7 @@ function renderTimeline() {
     const bg = el("rect", { x: x(m.order), y: TOP - 6, width: COLW - 6, height: H - TOP,
                             fill: idx % 2 ? "#f3f5f9" : "#fafbfd" });
     bg.addEventListener("mousemove", ev =>
-      showTip(`<b>M${Number(m.id)}</b> — ${esc(m.summary)}`, ev.clientX, ev.clientY));
+      showTip(`<b>M${Number(m.id)}</b> — ${esc(m.summary)} · ${m.days != null ? "j " + Number(m.days) : "j ?"}`, ev.clientX, ev.clientY));
     bg.addEventListener("mouseleave", hideTip);
     tlSvg.appendChild(bg);
     const head = el("text", { x: x(m.order) + (COLW - 6) / 2, y: 18,
@@ -225,7 +229,7 @@ function renderTimeline() {
       clip.addEventListener("mousemove", ev => {
         const o = Math.floor((ev.clientX - tlSvg.getBoundingClientRect().left - LEFT) / COLW);
         const m = D.moments[Math.max(0, Math.min(o, D.moments.length - 1))];
-        showTip(`<b>${esc(t.entity)}</b> · M${Number(m.id)} — ${esc(m.summary)}`, ev.clientX, ev.clientY);
+        showTip(`<b>${esc(t.entity)}</b> · M${Number(m.id)} — ${esc(m.summary)} · ${m.days != null ? "j " + Number(m.days) : "j ?"}`, ev.clientX, ev.clientY);
       });
       clip.addEventListener("mouseleave", hideTip);
       tlSvg.appendChild(clip);
