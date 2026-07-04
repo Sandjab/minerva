@@ -1,0 +1,995 @@
+{
+  "entities": [
+    {
+      "name": "Jean Valjean",
+      "type": "inconnu",
+      "aliases": [
+        "M. Madeleine"
+      ],
+      "attributes": {
+        "statut": "forçat libéré",
+        "durée de peine": "19 ans",
+        "lieu d'emprisonnement": "Toulon",
+        "arrivée": "soir d’octobre à Digne",
+        "action": "s’enfuit",
+        "alias": "M. Madeleine",
+        "occupation": "dirigeur d'une fabrique de perles noires",
+        "lieu_de_travail": "Montreuil‑sur‑Mer"
+      }
+    },
+    {
+      "name": "Myriel",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "action": "achète âme de Jean Valjean au bien",
+        "alias": "Monseigneur Bienvenu"
+      }
+    },
+    {
+      "name": "Digne",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Toulon",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "type": "lieu (bagne)"
+      }
+    },
+    {
+      "name": "passeport jaune",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "couleur": "jaune"
+      }
+    },
+    {
+      "name": "auberges de Digne",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "couverts",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "lit",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "argenterie de l’évêque",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "chandeliers d'argent",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "gendarmes",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "maison de Myriel",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Javert",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "profession": "inspecteur de police",
+        "naissance_lieu": "prison"
+      }
+    },
+    {
+      "name": "Montreuil‑sur‑Mer",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "fabrique de perles noires",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "type": "industrie"
+      }
+    },
+    {
+      "name": "Fantine",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "statut": "renvoyée de la fabrique",
+        "condition": "misère",
+        "occupation": "ouvrière de la fabrique"
+      }
+    },
+    {
+      "name": "Cosette",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "âge": "8 ans"
+      }
+    },
+    {
+      "name": "Thénardier (époux)",
+      "type": "personnage",
+      "aliases": [
+        "M. Thénardier",
+        "Monsieur Thénardier"
+      ],
+      "attributes": {
+        "occupation": "aubergiste"
+      }
+    },
+    {
+      "name": "Montfermeil",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Champmathieu",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Paris",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "cheveux",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "dents",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "procès de Champmathieu",
+      "type": "événement",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "mille cinq cents francs",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "montant": "1500",
+        "devise": "francs"
+      }
+    }
+  ],
+  "relations": [
+    {
+      "name": "refuse l’accès à",
+      "source": "auberges de Digne",
+      "target": "Jean Valjean",
+      "attributes": {
+        "cause": "passeport jaune"
+      }
+    },
+    {
+      "name": "accueille",
+      "source": "Myriel",
+      "target": "Jean Valjean",
+      "attributes": {
+        "lieu": "maison de Myriel"
+      }
+    },
+    {
+      "name": "offre",
+      "source": "Myriel",
+      "target": "couverts",
+      "attributes": {
+        "destinataire": "Jean Valjean"
+      }
+    },
+    {
+      "name": "offre",
+      "source": "Myriel",
+      "target": "lit",
+      "attributes": {
+        "destinataire": "Jean Valjean"
+      }
+    },
+    {
+      "name": "vole",
+      "source": "Jean Valjean",
+      "target": "argenterie de l’évêque",
+      "attributes": {}
+    },
+    {
+      "name": "arrête",
+      "source": "gendarmes",
+      "target": "Jean Valjean",
+      "attributes": {}
+    },
+    {
+      "name": "ramène devant",
+      "source": "gendarmes",
+      "target": "Myriel",
+      "attributes": {
+        "prisonnier": "Jean Valjean"
+      }
+    },
+    {
+      "name": "déclare avoir donné",
+      "source": "Myriel",
+      "target": "couverts",
+      "attributes": {
+        "à": "Jean Valjean"
+      }
+    },
+    {
+      "name": "ajoute",
+      "source": "Myriel",
+      "target": "chandeliers d'argent",
+      "attributes": {}
+    },
+    {
+      "name": "maire_de",
+      "source": "Jean Valjean",
+      "target": "Montreuil‑sur‑Mer",
+      "attributes": {}
+    },
+    {
+      "name": "soupçonne",
+      "source": "Javert",
+      "target": "Jean Valjean",
+      "attributes": {}
+    },
+    {
+      "name": "rappelle",
+      "source": "Javert",
+      "target": "Jean Valjean",
+      "attributes": {
+        "raison": "la force hérculéenne du maire rappelle un forçat connu au bagne de Toulon"
+      }
+    },
+    {
+      "name": "située_à",
+      "source": "fabrique de perles noires",
+      "target": "Montreuil‑sur‑Mer",
+      "attributes": {}
+    },
+    {
+      "name": "confie",
+      "source": "Fantine",
+      "target": "Cosette",
+      "attributes": {}
+    },
+    {
+      "name": "maltraite",
+      "source": "Thénardier (époux)",
+      "target": "Cosette",
+      "attributes": {}
+    },
+    {
+      "name": "fait_travailler_comme",
+      "source": "Thénardier (époux)",
+      "target": "Cosette",
+      "attributes": {}
+    },
+    {
+      "name": "vend",
+      "source": "Fantine",
+      "target": "cheveux",
+      "attributes": {}
+    },
+    {
+      "name": "vend",
+      "source": "Fantine",
+      "target": "dents",
+      "attributes": {}
+    },
+    {
+      "name": "promet_de_veiller_sur",
+      "source": "Jean Valjean",
+      "target": "Cosette",
+      "attributes": {}
+    },
+    {
+      "name": "démasque",
+      "source": "Javert",
+      "target": "Jean Valjean",
+      "attributes": {
+        "au procès de Champmathieu": ""
+      }
+    },
+    {
+      "name": "se_rend_à",
+      "source": "Jean Valjean",
+      "target": "Montfermeil",
+      "attributes": {}
+    },
+    {
+      "name": "paye",
+      "source": "Jean Valjean",
+      "target": "Thénardier (époux)",
+      "attributes": {
+        "montant": "1500 francs"
+      }
+    },
+    {
+      "name": "emmène",
+      "source": "Thénardier (époux)",
+      "target": "Cosette",
+      "attributes": {}
+    },
+    {
+      "name": "se_déplace_avec",
+      "source": "Jean Valjean",
+      "target": "Paris",
+      "attributes": {
+        "accompagné_de": "Cosette"
+      }
+    },
+    {
+      "name": "élève_comme_fille_propre",
+      "source": "Jean Valjean",
+      "target": "Cosette",
+      "attributes": {}
+    },
+    {
+      "name": "travaille_dans",
+      "source": "Fantine",
+      "target": "fabrique de perles noires",
+      "attributes": {}
+    },
+    {
+      "name": "travaille_dans",
+      "source": "Javert",
+      "target": "Montreuil‑sur‑Mer",
+      "attributes": {}
+    },
+    {
+      "name": "habite_à",
+      "source": "Thénardier (époux)",
+      "target": "Montfermeil",
+      "attributes": {}
+    },
+    {
+      "name": "participe_au",
+      "source": "Javert",
+      "target": "procès de Champmathieu",
+      "attributes": {}
+    },
+    {
+      "name": "paye",
+      "source": "Jean Valjean",
+      "target": "mille cinq cents francs",
+      "attributes": {}
+    },
+    {
+      "name": "destiné_à",
+      "source": "mille cinq cents francs",
+      "target": "Thénardier (époux)",
+      "attributes": {}
+    }
+  ],
+  "moments": [
+    {
+      "id": 1,
+      "chunk_index": 0,
+      "seq": 0,
+      "summary": "Jean Valjean arrive à Digne, est refusé par les auberges, accueilli puis volé l’argenterie de l’évêque Myriel, avant d’être arrêté et ramené devant lui.",
+      "resolved_order": 0,
+      "resolved_days": 0.0
+    },
+    {
+      "id": 2,
+      "chunk_index": 1,
+      "seq": 0,
+      "summary": "Jean Valjean, sous l’identité de M. Madeleine, dirige une fabrique de perles noires à Montreuil‑sur‑Mer et y devient maire ; l’inspecteur Javert, policier né en prison, travaille dans la même ville et soupçonne le maire, sa force hérculéenne lui rappelant un forçat du bagne de Toulon.",
+      "resolved_order": 2,
+      "resolved_days": null
+    },
+    {
+      "id": 3,
+      "chunk_index": 2,
+      "seq": 0,
+      "summary": "Fantine confie sa fille Cosette aux Thénardier à Montfermeil, subit maltraitances ; elle vend ses cheveux et dents, meurt et reçoit la promesse de Jean Valjean (M. Madeleine) de veiller sur Cosette.",
+      "resolved_order": 1,
+      "resolved_days": null
+    },
+    {
+      "id": 4,
+      "chunk_index": 2,
+      "seq": 1,
+      "summary": "Après la mort de Fantine, Jean Valjean (dévoilé par Javert au procès de Champmathieu) s’échappe, vient à Montfermeil, paie 1500 francs aux Thénardier pour emmener Cosette la veille de Noël, puis s’installe avec elle à Paris où il l’élève comme sa propre fille.",
+      "resolved_order": 3,
+      "resolved_days": null
+    }
+  ],
+  "constraints": [
+    {
+      "source_id": 1,
+      "relation": "avant",
+      "target_id": 2,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 3,
+      "relation": "avant",
+      "target_id": 2,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 3,
+      "relation": "avant",
+      "target_id": 4,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    }
+  ],
+  "appearances": {
+    "1": [
+      "Digne",
+      "Jean Valjean",
+      "Myriel",
+      "Toulon",
+      "argenterie de l’évêque",
+      "auberges de Digne",
+      "chandeliers d'argent",
+      "couverts",
+      "gendarmes",
+      "lit",
+      "maison de Myriel",
+      "passeport jaune"
+    ],
+    "2": [
+      "Javert",
+      "Jean Valjean",
+      "Montreuil‑sur‑Mer",
+      "Toulon",
+      "fabrique de perles noires"
+    ],
+    "3": [
+      "Cosette",
+      "Fantine",
+      "Jean Valjean",
+      "Montfermeil",
+      "Thénardier (époux)",
+      "cheveux",
+      "dents"
+    ],
+    "4": [
+      "Champmathieu",
+      "Cosette",
+      "Javert",
+      "Jean Valjean",
+      "Montfermeil",
+      "Paris",
+      "Thénardier (époux)"
+    ]
+  },
+  "assertions": [
+    {
+      "entity": "Jean Valjean",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "statut",
+      "value": "forçat libéré",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Jean Valjean",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "durée de peine",
+      "value": "19 ans",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Jean Valjean",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "lieu d'emprisonnement",
+      "value": "Toulon",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Jean Valjean",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "arrivée",
+      "value": "soir d’octobre à Digne",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "passeport jaune",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "couleur",
+      "value": "jaune",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "refuse l’accès à",
+      "relation_source": "auberges de Digne",
+      "relation_target": "Jean Valjean",
+      "attribute": "cause",
+      "value": "passeport jaune",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "accueille",
+      "relation_source": "Myriel",
+      "relation_target": "Jean Valjean",
+      "attribute": "lieu",
+      "value": "maison de Myriel",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "offre",
+      "relation_source": "Myriel",
+      "relation_target": "couverts",
+      "attribute": "destinataire",
+      "value": "Jean Valjean",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "offre",
+      "relation_source": "Myriel",
+      "relation_target": "lit",
+      "attribute": "destinataire",
+      "value": "Jean Valjean",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "vole",
+      "relation_source": "Jean Valjean",
+      "relation_target": "argenterie de l’évêque",
+      "attribute": "",
+      "value": "",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Jean Valjean",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "action",
+      "value": "s’enfuit",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "arrête",
+      "relation_source": "gendarmes",
+      "relation_target": "Jean Valjean",
+      "attribute": "",
+      "value": "",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "ramène devant",
+      "relation_source": "gendarmes",
+      "relation_target": "Myriel",
+      "attribute": "prisonnier",
+      "value": "Jean Valjean",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "déclare avoir donné",
+      "relation_source": "Myriel",
+      "relation_target": "couverts",
+      "attribute": "à",
+      "value": "Jean Valjean",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "ajoute",
+      "relation_source": "Myriel",
+      "relation_target": "chandeliers d'argent",
+      "attribute": "",
+      "value": "",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Myriel",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "action",
+      "value": "achète âme de Jean Valjean au bien",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Jean Valjean",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "alias",
+      "value": "M. Madeleine",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Jean Valjean",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "occupation",
+      "value": "dirigeur d'une fabrique de perles noires",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Jean Valjean",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "lieu_de_travail",
+      "value": "Montreuil‑sur‑Mer",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "maire_de",
+      "relation_source": "Jean Valjean",
+      "relation_target": "Montreuil‑sur‑Mer",
+      "attribute": "",
+      "value": "",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Javert",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "profession",
+      "value": "inspecteur de police",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Javert",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "naissance_lieu",
+      "value": "prison",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "soupçonne",
+      "relation_source": "Javert",
+      "relation_target": "Jean Valjean",
+      "attribute": "",
+      "value": "",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "rappelle",
+      "relation_source": "Javert",
+      "relation_target": "Jean Valjean",
+      "attribute": "raison",
+      "value": "la force hérculéenne du maire rappelle un forçat connu au bagne de Toulon",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "fabrique de perles noires",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "type",
+      "value": "industrie",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "située_à",
+      "relation_source": "fabrique de perles noires",
+      "relation_target": "Montreuil‑sur‑Mer",
+      "attribute": "",
+      "value": "",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Toulon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "type",
+      "value": "lieu (bagne)",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Cosette",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "âge",
+      "value": "8 ans",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "confie",
+      "relation_source": "Fantine",
+      "relation_target": "Cosette",
+      "attribute": "",
+      "value": "",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "maltraite",
+      "relation_source": "Thénardier (époux)",
+      "relation_target": "Cosette",
+      "attribute": "",
+      "value": "",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "fait_travailler_comme",
+      "relation_source": "Thénardier (époux)",
+      "relation_target": "Cosette",
+      "attribute": "",
+      "value": "servante",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Fantine",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "statut",
+      "value": "renvoyée de la fabrique",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Fantine",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "condition",
+      "value": "misère",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "vend",
+      "relation_source": "Fantine",
+      "relation_target": "cheveux",
+      "attribute": "",
+      "value": "",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "vend",
+      "relation_source": "Fantine",
+      "relation_target": "dents",
+      "attribute": "",
+      "value": "",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Fantine",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "statut",
+      "value": "morte",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "promet_de_veiller_sur",
+      "relation_source": "Jean Valjean",
+      "relation_target": "Cosette",
+      "attribute": "",
+      "value": "",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "démasque",
+      "relation_source": "Javert",
+      "relation_target": "Jean Valjean",
+      "attribute": "au procès de Champmathieu",
+      "value": "",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Jean Valjean",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "statut",
+      "value": "fugitif",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "se_rend_à",
+      "relation_source": "Jean Valjean",
+      "relation_target": "Montfermeil",
+      "attribute": "",
+      "value": "",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "paye",
+      "relation_source": "Jean Valjean",
+      "relation_target": "Thénardier (époux)",
+      "attribute": "montant",
+      "value": "1500 francs",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "emmène",
+      "relation_source": "Thénardier (époux)",
+      "relation_target": "Cosette",
+      "attribute": "",
+      "value": "",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "se_déplace_avec",
+      "relation_source": "Jean Valjean",
+      "relation_target": "Paris",
+      "attribute": "accompagné_de",
+      "value": "Cosette",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "élève_comme_fille_propre",
+      "relation_source": "Jean Valjean",
+      "relation_target": "Cosette",
+      "attribute": "",
+      "value": "",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Myriel",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "alias",
+      "value": "Monseigneur Bienvenu",
+      "moment_id": null,
+      "chunk_index": null
+    },
+    {
+      "entity": "Fantine",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "occupation",
+      "value": "ouvrière de la fabrique",
+      "moment_id": null,
+      "chunk_index": null
+    },
+    {
+      "entity": "Thénardier (époux)",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "occupation",
+      "value": "aubergiste",
+      "moment_id": null,
+      "chunk_index": null
+    },
+    {
+      "entity": "mille cinq cents francs",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "montant",
+      "value": "1500",
+      "moment_id": null,
+      "chunk_index": null
+    },
+    {
+      "entity": "mille cinq cents francs",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "devise",
+      "value": "francs",
+      "moment_id": null,
+      "chunk_index": null
+    }
+  ]
+}
