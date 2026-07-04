@@ -15,6 +15,11 @@ distincts d'une paire retenue sont conservés.
 L'ordre des graphes fait priorité : en cas de conflit d'attribut ou de nom
 canonique, le graphe le plus tôt dans la liste gagne (mettre le meilleur
 modèle en premier).
+
+Limitation timeline : les moments détectés par des modèles différents ne
+s'alignent pas entre eux ; la fusion ensembliste produit un graphe SANS
+timeline (les attributs survivent en constats non datés). L'alignement
+inter-modèles des moments est hors périmètre.
 """
 
 from __future__ import annotations

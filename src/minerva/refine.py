@@ -125,17 +125,27 @@ def apply_canonicalization(
     merged = KnowledgeGraph()
     # 1. Les canoniques d'abord, avec les autres membres déclarés comme alias :
     #    tout ce qui arrive ensuite sous un nom de membre fusionne dedans.
+    #    Identités seules : les attributs sont rejoués via le journal (étape 3),
+    #    sinon ils seraient dégradés en constats non datés.
     for canonical, others in plan:
         entity = graph.resolve(canonical)
         assert entity is not None
         copy = entity.model_copy(deep=True)
         copy.aliases = list(dict.fromkeys(copy.aliases + others))
+        copy.attributes = {}
         merged.add_entity(copy)
     # 2. Le reste du graphe passe par la fusion normale (alias résolus).
     for entity in graph.entities:
-        merged.add_entity(entity.model_copy(deep=True))
+        copy = entity.model_copy(deep=True)
+        copy.attributes = {}
+        merged.add_entity(copy)
     for relation in graph.relations:
-        merged.add_relation(relation.model_copy(deep=True))
+        copy = relation.model_copy(deep=True)
+        copy.attributes = {}
+        merged.add_relation(copy)
+    # 3. Le journal est rejoué avec résolution des nouveaux canoniques :
+    #    dicts d'attributs reconstruits, moments et présences conservés.
+    merged.adopt_journal(graph)
     return merged
 
 

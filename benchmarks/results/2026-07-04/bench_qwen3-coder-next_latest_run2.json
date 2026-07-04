@@ -1,0 +1,529 @@
+{
+  "entities": [
+    {
+      "name": "Jean Valjean",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "statutpénal": "ancien forçat libéré",
+        "tempsdetention": "19 ans",
+        "lieudetention": "Toulon",
+        "possède_passeportjaune": "oui"
+      }
+    },
+    {
+      "name": "Digne",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "type": "ville"
+      }
+    },
+    {
+      "name": "Toulon",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "auberges",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Myriel",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "titre": "évêque",
+        "surnomlocal": "monseigneur Bienvenu",
+        "parole_déclarative": "l’argenterie lui avait été donnée"
+      }
+    },
+    {
+      "name": "argenterie",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "appartenance": "Myriel"
+      }
+    },
+    {
+      "name": "gendarmes",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "chandeliers_d’argent",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "achat_par": "Myriel"
+      }
+    },
+    {
+      "name": "Fantine",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "statut_professionnel": "ouvrière de la fabrique"
+      }
+    },
+    {
+      "name": "Cosette",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "âge": "},"
+      }
+    },
+    {
+      "name": "Thénardier",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Montfermeil",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Madeleine",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "name": "arrivée",
+      "source": "Jean Valjean",
+      "target": "Digne",
+      "attributes": {}
+    },
+    {
+      "name": "refusdhébergement",
+      "source": "auberges",
+      "target": "Jean Valjean",
+      "attributes": {}
+    },
+    {
+      "name": "accueillir",
+      "source": "Myriel",
+      "target": "Jean Valjean",
+      "attributes": {}
+    },
+    {
+      "name": "offrir",
+      "source": "Myriel",
+      "target": "Jean Valjean",
+      "attributes": {
+        "objet_offert": "couvert et lit"
+      }
+    },
+    {
+      "name": "voler",
+      "source": "Jean Valjean",
+      "target": "argenterie",
+      "attributes": {}
+    },
+    {
+      "name": "arrêter",
+      "source": "gendarmes",
+      "target": "Jean Valjean",
+      "attributes": {}
+    },
+    {
+      "name": "escorter",
+      "source": "gendarmes",
+      "target": "Jean Valjean",
+      "attributes": {
+        "destination": "devant Myriel"
+      }
+    },
+    {
+      "name": "offrir_ajout",
+      "source": "Myriel",
+      "target": "Jean Valjean",
+      "attributes": {
+        "objet_offert": "deux chandeliers d'argent"
+      }
+    },
+    {
+      "name": "acquérir_au_bien",
+      "source": "Myriel",
+      "target": "Jean Valjean",
+      "attributes": {
+        "via": "offre des chandeliers d’argent"
+      }
+    }
+  ],
+  "moments": [
+    {
+      "id": 1,
+      "chunk_index": 0,
+      "seq": 0,
+      "summary": "Jean Valjean arrive à Digne un soir d’octobre après avoir été libéré du bagne de Toulon.",
+      "resolved_order": 0,
+      "resolved_days": 0.0
+    },
+    {
+      "id": 2,
+      "chunk_index": 0,
+      "seq": 1,
+      "summary": "Les auberges de Digne refusent l’hébergement à Jean Valjean à cause de son passeport jaune.",
+      "resolved_order": 1,
+      "resolved_days": null
+    },
+    {
+      "id": 3,
+      "chunk_index": 0,
+      "seq": 2,
+      "summary": "L’évêque Myriel accueille Jean Valjean chez lui.",
+      "resolved_order": 2,
+      "resolved_days": null
+    },
+    {
+      "id": 4,
+      "chunk_index": 0,
+      "seq": 3,
+      "summary": "Jean Valjean vole l’argenterie de l’évêque une nuit.",
+      "resolved_order": 3,
+      "resolved_days": null
+    },
+    {
+      "id": 5,
+      "chunk_index": 0,
+      "seq": 4,
+      "summary": "Jean Valjean est arrêté par les gendarmes, puis conduit devant l’évêque.",
+      "resolved_order": 4,
+      "resolved_days": null
+    },
+    {
+      "id": 6,
+      "chunk_index": 0,
+      "seq": 5,
+      "summary": "L’évêque Myriel déclare que l’argenterie lui a été offerte et ajoute deux chandeliers d’argent.",
+      "resolved_order": 5,
+      "resolved_days": null
+    },
+    {
+      "id": 7,
+      "chunk_index": 2,
+      "seq": 0,
+      "summary": "Fantine confie Cosette aux Thénardier à Montfermeil ; elle se dégrade socialement et vend ses cheveux puis ses dents pour payer leur pension ; avant sa mort, elle obtient la promesse de M. Madeleine de protéger Cosette.",
+      "resolved_order": 6,
+      "resolved_days": null
+    }
+  ],
+  "constraints": [
+    {
+      "source_id": 1,
+      "relation": "avant",
+      "target_id": 2,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 2,
+      "relation": "avant",
+      "target_id": 3,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 3,
+      "relation": "avant",
+      "target_id": 4,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 4,
+      "relation": "avant",
+      "target_id": 5,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 5,
+      "relation": "avant",
+      "target_id": 6,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 6,
+      "relation": "avant",
+      "target_id": 7,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    }
+  ],
+  "appearances": {
+    "1": [
+      "Digne",
+      "Jean Valjean",
+      "Toulon"
+    ],
+    "2": [
+      "Digne",
+      "Jean Valjean",
+      "auberges"
+    ],
+    "3": [
+      "Jean Valjean",
+      "Myriel"
+    ],
+    "4": [
+      "Jean Valjean",
+      "Myriel",
+      "argenterie"
+    ],
+    "5": [
+      "Jean Valjean",
+      "Myriel",
+      "gendarmes"
+    ],
+    "6": [
+      "Jean Valjean",
+      "Myriel",
+      "chandeliers_d’argent"
+    ],
+    "7": [
+      "Cosette",
+      "Fantine",
+      "Madeleine",
+      "Montfermeil",
+      "Thénardier"
+    ]
+  },
+  "assertions": [
+    {
+      "entity": "Jean Valjean",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "statutpénal",
+      "value": "ancien forçat libéré",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Jean Valjean",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "tempsdetention",
+      "value": "19 ans",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Jean Valjean",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "lieudetention",
+      "value": "Toulon",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Digne",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "type",
+      "value": "ville",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "arrivée",
+      "relation_source": "Jean Valjean",
+      "relation_target": "Digne",
+      "attribute": "",
+      "value": "",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "refusdhébergement",
+      "relation_source": "auberges",
+      "relation_target": "Jean Valjean",
+      "attribute": "",
+      "value": "",
+      "moment_id": 2,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Jean Valjean",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "possède_passeportjaune",
+      "value": "oui",
+      "moment_id": 2,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Myriel",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "titre",
+      "value": "évêque",
+      "moment_id": 3,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Myriel",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "surnomlocal",
+      "value": "monseigneur Bienvenu",
+      "moment_id": 3,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "accueillir",
+      "relation_source": "Myriel",
+      "relation_target": "Jean Valjean",
+      "attribute": "",
+      "value": "",
+      "moment_id": 3,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "offrir",
+      "relation_source": "Myriel",
+      "relation_target": "Jean Valjean",
+      "attribute": "objet_offert",
+      "value": "couvert et lit",
+      "moment_id": 3,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "voler",
+      "relation_source": "Jean Valjean",
+      "relation_target": "argenterie",
+      "attribute": "",
+      "value": "",
+      "moment_id": 4,
+      "chunk_index": 0
+    },
+    {
+      "entity": "argenterie",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "appartenance",
+      "value": "Myriel",
+      "moment_id": 4,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "arrêter",
+      "relation_source": "gendarmes",
+      "relation_target": "Jean Valjean",
+      "attribute": "",
+      "value": "",
+      "moment_id": 5,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "escorter",
+      "relation_source": "gendarmes",
+      "relation_target": "Jean Valjean",
+      "attribute": "destination",
+      "value": "devant Myriel",
+      "moment_id": 5,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Myriel",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "parole_déclarative",
+      "value": "l’argenterie lui avait été donnée",
+      "moment_id": 6,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "offrir_ajout",
+      "relation_source": "Myriel",
+      "relation_target": "Jean Valjean",
+      "attribute": "objet_offert",
+      "value": "deux chandeliers d'argent",
+      "moment_id": 6,
+      "chunk_index": 0
+    },
+    {
+      "entity": "chandeliers_d’argent",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "achat_par",
+      "value": "Myriel",
+      "moment_id": 6,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "acquérir_au_bien",
+      "relation_source": "Myriel",
+      "relation_target": "Jean Valjean",
+      "attribute": "via",
+      "value": "offre des chandeliers d’argent",
+      "moment_id": 6,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Fantine",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "statut_professionnel",
+      "value": "ouvrière de la fabrique",
+      "moment_id": 7,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Cosette",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "âge",
+      "value": "},",
+      "moment_id": 7,
+      "chunk_index": 2
+    }
+  ]
+}

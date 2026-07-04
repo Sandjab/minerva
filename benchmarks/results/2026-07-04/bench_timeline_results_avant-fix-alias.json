@@ -1,0 +1,142 @@
+[
+  {
+    "model": "gpt-oss:120b",
+    "runs": 3,
+    "load_s": 28.3,
+    "per_run": [
+      {
+        "time_s": 81.2,
+        "n_moments": 5,
+        "n_constraints": 4,
+        "n_assertions": 30,
+        "expected_entities": 7,
+        "expected_entities_total": 7,
+        "missing_entities": [],
+        "ages_captured": [
+          12,
+          30,
+          50
+        ],
+        "diegetic_order_ok": true,
+        "reading_disorder_present": true,
+        "ellipse_days": null,
+        "ellipse_ok": false
+      },
+      {
+        "time_s": 97.5,
+        "n_moments": 5,
+        "n_constraints": 4,
+        "n_assertions": 37,
+        "expected_entities": 7,
+        "expected_entities_total": 7,
+        "missing_entities": [],
+        "ages_captured": [
+          12,
+          30,
+          50
+        ],
+        "diegetic_order_ok": true,
+        "reading_disorder_present": true,
+        "ellipse_days": null,
+        "ellipse_ok": false
+      },
+      {
+        "time_s": 103.7,
+        "n_moments": 5,
+        "n_constraints": 4,
+        "n_assertions": 22,
+        "expected_entities": 6,
+        "expected_entities_total": 7,
+        "missing_entities": [
+          "Lyon"
+        ],
+        "ages_captured": [
+          12,
+          30,
+          50
+        ],
+        "diegetic_order_ok": true,
+        "reading_disorder_present": true,
+        "ellipse_days": null,
+        "ellipse_ok": false
+      }
+    ],
+    "diegetic_order_ok_rate": "3/3",
+    "ellipse_ok_rate": "0/3",
+    "n_moments_values": [
+      5,
+      5,
+      5
+    ]
+  },
+  {
+    "model": "qwen3-coder-next:latest",
+    "runs": 3,
+    "load_s": 18.8,
+    "per_run": [
+      {
+        "time_s": 34.2,
+        "n_moments": 5,
+        "n_constraints": 4,
+        "n_assertions": 28,
+        "expected_entities": 7,
+        "expected_entities_total": 7,
+        "missing_entities": [],
+        "ages_captured": [
+          12,
+          30,
+          50
+        ],
+        "diegetic_order_ok": true,
+        "reading_disorder_present": true,
+        "ellipse_days": null,
+        "ellipse_ok": false
+      },
+      {
+        "time_s": 37.8,
+        "n_moments": 5,
+        "n_constraints": 4,
+        "n_assertions": 35,
+        "expected_entities": 7,
+        "expected_entities_total": 7,
+        "missing_entities": [],
+        "ages_captured": [
+          12,
+          30,
+          50
+        ],
+        "diegetic_order_ok": true,
+        "reading_disorder_present": true,
+        "ellipse_days": null,
+        "ellipse_ok": false
+      },
+      {
+        "time_s": 27.6,
+        "n_moments": 4,
+        "n_constraints": 3,
+        "n_assertions": 21,
+        "expected_entities": 5,
+        "expected_entities_total": 7,
+        "missing_entities": [
+          "Aurélien Chardon",
+          "Aubervilliers"
+        ],
+        "ages_captured": [
+          30,
+          50
+        ],
+        "diegetic_order_ok": false,
+        "reading_disorder_present": false,
+        "ellipse_days": null,
+        "ellipse_ok": false
+      }
+    ],
+    "diegetic_order_ok_rate": "2/3",
+    "ellipse_ok_rate": "0/3",
+    "n_moments_values": [
+      5,
+      5,
+      4
+    ]
+  }
+]

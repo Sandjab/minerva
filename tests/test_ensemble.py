@@ -4,7 +4,7 @@ que sur le différend — c'est ce qui permet de combiner plusieurs modèles san
 hériter du bruit de chacun."""
 
 from minerva.ensemble import ArbiterDecision, ArbiterResult, merge_arbitrated, merge_union, merge_vote
-from minerva.model import Entity, KnowledgeGraph, Relation
+from minerva.model import Assertion, Entity, KnowledgeGraph, Relation
 
 
 def graph_of(entities=(), relations=()):
@@ -42,6 +42,25 @@ def g_b():
             Relation(name="poursuit", source="Javert", target="M. Madeleine"),
         ],
     )
+
+
+def test_union_reduit_le_journal_aux_constats_non_dates():
+    # Limitation documentée d'ensemble.py : les moments de deux modèles ne
+    # s'alignent pas -> merge_union produit un graphe SANS timeline, les
+    # constats datés retombant en constats non datés (moment_id None).
+    a = KnowledgeGraph()
+    ma = a.timeline.add_moment(chunk_index=0, seq=0, summary="chez les Thénardier")
+    a.add_assertion(Assertion(entity="Cosette", attribute="âge", value="8 ans", moment_id=ma.id))
+
+    b = KnowledgeGraph()
+    mb = b.timeline.add_moment(chunk_index=0, seq=0, summary="dix ans après")
+    b.add_assertion(Assertion(entity="Cosette", attribute="âge", value="18 ans", moment_id=mb.id))
+
+    merged = merge_union([a, b])
+
+    assert merged.timeline.moments == []
+    assert merged.resolve("Cosette").attributes == {"âge": "8 ans"}  # vue first-wins intacte
+    assert {(x.value, x.moment_id) for x in merged.assertions} == {("8 ans", None), ("18 ans", None)}
 
 
 def test_union_merges_attributes_across_models():

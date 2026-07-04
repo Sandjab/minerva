@@ -1,0 +1,510 @@
+{
+  "entities": [
+    {
+      "name": "Élise Chardon",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "âge": "Au moins trente ans",
+        "apparence physique": "copeaux d'érable jusque dans les cheveux",
+        "donné une gouge sans un mot": "",
+        "âge_dans_le_souvenir": "12 ans",
+        "cadre_de_l'enfance": "maison de son grand-père Aurélien Chardon",
+        "réaction_comportementale_face_à_l_erreur": "sourit",
+        "action": "ferme pour la dernière fois la porte de la rue des Grilles"
+      }
+    },
+    {
+      "name": "Bastien Malot",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "âge": "nettement seize ans (candidat à l'apprentissage)",
+        "état_mental": "trop nerveux",
+        "profession": "maître luthier"
+      }
+    },
+    {
+      "name": "rue des Grilles",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Aubervilliers",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "école Boulle",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "atelier de luterie",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "position géographique": "rez-de-chaussée d'une maison étroite sur la rue des Grilles à Aubervilliers"
+      }
+    },
+    {
+      "name": "Aurélien Chardon",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "profession": "vieux luthier",
+        "sur": "la table d'épicéa",
+        "mot_clef_de_sa_sagesse": "« Le bois se souvient de tout »"
+      }
+    },
+    {
+      "name": "Mirecourt",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "canif à manche de buis",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "localisation_dans_le_présent": "dans la poche de son tablier",
+        "localisation_sur_l_établi": "entre Élise et Bastien"
+      }
+    },
+    {
+      "name": "note",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "texte": "« À toi de te souvenir. »"
+      }
+    },
+    {
+      "name": "maison de son enfance",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "name": "reprend",
+      "source": "Bastien Malot",
+      "target": "atelier de luterie",
+      "attributes": {
+        "localisation": "Aubervilliers"
+      }
+    },
+    {
+      "name": "attend",
+      "source": "maison de son enfance",
+      "target": "Mirecourt",
+      "attributes": {}
+    }
+  ],
+  "moments": [
+    {
+      "id": 1,
+      "chunk_index": 0,
+      "seq": 0,
+      "summary": "Présentation d’Élise Chardon et de son atelier, puis arrivée de Bastien Malot en tant que candidat à l’apprentissage.",
+      "resolved_order": 1,
+      "resolved_days": null
+    },
+    {
+      "id": 2,
+      "chunk_index": 1,
+      "seq": 0,
+      "summary": "Élise est ramenée par l’odeur du vernis à un souvenir d’hiver enfantin chez son grand-père Aurélien Chardon à Mirecourt, puis ramenée au présent par le carillon ; Bastien vient de casser une volute.",
+      "resolved_order": 0,
+      "resolved_days": 0.0
+    },
+    {
+      "id": 3,
+      "chunk_index": 1,
+      "seq": 1,
+      "summary": "Retour au présent : le carillon tire Élise de son souvenir, Bastien vient de fendre une volute ; Élise ramasse les morceaux, sourit et pose le canif de buis sur l’établi en répétant la parole de son grand-père.",
+      "resolved_order": 2,
+      "resolved_days": null
+    },
+    {
+      "id": 4,
+      "chunk_index": 2,
+      "seq": 0,
+      "summary": "Élise quitte définitivement la rue des Grilles à 50 ans ; Bastien reprend l’atelier d’Aubervilliers et hérite du canif de Buccel, avec une note symbolique.",
+      "resolved_order": 3,
+      "resolved_days": null
+    },
+    {
+      "id": 5,
+      "chunk_index": 2,
+      "seq": 1,
+      "summary": "",
+      "resolved_order": 4,
+      "resolved_days": null
+    },
+    {
+      "id": 6,
+      "chunk_index": 2,
+      "seq": 2,
+      "summary": "",
+      "resolved_order": 5,
+      "resolved_days": null
+    },
+    {
+      "id": 7,
+      "chunk_index": 2,
+      "seq": 3,
+      "summary": "",
+      "resolved_order": 6,
+      "resolved_days": null
+    },
+    {
+      "id": 8,
+      "chunk_index": 2,
+      "seq": 4,
+      "summary": "",
+      "resolved_order": 7,
+      "resolved_days": null
+    },
+    {
+      "id": 9,
+      "chunk_index": 2,
+      "seq": 5,
+      "summary": "",
+      "resolved_order": 8,
+      "resolved_days": null
+    }
+  ],
+  "constraints": [
+    {
+      "source_id": 2,
+      "relation": "avant",
+      "target_id": 1,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 2,
+      "relation": "avant",
+      "target_id": 3,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 3,
+      "relation": "avant",
+      "target_id": 4,
+      "gap": {
+        "text": "Vingt ans plus tard",
+        "days": 7300.0
+      }
+    },
+    {
+      "source_id": 4,
+      "relation": "avant",
+      "target_id": 5,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 5,
+      "relation": "avant",
+      "target_id": 6,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 6,
+      "relation": "avant",
+      "target_id": 7,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 7,
+      "relation": "avant",
+      "target_id": 8,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 8,
+      "relation": "avant",
+      "target_id": 9,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    }
+  ],
+  "appearances": {
+    "1": [
+      "Aubervilliers",
+      "Bastien Malot",
+      "atelier de luterie",
+      "rue des Grilles",
+      "Élise Chardon",
+      "école Boulle"
+    ],
+    "2": [
+      "Aurélien Chardon",
+      "Bastien Malot",
+      "Mirecourt",
+      "canif à manche de buis",
+      "Élise Chardon"
+    ],
+    "3": [
+      "Bastien Malot",
+      "atelier de luterie",
+      "canif à manche de buis",
+      "rue des Grilles",
+      "Élise Chardon"
+    ],
+    "4": [
+      "Aubervilliers",
+      "Bastien Malot",
+      "Mirecourt",
+      "canif à manche de buis",
+      "rue des Grilles",
+      "Élise Chardon"
+    ],
+    "5": [
+      "Élise Chardon"
+    ],
+    "6": [
+      "Bastien Malot",
+      "atelier de luterie"
+    ],
+    "7": [
+      "Élise Chardon"
+    ],
+    "8": [
+      "note",
+      "Élise Chardon"
+    ],
+    "9": [
+      "Mirecourt",
+      "maison de son enfance",
+      "Élise Chardon"
+    ]
+  },
+  "assertions": [
+    {
+      "entity": "Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "âge",
+      "value": "Au moins trente ans",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "apparence physique",
+      "value": "copeaux d'érable jusque dans les cheveux",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "atelier de luterie",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "position géographique",
+      "value": "rez-de-chaussée d'une maison étroite sur la rue des Grilles à Aubervilliers",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Bastien Malot",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "âge",
+      "value": "nettement seize ans (candidat à l'apprentissage)",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "donné une gouge sans un mot",
+      "value": "",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "âge_dans_le_souvenir",
+      "value": "12 ans",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "cadre_de_l'enfance",
+      "value": "maison de son grand-père Aurélien Chardon",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Aurélien Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "profession",
+      "value": "vieux luthier",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Aurélien Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "sur",
+      "value": "la table d'épicéa",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "canif à manche de buis",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "localisation_dans_le_présent",
+      "value": "dans la poche de son tablier",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Aurélien Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "mot_clef_de_sa_sagesse",
+      "value": "« Le bois se souvient de tout »",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Bastien Malot",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "état_mental",
+      "value": "trop nerveux",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "réaction_comportementale_face_à_l_erreur",
+      "value": "sourit",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "canif à manche de buis",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "localisation_sur_l_établi",
+      "value": "entre Élise et Bastien",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "âge",
+      "value": "}, {",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "action",
+      "value": "ferme pour la dernière fois la porte de la rue des Grilles",
+      "moment_id": 5,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Bastien Malot",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "profession",
+      "value": "maître luthier",
+      "moment_id": 6,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "reprend",
+      "relation_source": "Bastien Malot",
+      "relation_target": "atelier de luterie",
+      "attribute": "localisation",
+      "value": "Aubervilliers",
+      "moment_id": 6,
+      "chunk_index": 2
+    },
+    {
+      "entity": "note",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "texte",
+      "value": "« À toi de te souvenir. »",
+      "moment_id": 8,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "attend",
+      "relation_source": "maison de son enfance",
+      "relation_target": "Mirecourt",
+      "attribute": "",
+      "value": "",
+      "moment_id": 9,
+      "chunk_index": 2
+    }
+  ]
+}

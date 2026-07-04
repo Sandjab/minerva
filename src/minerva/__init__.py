@@ -1,5 +1,7 @@
-"""minerva — extraction d'entités nommées, relations et attributs dynamiques."""
+"""minerva — extraction d'entités nommées, relations, attributs et timelines."""
 
-from .model import Entity, KnowledgeGraph, Relation
+from .model import Assertion, Entity, KnowledgeGraph, Relation
+from .timeline import Moment, TemporalConstraint, Timeline
 
-__all__ = ["Entity", "Relation", "KnowledgeGraph"]
+__all__ = ["Assertion", "Entity", "KnowledgeGraph", "Moment",
+           "Relation", "TemporalConstraint", "Timeline"]

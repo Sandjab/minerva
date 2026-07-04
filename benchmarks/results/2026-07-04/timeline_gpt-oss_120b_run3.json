@@ -1,0 +1,626 @@
+{
+  "entities": [
+    {
+      "name": "Élise Chardon",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "âge": "30 ans"
+      }
+    },
+    {
+      "name": "Bastien Malot",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "âge": "16 ans",
+        "état émotionnel": "trop nerveux"
+      }
+    },
+    {
+      "name": "atelier de lutherie d’Élise",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "localisation": "rez‑de‑chaussée d’une maison étroite de la rue des Grilles, à Aubervilliers"
+      }
+    },
+    {
+      "name": "rue des Grilles",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Aubervilliers",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "école Boulle",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "gouge",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Aurélien Chardon",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "profession": "vieux luthier"
+      }
+    },
+    {
+      "name": "maison d’Aurélien Chardon",
+      "type": "lieu",
+      "aliases": [
+        "Mirecourt"
+      ],
+      "attributes": {}
+    },
+    {
+      "name": "canif",
+      "type": "objet",
+      "aliases": [],
+      "attributes": {
+        "matériau": "buis",
+        "localisation_initiale": "poche du tablier d’Élise Chardon"
+      }
+    },
+    {
+      "name": "volute",
+      "type": "objet",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "morceaux de volute",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Camille Roche",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "profession": "archetière",
+        "réponse": "arrivera au printemps"
+      }
+    },
+    {
+      "name": "Lyon",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Saône",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "atelier de la Croix‑Rousse",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "lettre",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "name": "possède",
+      "source": "Élise Chardon",
+      "target": "atelier de lutherie d’Élise",
+      "attributes": {}
+    },
+    {
+      "name": "envoyé par",
+      "source": "Bastien Malot",
+      "target": "école Boulle",
+      "attributes": {}
+    },
+    {
+      "name": "tend",
+      "source": "Élise Chardon",
+      "target": "gouge",
+      "attributes": {}
+    },
+    {
+      "name": "grand‑parent de",
+      "source": "Aurélien Chardon",
+      "target": "Élise Chardon",
+      "attributes": {}
+    },
+    {
+      "name": "guidé par",
+      "source": "Élise Chardon",
+      "target": "Aurélien Chardon",
+      "attributes": {}
+    },
+    {
+      "name": "a offert",
+      "source": "Aurélien Chardon",
+      "target": "canif",
+      "attributes": {
+        "type": "premier canif (couteau à manche de buis)"
+      }
+    },
+    {
+      "name": "a fendu",
+      "source": "Bastien Malot",
+      "target": "volute",
+      "attributes": {}
+    },
+    {
+      "name": "ramasse",
+      "source": "Élise Chardon",
+      "target": "morceaux de volute",
+      "attributes": {}
+    },
+    {
+      "name": "pose sur",
+      "source": "Élise Chardon",
+      "target": "canif",
+      "attributes": {
+        "localisation": "établi du atelier de lutherie d’Élise"
+      }
+    },
+    {
+      "name": "laisser",
+      "source": "Élise Chardon",
+      "target": "canif",
+      "attributes": {
+        "lieu": "établi"
+      }
+    },
+    {
+      "name": "reprendre",
+      "source": "Bastien Malot",
+      "target": "atelier de lutherie d’Élise",
+      "attributes": {
+        "localisation": "Aubervilliers"
+      }
+    },
+    {
+      "name": "prendre le train pour",
+      "source": "Élise Chardon",
+      "target": "maison d’Aurélien Chardon",
+      "attributes": {}
+    },
+    {
+      "name": "attendre",
+      "source": "maison d’Aurélien Chardon",
+      "target": "Élise Chardon",
+      "attributes": {}
+    },
+    {
+      "name": "écrire",
+      "source": "Bastien Malot",
+      "target": "lettre",
+      "attributes": {}
+    },
+    {
+      "name": "proposer",
+      "source": "Bastien Malot",
+      "target": "Camille Roche",
+      "attributes": {
+        "contenu": "association des archets de Roche et des violons de la rue des Grilles"
+      }
+    },
+    {
+      "name": "regarder",
+      "source": "Camille Roche",
+      "target": "Saône",
+      "attributes": {
+        "lieu": "atelier de la Croix‑Rousse"
+      }
+    }
+  ],
+  "moments": [
+    {
+      "id": 1,
+      "chunk_index": 0,
+      "seq": 0,
+      "summary": "Élise Chardon, âgée de trente ans, reçoit la visite d’un garçon maigre, Bastien Malot, seize ans, envoyé par l’école Boulle qui demande à devenir son apprenti ; elle lui tend une gouge sans dire un mot.",
+      "resolved_order": 1,
+      "resolved_days": null
+    },
+    {
+      "id": 2,
+      "chunk_index": 1,
+      "seq": 0,
+      "summary": "Flashback : Élise revit l’hiver de ses douze ans chez son grand‑père Aurélien, à Mirecourt.",
+      "resolved_order": 0,
+      "resolved_days": 0.0
+    },
+    {
+      "id": 3,
+      "chunk_index": 1,
+      "seq": 1,
+      "summary": "Retour au présent : Bastien, trop nerveux, vient de fendre une volute ; Élise ramasse les morceaux et pose le canif sur l’établi entre eux deux.",
+      "resolved_order": 2,
+      "resolved_days": null
+    },
+    {
+      "id": 4,
+      "chunk_index": 2,
+      "seq": 0,
+      "summary": "Vingt ans plus tard, Élise Chardon (50 ans) ferme la porte de la rue des Grilles, laisse le canif d'Aurélien sur l'établi, Bastien Malot reprend l'atelier d'Aubervilliers et elle prend le train pour Mirecourt où l’attend la maison d’Aurélien.",
+      "resolved_order": 3,
+      "resolved_days": null
+    },
+    {
+      "id": 5,
+      "chunk_index": 2,
+      "seq": 1,
+      "summary": "Au même moment, à Lyon, l'archetière Camille Roche lit la lettre de Bastien proposant une association ; elle regarde la Saône depuis son atelier de la Croix‑Rousse et répond qu’elle arrivera au printemps.",
+      "resolved_order": 4,
+      "resolved_days": null
+    }
+  ],
+  "constraints": [
+    {
+      "source_id": 2,
+      "relation": "avant",
+      "target_id": 1,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 1,
+      "relation": "avant",
+      "target_id": 3,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 3,
+      "relation": "avant",
+      "target_id": 4,
+      "gap": {
+        "text": "Vingt ans plus tard",
+        "days": 7300.0
+      }
+    },
+    {
+      "source_id": 5,
+      "relation": "simultané",
+      "target_id": 4,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    }
+  ],
+  "appearances": {
+    "1": [
+      "Aubervilliers",
+      "Bastien Malot",
+      "atelier de lutherie d’Élise",
+      "gouge",
+      "rue des Grilles",
+      "Élise Chardon",
+      "école Boulle"
+    ],
+    "2": [
+      "Aurélien Chardon",
+      "canif",
+      "maison d’Aurélien Chardon",
+      "Élise Chardon"
+    ],
+    "3": [
+      "Bastien Malot",
+      "atelier de lutherie d’Élise",
+      "canif",
+      "morceaux de volute",
+      "volute",
+      "Élise Chardon"
+    ],
+    "4": [
+      "Bastien Malot",
+      "atelier de lutherie d’Élise",
+      "canif",
+      "maison d’Aurélien Chardon",
+      "rue des Grilles",
+      "Élise Chardon"
+    ],
+    "5": [
+      "Bastien Malot",
+      "Camille Roche",
+      "Lyon",
+      "Saône",
+      "atelier de la Croix‑Rousse",
+      "lettre"
+    ]
+  },
+  "assertions": [
+    {
+      "entity": "Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "âge",
+      "value": "30 ans",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "possède",
+      "relation_source": "Élise Chardon",
+      "relation_target": "atelier de lutherie d’Élise",
+      "attribute": "",
+      "value": "",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "atelier de lutherie d’Élise",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "localisation",
+      "value": "rez‑de‑chaussée d’une maison étroite de la rue des Grilles, à Aubervilliers",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Bastien Malot",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "âge",
+      "value": "16 ans",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "envoyé par",
+      "relation_source": "Bastien Malot",
+      "relation_target": "école Boulle",
+      "attribute": "",
+      "value": "",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "tend",
+      "relation_source": "Élise Chardon",
+      "relation_target": "gouge",
+      "attribute": "",
+      "value": "",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "âge",
+      "value": "12 ans",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "grand‑parent de",
+      "relation_source": "Aurélien Chardon",
+      "relation_target": "Élise Chardon",
+      "attribute": "",
+      "value": "",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Aurélien Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "profession",
+      "value": "vieux luthier",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "guidé par",
+      "relation_source": "Élise Chardon",
+      "relation_target": "Aurélien Chardon",
+      "attribute": "",
+      "value": "",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "a offert",
+      "relation_source": "Aurélien Chardon",
+      "relation_target": "canif",
+      "attribute": "type",
+      "value": "premier canif (couteau à manche de buis)",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "canif",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "matériau",
+      "value": "buis",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "canif",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "localisation_initiale",
+      "value": "poche du tablier d’Élise Chardon",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Bastien Malot",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "état émotionnel",
+      "value": "trop nerveux",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "a fendu",
+      "relation_source": "Bastien Malot",
+      "relation_target": "volute",
+      "attribute": "",
+      "value": "",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "ramasse",
+      "relation_source": "Élise Chardon",
+      "relation_target": "morceaux de volute",
+      "attribute": "",
+      "value": "",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "pose sur",
+      "relation_source": "Élise Chardon",
+      "relation_target": "canif",
+      "attribute": "localisation",
+      "value": "établi du atelier de lutherie d’Élise",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "âge",
+      "value": "50 ans",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "laisser",
+      "relation_source": "Élise Chardon",
+      "relation_target": "canif",
+      "attribute": "lieu",
+      "value": "établi",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "reprendre",
+      "relation_source": "Bastien Malot",
+      "relation_target": "atelier de lutherie d’Élise",
+      "attribute": "localisation",
+      "value": "Aubervilliers",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "prendre le train pour",
+      "relation_source": "Élise Chardon",
+      "relation_target": "maison d’Aurélien Chardon",
+      "attribute": "",
+      "value": "",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "attendre",
+      "relation_source": "maison d’Aurélien Chardon",
+      "relation_target": "Élise Chardon",
+      "attribute": "",
+      "value": "",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Camille Roche",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "profession",
+      "value": "archetière",
+      "moment_id": 5,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "écrire",
+      "relation_source": "Bastien Malot",
+      "relation_target": "lettre",
+      "attribute": "",
+      "value": "",
+      "moment_id": 5,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "proposer",
+      "relation_source": "Bastien Malot",
+      "relation_target": "Camille Roche",
+      "attribute": "contenu",
+      "value": "association des archets de Roche et des violons de la rue des Grilles",
+      "moment_id": 5,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "regarder",
+      "relation_source": "Camille Roche",
+      "relation_target": "Saône",
+      "attribute": "lieu",
+      "value": "atelier de la Croix‑Rousse",
+      "moment_id": 5,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Camille Roche",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "réponse",
+      "value": "arrivera au printemps",
+      "moment_id": 5,
+      "chunk_index": 2
+    }
+  ]
+}
