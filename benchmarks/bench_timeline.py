@@ -18,6 +18,7 @@ from pathlib import Path
 from minerva.extraction import extract_graph
 from minerva.llm.openai_backend import OpenAIBackend
 from minerva.model import KnowledgeGraph
+from minerva.timeline import AVANT, SIMULTANE
 
 HERE = Path(__file__).parent
 TEXT = (HERE / "timeline_texte.txt").read_text(encoding="utf-8")
@@ -76,7 +77,8 @@ def score(graph: KnowledgeGraph) -> dict:
     days = {m.id: m.resolved_days for m in graph.timeline.moments}
     reading = {m.id: (m.chunk_index, m.seq) for m in graph.timeline.moments}
 
-    # (âge, ordre diégétique, ordre de lecture, jours) des constats d'âge d'Élise
+    # (âge, ordre diégétique, ordre de lecture, jours, moment_id) des constats
+    # d'âge d'Élise
     ages: dict[int, tuple] = {}
     if elise is not None:
         for a in graph.assertions:
@@ -85,7 +87,7 @@ def score(graph: KnowledgeGraph) -> dict:
             age = parse_age(a.value)
             if age in EXPECTED_AGES and a.moment_id is not None and age not in ages:
                 ages[age] = (order.get(a.moment_id), reading.get(a.moment_id),
-                             days.get(a.moment_id))
+                             days.get(a.moment_id), a.moment_id)
 
     ages_captured = sorted(ages)
     diegetic_ok = (
@@ -98,9 +100,25 @@ def score(graph: KnowledgeGraph) -> dict:
         12 in ages and 30 in ages and ages[12][1] is not None
         and ages[30][1] is not None and ages[12][1] > ages[30][1]
     )
+    # L'ellipse se mesure sur la CONTRAINTE quantifiée qui mène au moment de
+    # l'âge 50 (ou à un moment simultané), pas sur la coordonnée absolue :
+    # resolved_days s'ancre au premier moment résolu (souvent le flashback),
+    # qui n'a pas toujours de chemin quantifié vers l'ellipse — la coordonnée
+    # serait alors None sans que l'extraction soit fautive.
     ellipse_days = None
-    if 30 in ages and 50 in ages and ages[30][2] is not None and ages[50][2] is not None:
-        ellipse_days = ages[50][2] - ages[30][2]
+    if 50 in ages:
+        fifty_mid = ages[50][3]
+        group = {fifty_mid}
+        for c in graph.timeline.constraints:
+            if c.relation == SIMULTANE:
+                if c.target_id == fifty_mid:
+                    group.add(c.source_id)
+                elif c.source_id == fifty_mid:
+                    group.add(c.target_id)
+        for c in graph.timeline.constraints:
+            if c.relation == AVANT and c.gap.days is not None and c.target_id in group:
+                ellipse_days = c.gap.days
+                break
     ellipse_ok = (
         ellipse_days is not None
         and abs(ellipse_days - ELLIPSE_DAYS) / ELLIPSE_DAYS <= 0.25
