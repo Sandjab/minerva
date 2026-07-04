@@ -44,7 +44,196 @@
 <script>__FORCE_GRAPH_JS__</script>
 <script>window.MINERVA_DATA = __MINERVA_DATA__;</script>
 <script>
-/* JS applicatif (rendu pur) — complété en Task 8/9 */
+"use strict";
+const D = window.MINERVA_DATA;
+const byName = {}; D.entities.forEach(e => byName[e.name] = e);
+const PALETTE = ["#4e79a7","#f28e2b","#e15759","#76b7b2","#59a14f",
+                 "#edc948","#b07aa1","#ff9da7","#9c755f","#bab0ac"];
+const TYPES = [...new Set(D.entities.map(e => e.type))].sort();
+const typeColor = {}; TYPES.forEach((t, i) => typeColor[t] = PALETTE[i % PALETTE.length]);
+const deg = {};
+D.relations.forEach(r => { deg[r.source] = (deg[r.source]||0)+1; deg[r.target] = (deg[r.target]||0)+1; });
+const trackCount = {}; D.tracks.forEach(t => trackCount[t.entity] = t.count);
+
+const state = {
+  atIndex: Math.max(0, D.moments.length - 1),  // défaut : dernier moment
+  selected: null,                              // entité sélectionnée (couplage)
+  neighbors: new Set(),
+  types: new Set(TYPES),
+  hideSingle: false,
+  query: "",
+  visE: null, visR: null,                      // visibilité au moment courant
+};
+
+function computeVisible() {
+  if (!D.moments.length) { state.visE = null; state.visR = null; return; }
+  const s = D.states[state.atIndex];
+  state.visE = new Set(s.entities);
+  state.visR = new Set(s.relations);
+}
+computeVisible();
+
+function passesFilters(e) {
+  if (!e || !state.types.has(e.type)) return false;
+  if (state.hideSingle && (trackCount[e.name] || 0) === 1) return false;
+  if (state.query) {
+    const hay = (e.name + " " + e.aliases.join(" ")).toLowerCase();
+    if (!hay.includes(state.query)) return false;
+  }
+  return true;
+}
+
+// ---------- Tooltips ----------
+// esc() d'abord : tout contenu dynamique inséré dans un gabarit HTML est
+// échappé (données issues du LLM = non fiables).
+function esc(s) {
+  return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+const tipEl = document.getElementById("tooltip");
+function showTip(html, x, y) {   // html : gabarit local dont TOUTES les interpolations passent par esc()
+  tipEl.innerHTML = html; tipEl.style.display = "block";
+  tipEl.style.left = (x + 14) + "px"; tipEl.style.top = (y + 14) + "px";
+}
+function hideTip() { tipEl.style.display = "none"; }
+
+function nodeTooltip(n) {
+  const e = byName[n.id];
+  let h = `<b>${esc(e.name)}</b> (${esc(e.type)})`;
+  if (e.aliases.length) h += `<br>alias : ${e.aliases.map(esc).join(", ")}`;
+  for (const [k, v] of Object.entries(e.attributes)) h += `<br>${esc(k)} : ${esc(v)}`;
+  return h;
+}
+function linkTooltip(l) {
+  const r = D.relations[l.i];
+  let h = `<b>${esc(r.source)} —${esc(r.name)}→ ${esc(r.target)}</b>`;
+  for (const a of r.assertions)
+    h += `<br>${esc(a.attribute)} = ${esc(a.value)}` + (a.moment_id != null ? ` (M${a.moment_id})` : "");
+  return h;
+}
+
+// ---------- Forcegraph ----------
+const FADED = "rgba(160,168,185,0.15)";
+function nodeColor(n) {
+  const e = byName[n.id];
+  if (state.visE && !state.visE.has(n.id)) return FADED;
+  if (state.selected && n.id !== state.selected && !state.neighbors.has(n.id)) return "rgba(160,168,185,0.35)";
+  return typeColor[e.type];
+}
+function linkColor(l) {
+  if (state.visR && !state.visR.has(l.i)) return "rgba(160,168,185,0.08)";
+  if (state.selected)
+    return (l.source.id === state.selected || l.target.id === state.selected) ? "#e15759" : "rgba(160,168,185,0.25)";
+  return "#99a";
+}
+const graphEl = document.getElementById("graph");
+const fg = ForceGraph()(graphEl)
+  .width(graphEl.clientWidth).height(graphEl.clientHeight)
+  .graphData({
+    nodes: D.entities.map(e => ({ id: e.name })),
+    links: D.relations.map((r, i) => ({ source: r.source, target: r.target, i })),
+  })
+  .nodeVal(n => (deg[n.id] || 0) + 1)
+  .nodeColor(nodeColor)
+  .linkColor(linkColor)
+  .nodeLabel(nodeTooltip)
+  .linkLabel(linkTooltip)
+  .nodeVisibility(n => passesFilters(byName[n.id]))
+  .linkVisibility(l => {
+    const s = typeof l.source === "object" ? l.source.id : l.source;
+    const t = typeof l.target === "object" ? l.target.id : l.target;
+    return passesFilters(byName[s]) && passesFilters(byName[t]);
+  })
+  .nodeCanvasObjectMode(() => "after")
+  .nodeCanvasObject((n, ctx, scale) => {   // canvas : pas de HTML, fillText est sûr
+    if (scale < 1.2 && n.id !== state.selected) return;
+    ctx.font = `${10 / scale}px sans-serif`;
+    ctx.fillStyle = "#223";
+    ctx.fillText(n.id, n.x + 7 / scale, n.y + 3 / scale);
+  });
+window.addEventListener("resize", () =>
+  fg.width(graphEl.clientWidth).height(graphEl.clientHeight));
+
+function repaintGraph() {   // idiome force-graph : re-poser un accessor le fait réévaluer
+  fg.nodeColor(fg.nodeColor());
+  fg.linkColor(fg.linkColor());
+  fg.nodeVisibility(fg.nodeVisibility());
+  fg.linkVisibility(fg.linkVisibility());
+}
+
+// ---------- Timeline de montage (SVG vanilla, layout ordinal) ----------
+const SVGNS = "http://www.w3.org/2000/svg";
+const COLW = 84, ROWH = 30, LEFT = 150, TOP = 46;
+const tlSvg = document.getElementById("timeline");
+function el(tag, attrs) {
+  const node = document.createElementNS(SVGNS, tag);
+  for (const [k, v] of Object.entries(attrs)) node.setAttribute(k, v);
+  return node;
+}
+function renderTimeline() {
+  tlSvg.replaceChildren();
+  if (!D.moments.length) return;
+  const rows = D.tracks.filter(t => passesFilters(byName[t.entity]));
+  const N = D.moments.length;
+  const W = LEFT + N * COLW + 20, H = TOP + rows.length * ROWH + 20;
+  tlSvg.setAttribute("width", W); tlSvg.setAttribute("height", H);
+  const x = o => LEFT + o * COLW;
+
+  D.moments.forEach((m, idx) => {
+    const bg = el("rect", { x: x(m.order), y: TOP - 6, width: COLW - 6, height: H - TOP,
+                            fill: idx % 2 ? "#f3f5f9" : "#fafbfd" });
+    bg.addEventListener("mousemove", ev =>
+      showTip(`<b>M${Number(m.id)}</b> — ${esc(m.summary)}`, ev.clientX, ev.clientY));
+    bg.addEventListener("mouseleave", hideTip);
+    tlSvg.appendChild(bg);
+    const head = el("text", { x: x(m.order) + (COLW - 6) / 2, y: 18,
+                              "text-anchor": "middle", "font-size": 11, fill: "#334" });
+    head.textContent = "M" + m.id; tlSvg.appendChild(head);
+    const days = el("text", { x: x(m.order) + (COLW - 6) / 2, y: 32,
+                              "text-anchor": "middle", "font-size": 10, fill: "#889" });
+    days.textContent = m.days != null ? "j " + m.days : "j ?"; tlSvg.appendChild(days);
+  });
+
+  for (let o = 0; o < N - 1; o++) {   // écarts : étiquette si quantifié, pointillé sinon
+    const gx = x(o + 1) - 3;
+    if (D.gaps[String(o)] != null) {
+      const g = el("text", { x: gx, y: TOP - 12, "text-anchor": "middle",
+                             "font-size": 10, fill: "#c60" });
+      g.textContent = "+" + D.gaps[String(o)] + " j"; tlSvg.appendChild(g);
+    } else {
+      tlSvg.appendChild(el("line", { x1: gx, y1: TOP - 6, x2: gx, y2: H - 14,
+                                     stroke: "#ccd", "stroke-dasharray": "2,3" }));
+    }
+  }
+
+  rows.forEach((t, i) => {
+    const y = TOP + i * ROWH;
+    const label = el("text", { x: LEFT - 10, y: y + ROWH / 2 + 4, "text-anchor": "end",
+                               "font-size": 12, fill: "#223", class: "track-label" });
+    label.textContent = t.entity;               // textContent : sûr
+    label.dataset.entity = t.entity;
+    if (t.entity === state.selected) label.setAttribute("font-weight", "bold");
+    label.addEventListener("click", () =>
+      select(state.selected === t.entity ? null : t.entity));
+    tlSvg.appendChild(label);
+    const color = typeColor[byName[t.entity].type];
+    t.runs.forEach(([a, b]) => {
+      const clip = el("rect", { x: x(a) + 2, y: y + 5, width: (b - a) * COLW + COLW - 14,
+                                height: ROWH - 10, rx: 5, fill: color,
+                                opacity: state.selected && t.entity !== state.selected ? 0.25 : 0.85 });
+      clip.addEventListener("click", () =>
+        select(state.selected === t.entity ? null : t.entity));
+      tlSvg.appendChild(clip);
+    });
+  });
+
+  const px = x(D.moments[state.atIndex].order) + (COLW - 6) / 2;  // tête de lecture
+  tlSvg.appendChild(el("line", { x1: px, y1: TOP - 6, x2: px, y2: H - 14,
+                                 stroke: "#e15759", "stroke-width": 2 }));
+}
+
+function select(name) { state.selected = name; /* complété en Task 9 */ renderTimeline(); repaintGraph(); }
+
+renderTimeline();
 </script>
 </body>
 </html>
