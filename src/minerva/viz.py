@@ -43,6 +43,43 @@ def build_payload(graph: KnowledgeGraph) -> dict:
             tracks.append({"entity": e.name, "count": len(orders), "runs": _runs(orders)})
     tracks.sort(key=lambda t: (-t["count"], t["entity"]))
 
+    ent_rank: dict[str, int | None] = {e.name: None for e in graph.entities}
+
+    def note(name: str, r: int) -> None:
+        if name in ent_rank:
+            prev = ent_rank[name]
+            ent_rank[name] = r if prev is None else min(prev, r)
+
+    for mid, names in graph.timeline.appearances.items():
+        for n in names:
+            note(n, rank.get(mid, -1))
+
+    rel_keys = [(r.name, r.source, r.target) for r in graph.relations]
+    rel_rank: dict[tuple[str, str, str], int | None] = {k: None for k in rel_keys}
+    for a in graph.assertions:
+        r = rank.get(a.moment_id, -1) if a.moment_id is not None else -1
+        if a.entity:
+            note(a.entity, r)
+        elif a.relation_name:
+            k = (a.relation_name, a.relation_source, a.relation_target)
+            if k in rel_rank:
+                prev = rel_rank[k]
+                rel_rank[k] = r if prev is None else min(prev, r)
+            note(a.relation_source, r)
+            note(a.relation_target, r)
+
+    ent_first = {n: (-1 if r is None else r) for n, r in ent_rank.items()}
+    rel_first = {
+        k: max(-1 if rel_rank[k] is None else rel_rank[k],
+               ent_first.get(k[1], -1), ent_first.get(k[2], -1))
+        for k in rel_keys
+    }
+    states = [
+        {"entities": [n for n, fr in ent_first.items() if fr <= rank[m.id]],
+         "relations": [i for i, k in enumerate(rel_keys) if rel_first[k] <= rank[m.id]]}
+        for m in moments
+    ]
+
     return {
         "entities": [
             {"name": e.name, "type": e.type, "aliases": e.aliases,
@@ -62,7 +99,7 @@ def build_payload(graph: KnowledgeGraph) -> dict:
         ],
         "gaps": gaps,
         "tracks": tracks,
-        "states": [],   # Task 4
+        "states": states,
     }
 
 

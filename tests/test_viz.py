@@ -81,3 +81,34 @@ def test_payload_tracks_un_trou_coupe_le_run():
     p = build_payload(g)
     by_name = {t["entity"]: t for t in p["tracks"]}
     assert by_name["Digne"]["runs"] == [[0, 0], [2, 2]]
+
+
+def test_states_une_entite_n_est_visible_qu_a_partir_de_sa_premiere_trace():
+    p = build_payload(_graph())
+    # Myriel apparaît pour la première fois à l'ordre 1
+    assert "Myriel" not in p["states"][0]["entities"]
+    assert "Myriel" in p["states"][1]["entities"]
+    assert "Valjean" in p["states"][0]["entities"]
+
+
+def test_states_entite_sans_trace_datee_est_visible_partout():
+    g = _graph()
+    g.add_entity(Entity(name="Cosette", type="personnage"))  # aucune trace datée
+    p = build_payload(g)
+    assert "Cosette" in p["states"][0]["entities"]
+
+
+def test_states_relation_attend_ses_deux_extremites():
+    # héberge a une assertion datée à l'ordre 1 ET Myriel n'est visible qu'à
+    # l'ordre 1 : la relation ne doit pas exister avant (pas de lien pendouillant).
+    p = build_payload(_graph())
+    assert p["states"][0]["relations"] == []
+    assert p["states"][1]["relations"] == [0]
+
+
+def test_states_relation_sans_assertion_datee_suit_ses_extremites():
+    g = _graph()
+    g.add_relation(Relation(name="traverse", source="Valjean", target="Digne"))
+    p = build_payload(g)
+    idx = [i for i, r in enumerate(p["relations"]) if r["name"] == "traverse"][0]
+    assert idx in p["states"][0]["relations"]  # les deux extrémités sont à l'ordre 0
