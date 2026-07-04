@@ -7,6 +7,8 @@ import unicodedata
 
 from pydantic import BaseModel, Field
 
+from .timeline import Moment, Timeline
+
 # Tirets typographiques (U+2010..U+2015, U+2212) unifiés vers le tiret ASCII :
 # les LLM mélangent parfois les graphies (« Montreuil-sur-Mer » vs U+2011).
 _DASHES = dict.fromkeys(map(ord, "‐‑‒–—―−"), "-")
@@ -65,6 +67,28 @@ class Relation(BaseModel):
         return (normalize(self.name), normalize(self.source), normalize(self.target))
 
 
+class Assertion(BaseModel):
+    """Constat bitemporel : un fait affirmé par le texte, ancré à un moment
+    diégétique (moment_id, None = non daté) et à sa position de lecture
+    (chunk_index). Sujet : une entité (entity) OU une relation (triplet)."""
+
+    entity: str = ""
+    relation_name: str = ""
+    relation_source: str = ""
+    relation_target: str = ""
+    attribute: str = ""
+    value: str = ""
+    moment_id: int | None = None
+    chunk_index: int | None = None
+
+    def key(self) -> tuple:
+        return (
+            normalize(self.entity), normalize(self.relation_name),
+            normalize(self.relation_source), normalize(self.relation_target),
+            self.attribute, self.value, self.moment_id,
+        )
+
+
 class KnowledgeGraph:
     """Graphe d'entités et de relations, avec fusion déterministe.
 
@@ -79,6 +103,9 @@ class KnowledgeGraph:
         # (ex. « M. Thénardier » et « Mme Thénardier » donnent la même forme)
         self._stripped_index: dict[str, str | None] = {}
         self._relations: dict[tuple[str, str, str], Relation] = {}
+        self.timeline = Timeline()
+        self._assertions: list[Assertion] = []
+        self._assertion_keys: set[tuple] = set()
 
     @property
     def entities(self) -> list[Entity]:
@@ -87,6 +114,10 @@ class KnowledgeGraph:
     @property
     def relations(self) -> list[Relation]:
         return list(self._relations.values())
+
+    @property
+    def assertions(self) -> list[Assertion]:
+        return list(self._assertions)
 
     def resolve(self, name: str) -> Entity | None:
         """Retrouve une entité par nom canonique, alias, ou — en repli —
@@ -128,15 +159,13 @@ class KnowledgeGraph:
             stored = Entity(
                 name=entity.name.strip(),
                 type=entity.type.strip() or "inconnu",
-                attributes=dict(entity.attributes),
             )
             self._entities[key] = stored
             self._index_stripped(key, key)
             existing = stored
-        else:
-            for attr, value in entity.attributes.items():
-                existing.attributes.setdefault(attr, value)
         self._register_aliases(existing, entity.aliases)
+        for attr, value in entity.attributes.items():
+            self.add_assertion(Assertion(entity=existing.name, attribute=attr, value=value))
         return existing
 
     def _register_aliases(self, entity: Entity, aliases: list[str]) -> None:
@@ -165,14 +194,16 @@ class KnowledgeGraph:
             name=relation.name.strip(),
             source=source.name,
             target=target.name,
-            attributes=dict(relation.attributes),
         )
         existing = self._relations.get(resolved.key())
         if existing is None:
             self._relations[resolved.key()] = resolved
-            return resolved
-        for attr, value in resolved.attributes.items():
-            existing.attributes.setdefault(attr, value)
+            existing = resolved
+        for attr, value in relation.attributes.items():
+            self.add_assertion(
+                Assertion(relation_name=existing.name, relation_source=existing.source,
+                          relation_target=existing.target, attribute=attr, value=value)
+            )
         return existing
 
     def merge(self, entities: list[Entity], relations: list[Relation]) -> None:
@@ -181,8 +212,138 @@ class KnowledgeGraph:
         for relation in relations:
             self.add_relation(relation)
 
+    def add_assertion(self, assertion: Assertion) -> Assertion | None:
+        """Chemin d'écriture unique du journal. Résout les sujets vers leurs
+        noms canoniques (création au besoin), déduplique sur
+        (sujet, attribut, valeur, moment), et maintient la vue
+        « première extraction gagne » des dicts d'attributs."""
+        a = assertion.model_copy()
+        a.attribute = a.attribute.strip()
+        a.value = a.value.strip()
+        if a.entity.strip():
+            if not a.attribute:
+                return None  # la présence seule passe par timeline.add_appearance
+            entity = self.resolve(a.entity) or self.add_entity(
+                Entity(name=a.entity, type="inconnu")
+            )
+            a.entity = entity.name
+            view = entity.attributes
+        elif a.relation_name.strip() and a.relation_source.strip() and a.relation_target.strip():
+            relation = self.add_relation(
+                Relation(name=a.relation_name, source=a.relation_source,
+                         target=a.relation_target)
+            )
+            a.relation_name, a.relation_source, a.relation_target = (
+                relation.name, relation.source, relation.target
+            )
+            view = relation.attributes if a.attribute else None
+        else:
+            return None
+        if a.moment_id is not None and self.timeline.moment(a.moment_id) is None:
+            a.moment_id = None  # référence de moment invalide : constat non daté
+        if a.key() in self._assertion_keys:
+            return None
+        self._assertion_keys.add(a.key())
+        self._assertions.append(a)
+        if view is not None and a.attribute:
+            view.setdefault(a.attribute, a.value)
+        return a
+
+    def entity_state(self, policy: str = "first") -> dict[str, dict[str, str]]:
+        """Snapshot {entité: {attribut: valeur}}. « first » = première
+        extraction gagne (comportement historique) ; « final » = dernière
+        valeur en ordre diégétique résolu (non daté = avant tout)."""
+        if policy == "first":
+            return {e.name: dict(e.attributes) for e in self.entities}
+        if policy != "final":
+            raise ValueError(f"policy inconnue : {policy!r}")
+        rank = self._moment_ranks()
+        best: dict[tuple[str, str], tuple[int, str]] = {}
+        for a in self._assertions:
+            if not (a.entity and a.attribute):
+                continue
+            r = rank.get(a.moment_id, -1)
+            k = (a.entity, a.attribute)
+            if k not in best or r > best[k][0]:
+                best[k] = (r, a.value)
+        state: dict[str, dict[str, str]] = {e.name: {} for e in self.entities}
+        for (name, attr), (_, value) in best.items():
+            state.setdefault(name, {})[attr] = value
+        return state
+
+    def relation_state(
+        self, policy: str = "first"
+    ) -> dict[tuple[str, str, str], dict[str, str]]:
+        """Snapshot {(nom, source, cible): {attribut: valeur}} des relations."""
+        if policy == "first":
+            return {(r.name, r.source, r.target): dict(r.attributes) for r in self.relations}
+        if policy != "final":
+            raise ValueError(f"policy inconnue : {policy!r}")
+        rank = self._moment_ranks()
+        best: dict[tuple, tuple[int, str]] = {}
+        for a in self._assertions:
+            if a.entity or not a.attribute or not a.relation_name:
+                continue
+            r = rank.get(a.moment_id, -1)
+            k = ((a.relation_name, a.relation_source, a.relation_target), a.attribute)
+            if k not in best or r > best[k][0]:
+                best[k] = (r, a.value)
+        state = {(r.name, r.source, r.target): {} for r in self.relations}
+        for (triple, attr), (_, value) in best.items():
+            state.setdefault(triple, {})[attr] = value
+        return state
+
+    def _moment_ranks(self) -> dict[int | None, int]:
+        """resolved_order par moment ; None (non daté) -> -1 (avant tout).
+        À égalité de rang, la première assertion gagne (déterministe)."""
+        self.timeline.resolve()
+        ranks: dict[int | None, int] = {None: -1}
+        for m in self.timeline.moments:
+            ranks[m.id] = m.resolved_order if m.resolved_order is not None else -1
+        return ranks
+
+    def track(self, name: str) -> list[tuple[Moment, list[Assertion]]]:
+        """Piste d'une entité : ses moments (présence ou constat), en ordre
+        diégétique résolu, avec les constats qui la concernent."""
+        entity = self.resolve(name)
+        if entity is None:
+            return []
+        self.timeline.resolve()
+        by_moment: dict[int, list[Assertion]] = {}
+        involved_ids: set[int] = set()
+        for a in self._assertions:
+            if a.moment_id is None:
+                continue
+            if a.entity == entity.name or entity.name in (a.relation_source, a.relation_target):
+                by_moment.setdefault(a.moment_id, []).append(a)
+                involved_ids.add(a.moment_id)
+        for mid, names in self.timeline.appearances.items():
+            if entity.name in names:
+                involved_ids.add(mid)
+        moments = sorted(
+            (self.timeline.moment(mid) for mid in involved_ids),
+            key=lambda m: (m.resolved_order or 0, m.reading_key()),
+        )
+        return [(m, by_moment.get(m.id, [])) for m in moments]
+
+    def adopt_journal(self, other: "KnowledgeGraph") -> None:
+        """Reprend le journal d'un autre graphe en résolvant les sujets dans
+        CE graphe (usage : canonicalisation, qui reconstruit les identités)."""
+        self.timeline = other.timeline.clone()
+        for mid, names in other.timeline.appearances.items():
+            for n in names:
+                resolved = self.resolve(n)
+                if resolved is not None and resolved.name != n:
+                    self.timeline.rename_entity(n, resolved.name)
+        for a in other.assertions:
+            self.add_assertion(a)
+
     def to_dict(self) -> dict:
         return {
             "entities": [e.model_dump() for e in self.entities],
             "relations": [r.model_dump() for r in self.relations],
+            "moments": [m.model_dump() for m in self.timeline.moments],
+            "constraints": [c.model_dump() for c in self.timeline.constraints],
+            "appearances": {str(k): sorted(v) for k, v in self.timeline.appearances.items()},
+            "assertions": [a.model_dump() for a in self._assertions],
         }
