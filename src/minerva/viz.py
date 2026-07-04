@@ -70,9 +70,9 @@ def build_payload(graph: KnowledgeGraph) -> dict:
 
     ent_first = {n: (-1 if r is None else r) for n, r in ent_rank.items()}
     rel_first = {
-        k: max(-1 if rel_rank[k] is None else rel_rank[k],
+        k: max(-1 if rr is None else rr,
                ent_first.get(k[1], -1), ent_first.get(k[2], -1))
-        for k in rel_keys
+        for k, rr in rel_rank.items()
     }
     states = [
         {"entities": [n for n, fr in ent_first.items() if fr <= rank[m.id]],

@@ -112,3 +112,22 @@ def test_states_relation_sans_assertion_datee_suit_ses_extremites():
     p = build_payload(g)
     idx = [i for i, r in enumerate(p["relations"]) if r["name"] == "traverse"][0]
     assert idx in p["states"][0]["relations"]  # les deux extrémités sont à l'ordre 0
+
+
+def test_states_relation_sans_assertion_attend_une_extremite_tardive():
+    g = _graph()
+    g.add_relation(Relation(name="rencontre", source="Valjean", target="Myriel"))
+    p = build_payload(g)
+    idx = next(i for i, r in enumerate(p["relations"]) if r["name"] == "rencontre")
+    assert idx not in p["states"][0]["relations"]  # Myriel n'existe qu'à l'ordre 1
+    assert idx in p["states"][1]["relations"]
+
+
+def test_states_le_premier_rang_d_une_relation_gagne():
+    g = _graph()
+    # seconde assertion datée plus tard (m3, ordre 2) : le premier rang (1) doit rester
+    g.add_assertion(Assertion(relation_name="héberge", relation_source="Myriel",
+                              relation_target="Valjean", attribute="durée",
+                              value="une nuit", moment_id=3))
+    p = build_payload(g)
+    assert 0 in p["states"][1]["relations"]
