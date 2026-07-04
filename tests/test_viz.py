@@ -4,7 +4,7 @@ transformations se font en Python, jamais dans le JS de la page."""
 
 from minerva.model import Assertion, Entity, KnowledgeGraph, Relation
 from minerva.timeline import AVANT, Gap
-from minerva.viz import build_payload
+from minerva.viz import build_payload, render_html
 
 
 def _graph() -> KnowledgeGraph:
@@ -178,3 +178,24 @@ def test_payload_gap_quantifie_non_consecutif_ignore():
     p = build_payload(g)
     assert "0" not in p["gaps"]
     assert p["gaps"] == {"1": 3650.0}
+
+
+def test_render_html_resout_tous_les_placeholders():
+    html = render_html(build_payload(_graph()))
+    assert "__MINERVA_DATA__" not in html
+    assert "__FORCE_GRAPH_JS__" not in html
+    assert "Valjean" in html
+
+
+def test_render_html_est_autonome():
+    html = render_html(build_payload(_graph()))
+    assert 'src="http' not in html and "src='http" not in html
+    assert '<link rel="stylesheet" href="http' not in html
+
+
+def test_render_html_echappe_les_fins_de_script_dans_les_donnees():
+    g = _graph()
+    g.add_assertion(Assertion(entity="Valjean", attribute="note",
+                              value="</script><script>alert(1)"))
+    html = render_html(build_payload(g))
+    assert "</script><script>alert" not in html

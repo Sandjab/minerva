@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>minerva — visualisation</title>
+<style>
+  :root { --bg:#f6f7f9; --panel:#fff; --border:#dde; --ink:#1a1a2e; --muted:#667; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system,sans-serif; background:var(--bg); color:var(--ink); }
+  header { display:flex; align-items:center; gap:18px; padding:10px 16px; flex-wrap:wrap;
+           background:var(--panel); border-bottom:1px solid var(--border); }
+  header h1 { font-size:16px; margin:0; }
+  #filters { display:flex; gap:12px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--muted); }
+  #filters input[type="search"] { padding:3px 8px; border:1px solid var(--border); border-radius:6px; }
+  #graph { height:52vh; background:var(--panel); border-bottom:1px solid var(--border); }
+  #slider-bar { display:flex; gap:12px; align-items:center; padding:8px 16px;
+                background:var(--panel); border-bottom:1px solid var(--border); font-size:13px; }
+  #slider { flex:0 0 320px; }
+  #moment-label { color:var(--muted); }
+  #timeline-wrap { overflow-x:auto; background:var(--panel); }
+  #banner { padding:24px; text-align:center; color:var(--muted); font-size:14px; }
+  #tooltip { position:fixed; display:none; background:#1a1a2e; color:#fff; padding:8px 10px;
+             border-radius:6px; font-size:12px; max-width:340px; pointer-events:none; z-index:10; }
+  .track-label { cursor:pointer; }
+</style>
+</head>
+<body>
+<header>
+  <h1>minerva</h1>
+  <div id="filters">
+    <span id="type-filters"></span>
+    <label><input type="checkbox" id="hide-single"> masquer les apparitions uniques</label>
+    <input type="search" id="search" placeholder="chercher une entité…">
+  </div>
+</header>
+<div id="graph"></div>
+<div id="slider-bar">
+  <input type="range" id="slider" min="0" max="0" value="0" step="1">
+  <span id="moment-label"></span>
+</div>
+<div id="timeline-wrap"><svg id="timeline"></svg></div>
+<div id="banner" hidden>pas de timeline dans cette base (extraction sans moments)</div>
+<div id="tooltip"></div>
+<script>__FORCE_GRAPH_JS__</script>
+<script>window.MINERVA_DATA = __MINERVA_DATA__;</script>
+<script>
+/* JS applicatif (rendu pur) — complété en Task 8/9 */
+</script>
+</body>
+</html>
