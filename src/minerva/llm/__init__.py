@@ -57,6 +57,52 @@ class ExtractionResult(BaseModel):
     relations: list[ExtractedRelation] = Field(default_factory=list)
 
 
+# --- Schéma de la passe unique enrichie (extraction + timeline) ---------------
+# Mêmes contraintes structured outputs : pas de dict libre, pas d'Optional —
+# les champs absents sont des chaînes vides / 0.
+
+
+class ExtractedFact(BaseModel):
+    """Fait rattaché à un moment : attribut d'entité (entity+attribute+value)
+    OU relation (relation+source+target, attribute/value optionnels)."""
+
+    entity: str = ""
+    relation: str = ""
+    source: str = ""
+    target: str = ""
+    attribute: str = ""
+    value: str = ""
+
+
+class ExtractedTransition(BaseModel):
+    type: str = "suite"     # suite | ellipse | flashback | retour | parallèle
+    target: str = ""        # identifiant d'un moment connu (retour/parallèle)
+    gap_text: str = ""      # expression du texte (« vingt ans après »)
+    gap_value: float = 0    # écart quantifié, 0 = non quantifié
+    gap_unit: str = ""      # heures | jours | semaines | mois | années
+
+
+class ExtractedMoment(BaseModel):
+    ref: str = ""           # identifiant local au chunk (« m1 », « m2 »)
+    summary: str = ""
+    transition: ExtractedTransition = Field(default_factory=ExtractedTransition)
+    entities_present: list[str] = Field(default_factory=list)
+    facts: list[ExtractedFact] = Field(default_factory=list)
+
+
+class ExtractedIdentity(BaseModel):
+    """Entité côté identité seule : les attributs passent par les facts."""
+
+    name: str
+    type: str
+    aliases: list[str] = Field(default_factory=list)
+
+
+class TimelineExtractionResult(BaseModel):
+    entities: list[ExtractedIdentity] = Field(default_factory=list)
+    moments: list[ExtractedMoment] = Field(default_factory=list)
+
+
 class LLMBackend(Protocol):
     """Backend LLM à sortie structurée générique.
 
