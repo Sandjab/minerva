@@ -21,7 +21,7 @@ alimentées par les exports de bench réels (extrait des Misérables, 25 entité
 |---|---|
 | Support | Page **HTML autonome** exportée par une sous-commande CLI (`minerva viz`). Zéro serveur, zéro CDN, s'ouvre d'un double-clic. |
 | Lib forcegraph | **force-graph** (canvas 2D, ~250 Ko vendoré) — retenu sur démo contre d3-force SVG maison et 3d-force-graph WebGL. |
-| Lib timeline | **d3 custom** (SVG, ~60–90 Ko vendoré) : layout **ordinal** fait main, fidèle au modèle — retenu sur démo contre vis-timeline, dont l'axe en dates ment (espacement uniforme pour des écarts inconnus). |
+| Lib timeline | **SVG vanilla** (zéro lib) : layout **ordinal** fait main, fidèle au modèle — retenu sur démo (prototype d3) contre vis-timeline, dont l'axe en dates ment (espacement uniforme pour des écarts inconnus). Amendé le 2026-07-04 : la part de d3 réellement utilisée étant triviale, on écrit le SVG en vanilla ; d3 sera introduit si un besoin réel émerge (zoom à l'échelle roman). |
 | Slider temporel | États du graphe **précalculés en Python** à l'export (`entity_state`/`relation_state(at=M)`), embarqués dans la page. Aucune logique métier dupliquée en JS. |
 | Interactivité v1 | Les quatre : slider temporel, couplage des deux vues, tooltips riches, filtres. |
 | Échelle | Chapitre en v1 (échelle des benchs), roman en cible : aucune décision qui bloque le passage au roman (canvas déjà choisi, scroll prévu, filtres présents), mais pas d'optimisation prématurée. |
@@ -37,11 +37,11 @@ alimentées par les exports de bench réels (extrait des Misérables, 25 entité
   écrit un seul fichier HTML. Stdlib pur (pas de Jinja), assets lus via
   `importlib.resources`.
 - **`src/minerva/viz_assets/`** : `template.html` (structure, CSS, JS
-  applicatif de rendu), `force-graph.min.js`, `d3.min.js` (vendorés dans le
-  package, inclus au build hatch ; licences MIT/ISC conservées en tête des
-  fichiers vendorés).
+  applicatif de rendu — timeline en SVG vanilla), `force-graph.min.js`
+  (vendoré dans le package, inclus au build hatch ; licence MIT conservée en
+  tête du fichier vendoré).
 - Page : forcegraph en haut, timeline en dessous (scroll horizontal), slider
-  commun. Poids attendu à l'échelle chapitre : ~350 Ko de libs + quelques
+  commun. Poids attendu à l'échelle chapitre : ~250 Ko de lib + quelques
   dizaines de Ko de données.
 
 ## Payload embarqué (`window.MINERVA_DATA`)
