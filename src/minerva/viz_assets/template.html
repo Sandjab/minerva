@@ -231,7 +231,73 @@ function renderTimeline() {
                                  stroke: "#e15759", "stroke-width": 2 }));
 }
 
-function select(name) { state.selected = name; /* complété en Task 9 */ renderTimeline(); repaintGraph(); }
+function select(name) {
+  state.selected = name;
+  state.neighbors = new Set();
+  if (name) {
+    D.relations.forEach(r => {
+      if (r.source === name) state.neighbors.add(r.target);
+      if (r.target === name) state.neighbors.add(r.source);
+    });
+  }
+  renderTimeline();
+  repaintGraph();
+  if (name) {
+    const label = [...tlSvg.querySelectorAll(".track-label")]
+      .find(n => n.dataset.entity === name);   // pas de sélecteur interpolé : nom non fiable
+    if (label) label.scrollIntoView({ block: "nearest", inline: "nearest" });
+  }
+}
+fg.onNodeClick(n => select(state.selected === n.id ? null : n.id));
+fg.onBackgroundClick(() => select(null));
+
+// ---------- Slider temporel ----------
+const slider = document.getElementById("slider");
+const momentLabel = document.getElementById("moment-label");
+function updateMomentLabel() {
+  const m = D.moments[state.atIndex];
+  momentLabel.textContent =   // textContent : sûr
+    `M${m.id} — ${m.summary}` + (m.days != null ? ` · j ${m.days}` : "");
+}
+if (D.moments.length) {
+  slider.max = D.moments.length - 1;
+  slider.value = state.atIndex;
+  updateMomentLabel();
+  slider.addEventListener("input", () => {
+    state.atIndex = Number(slider.value);
+    computeVisible();
+    updateMomentLabel();
+    repaintGraph();
+    renderTimeline();
+  });
+} else {   // pas de timeline : bandeau, on masque slider et timeline
+  document.getElementById("slider-bar").style.display = "none";
+  document.getElementById("timeline-wrap").style.display = "none";
+  document.getElementById("banner").hidden = false;
+}
+
+// ---------- Filtres ----------
+const typeFilters = document.getElementById("type-filters");
+TYPES.forEach(t => {
+  const label = document.createElement("label");
+  const cb = document.createElement("input");
+  cb.type = "checkbox"; cb.checked = true;
+  cb.addEventListener("change", () => {
+    cb.checked ? state.types.add(t) : state.types.delete(t);
+    applyFilters();
+  });
+  label.appendChild(cb);
+  label.append(` ${t}`);            // append(texte) : sûr
+  label.style.color = typeColor[t];
+  typeFilters.appendChild(label);
+});
+document.getElementById("hide-single").addEventListener("change", ev => {
+  state.hideSingle = ev.target.checked; applyFilters();
+});
+document.getElementById("search").addEventListener("input", ev => {
+  state.query = ev.target.value.trim().toLowerCase(); applyFilters();
+});
+function applyFilters() { repaintGraph(); renderTimeline(); }
 
 renderTimeline();
 </script>
