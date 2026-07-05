@@ -1,0 +1,616 @@
+{
+  "entities": [
+    {
+      "name": "docteur Étienne Mercier",
+      "type": "inconnu",
+      "aliases": [
+        "les deux Mercier"
+      ],
+      "attributes": {
+        "nom_complet": "Étienne Mercier",
+        "profession": "médecin (docteur)",
+        "localisation_cabinet": "rez-de-chaussée de la maison à volets bleus",
+        "mode_deplacement_pour_visites": "à pied",
+        "objet_transporte_pendant_visites": "sacoche",
+        "expertise_sanitaire": "connaît le nom de chaque fièvre du canton",
+        "nature_relation": "aucune parenté, partage d’un lieu (Aubières), mais pas familial",
+        "lieu_partagé_exact": "place de l'Église",
+        "apparence": "trop pâle",
+        "soin santé": "grand air",
+        "intervention": "auscultation et prescription d’un mois de repos"
+      }
+    },
+    {
+      "name": "Camille Mercier",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "nom_complet": "Camille Mercier",
+        "profession": "libraire",
+        "produits_vendus": "livres, almanachs, fil à broder",
+        "localisation_commerces": "en face de la maison à volets bleus (face au docteur)",
+        "entretien_vitrine": "enseigne repeinte chaque printemps",
+        "lieu_partagé_exact": "place de l'Église",
+        "condition_de_redirection": "si la lettre parle de quinine"
+      }
+    },
+    {
+      "name": "le facteur",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "routiner_de_distribution": "hésite un instant quand une lettre est adressée à « Mercier » sans précision",
+        "destination_par_défaut": "librairie"
+      }
+    },
+    {
+      "name": "Suzanne Vidal",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "alias": "la Demoiselle",
+        "profession": "institutrice",
+        "ami de Camille Mercier": "oui",
+        "lieu d’activité habituel le jeudi": "librairie",
+        "activité le jeudi à la librairie": "corriger ses cahiers",
+        "lieu précis d’occupation le jeudi": "près du poêle",
+        "raison de fréquenter la librairie": "odeur du papier neuf l’aide à réfléchir",
+        "état_de_santé": "toux sévère",
+        "raison": "air sec favorable à sa convalescence"
+      }
+    },
+    {
+      "name": "Lucien Delorme",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "activité principale": "élève des chèvres",
+        "activité secondaire": "presse un cidre"
+      }
+    },
+    {
+      "name": "le domaine de Delorme",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "localisation": "à une lieue au nord d’Aubières",
+        "accessibilité": "ouvert tout l'année, y compris en hiver",
+        "fournisseur de": "lait pour convalescents"
+      }
+    }
+  ],
+  "relations": [
+    {
+      "name": "envoyé par",
+      "source": "docteur Étienne Mercier",
+      "target": "Camille Mercier",
+      "attributes": {
+        "action": "envoyer chercher le docteur suite à la toux de Suzanne Vidal"
+      }
+    },
+    {
+      "name": "transporté par",
+      "source": "Suzanne Vidal",
+      "target": "Lucien Delorme",
+      "attributes": {
+        "moyen": "charrette"
+      }
+    },
+    {
+      "name": "souhaite feliciter",
+      "source": "docteur Étienne Mercier",
+      "target": "Camille Mercier",
+      "attributes": {
+        "object": "la guérison de Suzanne Vidal"
+      }
+    },
+    {
+      "name": "exprime une solidarité de type familial",
+      "source": "docteur Étienne Mercier",
+      "target": "Suzanne Vidal",
+      "attributes": {
+        "nature_relation": "comportement comme s'ils étaient de la même famille"
+      }
+    }
+  ],
+  "moments": [
+    {
+      "id": 1,
+      "chunk_index": 0,
+      "seq": 0,
+      "summary": "Présentation des deux Mercier d’Aubières et leur compartimentage social/commercial.",
+      "resolved_order": 0,
+      "resolved_days": 0.0
+    },
+    {
+      "id": 2,
+      "chunk_index": 0,
+      "seq": 1,
+      "summary": "Procédure administrative du facteur pour les lettres adressées à « Mercier » sans précision.",
+      "resolved_order": 1,
+      "resolved_days": null
+    },
+    {
+      "id": 3,
+      "chunk_index": 1,
+      "seq": 0,
+      "summary": "Présentation de l’institutrice Suzanne Vidal (appelée « la Demoiselle ») et de ses routines, suivie de l’avis du docteur Mercier sur sa santé.",
+      "resolved_order": 2,
+      "resolved_days": null
+    },
+    {
+      "id": 4,
+      "chunk_index": 2,
+      "seq": 0,
+      "summary": "Le domaine de Delorme et son rôle local : production laitière/cidre, accès, et relation avec le docteur Mercier.",
+      "resolved_order": 3,
+      "resolved_days": null
+    },
+    {
+      "id": 5,
+      "chunk_index": 3,
+      "seq": 0,
+      "summary": "Crise de toux de Suzanne Vidal en classe, consultation du docteur Mercier et prescription de repos au domaine de Delorme.",
+      "resolved_order": 4,
+      "resolved_days": null
+    }
+  ],
+  "constraints": [
+    {
+      "source_id": 1,
+      "relation": "avant",
+      "target_id": 2,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 2,
+      "relation": "avant",
+      "target_id": 3,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 3,
+      "relation": "avant",
+      "target_id": 4,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 4,
+      "relation": "avant",
+      "target_id": 5,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    }
+  ],
+  "appearances": {
+    "1": [
+      "Camille Mercier",
+      "docteur Étienne Mercier",
+      "le facteur"
+    ],
+    "2": [
+      "Camille Mercier",
+      "docteur Étienne Mercier",
+      "le facteur"
+    ],
+    "3": [
+      "Suzanne Vidal",
+      "docteur Étienne Mercier"
+    ],
+    "4": [
+      "Lucien Delorme",
+      "docteur Étienne Mercier",
+      "le domaine de Delorme"
+    ],
+    "5": [
+      "Camille Mercier",
+      "Lucien Delorme",
+      "Suzanne Vidal",
+      "docteur Étienne Mercier",
+      "le domaine de Delorme"
+    ]
+  },
+  "assertions": [
+    {
+      "entity": "docteur Étienne Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "nom_complet",
+      "value": "Étienne Mercier",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "docteur Étienne Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "profession",
+      "value": "médecin (docteur)",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "docteur Étienne Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "localisation_cabinet",
+      "value": "rez-de-chaussée de la maison à volets bleus",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "docteur Étienne Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "mode_deplacement_pour_visites",
+      "value": "à pied",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "docteur Étienne Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "objet_transporte_pendant_visites",
+      "value": "sacoche",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "docteur Étienne Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "expertise_sanitaire",
+      "value": "connaît le nom de chaque fièvre du canton",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Camille Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "nom_complet",
+      "value": "Camille Mercier",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Camille Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "profession",
+      "value": "libraire",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Camille Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "produits_vendus",
+      "value": "livres, almanachs, fil à broder",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Camille Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "localisation_commerces",
+      "value": "en face de la maison à volets bleus (face au docteur)",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Camille Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "entretien_vitrine",
+      "value": "enseigne repeinte chaque printemps",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "docteur Étienne Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "nature_relation",
+      "value": "aucune parenté, partage d’un lieu (Aubières), mais pas familial",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "docteur Étienne Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "lieu_partagé_exact",
+      "value": "place de l'Église",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Camille Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "lieu_partagé_exact",
+      "value": "place de l'Église",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "le facteur",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "routiner_de_distribution",
+      "value": "hésite un instant quand une lettre est adressée à « Mercier » sans précision",
+      "moment_id": 2,
+      "chunk_index": 0
+    },
+    {
+      "entity": "le facteur",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "destination_par_défaut",
+      "value": "librairie",
+      "moment_id": 2,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Camille Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "condition_de_redirection",
+      "value": "si la lettre parle de quinine",
+      "moment_id": 2,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Suzanne Vidal",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "alias",
+      "value": "la Demoiselle",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Suzanne Vidal",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "profession",
+      "value": "institutrice",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Suzanne Vidal",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "ami de Camille Mercier",
+      "value": "oui",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Suzanne Vidal",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "lieu d’activité habituel le jeudi",
+      "value": "librairie",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Suzanne Vidal",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "activité le jeudi à la librairie",
+      "value": "corriger ses cahiers",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Suzanne Vidal",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "lieu précis d’occupation le jeudi",
+      "value": "près du poêle",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Suzanne Vidal",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "raison de fréquenter la librairie",
+      "value": "odeur du papier neuf l’aide à réfléchir",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "docteur Étienne Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "apparence",
+      "value": "trop pâle",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "docteur Étienne Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "soin santé",
+      "value": "grand air",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "le domaine de Delorme",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "localisation",
+      "value": "à une lieue au nord d’Aubières",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Lucien Delorme",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "activité principale",
+      "value": "élève des chèvres",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Lucien Delorme",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "activité secondaire",
+      "value": "presse un cidre",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "le domaine de Delorme",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "accessibilité",
+      "value": "ouvert tout l'année, y compris en hiver",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "le domaine de Delorme",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "fournisseur de",
+      "value": "lait pour convalescents",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Suzanne Vidal",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "état_de_santé",
+      "value": "toux sévère",
+      "moment_id": 5,
+      "chunk_index": 3
+    },
+    {
+      "entity": "",
+      "relation_name": "envoyé par",
+      "relation_source": "docteur Étienne Mercier",
+      "relation_target": "Camille Mercier",
+      "attribute": "action",
+      "value": "envoyer chercher le docteur suite à la toux de Suzanne Vidal",
+      "moment_id": 5,
+      "chunk_index": 3
+    },
+    {
+      "entity": "docteur Étienne Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "intervention",
+      "value": "auscultation et prescription d’un mois de repos",
+      "moment_id": 5,
+      "chunk_index": 3
+    },
+    {
+      "entity": "Suzanne Vidal",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "raison",
+      "value": "air sec favorable à sa convalescence",
+      "moment_id": 5,
+      "chunk_index": 3
+    },
+    {
+      "entity": "",
+      "relation_name": "transporté par",
+      "relation_source": "Suzanne Vidal",
+      "relation_target": "Lucien Delorme",
+      "attribute": "moyen",
+      "value": "charrette",
+      "moment_id": 5,
+      "chunk_index": 3
+    },
+    {
+      "entity": "Suzanne Vidal",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "état_de_santé",
+      "value": "guérit au printemps",
+      "moment_id": 5,
+      "chunk_index": 3
+    },
+    {
+      "entity": "",
+      "relation_name": "souhaite feliciter",
+      "relation_source": "docteur Étienne Mercier",
+      "relation_target": "Camille Mercier",
+      "attribute": "object",
+      "value": "la guérison de Suzanne Vidal",
+      "moment_id": 5,
+      "chunk_index": 3
+    },
+    {
+      "entity": "",
+      "relation_name": "exprime une solidarité de type familial",
+      "relation_source": "docteur Étienne Mercier",
+      "relation_target": "Suzanne Vidal",
+      "attribute": "nature_relation",
+      "value": "comportement comme s'ils étaient de la même famille",
+      "moment_id": 5,
+      "chunk_index": 3
+    }
+  ]
+}

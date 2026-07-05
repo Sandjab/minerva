@@ -1,0 +1,85 @@
+{
+  "text": "fusion_texte.txt",
+  "entities": [
+    {
+      "name": "Étienne Mercier",
+      "type": "personne",
+      "variants": ["le docteur Étienne Mercier", "Étienne Mercier", "le docteur Mercier", "le docteur", "Étienne"],
+      "level": "core"
+    },
+    {
+      "name": "Camille Mercier",
+      "type": "personne",
+      "variants": ["Camille Mercier", "la libraire", "Camille"],
+      "level": "core"
+    },
+    {
+      "name": "Suzanne Vidal",
+      "type": "personne",
+      "variants": ["Suzanne Vidal", "Mlle Vidal", "la Demoiselle", "Suzanne"],
+      "level": "core"
+    },
+    {
+      "name": "Lucien Delorme",
+      "type": "personne",
+      "variants": ["Lucien Delorme", "Lucien"],
+      "level": "core"
+    },
+    {
+      "name": "le domaine de Delorme",
+      "type": "lieu",
+      "variants": ["le domaine de Delorme", "le domaine"],
+      "level": "core"
+    },
+    {
+      "name": "Aubières",
+      "type": "lieu",
+      "variants": ["Aubières"],
+      "level": "core"
+    },
+    {
+      "name": "la librairie",
+      "type": "lieu",
+      "variants": ["la librairie", "librairie"],
+      "level": "optional"
+    },
+    {
+      "name": "la classe",
+      "type": "lieu",
+      "variants": ["la classe"],
+      "level": "optional"
+    },
+    {
+      "name": "le facteur",
+      "type": "personne",
+      "variants": ["le facteur"],
+      "level": "optional"
+    },
+    {
+      "name": "le marché",
+      "type": "lieu",
+      "variants": ["le marché", "marché"],
+      "level": "optional"
+    }
+  ],
+  "required_merges": [
+    [["Suzanne Vidal", "Mlle Vidal"], ["la Demoiselle"]]
+  ],
+  "forbidden_merges": [
+    [["le docteur Mercier", "Étienne Mercier"], ["Camille Mercier"]],
+    [["Lucien Delorme"], ["le domaine de Delorme"]]
+  ],
+  "relations": [
+    {"pair": ["Étienne Mercier", "Aubières"], "level": "core"},
+    {"pair": ["Camille Mercier", "Aubières"], "level": "core"},
+    {"pair": ["Suzanne Vidal", "Aubières"], "level": "core"},
+    {"pair": ["Camille Mercier", "Suzanne Vidal"], "level": "core"},
+    {"pair": ["Étienne Mercier", "Suzanne Vidal"], "level": "core"},
+    {"pair": ["Lucien Delorme", "le domaine de Delorme"], "level": "core"},
+    {"pair": ["Lucien Delorme", "Étienne Mercier"], "level": "core"},
+    {"pair": ["Suzanne Vidal", "le domaine de Delorme"], "level": "core"},
+    {"pair": ["Camille Mercier", "la librairie"], "level": "optional"},
+    {"pair": ["Suzanne Vidal", "la classe"], "level": "optional"},
+    {"pair": ["Lucien Delorme", "le marché"], "level": "optional"}
+  ]
+}

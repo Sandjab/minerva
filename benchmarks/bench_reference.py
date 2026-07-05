@@ -35,7 +35,8 @@ _spec.loader.exec_module(_scoring)
 OLLAMA = "http://localhost:11434/v1"
 CHUNK_SIZE = 700  # plusieurs chunks : cohérence inter-chunks testée
 DEFAULT_MODELS = ["gpt-oss:120b", "qwen3-coder-next:latest"]
-TEXTS = {"reference": "reference_texte.txt", "timeline": "timeline_texte.txt"}
+TEXTS = {"reference": "reference_texte.txt", "timeline": "timeline_texte.txt",
+         "fusion": "fusion_texte.txt"}
 # Raffinements composables : complétude, canonicalisation, alias (identité
 # d'emprunt, portée ciblée). canon_alias = canon + alias SANS complétude —
 # reco 120b de l'addendum 9 (la complétude dégrade la précision sur 120b).
@@ -84,6 +85,9 @@ def aggregate(per_run: list[dict]) -> dict:
     ok = sum(r["merges_ok"] for r in per_run)
     total = sum(r["merges_total"] for r in per_run)
     agg["merge_rate"] = f"{ok}/{total}"
+    sok = sum(r["separations_ok"] for r in per_run)
+    stotal = sum(r["separations_total"] for r in per_run)
+    agg["separation_rate"] = f"{sok}/{stotal}"
     return agg
 
 
@@ -148,7 +152,8 @@ def main() -> None:
                         print(json.dumps(
                             {k: run_entry[k] for k in (
                                 "time_s", "entity_precision", "entity_recall",
-                                "relation_precision", "relation_recall", "merge_rate")},
+                                "relation_precision", "relation_recall",
+                                "merge_rate", "separation_rate")},
                             ensure_ascii=False), flush=True)
                     entry.update(per_run[0] if args.runs == 1 else aggregate(per_run))
                 except Exception as exc:

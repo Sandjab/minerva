@@ -53,6 +53,11 @@ class Reference:
         self.required_merges = [
             (list(a), list(b)) for a, b in data["required_merges"]
         ]
+        # Séparations exigées (miroir) : deux référents distincts à NE PAS
+        # fusionner. Optionnel — absent des références antérieures.
+        self.forbidden_merges = [
+            (list(a), list(b)) for a, b in data.get("forbidden_merges", [])
+        ]
 
     def match(self, entity: Entity) -> tuple[str | None, list[str]]:
         """Entrée de référence d'une entité prédite (nom + alias).
@@ -153,6 +158,22 @@ def score_reference(graph: KnowledgeGraph, ref: Reference) -> dict:
             failed_merges.append([group_a, group_b])
     n_merges = len(ref.required_merges)
 
+    # --- séparations exigées : deux référents distincts qui ne doivent PAS
+    # fusionner. Sur-fusion (les deux mènent à la même entité) = échec ; un
+    # référent absent du graphe = non évaluable (hors dénominateur) — la
+    # sur-fusion ne se confond pas avec un défaut de rappel, déjà mesuré. ---
+    over_merges = []
+    n_separable = 0
+    for group_a, group_b in ref.forbidden_merges:
+        ea = _resolve_any(graph, group_a)
+        eb = _resolve_any(graph, group_b)
+        if ea is None or eb is None:
+            continue
+        n_separable += 1
+        if ea is eb:
+            over_merges.append([group_a, group_b])
+    separations_ok = n_separable - len(over_merges)
+
     return {
         "n_entities": n_pred,
         "n_relations": len(graph.relations),
@@ -167,6 +188,10 @@ def score_reference(graph: KnowledgeGraph, ref: Reference) -> dict:
         "merges_total": n_merges,
         "merge_rate": f"{n_merges - len(failed_merges)}/{n_merges}",
         "failed_merges": failed_merges,
+        "separations_ok": separations_ok,
+        "separations_total": n_separable,
+        "separation_rate": f"{separations_ok}/{n_separable}",
+        "over_merges": over_merges,
         "missing_entities": [n for n in core_names if n not in entry_hits],
         "false_positive_entities": sorted(fp_entities),
         "duplicate_entities": sorted(n for n, c in entry_hits.items() if c > 1),
@@ -210,5 +235,22 @@ def validate_reference(ref: Reference) -> list[str]:
             errors.append(
                 f"fusion {[group_a, group_b]} : mentions dans des entrées "
                 f"différentes {sorted(owners)}"
+            )
+    for group_a, group_b in ref.forbidden_merges:
+        owners_a: set[str] = set()
+        owners_b: set[str] = set()
+        for group, owners in ((group_a, owners_a), (group_b, owners_b)):
+            for mention in group:
+                keys = [k for k in _mention_keys(mention) if k in ref.variant_index]
+                if not keys:
+                    errors.append(
+                        f"séparation {[group_a, group_b]} : « {mention} » hors variants"
+                    )
+                else:
+                    owners.add(ref.variant_index[keys[0]])
+        if owners_a & owners_b:
+            errors.append(
+                f"séparation {[group_a, group_b]} : mentions dans la même entrée "
+                f"{sorted(owners_a & owners_b)}"
             )
     return errors

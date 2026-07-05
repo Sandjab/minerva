@@ -1,0 +1,329 @@
+{
+  "entities": [
+    {
+      "name": "docteur Étienne Mercier",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "profession": "médecin",
+        "lieu d'exercice": "cabinet au rez-de-chaussée de la maison à volets bleus",
+        "mode de déplacement pour les visites": "à pied",
+        "objet transporté lors des visites": "sacoche sous le bras",
+        "connaissance spécialisée": "nom de chaque fièvre du canton",
+        "jugement sur état de santé": "trouvaissait trop pâle",
+        "conseil médical": "grand air"
+      }
+    },
+    {
+      "name": "Camille Mercier",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "profession": "libraire",
+        "produits vendus": "livres, almanachs, fil à broder",
+        "lieu d'exercice": "librairie face à la maison du docteur Étienne Mercier (sous une enseigne repeinte chaque printemps)",
+        "destination finale": "docteur Étienne Mercier"
+      }
+    },
+    {
+      "name": "Église (d'Aubières)",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "caractérisation spatiale": "place de l’Église partagée par deux Mercier"
+      }
+    },
+    {
+      "name": "librairie",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "cabinet médical",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "sacoche",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "enseigne",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "facteur",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "comportement standard pour ce cas": "hésite un instant, puis porte la lettre à la librairie"
+      }
+    },
+    {
+      "name": "lettre",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "adresseingÉtiquette": "« Mercier » (sans autre précision)"
+      }
+    },
+    {
+      "name": "Suzanne Vidal",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "alias": "la Demoiselle",
+        "coutume villageoise": "appelée « la Demoiselle »",
+        "lieu_corrige_cahiers": "près du poêle"
+      }
+    }
+  ],
+  "relations": [],
+  "moments": [
+    {
+      "id": 1,
+      "chunk_index": 0,
+      "seq": 0,
+      "summary": "Présentation des deux Mercier d’Aubières et de leurs activités respectives.",
+      "resolved_order": 0,
+      "resolved_days": 0.0
+    },
+    {
+      "id": 2,
+      "chunk_index": 0,
+      "seq": 1,
+      "summary": "Règle de distribution du courrier pour les lettres adressées à « Mercier » sans précision.",
+      "resolved_order": 1,
+      "resolved_days": null
+    },
+    {
+      "id": 3,
+      "chunk_index": 1,
+      "seq": 0,
+      "summary": "Introdution de Suzanne Vidal (la Demoiselle) et description de ses habitudes à la librairie, ainsi que l’inquiétude du docteur Mercier pour sa santé.",
+      "resolved_order": 2,
+      "resolved_days": null
+    }
+  ],
+  "constraints": [
+    {
+      "source_id": 1,
+      "relation": "avant",
+      "target_id": 2,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 2,
+      "relation": "avant",
+      "target_id": 3,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    }
+  ],
+  "appearances": {
+    "1": [
+      "Camille Mercier",
+      "cabinet médical",
+      "docteur Étienne Mercier",
+      "enseigne",
+      "librairie",
+      "sacoche",
+      "Église (d'Aubières)"
+    ],
+    "2": [
+      "Camille Mercier",
+      "docteur Étienne Mercier",
+      "facteur",
+      "lettre"
+    ],
+    "3": [
+      "Camille Mercier",
+      "Suzanne Vidal",
+      "docteur Étienne Mercier",
+      "librairie"
+    ]
+  },
+  "assertions": [
+    {
+      "entity": "docteur Étienne Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "profession",
+      "value": "médecin",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "docteur Étienne Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "lieu d'exercice",
+      "value": "cabinet au rez-de-chaussée de la maison à volets bleus",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "docteur Étienne Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "mode de déplacement pour les visites",
+      "value": "à pied",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "docteur Étienne Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "objet transporté lors des visites",
+      "value": "sacoche sous le bras",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "docteur Étienne Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "connaissance spécialisée",
+      "value": "nom de chaque fièvre du canton",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Camille Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "profession",
+      "value": "libraire",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Camille Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "produits vendus",
+      "value": "livres, almanachs, fil à broder",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Camille Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "lieu d'exercice",
+      "value": "librairie face à la maison du docteur Étienne Mercier (sous une enseigne repeinte chaque printemps)",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Église (d'Aubières)",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "caractérisation spatiale",
+      "value": "place de l’Église partagée par deux Mercier",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "lettre",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "adresseingÉtiquette",
+      "value": "« Mercier » (sans autre précision)",
+      "moment_id": 2,
+      "chunk_index": 0
+    },
+    {
+      "entity": "facteur",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "comportement standard pour ce cas",
+      "value": "hésite un instant, puis porte la lettre à la librairie",
+      "moment_id": 2,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Camille Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "destination finale",
+      "value": "docteur Étienne Mercier",
+      "moment_id": 2,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Suzanne Vidal",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "alias",
+      "value": "la Demoiselle",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Suzanne Vidal",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "coutume villageoise",
+      "value": "appelée « la Demoiselle »",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Suzanne Vidal",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "lieu_corrige_cahiers",
+      "value": "près du poêle",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "docteur Étienne Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "jugement sur état de santé",
+      "value": "trouvaissait trop pâle",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "docteur Étienne Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "conseil médical",
+      "value": "grand air",
+      "moment_id": 3,
+      "chunk_index": 1
+    }
+  ]
+}

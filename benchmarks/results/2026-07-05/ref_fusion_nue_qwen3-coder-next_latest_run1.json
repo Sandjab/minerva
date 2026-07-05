@@ -1,0 +1,482 @@
+{
+  "entities": [
+    {
+      "name": "Aubières",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "type": "lieu"
+      }
+    },
+    {
+      "name": "place de l'Église",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "localisation": "à Aubières"
+      }
+    },
+    {
+      "name": "deux Mercier",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Camille Mercier",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "mission": "consulter Suzanne Vidal"
+      }
+    },
+    {
+      "name": "Suzanne Vidal",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "alias": "la Demoiselle",
+        "profession": "institutrice",
+        "fréquence": "tous les jeudis",
+        "nature": "corriger ses cahiers",
+        "condition_ambiance_préférée": "près du poêle",
+        "raison": "odeur du papier neuf l’aidait à réfléchir",
+        "état_de_santé": "toxique (crise de toux forte)",
+        "activité_professionnelle": "repris la classe au printemps (guérie)"
+      }
+    },
+    {
+      "name": "le docteur Mercier",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "nature": "frère",
+        "perception": "très pâle",
+        "conseil": "grand air"
+      }
+    },
+    {
+      "name": "Lucien Delorme",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "activité principale": "élevage de chèvres et pressurage de cidre"
+      }
+    },
+    {
+      "name": "le domaine de Delorme",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "localisation": "à une lieue au nord d’Aubières",
+        "accessibilité horaire": "ouvert toute l'année, y compris en hiver",
+        "caractéristique_climatologique": "air sec"
+      }
+    },
+    {
+      "name": "docteur Étienne Mercier",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "rapport au domaine de Delorme": "il ordonne le lait de ce domaines à ses convalescents",
+        "repos": "un mois au domaine de Delorme (air sec)"
+      }
+    },
+    {
+      "name": "LucienDelorme",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "lieu": "au domainede Delorme"
+      }
+    },
+    {
+      "name": "guérison_de_SuzanneVidal",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "étendue_temporelle",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "name": "partage",
+      "source": "deux Mercier",
+      "target": "place de l'Église",
+      "attributes": {}
+    },
+    {
+      "name": "sentiment_partagé",
+      "source": "deux Mercier",
+      "target": "guérison_de_SuzanneVidal",
+      "attributes": {
+        "intensité": "joie intense (fraternelle, comme s’ils étaient de la même famille)"
+      }
+    },
+    {
+      "name": "séjour_au_domaine_de_Delorme",
+      "source": "Suzanne Vidal",
+      "target": "étendue_temporelle",
+      "attributes": {
+        "durée": "un mois"
+      }
+    }
+  ],
+  "moments": [
+    {
+      "id": 1,
+      "chunk_index": 0,
+      "seq": 0,
+      "summary": "Présentation des deux Mercier à Aubières, installés face à face sur la place de l’Église.",
+      "resolved_order": 0,
+      "resolved_days": 0.0
+    },
+    {
+      "id": 2,
+      "chunk_index": 0,
+      "seq": 1,
+      "summary": "",
+      "resolved_order": 1,
+      "resolved_days": null
+    },
+    {
+      "id": 3,
+      "chunk_index": 1,
+      "seq": 0,
+      "summary": "Présentation de Suzanne Vidal (la Demoiselle) et activités quotidiennes à la librairie, ainsi que l’inquiétude du docteur Mercier pour sa santé.",
+      "resolved_order": 2,
+      "resolved_days": null
+    },
+    {
+      "id": 4,
+      "chunk_index": 2,
+      "seq": 0,
+      "summary": "Le domaines de Lucien Delorme à Aubières : activités ( élevage de chèvres, pressurage du cidre), accessibilité persistante, et son lien avec le docteur Mercier.",
+      "resolved_order": 3,
+      "resolved_days": null
+    },
+    {
+      "id": 5,
+      "chunk_index": 3,
+      "seq": 0,
+      "summary": "Crise de toux de Suzanne Vidal en classe, consultation du docteur Mercier et prescription d’un mois de repos au domaine de Delorme ; guérison au printemps et joie partagée des deux Mercier.",
+      "resolved_order": 4,
+      "resolved_days": null
+    }
+  ],
+  "constraints": [
+    {
+      "source_id": 1,
+      "relation": "avant",
+      "target_id": 2,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 2,
+      "relation": "avant",
+      "target_id": 3,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 3,
+      "relation": "avant",
+      "target_id": 4,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 4,
+      "relation": "avant",
+      "target_id": 5,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    }
+  ],
+  "appearances": {
+    "2": [
+      "Aubières",
+      "deux Mercier",
+      "place de l'Église"
+    ],
+    "3": [
+      "Camille Mercier",
+      "Suzanne Vidal",
+      "le docteur Mercier"
+    ],
+    "4": [
+      "Aubières",
+      "Lucien Delorme",
+      "docteur Étienne Mercier",
+      "le domaine de Delorme"
+    ],
+    "5": [
+      "Camille Mercier",
+      "Lucien Delorme",
+      "LucienDelorme",
+      "Suzanne Vidal",
+      "deux Mercier",
+      "docteur Étienne Mercier",
+      "guérison_de_SuzanneVidal",
+      "le domaine de Delorme",
+      "place de l'Église",
+      "étendue_temporelle"
+    ]
+  },
+  "assertions": [
+    {
+      "entity": "Aubières",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "type",
+      "value": "lieu",
+      "moment_id": 2,
+      "chunk_index": 0
+    },
+    {
+      "entity": "place de l'Église",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "localisation",
+      "value": "à Aubières",
+      "moment_id": 2,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "partage",
+      "relation_source": "deux Mercier",
+      "relation_target": "place de l'Église",
+      "attribute": "",
+      "value": "",
+      "moment_id": 2,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Suzanne Vidal",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "alias",
+      "value": "la Demoiselle",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Suzanne Vidal",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "profession",
+      "value": "institutrice",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Suzanne Vidal",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "fréquence",
+      "value": "tous les jeudis",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Suzanne Vidal",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "nature",
+      "value": "corriger ses cahiers",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Suzanne Vidal",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "condition_ambiance_préférée",
+      "value": "près du poêle",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Suzanne Vidal",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "raison",
+      "value": "odeur du papier neuf l’aidait à réfléchir",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "le docteur Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "nature",
+      "value": "frère",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "le docteur Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "perception",
+      "value": "très pâle",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "le docteur Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "conseil",
+      "value": "grand air",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Lucien Delorme",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "activité principale",
+      "value": "élevage de chèvres et pressurage de cidre",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "le domaine de Delorme",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "localisation",
+      "value": "à une lieue au nord d’Aubières",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "le domaine de Delorme",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "accessibilité horaire",
+      "value": "ouvert toute l'année, y compris en hiver",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "docteur Étienne Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "rapport au domaine de Delorme",
+      "value": "il ordonne le lait de ce domaines à ses convalescents",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Suzanne Vidal",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "état_de_santé",
+      "value": "toxique (crise de toux forte)",
+      "moment_id": 5,
+      "chunk_index": 3
+    },
+    {
+      "entity": "Camille Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "mission",
+      "value": "consulter Suzanne Vidal",
+      "moment_id": 5,
+      "chunk_index": 3
+    },
+    {
+      "entity": "docteur Étienne Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "repos",
+      "value": "un mois au domaine de Delorme (air sec)",
+      "moment_id": 5,
+      "chunk_index": 3
+    },
+    {
+      "entity": "LucienDelorme",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "lieu",
+      "value": "au domainede Delorme",
+      "moment_id": 5,
+      "chunk_index": 3
+    },
+    {
+      "entity": "le domaine de Delorme",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "caractéristique_climatologique",
+      "value": "air sec",
+      "moment_id": 5,
+      "chunk_index": 3
+    },
+    {
+      "entity": "Suzanne Vidal",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "activité_professionnelle",
+      "value": "repris la classe au printemps (guérie)",
+      "moment_id": 5,
+      "chunk_index": 3
+    },
+    {
+      "entity": "",
+      "relation_name": "sentiment_partagé",
+      "relation_source": "deux Mercier",
+      "relation_target": "guérison_de_SuzanneVidal",
+      "attribute": "intensité",
+      "value": "joie intense (fraternelle, comme s’ils étaient de la même famille)",
+      "moment_id": 5,
+      "chunk_index": 3
+    },
+    {
+      "entity": "",
+      "relation_name": "séjour_au_domaine_de_Delorme",
+      "relation_source": "Suzanne Vidal",
+      "relation_target": "étendue_temporelle",
+      "attribute": "durée",
+      "value": "un mois",
+      "moment_id": 5,
+      "chunk_index": 3
+    }
+  ]
+}

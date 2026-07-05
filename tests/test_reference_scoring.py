@@ -26,6 +26,8 @@ REF_DATA = {
          "variants": ["la Poste", "Poste"], "level": "optional"},
     ],
     "required_merges": [[["Alice Vernet"], ["docteur Vernet"]]],
+    # Bruno (personne) et Chaville (lieu) doivent RESTER séparés.
+    "forbidden_merges": [[["Bruno Maillard"], ["Chaville"]]],
     "relations": [
         {"pair": ["Alice Vernet", "Bruno Maillard"], "level": "core"},
         {"pair": ["Alice Vernet", "Chaville"], "level": "core"},
@@ -197,6 +199,34 @@ def test_fusion_mention_absente_du_graphe():
     assert s["merge_rate"] == "0/1"
 
 
+def test_separation_reussie():
+    # perfect_graph : Bruno et Chaville sont deux entités distinctes.
+    s = scoring.score_reference(perfect_graph(), make_ref())
+    assert s["separation_rate"] == "1/1"
+    assert s["over_merges"] == []
+
+
+def test_sur_fusion_detectee():
+    # Bruno et Chaville fusionnés à tort : une seule entité porte les deux.
+    g = KnowledgeGraph()
+    g.add_entity(Entity(name="Alice Vernet", type="personne", aliases=["docteur Vernet"]))
+    g.add_entity(Entity(name="Bruno Maillard", type="personne", aliases=["Chaville"]))
+    s = scoring.score_reference(g, make_ref())
+    assert s["separation_rate"] == "0/1"
+    assert s["over_merges"] == [[["Bruno Maillard"], ["Chaville"]]]
+
+
+def test_separation_non_evaluable_si_referent_absent():
+    # Chaville non extrait : ni sur-fusion ni séparation — paire hors dénominateur
+    # (la sur-fusion ne se confond pas avec un défaut de rappel, déjà mesuré).
+    g = KnowledgeGraph()
+    g.add_entity(Entity(name="Alice Vernet", type="personne", aliases=["docteur Vernet"]))
+    g.add_entity(Entity(name="Bruno Maillard", type="personne"))
+    s = scoring.score_reference(g, make_ref())
+    assert s["separation_rate"] == "0/0"
+    assert s["over_merges"] == []
+
+
 def test_validation_reference_saine():
     assert scoring.validate_reference(make_ref()) == []
 
@@ -227,3 +257,22 @@ def test_validation_detecte_les_incoherences():
     assert "dupliquée" in text       # {A,B} deux fois
     assert "Fantôme" in text         # fusion hors variants
     assert "entrées différentes" in text  # fusion A/B inter-entrées
+
+
+def test_validation_forbidden_merge_incoherent():
+    bad = {
+        "text": "bad.txt",
+        "entities": [
+            {"name": "A", "type": "personne", "variants": ["A", "Alpha"], "level": "core"},
+            {"name": "B", "type": "personne", "variants": ["B"], "level": "core"},
+        ],
+        "required_merges": [],
+        # A/Alpha : séparation de deux mentions du MÊME référent (incohérent) ;
+        # A/Fantôme : mention hors variants.
+        "forbidden_merges": [[["A"], ["Alpha"]], [["A"], ["Fantôme"]]],
+        "relations": [],
+    }
+    errors = scoring.validate_reference(scoring.Reference(bad))
+    text = "\n".join(errors)
+    assert "même entrée" in text
+    assert "Fantôme" in text

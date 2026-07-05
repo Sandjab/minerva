@@ -15,6 +15,7 @@ _spec.loader.exec_module(scoring)
 REFERENCES = {
     "reference_reference_texte.json": "reference_texte.txt",
     "reference_timeline_texte.json": "timeline_texte.txt",
+    "reference_fusion_texte.json": "fusion_texte.txt",
 }
 
 

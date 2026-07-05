@@ -1,0 +1,624 @@
+{
+  "entities": [
+    {
+      "name": "la Demoiselle",
+      "type": "inconnu",
+      "aliases": [
+        "Suzanne Vidal"
+      ],
+      "attributes": {
+        "profession": "institutrice",
+        "activité_jeudis": "corriger cahiers à la librairie près du poêle",
+        "odeur_aide_réflexion": "papier neuf",
+        "toux": "fort",
+        "état": "guérie"
+      }
+    },
+    {
+      "name": "Étienne Mercier",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "profession": "docteur",
+        "cabinet_location": "rez‑de‑chaussée de la maison à volets bleus",
+        "mode_de_visite": "à pied",
+        "porte_sacoche": "sous le bras",
+        "connaissance_medicale": "nom de chaque fièvre du canton"
+      }
+    },
+    {
+      "name": "Camille Mercier",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "profession": "libraire",
+        "vende": "livres, almanachs et fil à broder",
+        "localisation": "en face de la maison à volets bleus, sous une enseigne repeinte chaque printemps"
+      }
+    },
+    {
+      "name": "le facteur",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Lucien Delorme",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "activité": "élevage de chèvres",
+        "production_cidre": "pression du cidre"
+      }
+    },
+    {
+      "name": "domaine de Delorme",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "localisation": "Aubières",
+        "distance_nord": "une lieue",
+        "ouverture_hiver": "jamais"
+      }
+    },
+    {
+      "name": "lait",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "convalescents",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "name": "remise_lettre",
+      "source": "le facteur",
+      "target": "Camille Mercier",
+      "attributes": {
+        "condition": "lettre adressée à « Mercier » sans autre précision"
+      }
+    },
+    {
+      "name": "transmission_lettre",
+      "source": "Camille Mercier",
+      "target": "Étienne Mercier",
+      "attributes": {
+        "condition": "la lettre parle de quinine"
+      }
+    },
+    {
+      "name": "amie_de",
+      "source": "Camille Mercier",
+      "target": "la Demoiselle",
+      "attributes": {}
+    },
+    {
+      "name": "alias",
+      "source": "la Demoiselle",
+      "target": "la Demoiselle",
+      "attributes": {}
+    },
+    {
+      "name": "trouve_trop_pâle",
+      "source": "Étienne Mercier",
+      "target": "la Demoiselle",
+      "attributes": {}
+    },
+    {
+      "name": "recommande_air_frais",
+      "source": "Étienne Mercier",
+      "target": "la Demoiselle",
+      "attributes": {}
+    },
+    {
+      "name": "fournit",
+      "source": "Lucien Delorme",
+      "target": "lait",
+      "attributes": {}
+    },
+    {
+      "name": "ordonne",
+      "source": "Étienne Mercier",
+      "target": "convalescents",
+      "attributes": {
+        "objet": "lait"
+      }
+    },
+    {
+      "name": "envoyer_chercher",
+      "source": "Camille Mercier",
+      "target": "Étienne Mercier",
+      "attributes": {}
+    },
+    {
+      "name": "ausculter",
+      "source": "Étienne Mercier",
+      "target": "la Demoiselle",
+      "attributes": {}
+    },
+    {
+      "name": "prescrire_repos",
+      "source": "Étienne Mercier",
+      "target": "domaine de Delorme",
+      "attributes": {
+        "durée": "un mois"
+      }
+    },
+    {
+      "name": "conduire",
+      "source": "Lucien Delorme",
+      "target": "la Demoiselle",
+      "attributes": {
+        "moyen": "charrette"
+      }
+    },
+    {
+      "name": "féliciter",
+      "source": "Étienne Mercier",
+      "target": "Camille Mercier",
+      "attributes": {}
+    },
+    {
+      "name": "féliciter",
+      "source": "Camille Mercier",
+      "target": "Étienne Mercier",
+      "attributes": {}
+    },
+    {
+      "name": "comparaison_famille",
+      "source": "Étienne Mercier",
+      "target": "Camille Mercier",
+      "attributes": {
+        "comme_si": "même famille"
+      }
+    }
+  ],
+  "moments": [
+    {
+      "id": 1,
+      "chunk_index": 0,
+      "seq": 0,
+      "summary": "À Aubières, le docteur Étienne Mercier et la libraire Camille Mercier se partagent la place de l’Église ; le facteur remet les lettres adressées à « Mercier » à la libraire qui les transmet au docteur si elles concernent la quinine.",
+      "resolved_order": 0,
+      "resolved_days": 0.0
+    },
+    {
+      "id": 2,
+      "chunk_index": 1,
+      "seq": 0,
+      "summary": "Camille Mercier est amie avec l’institutrice Suzanne Vidal, surnommée la Demoiselle, qui passe ses jeudis à la librairie à corriger des cahiers près du poêle ; le docteur Étienne Mercier la trouve trop pâle et lui recommande de prendre l’air frais.",
+      "resolved_order": 1,
+      "resolved_days": null
+    },
+    {
+      "id": 3,
+      "chunk_index": 2,
+      "seq": 0,
+      "summary": "Le domaine de Delorme à Aubières, exploité par Lucien Delorme qui élève des chèvres et presse du cidre, fournit le lait que le docteur Étienne Mercier ordonne à ses convalescents ; le domaine ne ferme jamais, même en hiver.",
+      "resolved_order": 2,
+      "resolved_days": null
+    },
+    {
+      "id": 4,
+      "chunk_index": 3,
+      "seq": 0,
+      "summary": "Un soir de novembre, la Demoiselle tousse si fort en classe ; le docteur Étienne Mercier vient l’examiner, prescribe un mois de repos au domaine de Delorme et Lucien y conduit la Demoiselle.",
+      "resolved_order": 3,
+      "resolved_days": null
+    },
+    {
+      "id": 5,
+      "chunk_index": 3,
+      "seq": 1,
+      "summary": "Au printemps, Mlle Vidal rouvre la classe guérie ; les deux Mercier se félicitent chacun de leur côté comme s’ils étaient de la même famille.",
+      "resolved_order": 4,
+      "resolved_days": null
+    }
+  ],
+  "constraints": [
+    {
+      "source_id": 1,
+      "relation": "avant",
+      "target_id": 2,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 2,
+      "relation": "avant",
+      "target_id": 3,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 3,
+      "relation": "avant",
+      "target_id": 4,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 4,
+      "relation": "avant",
+      "target_id": 5,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    }
+  ],
+  "appearances": {
+    "1": [
+      "Camille Mercier",
+      "le facteur",
+      "Étienne Mercier"
+    ],
+    "2": [
+      "Camille Mercier",
+      "la Demoiselle",
+      "Étienne Mercier"
+    ],
+    "3": [
+      "Lucien Delorme",
+      "convalescents",
+      "domaine de Delorme",
+      "lait",
+      "Étienne Mercier"
+    ],
+    "4": [
+      "Camille Mercier",
+      "Lucien Delorme",
+      "domaine de Delorme",
+      "la Demoiselle",
+      "Étienne Mercier"
+    ],
+    "5": [
+      "Camille Mercier",
+      "la Demoiselle",
+      "Étienne Mercier"
+    ]
+  },
+  "assertions": [
+    {
+      "entity": "Étienne Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "profession",
+      "value": "docteur",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Étienne Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "cabinet_location",
+      "value": "rez‑de‑chaussée de la maison à volets bleus",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Étienne Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "mode_de_visite",
+      "value": "à pied",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Étienne Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "porte_sacoche",
+      "value": "sous le bras",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Étienne Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "connaissance_medicale",
+      "value": "nom de chaque fièvre du canton",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Camille Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "profession",
+      "value": "libraire",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Camille Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "vende",
+      "value": "livres, almanachs et fil à broder",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Camille Mercier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "localisation",
+      "value": "en face de la maison à volets bleus, sous une enseigne repeinte chaque printemps",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "remise_lettre",
+      "relation_source": "le facteur",
+      "relation_target": "Camille Mercier",
+      "attribute": "condition",
+      "value": "lettre adressée à « Mercier » sans autre précision",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "transmission_lettre",
+      "relation_source": "Camille Mercier",
+      "relation_target": "Étienne Mercier",
+      "attribute": "condition",
+      "value": "la lettre parle de quinine",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "amie_de",
+      "relation_source": "Camille Mercier",
+      "relation_target": "la Demoiselle",
+      "attribute": "",
+      "value": "",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "la Demoiselle",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "profession",
+      "value": "institutrice",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "alias",
+      "relation_source": "la Demoiselle",
+      "relation_target": "la Demoiselle",
+      "attribute": "",
+      "value": "",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "la Demoiselle",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "activité_jeudis",
+      "value": "corriger cahiers à la librairie près du poêle",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "la Demoiselle",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "odeur_aide_réflexion",
+      "value": "papier neuf",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "trouve_trop_pâle",
+      "relation_source": "Étienne Mercier",
+      "relation_target": "la Demoiselle",
+      "attribute": "",
+      "value": "",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "recommande_air_frais",
+      "relation_source": "Étienne Mercier",
+      "relation_target": "la Demoiselle",
+      "attribute": "",
+      "value": "",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "domaine de Delorme",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "localisation",
+      "value": "Aubières",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "domaine de Delorme",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "distance_nord",
+      "value": "une lieue",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Lucien Delorme",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "activité",
+      "value": "élevage de chèvres",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Lucien Delorme",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "production_cidre",
+      "value": "pression du cidre",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "fournit",
+      "relation_source": "Lucien Delorme",
+      "relation_target": "lait",
+      "attribute": "",
+      "value": "",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "ordonne",
+      "relation_source": "Étienne Mercier",
+      "relation_target": "convalescents",
+      "attribute": "objet",
+      "value": "lait",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "domaine de Delorme",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "ouverture_hiver",
+      "value": "jamais",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "la Demoiselle",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "toux",
+      "value": "fort",
+      "moment_id": 4,
+      "chunk_index": 3
+    },
+    {
+      "entity": "",
+      "relation_name": "envoyer_chercher",
+      "relation_source": "Camille Mercier",
+      "relation_target": "Étienne Mercier",
+      "attribute": "",
+      "value": "",
+      "moment_id": 4,
+      "chunk_index": 3
+    },
+    {
+      "entity": "",
+      "relation_name": "ausculter",
+      "relation_source": "Étienne Mercier",
+      "relation_target": "la Demoiselle",
+      "attribute": "",
+      "value": "",
+      "moment_id": 4,
+      "chunk_index": 3
+    },
+    {
+      "entity": "",
+      "relation_name": "prescrire_repos",
+      "relation_source": "Étienne Mercier",
+      "relation_target": "domaine de Delorme",
+      "attribute": "durée",
+      "value": "un mois",
+      "moment_id": 4,
+      "chunk_index": 3
+    },
+    {
+      "entity": "",
+      "relation_name": "conduire",
+      "relation_source": "Lucien Delorme",
+      "relation_target": "la Demoiselle",
+      "attribute": "moyen",
+      "value": "charrette",
+      "moment_id": 4,
+      "chunk_index": 3
+    },
+    {
+      "entity": "la Demoiselle",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "état",
+      "value": "guérie",
+      "moment_id": 5,
+      "chunk_index": 3
+    },
+    {
+      "entity": "",
+      "relation_name": "féliciter",
+      "relation_source": "Étienne Mercier",
+      "relation_target": "Camille Mercier",
+      "attribute": "",
+      "value": "",
+      "moment_id": 5,
+      "chunk_index": 3
+    },
+    {
+      "entity": "",
+      "relation_name": "féliciter",
+      "relation_source": "Camille Mercier",
+      "relation_target": "Étienne Mercier",
+      "attribute": "",
+      "value": "",
+      "moment_id": 5,
+      "chunk_index": 3
+    },
+    {
+      "entity": "",
+      "relation_name": "comparaison_famille",
+      "relation_source": "Étienne Mercier",
+      "relation_target": "Camille Mercier",
+      "attribute": "comme_si",
+      "value": "même famille",
+      "moment_id": 5,
+      "chunk_index": 3
+    }
+  ]
+}
