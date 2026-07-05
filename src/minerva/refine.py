@@ -157,3 +157,71 @@ def canonicalize_graph(graph: KnowledgeGraph, backend: LLMBackend) -> KnowledgeG
         CanonicalizationResult,
     )
     return apply_canonicalization(graph, result.groups)
+
+
+# --- Passe d'alias / identité d'emprunt (relit le TEXTE) ----------------------
+#
+# La canonicalisation ne voit que les NOMS ; elle ne peut donc pas relier deux
+# noms propres distincts (« Antoine Sérac » et « Théo Rivière ») que seul le
+# récit désigne comme une même personne. Cette passe fournit le texte au modèle
+# et lui demande les fusions que la lecture — et elle seule — révèle. Le format
+# de sortie et l'application déterministe sont ceux de la canonicalisation.
+
+IMPERSONATION_SYSTEM = """\
+Tu repères les IDENTITÉS D'EMPRUNT dans un récit. On te donne le texte source et \
+la liste des entités déjà extraites. Cherche dans le TEXTE les cas où un même \
+individu porte deux noms propres différents parce qu'il cache ou change \
+d'identité : pseudonyme, fausse identité, nom d'emprunt, alias révélé (« il \
+s'appelait en réalité X », « X, alias Y », double signature « X — Y »). Ne te \
+fie PAS à la ressemblance des noms : ici les deux noms sont volontairement \
+distincts, seule la lecture du texte permet de les relier. Pour chaque identité, \
+renvoie un groupe : `canonical` = le nom sous lequel le personnage est le plus \
+souvent désigné dans le récit, `members` = TOUS ses noms (le canonique inclus). \
+Ne relie JAMAIS deux personnes réellement distinctes. Si le texte ne révèle \
+aucune identité d'emprunt, renvoie une liste vide.\
+"""
+
+BROAD_ALIAS_SYSTEM = """\
+Tu es un résolveur de coréférence qui s'appuie sur le TEXTE. On te donne le texte \
+source et la liste des entités déjà extraites. En relisant le texte, identifie \
+tous les groupes d'entités qui désignent le MÊME référent mais que la seule liste \
+de noms ne permet pas de rapprocher :
+- identités d'emprunt (pseudonyme, fausse identité, « il s'appelait en réalité \
+X », « X, alias Y », double signature) ;
+- périphrases et désignations narratives qu'un nom propre du texte identifie sans \
+ambiguïté (« le cartographe », « le géomètre » renvoyant à la personne nommée).
+Pour chaque groupe, `canonical` = le nom le plus complet et le plus fréquent, \
+`members` = TOUS les noms du groupe (le canonique inclus). Ne relie JAMAIS deux \
+référents réellement distincts ni une périphrase ambiguë. Si rien n'est à relier, \
+renvoie une liste vide.\
+"""
+
+_ALIAS_SYSTEMS = {
+    "impersonation": IMPERSONATION_SYSTEM,
+    "broad": BROAD_ALIAS_SYSTEM,
+}
+
+
+def resolve_aliases(
+    graph: KnowledgeGraph,
+    text: str,
+    backend: LLMBackend,
+    *,
+    scope: str = "impersonation",
+) -> KnowledgeGraph:
+    """Relit le TEXTE pour proposer (LLM) puis appliquer (code) les fusions que
+    la seule liste de noms ne révèle pas — au premier chef les identités
+    d'emprunt. `scope` : « impersonation » (ciblé) ou « broad » (élargi aux
+    périphrases narratives). Réutilise l'application déterministe des fusions."""
+    try:
+        system = _ALIAS_SYSTEMS[scope]
+    except KeyError:
+        raise ValueError(
+            f"scope inconnu : {scope!r} (attendu : {sorted(_ALIAS_SYSTEMS)})"
+        )
+    user = (
+        "Texte source :\n\n" + text
+        + "\n\nEntités extraites :\n" + _entity_listing(graph)
+    )
+    result = backend.parse(system, user, CanonicalizationResult)
+    return apply_canonicalization(graph, result.groups)

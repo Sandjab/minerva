@@ -22,7 +22,7 @@ from pathlib import Path
 from minerva.extraction import extract_graph
 from minerva.llm.openai_backend import OpenAIBackend
 from minerva.model import KnowledgeGraph
-from minerva.refine import canonicalize_graph, complete_graph
+from minerva.refine import canonicalize_graph, complete_graph, resolve_aliases
 
 HERE = Path(__file__).parent
 
@@ -36,7 +36,8 @@ OLLAMA = "http://localhost:11434/v1"
 CHUNK_SIZE = 700  # plusieurs chunks : cohérence inter-chunks testée
 DEFAULT_MODELS = ["gpt-oss:120b", "qwen3-coder-next:latest"]
 TEXTS = {"reference": "reference_texte.txt", "timeline": "timeline_texte.txt"}
-PIPELINES = ("nue", "actee")
+# actee_alias : actée + passe d'identité d'emprunt (relit le texte, portée ciblée)
+PIPELINES = ("nue", "actee", "actee_alias")
 
 
 def backend(model: str, temperature: float | None = None) -> OpenAIBackend:
@@ -51,11 +52,15 @@ def run_one(model: str, text: str, pipeline: str, temperature: float | None,
         on_progress=lambda d, t: print(f"  {label} chunk {d}/{t}", flush=True),
     )
     detail = ""
-    if pipeline == "actee":
+    if pipeline in ("actee", "actee_alias"):
         n = complete_graph(graph, text, backend(model, temperature=0))
         before = len(graph.entities)
         graph = canonicalize_graph(graph, backend(model, temperature=0))
         detail = f"complétude +{n}, canon {before}->{len(graph.entities)}"
+    if pipeline == "actee_alias":
+        before = len(graph.entities)
+        graph = resolve_aliases(graph, text, backend(model, temperature=0))
+        detail += f", alias {before}->{len(graph.entities)}"
     entry = {"time_s": round(time.monotonic() - t0, 1), "detail": detail}
     return entry, graph
 

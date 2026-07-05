@@ -1,0 +1,188 @@
+{
+  "rows": [
+    {
+      "graph": "ref_reference_actee_gpt-oss_120b_run1.json",
+      "model": "gpt-oss:120b",
+      "baseline": {
+        "merge_rate": "2/4",
+        "impersonation": false,
+        "entity_precision": 0.792,
+        "relation_precision": 0.87,
+        "n_entities": 24
+      },
+      "impersonation": {
+        "merge_rate": "3/4",
+        "impersonation": true,
+        "entity_precision": 0.826,
+        "relation_precision": 0.87,
+        "n_entities": 23
+      },
+      "broad": {
+        "merge_rate": "3/4",
+        "impersonation": true,
+        "entity_precision": 0.826,
+        "relation_precision": 0.87,
+        "n_entities": 23
+      }
+    },
+    {
+      "graph": "ref_reference_actee_gpt-oss_120b_run2.json",
+      "model": "gpt-oss:120b",
+      "baseline": {
+        "merge_rate": "1/4",
+        "impersonation": false,
+        "entity_precision": 0.857,
+        "relation_precision": 0.909,
+        "n_entities": 21
+      },
+      "impersonation": {
+        "merge_rate": "2/4",
+        "impersonation": true,
+        "entity_precision": 0.9,
+        "relation_precision": 0.909,
+        "n_entities": 20
+      },
+      "broad": {
+        "merge_rate": "2/4",
+        "impersonation": true,
+        "entity_precision": 0.9,
+        "relation_precision": 0.909,
+        "n_entities": 20
+      }
+    },
+    {
+      "graph": "ref_reference_actee_gpt-oss_120b_run3.json",
+      "model": "gpt-oss:120b",
+      "baseline": {
+        "merge_rate": "1/4",
+        "impersonation": false,
+        "entity_precision": 0.7,
+        "relation_precision": 0.704,
+        "n_entities": 30
+      },
+      "impersonation": {
+        "merge_rate": "2/4",
+        "impersonation": true,
+        "entity_precision": 0.724,
+        "relation_precision": 0.704,
+        "n_entities": 29
+      },
+      "broad": {
+        "merge_rate": "2/4",
+        "impersonation": true,
+        "entity_precision": 0.724,
+        "relation_precision": 0.704,
+        "n_entities": 29
+      }
+    },
+    {
+      "graph": "ref_reference_actee_qwen3-coder-next_latest_run1.json",
+      "model": "qwen3-coder-next:latest",
+      "baseline": {
+        "merge_rate": "1/4",
+        "impersonation": false,
+        "entity_precision": 0.737,
+        "relation_precision": 0.667,
+        "n_entities": 19
+      },
+      "impersonation": {
+        "merge_rate": "2/4",
+        "impersonation": true,
+        "entity_precision": 0.778,
+        "relation_precision": 0.667,
+        "n_entities": 18
+      },
+      "broad": {
+        "merge_rate": "1/4",
+        "impersonation": false,
+        "entity_precision": 0.737,
+        "relation_precision": 0.667,
+        "n_entities": 19
+      }
+    },
+    {
+      "graph": "ref_reference_actee_qwen3-coder-next_latest_run2.json",
+      "model": "qwen3-coder-next:latest",
+      "baseline": {
+        "merge_rate": "1/4",
+        "impersonation": false,
+        "entity_precision": 0.576,
+        "relation_precision": 0.733,
+        "n_entities": 33
+      },
+      "impersonation": {
+        "merge_rate": "2/4",
+        "impersonation": true,
+        "entity_precision": 0.594,
+        "relation_precision": 0.733,
+        "n_entities": 32
+      },
+      "broad": {
+        "merge_rate": "2/4",
+        "impersonation": true,
+        "entity_precision": 0.594,
+        "relation_precision": 0.733,
+        "n_entities": 32
+      }
+    },
+    {
+      "graph": "ref_reference_actee_qwen3-coder-next_latest_run3.json",
+      "model": "qwen3-coder-next:latest",
+      "baseline": {
+        "merge_rate": "1/4",
+        "impersonation": false,
+        "entity_precision": 0.565,
+        "relation_precision": 0.5,
+        "n_entities": 23
+      },
+      "impersonation": {
+        "merge_rate": "2/4",
+        "impersonation": true,
+        "entity_precision": 0.591,
+        "relation_precision": 0.5,
+        "n_entities": 22
+      },
+      "broad": {
+        "merge_rate": "2/4",
+        "impersonation": true,
+        "entity_precision": 0.591,
+        "relation_precision": 0.5,
+        "n_entities": 22
+      }
+    }
+  ],
+  "summary": [
+    {
+      "model": "gpt-oss:120b",
+      "scope": "broad",
+      "merge_rate": "7/12",
+      "impersonation_rate": "3/3",
+      "entity_precision_mean": 0.817,
+      "relation_precision_mean": 0.828
+    },
+    {
+      "model": "gpt-oss:120b",
+      "scope": "impersonation",
+      "merge_rate": "7/12",
+      "impersonation_rate": "3/3",
+      "entity_precision_mean": 0.817,
+      "relation_precision_mean": 0.828
+    },
+    {
+      "model": "qwen3-coder-next:latest",
+      "scope": "broad",
+      "merge_rate": "5/12",
+      "impersonation_rate": "2/3",
+      "entity_precision_mean": 0.641,
+      "relation_precision_mean": 0.633
+    },
+    {
+      "model": "qwen3-coder-next:latest",
+      "scope": "impersonation",
+      "merge_rate": "6/12",
+      "impersonation_rate": "3/3",
+      "entity_precision_mean": 0.654,
+      "relation_precision_mean": 0.633
+    }
+  ]
+}

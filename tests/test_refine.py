@@ -11,6 +11,7 @@ from minerva.refine import (
     apply_canonicalization,
     canonicalize_graph,
     complete_graph,
+    resolve_aliases,
 )
 
 
@@ -18,8 +19,10 @@ class FakeBackend:
     def __init__(self, result):
         self._result = result
         self.prompts = []
+        self.systems = []
 
     def parse(self, system, user, output_model):
+        self.systems.append(system)
         self.prompts.append(user)
         return self._result
 
@@ -170,3 +173,60 @@ def test_canonicalisation_preserve_le_journal_temporel():
     assert a.moment_id == m.id
     assert merged.timeline.appearances == {m.id: {"Monseigneur Bienvenu"}}
     assert merged.resolve("Monseigneur Bienvenu").attributes == {"ville": "Digne"}
+
+
+# --- Passe d'alias / identité d'emprunt (relit le TEXTE) ----------------------
+
+def impersonation_graph() -> KnowledgeGraph:
+    """Deux entités que la seule liste de noms ne peut pas rapprocher :
+    l'identité d'emprunt n'est révélée que par le texte."""
+    g = KnowledgeGraph()
+    g.add_entity(Entity(name="Antoine Sérac", type="personne",
+                        attributes={"métier": "cartographe"}))
+    g.add_entity(Entity(name="Théo Rivière", type="personne"))
+    g.add_relation(Relation(name="exerce à", source="Antoine Sérac", target="Valsonne"))
+    return g
+
+
+def test_resolve_aliases_merges_impersonation_revealed_by_text():
+    g = impersonation_graph()
+    backend = FakeBackend(CanonicalizationResult(groups=[
+        MergeGroup(canonical="Antoine Sérac", members=["Antoine Sérac", "Théo Rivière"]),
+    ]))
+
+    merged = resolve_aliases(g, "… il s'appelait Théo Rivière …", backend)
+
+    # les deux noms résolvent désormais vers UNE SEULE entité (fusion faite)
+    a = merged.resolve("Antoine Sérac")
+    b = merged.resolve("Théo Rivière")
+    assert a is not None and b is not None and a is b
+    assert a.name == "Antoine Sérac"
+    # l'attribut porté par l'entité fusionnée est conservé
+    assert a.attributes == {"métier": "cartographe"}
+
+
+def test_resolve_aliases_prompt_carries_text_and_entities():
+    g = impersonation_graph()
+    backend = FakeBackend(CanonicalizationResult())
+
+    resolve_aliases(g, "révélation clef : Théo Rivière", backend)
+
+    prompt = backend.prompts[0]
+    # le texte source est fourni — c'est LA différence avec la canonicalisation
+    assert "révélation clef : Théo Rivière" in prompt
+    # la liste des entités est fournie aussi
+    assert "Antoine Sérac" in prompt and "Théo Rivière" in prompt
+
+
+def test_resolve_aliases_scope_selects_distinct_system_prompt():
+    """Les deux portées (ciblée / large) doivent réellement différer, sinon le
+    bench comparerait deux fois le même prompt."""
+    g = impersonation_graph()
+    b_cible = FakeBackend(CanonicalizationResult())
+    b_large = FakeBackend(CanonicalizationResult())
+
+    resolve_aliases(g, "texte", b_cible, scope="impersonation")
+    resolve_aliases(g, "texte", b_large, scope="broad")
+
+    assert b_cible.systems[0] and b_large.systems[0]
+    assert b_cible.systems[0] != b_large.systems[0]
