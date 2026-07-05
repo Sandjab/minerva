@@ -204,3 +204,9 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Bases SQLite produites par minerva (extraction) — non versionnées
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite-journal
