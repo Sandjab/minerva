@@ -183,8 +183,9 @@ cython_debug/
 .superpowers/
 .playwright-mcp/
 
-# Textes d'entrée à traiter (romans, bases produites) — non versionnés
+# Entrées / sorties de minerva (romans en entrée, exports en sortie) — non versionnés
 in/
+out/
 
 # macOS
 .DS_Store
