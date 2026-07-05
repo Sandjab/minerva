@@ -1,0 +1,311 @@
+{
+  "entities": [
+    {
+      "name": "Antoine Sérac",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "atelier": "une malle d'instruments de cuivre."
+      }
+    },
+    {
+      "name": "l'ancienne remise de la rue des Tanneurs",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Société de géographie de Valsonne",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "une carte des hauteurs du mont Chauvel",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Marguerite Aubanel",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "activité": "tenait la librairie du Méridien et vendait des atlas anciens et récits de voyage."
+      }
+    },
+    {
+      "name": "Lucien Aubanel",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "librairie du Méridien",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Théo Rivière",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "docteur Paul Vaneau",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "commissaire Brossard",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "dossier de Théo Rivière",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "affaire du pont de la Frène à Saint-Elme",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Margot",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Sérac",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "docteur Vaneau",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "name": "loué",
+      "source": "Antoine Sérac",
+      "target": "l'ancienne remise de la rue des Tanneurs",
+      "attributes": {}
+    },
+    {
+      "name": "commandée",
+      "source": "Société de géographie de Valsonne",
+      "target": "une carte des hauteurs du mont Chauvel",
+      "attributes": {}
+    },
+    {
+      "name": "commerce",
+      "source": "Antoine Sérac",
+      "target": "Marguerite Aubanel",
+      "attributes": {
+        "clientèle": ""
+      }
+    },
+    {
+      "name": "condamné pour l'affaire du pont de la Frène",
+      "source": "dossier de Théo Rivière",
+      "target": "affaire du pont de la Frène à Saint-Elme",
+      "attributes": {}
+    }
+  ],
+  "moments": [
+    {
+      "id": 1,
+      "chunk_index": 0,
+      "seq": 0,
+      "summary": "Antoine Sérac est arrivé à Valsonne en tant que cartographe.",
+      "resolved_order": 0,
+      "resolved_days": 0.0
+    },
+    {
+      "id": 2,
+      "chunk_index": 1,
+      "seq": 0,
+      "summary": "Marguerite Aubanel vendait des atlas anciens et des récits de voyage pour Antoine Sérac.",
+      "resolved_order": 1,
+      "resolved_days": null
+    },
+    {
+      "id": 3,
+      "chunk_index": 2,
+      "seq": 0,
+      "summary": "Il y a dix ans, le pont de la Frène à Saint-Elme est effondré et on soupçonne un géomètre.",
+      "resolved_order": 2,
+      "resolved_days": null
+    },
+    {
+      "id": 4,
+      "chunk_index": 3,
+      "seq": 0,
+      "summary": "Théo Rivière, un géomètre de Saint-Elme",
+      "resolved_order": 3,
+      "resolved_days": null
+    },
+    {
+      "id": 5,
+      "chunk_index": 4,
+      "seq": 0,
+      "summary": "Margot contracta une fièvre lors de l'inventaire mais garda le secret.",
+      "resolved_order": 4,
+      "resolved_days": null
+    },
+    {
+      "id": 6,
+      "chunk_index": 5,
+      "seq": 0,
+      "summary": "Le dossier Rivière est vérifié et classé.",
+      "resolved_order": 5,
+      "resolved_days": null
+    }
+  ],
+  "constraints": [
+    {
+      "source_id": 1,
+      "relation": "avant",
+      "target_id": 2,
+      "gap": {
+        "text": "samedi",
+        "days": null
+      }
+    },
+    {
+      "source_id": 2,
+      "relation": "avant",
+      "target_id": 3,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 3,
+      "relation": "avant",
+      "target_id": 4,
+      "gap": {
+        "text": "\"à sa libération\"",
+        "days": null
+      }
+    },
+    {
+      "source_id": 4,
+      "relation": "avant",
+      "target_id": 5,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 5,
+      "relation": "avant",
+      "target_id": 6,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    }
+  ],
+  "appearances": {
+    "1": [
+      "Antoine Sérac",
+      "Société de géographie de Valsonne",
+      "l'ancienne remise de la rue des Tanneurs",
+      "une carte des hauteurs du mont Chauvel"
+    ],
+    "2": [
+      "Antoine Sérac",
+      "Lucien Aubanel",
+      "Marguerite Aubanel",
+      "librairie du Méridien"
+    ],
+    "4": [
+      "Théo Rivière",
+      "affaire du pont de la Frène à Saint-Elme",
+      "commissaire Brossard",
+      "docteur Paul Vaneau",
+      "dossier de Théo Rivière"
+    ],
+    "5": [
+      "Margot",
+      "Sérac",
+      "docteur Vaneau"
+    ]
+  },
+  "assertions": [
+    {
+      "entity": "Antoine Sérac",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "atelier",
+      "value": "une malle d'instruments de cuivre.",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "loué",
+      "relation_source": "Antoine Sérac",
+      "relation_target": "l'ancienne remise de la rue des Tanneurs",
+      "attribute": "",
+      "value": "",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "commandée",
+      "relation_source": "Société de géographie de Valsonne",
+      "relation_target": "une carte des hauteurs du mont Chauvel",
+      "attribute": "",
+      "value": "",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Marguerite Aubanel",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "activité",
+      "value": "tenait la librairie du Méridien et vendait des atlas anciens et récits de voyage.",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "commerce",
+      "relation_source": "Antoine Sérac",
+      "relation_target": "Marguerite Aubanel",
+      "attribute": "clientèle",
+      "value": "",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "condamné pour l'affaire du pont de la Frène",
+      "relation_source": "dossier de Théo Rivière",
+      "relation_target": "affaire du pont de la Frène à Saint-Elme",
+      "attribute": "",
+      "value": "",
+      "moment_id": 4,
+      "chunk_index": 3
+    }
+  ]
+}

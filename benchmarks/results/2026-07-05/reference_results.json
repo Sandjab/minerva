@@ -2898,5 +2898,536 @@
     "relation_f1_mean": 0.292,
     "relation_f1_std": 0.159,
     "merge_rate": "0/9"
+  },
+  {
+    "model": "qwen3.6:latest",
+    "temperature": null,
+    "runs": 1,
+    "text": "reference",
+    "pipeline": "nue",
+    "time_s": 467.8,
+    "detail": "",
+    "n_entities": 26,
+    "n_relations": 15,
+    "n_predicted_pairs": 13,
+    "entity_precision": 0.731,
+    "entity_recall": 1.0,
+    "entity_f1": 0.844,
+    "relation_precision": 0.692,
+    "relation_recall": 0.462,
+    "relation_f1": 0.554,
+    "merges_ok": 0,
+    "merges_total": 4,
+    "merge_rate": "0/4",
+    "failed_merges": [
+      [
+        [
+          "Antoine Sérac",
+          "Sérac"
+        ],
+        [
+          "Théo Rivière",
+          "Rivière"
+        ]
+      ],
+      [
+        [
+          "Marguerite Aubanel"
+        ],
+        [
+          "Margot"
+        ]
+      ],
+      [
+        [
+          "Paul Vaneau",
+          "le docteur Paul Vaneau"
+        ],
+        [
+          "le docteur Vaneau",
+          "docteur Vaneau"
+        ]
+      ],
+      [
+        [
+          "Félix Brossard"
+        ],
+        [
+          "le commissaire Brossard",
+          "commissaire Brossard"
+        ]
+      ]
+    ],
+    "missing_entities": [],
+    "false_positive_entities": [
+      "Marguerite_Aubanel",
+      "Théo Rivière (alias Antoine Sérac)",
+      "carte_gravée_du_mont_Chauvel",
+      "entrepreneur pressé",
+      "entrepreneur_pressé",
+      "greffe"
+    ],
+    "duplicate_entities": [
+      "Antoine Sérac"
+    ],
+    "missing_relations": [
+      [
+        "Antoine Sérac",
+        "Marguerite Aubanel"
+      ],
+      [
+        "Antoine Sérac",
+        "Saint-Elme"
+      ],
+      [
+        "Antoine Sérac",
+        "Société de géographie de Valsonne"
+      ],
+      [
+        "Antoine Sérac",
+        "Valsonne"
+      ],
+      [
+        "Antoine Sérac",
+        "mont Chauvel"
+      ],
+      [
+        "Antoine Sérac",
+        "pont de la Frène"
+      ],
+      [
+        "Marguerite Aubanel",
+        "Paul Vaneau"
+      ]
+    ],
+    "false_positive_relations": [
+      [
+        "Paul Vaneau",
+        "Marguerite_Aubanel"
+      ],
+      [
+        "Théo Rivière",
+        "Marguerite_Aubanel"
+      ],
+      [
+        "entrepreneur pressé",
+        "Théo Rivière"
+      ],
+      [
+        "Théo Rivière",
+        "entrepreneur_pressé"
+      ]
+    ],
+    "warnings": []
+  },
+  {
+    "model": "hf.co/bartowski/zai-org_GLM-4.7-Flash-GGUF:Q8_0",
+    "temperature": null,
+    "runs": 1,
+    "text": "reference",
+    "pipeline": "nue",
+    "time_s": 400.2,
+    "detail": "",
+    "n_entities": 0,
+    "n_relations": 0,
+    "n_predicted_pairs": 0,
+    "entity_precision": 0.0,
+    "entity_recall": 0.0,
+    "entity_f1": 0.0,
+    "relation_precision": 0.0,
+    "relation_recall": 0.0,
+    "relation_f1": 0.0,
+    "merges_ok": 0,
+    "merges_total": 4,
+    "merge_rate": "0/4",
+    "failed_merges": [
+      [
+        [
+          "Antoine Sérac",
+          "Sérac"
+        ],
+        [
+          "Théo Rivière",
+          "Rivière"
+        ]
+      ],
+      [
+        [
+          "Marguerite Aubanel"
+        ],
+        [
+          "Margot"
+        ]
+      ],
+      [
+        [
+          "Paul Vaneau",
+          "le docteur Paul Vaneau"
+        ],
+        [
+          "le docteur Vaneau",
+          "docteur Vaneau"
+        ]
+      ],
+      [
+        [
+          "Félix Brossard"
+        ],
+        [
+          "le commissaire Brossard",
+          "commissaire Brossard"
+        ]
+      ]
+    ],
+    "missing_entities": [
+      "Antoine Sérac",
+      "Marguerite Aubanel",
+      "Lucien Aubanel",
+      "Félix Brossard",
+      "Paul Vaneau",
+      "Irène Vaneau",
+      "Valsonne",
+      "Besançon",
+      "Saint-Elme",
+      "Société de géographie de Valsonne",
+      "librairie du Méridien",
+      "pont de la Frène",
+      "mont Chauvel"
+    ],
+    "false_positive_entities": [],
+    "duplicate_entities": [],
+    "missing_relations": [
+      [
+        "Antoine Sérac",
+        "Félix Brossard"
+      ],
+      [
+        "Antoine Sérac",
+        "Lucien Aubanel"
+      ],
+      [
+        "Antoine Sérac",
+        "Marguerite Aubanel"
+      ],
+      [
+        "Antoine Sérac",
+        "Saint-Elme"
+      ],
+      [
+        "Antoine Sérac",
+        "Société de géographie de Valsonne"
+      ],
+      [
+        "Antoine Sérac",
+        "Valsonne"
+      ],
+      [
+        "Antoine Sérac",
+        "mont Chauvel"
+      ],
+      [
+        "Antoine Sérac",
+        "pont de la Frène"
+      ],
+      [
+        "Félix Brossard",
+        "Irène Vaneau"
+      ],
+      [
+        "Marguerite Aubanel",
+        "Lucien Aubanel"
+      ],
+      [
+        "Marguerite Aubanel",
+        "Paul Vaneau"
+      ],
+      [
+        "Marguerite Aubanel",
+        "librairie du Méridien"
+      ],
+      [
+        "Paul Vaneau",
+        "Irène Vaneau"
+      ]
+    ],
+    "false_positive_relations": [],
+    "warnings": []
+  },
+  {
+    "model": "gemma4:latest",
+    "temperature": null,
+    "runs": 1,
+    "text": "reference",
+    "pipeline": "nue",
+    "time_s": 107.3,
+    "detail": "",
+    "n_entities": 29,
+    "n_relations": 10,
+    "n_predicted_pairs": 7,
+    "entity_precision": 0.483,
+    "entity_recall": 0.846,
+    "entity_f1": 0.615,
+    "relation_precision": 0.857,
+    "relation_recall": 0.077,
+    "relation_f1": 0.141,
+    "merges_ok": 0,
+    "merges_total": 4,
+    "merge_rate": "0/4",
+    "failed_merges": [
+      [
+        [
+          "Antoine Sérac",
+          "Sérac"
+        ],
+        [
+          "Théo Rivière",
+          "Rivière"
+        ]
+      ],
+      [
+        [
+          "Marguerite Aubanel"
+        ],
+        [
+          "Margot"
+        ]
+      ],
+      [
+        [
+          "Paul Vaneau",
+          "le docteur Paul Vaneau"
+        ],
+        [
+          "le docteur Vaneau",
+          "docteur Vaneau"
+        ]
+      ],
+      [
+        [
+          "Félix Brossard"
+        ],
+        [
+          "le commissaire Brossard",
+          "commissaire Brossard"
+        ]
+      ]
+    ],
+    "missing_entities": [
+      "Besançon",
+      "pont de la Frène"
+    ],
+    "false_positive_entities": [
+      "Antoine Sérac (character)",
+      "Société de géographie de Valsonne (organisation)",
+      "Théo Rivière (personnage)",
+      "atlas anciens",
+      "carte des hauteurs du mont Chauvel (objet)",
+      "commissaire Félix Brossard (personnage)",
+      "dossier Rivière (objet)",
+      "géomètre",
+      "géomètre de Saint-Elme condamné pour l'affaire du pont de la Frène",
+      "mall d'instruments de cuivre"
+    ],
+    "duplicate_entities": [
+      "Antoine Sérac",
+      "Marguerite Aubanel",
+      "Paul Vaneau",
+      "rue des Tanneurs"
+    ],
+    "missing_relations": [
+      [
+        "Antoine Sérac",
+        "Félix Brossard"
+      ],
+      [
+        "Antoine Sérac",
+        "Lucien Aubanel"
+      ],
+      [
+        "Antoine Sérac",
+        "Marguerite Aubanel"
+      ],
+      [
+        "Antoine Sérac",
+        "Saint-Elme"
+      ],
+      [
+        "Antoine Sérac",
+        "Valsonne"
+      ],
+      [
+        "Antoine Sérac",
+        "mont Chauvel"
+      ],
+      [
+        "Antoine Sérac",
+        "pont de la Frène"
+      ],
+      [
+        "Félix Brossard",
+        "Irène Vaneau"
+      ],
+      [
+        "Marguerite Aubanel",
+        "Lucien Aubanel"
+      ],
+      [
+        "Marguerite Aubanel",
+        "Paul Vaneau"
+      ],
+      [
+        "Marguerite Aubanel",
+        "librairie du Méridien"
+      ],
+      [
+        "Paul Vaneau",
+        "Irène Vaneau"
+      ]
+    ],
+    "false_positive_relations": [
+      [
+        "Théo Rivière",
+        "géomètre de Saint-Elme condamné pour l'affaire du pont de la Frène"
+      ]
+    ],
+    "warnings": []
+  },
+  {
+    "model": "hf.co/numind/NuExtract-2.0-8B-GGUF:latest",
+    "temperature": null,
+    "runs": 1,
+    "text": "reference",
+    "pipeline": "nue",
+    "time_s": 11.0,
+    "detail": "",
+    "n_entities": 15,
+    "n_relations": 4,
+    "n_predicted_pairs": 4,
+    "entity_precision": 0.6,
+    "entity_recall": 0.538,
+    "entity_f1": 0.568,
+    "relation_precision": 0.5,
+    "relation_recall": 0.077,
+    "relation_f1": 0.133,
+    "merges_ok": 0,
+    "merges_total": 4,
+    "merge_rate": "0/4",
+    "failed_merges": [
+      [
+        [
+          "Antoine Sérac",
+          "Sérac"
+        ],
+        [
+          "Théo Rivière",
+          "Rivière"
+        ]
+      ],
+      [
+        [
+          "Marguerite Aubanel"
+        ],
+        [
+          "Margot"
+        ]
+      ],
+      [
+        [
+          "Paul Vaneau",
+          "le docteur Paul Vaneau"
+        ],
+        [
+          "le docteur Vaneau",
+          "docteur Vaneau"
+        ]
+      ],
+      [
+        [
+          "Félix Brossard"
+        ],
+        [
+          "le commissaire Brossard",
+          "commissaire Brossard"
+        ]
+      ]
+    ],
+    "missing_entities": [
+      "Irène Vaneau",
+      "Valsonne",
+      "Besançon",
+      "Saint-Elme",
+      "pont de la Frène",
+      "mont Chauvel"
+    ],
+    "false_positive_entities": [
+      "affaire du pont de la Frène à Saint-Elme",
+      "une carte des hauteurs du mont Chauvel"
+    ],
+    "duplicate_entities": [
+      "Antoine Sérac",
+      "Marguerite Aubanel",
+      "Paul Vaneau"
+    ],
+    "missing_relations": [
+      [
+        "Antoine Sérac",
+        "Félix Brossard"
+      ],
+      [
+        "Antoine Sérac",
+        "Lucien Aubanel"
+      ],
+      [
+        "Antoine Sérac",
+        "Saint-Elme"
+      ],
+      [
+        "Antoine Sérac",
+        "Société de géographie de Valsonne"
+      ],
+      [
+        "Antoine Sérac",
+        "Valsonne"
+      ],
+      [
+        "Antoine Sérac",
+        "mont Chauvel"
+      ],
+      [
+        "Antoine Sérac",
+        "pont de la Frène"
+      ],
+      [
+        "Félix Brossard",
+        "Irène Vaneau"
+      ],
+      [
+        "Marguerite Aubanel",
+        "Lucien Aubanel"
+      ],
+      [
+        "Marguerite Aubanel",
+        "Paul Vaneau"
+      ],
+      [
+        "Marguerite Aubanel",
+        "librairie du Méridien"
+      ],
+      [
+        "Paul Vaneau",
+        "Irène Vaneau"
+      ]
+    ],
+    "false_positive_relations": [
+      [
+        "Société de géographie de Valsonne",
+        "une carte des hauteurs du mont Chauvel"
+      ],
+      [
+        "dossier de Théo Rivière",
+        "affaire du pont de la Frène à Saint-Elme"
+      ]
+    ],
+    "warnings": []
   }
 ]

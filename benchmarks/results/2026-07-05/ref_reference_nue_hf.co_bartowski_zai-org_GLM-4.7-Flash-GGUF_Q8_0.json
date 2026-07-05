@@ -1,0 +1,290 @@
+{
+  "entities": [],
+  "relations": [],
+  "moments": [
+    {
+      "id": 1,
+      "chunk_index": 0,
+      "seq": 0,
+      "summary": "Antoine Sérac arrive à Valsonne et ouvre un atelier de cartographie trois ans plus tôt.",
+      "resolved_order": 0,
+      "resolved_days": 0.0
+    },
+    {
+      "id": 2,
+      "chunk_index": 0,
+      "seq": 1,
+      "summary": "",
+      "resolved_order": 1,
+      "resolved_days": null
+    },
+    {
+      "id": 3,
+      "chunk_index": 0,
+      "seq": 2,
+      "summary": "",
+      "resolved_order": 2,
+      "resolved_days": null
+    },
+    {
+      "id": 4,
+      "chunk_index": 1,
+      "seq": 0,
+      "summary": "",
+      "resolved_order": 3,
+      "resolved_days": null
+    },
+    {
+      "id": 5,
+      "chunk_index": 1,
+      "seq": 1,
+      "summary": "",
+      "resolved_order": 4,
+      "resolved_days": null
+    },
+    {
+      "id": 6,
+      "chunk_index": 1,
+      "seq": 2,
+      "summary": "",
+      "resolved_order": 5,
+      "resolved_days": null
+    },
+    {
+      "id": 7,
+      "chunk_index": 1,
+      "seq": 3,
+      "summary": "",
+      "resolved_order": 6,
+      "resolved_days": null
+    },
+    {
+      "id": 8,
+      "chunk_index": 1,
+      "seq": 4,
+      "summary": "",
+      "resolved_order": 7,
+      "resolved_days": null
+    },
+    {
+      "id": 9,
+      "chunk_index": 2,
+      "seq": 0,
+      "summary": "Le commissaire Brossard suspecte le cartographe d'Antoine Sérac de dissimulation pour s'être souvenu des manipulations topographiques qui ont provoqué l'affaissement du pont à Saint-Elme il y a dix ans.",
+      "resolved_order": 8,
+      "resolved_days": null
+    },
+    {
+      "id": 10,
+      "chunk_index": 2,
+      "seq": 1,
+      "summary": "",
+      "resolved_order": 9,
+      "resolved_days": null
+    },
+    {
+      "id": 11,
+      "chunk_index": 2,
+      "seq": 2,
+      "summary": "",
+      "resolved_order": 10,
+      "resolved_days": null
+    },
+    {
+      "id": 12,
+      "chunk_index": 3,
+      "seq": 0,
+      "summary": "Irénée Vanej classe les anciennes minutes du tribunal à Besançon et découvre par hasard le dossier de Théo Rivière, condamné pour l'affaire d'un pont. Elle envoie un mot troublé au docteur Paul Ven... (based on text: *dossier..., Irène Troubliée.* )",
+      "resolved_order": 11,
+      "resolved_days": null
+    },
+    {
+      "id": 13,
+      "chunk_index": 3,
+      "seq": 1,
+      "summary": "",
+      "resolved_order": 12,
+      "resolved_days": null
+    },
+    {
+      "id": 14,
+      "chunk_index": 4,
+      "seq": 0,
+      "summary": "Antoine Sérac révèle à Margat son identité perdue de Jean Valjean et le passé des falsifications topographiques qu'il a commises pour prendre l'identité d'un cartographe afin de continuer sa carrière, alors que celle-ci est malade.",
+      "resolved_order": 13,
+      "resolved_days": null
+    },
+    {
+      "id": 15,
+      "chunk_index": 4,
+      "seq": 1,
+      "summary": "",
+      "resolved_order": 14,
+      "resolved_days": null
+    },
+    {
+      "id": 16,
+      "chunk_index": 5,
+      "seq": 0,
+      "summary": "Brossard convoque le cartographe Antoine Sérac et lui présente un dossier pour vérifier sa competence topographique à travers une carte détaillée du mont Chauvel, suite au retour d'une enquête printanière sans critique majeure. Le commissaire classe ensuite ce cas.",
+      "resolved_order": 15,
+      "resolved_days": null
+    },
+    {
+      "id": 17,
+      "chunk_index": 5,
+      "seq": 1,
+      "summary": "",
+      "resolved_order": 16,
+      "resolved_days": null
+    }
+  ],
+  "constraints": [
+    {
+      "source_id": 1,
+      "relation": "avant",
+      "target_id": 2,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 2,
+      "relation": "avant",
+      "target_id": 3,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 3,
+      "relation": "avant",
+      "target_id": 4,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 4,
+      "relation": "avant",
+      "target_id": 5,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 5,
+      "relation": "avant",
+      "target_id": 6,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 6,
+      "relation": "avant",
+      "target_id": 7,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 7,
+      "relation": "avant",
+      "target_id": 8,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 8,
+      "relation": "avant",
+      "target_id": 9,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 9,
+      "relation": "avant",
+      "target_id": 10,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 10,
+      "relation": "avant",
+      "target_id": 11,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 11,
+      "relation": "avant",
+      "target_id": 12,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 12,
+      "relation": "avant",
+      "target_id": 13,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 13,
+      "relation": "avant",
+      "target_id": 14,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 14,
+      "relation": "avant",
+      "target_id": 15,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 15,
+      "relation": "avant",
+      "target_id": 16,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 16,
+      "relation": "avant",
+      "target_id": 17,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    }
+  ],
+  "appearances": {},
+  "assertions": []
+}
