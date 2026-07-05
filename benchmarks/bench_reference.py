@@ -36,8 +36,10 @@ OLLAMA = "http://localhost:11434/v1"
 CHUNK_SIZE = 700  # plusieurs chunks : cohérence inter-chunks testée
 DEFAULT_MODELS = ["gpt-oss:120b", "qwen3-coder-next:latest"]
 TEXTS = {"reference": "reference_texte.txt", "timeline": "timeline_texte.txt"}
-# actee_alias : actée + passe d'identité d'emprunt (relit le texte, portée ciblée)
-PIPELINES = ("nue", "actee", "actee_alias")
+# Raffinements composables : complétude, canonicalisation, alias (identité
+# d'emprunt, portée ciblée). canon_alias = canon + alias SANS complétude —
+# reco 120b de l'addendum 9 (la complétude dégrade la précision sur 120b).
+PIPELINES = ("nue", "actee", "actee_alias", "canon_alias")
 
 
 def backend(model: str, temperature: float | None = None) -> OpenAIBackend:
@@ -51,17 +53,19 @@ def run_one(model: str, text: str, pipeline: str, temperature: float | None,
         text, backend(model, temperature), chunk_size=CHUNK_SIZE,
         on_progress=lambda d, t: print(f"  {label} chunk {d}/{t}", flush=True),
     )
-    detail = ""
+    parts = []
     if pipeline in ("actee", "actee_alias"):
         n = complete_graph(graph, text, backend(model, temperature=0))
+        parts.append(f"complétude +{n}")
+    if pipeline in ("actee", "actee_alias", "canon_alias"):
         before = len(graph.entities)
         graph = canonicalize_graph(graph, backend(model, temperature=0))
-        detail = f"complétude +{n}, canon {before}->{len(graph.entities)}"
-    if pipeline == "actee_alias":
+        parts.append(f"canon {before}->{len(graph.entities)}")
+    if pipeline in ("actee_alias", "canon_alias"):
         before = len(graph.entities)
         graph = resolve_aliases(graph, text, backend(model, temperature=0))
-        detail += f", alias {before}->{len(graph.entities)}"
-    entry = {"time_s": round(time.monotonic() - t0, 1), "detail": detail}
+        parts.append(f"alias {before}->{len(graph.entities)}")
+    entry = {"time_s": round(time.monotonic() - t0, 1), "detail": ", ".join(parts)}
     return entry, graph
 
 

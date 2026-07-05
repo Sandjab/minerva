@@ -1,0 +1,195 @@
+{
+  "model": "gpt-oss:120b",
+  "rows": [
+    {
+      "pipeline": "nue",
+      "graph": "ref_reference_nue_gpt-oss_120b_run1.json",
+      "refine_s": 0.0,
+      "n_entities": 28,
+      "impersonation": false,
+      "entity_precision": 0.714,
+      "entity_recall": 1.0,
+      "relation_precision": 0.889,
+      "relation_recall": 0.846,
+      "merge_rate": "1/4"
+    },
+    {
+      "pipeline": "nue",
+      "graph": "ref_reference_nue_gpt-oss_120b_run2.json",
+      "refine_s": 0.0,
+      "n_entities": 20,
+      "impersonation": false,
+      "entity_precision": 0.9,
+      "entity_recall": 1.0,
+      "relation_precision": 0.895,
+      "relation_recall": 0.769,
+      "merge_rate": "0/4"
+    },
+    {
+      "pipeline": "nue",
+      "graph": "ref_reference_nue_gpt-oss_120b_run3.json",
+      "refine_s": 0.0,
+      "n_entities": 25,
+      "impersonation": false,
+      "entity_precision": 0.68,
+      "entity_recall": 1.0,
+      "relation_precision": 0.714,
+      "relation_recall": 0.692,
+      "merge_rate": "0/4"
+    },
+    {
+      "pipeline": "actee",
+      "graph": "ref_reference_nue_gpt-oss_120b_run1.json",
+      "refine_s": 44.0,
+      "n_entities": 31,
+      "impersonation": false,
+      "entity_precision": 0.645,
+      "entity_recall": 1.0,
+      "relation_precision": 0.828,
+      "relation_recall": 0.846,
+      "merge_rate": "1/4"
+    },
+    {
+      "pipeline": "actee",
+      "graph": "ref_reference_nue_gpt-oss_120b_run2.json",
+      "refine_s": 59.5,
+      "n_entities": 22,
+      "impersonation": false,
+      "entity_precision": 0.818,
+      "entity_recall": 1.0,
+      "relation_precision": 0.87,
+      "relation_recall": 0.846,
+      "merge_rate": "0/4"
+    },
+    {
+      "pipeline": "actee",
+      "graph": "ref_reference_nue_gpt-oss_120b_run3.json",
+      "refine_s": 58.7,
+      "n_entities": 26,
+      "impersonation": false,
+      "entity_precision": 0.654,
+      "entity_recall": 1.0,
+      "relation_precision": 0.682,
+      "relation_recall": 0.692,
+      "merge_rate": "0/4"
+    },
+    {
+      "pipeline": "canon_alias",
+      "graph": "ref_reference_nue_gpt-oss_120b_run1.json",
+      "refine_s": 15.6,
+      "n_entities": 27,
+      "impersonation": true,
+      "entity_precision": 0.741,
+      "entity_recall": 1.0,
+      "relation_precision": 0.889,
+      "relation_recall": 0.846,
+      "merge_rate": "2/4"
+    },
+    {
+      "pipeline": "canon_alias",
+      "graph": "ref_reference_nue_gpt-oss_120b_run2.json",
+      "refine_s": 13.3,
+      "n_entities": 19,
+      "impersonation": true,
+      "entity_precision": 0.947,
+      "entity_recall": 1.0,
+      "relation_precision": 0.895,
+      "relation_recall": 0.769,
+      "merge_rate": "1/4"
+    },
+    {
+      "pipeline": "canon_alias",
+      "graph": "ref_reference_nue_gpt-oss_120b_run3.json",
+      "refine_s": 12.6,
+      "n_entities": 24,
+      "impersonation": true,
+      "entity_precision": 0.708,
+      "entity_recall": 1.0,
+      "relation_precision": 0.714,
+      "relation_recall": 0.692,
+      "merge_rate": "1/4"
+    },
+    {
+      "pipeline": "actee_alias",
+      "graph": "ref_reference_nue_gpt-oss_120b_run1.json",
+      "refine_s": 69.4,
+      "n_entities": 30,
+      "impersonation": true,
+      "entity_precision": 0.667,
+      "entity_recall": 1.0,
+      "relation_precision": 0.828,
+      "relation_recall": 0.846,
+      "merge_rate": "2/4"
+    },
+    {
+      "pipeline": "actee_alias",
+      "graph": "ref_reference_nue_gpt-oss_120b_run2.json",
+      "refine_s": 65.6,
+      "n_entities": 21,
+      "impersonation": true,
+      "entity_precision": 0.857,
+      "entity_recall": 1.0,
+      "relation_precision": 0.857,
+      "relation_recall": 0.769,
+      "merge_rate": "1/4"
+    },
+    {
+      "pipeline": "actee_alias",
+      "graph": "ref_reference_nue_gpt-oss_120b_run3.json",
+      "refine_s": 58.2,
+      "n_entities": 24,
+      "impersonation": true,
+      "entity_precision": 0.708,
+      "entity_recall": 1.0,
+      "relation_precision": 0.708,
+      "relation_recall": 0.692,
+      "merge_rate": "1/4"
+    }
+  ],
+  "summary": [
+    {
+      "pipeline": "nue",
+      "entity_precision": 0.765,
+      "entity_recall": 1.0,
+      "relation_precision": 0.833,
+      "relation_recall": 0.769,
+      "merge_rate": "1/12",
+      "impersonation_rate": "0/3",
+      "refine_s_mean": 0.0,
+      "n_entities_mean": 24.333
+    },
+    {
+      "pipeline": "actee",
+      "entity_precision": 0.706,
+      "entity_recall": 1.0,
+      "relation_precision": 0.793,
+      "relation_recall": 0.795,
+      "merge_rate": "1/12",
+      "impersonation_rate": "0/3",
+      "refine_s_mean": 54.1,
+      "n_entities_mean": 26.333
+    },
+    {
+      "pipeline": "canon_alias",
+      "entity_precision": 0.799,
+      "entity_recall": 1.0,
+      "relation_precision": 0.833,
+      "relation_recall": 0.769,
+      "merge_rate": "4/12",
+      "impersonation_rate": "3/3",
+      "refine_s_mean": 13.8,
+      "n_entities_mean": 23.333
+    },
+    {
+      "pipeline": "actee_alias",
+      "entity_precision": 0.744,
+      "entity_recall": 1.0,
+      "relation_precision": 0.798,
+      "relation_recall": 0.769,
+      "merge_rate": "4/12",
+      "impersonation_rate": "3/3",
+      "refine_s_mean": 64.4,
+      "n_entities_mean": 25
+    }
+  ]
+}
