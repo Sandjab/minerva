@@ -1,0 +1,320 @@
+{
+  "entities": [
+    {
+      "name": "Camille Roche",
+      "type": "personne",
+      "aliases": [
+        "atelier de Camille Roche"
+      ],
+      "attributes": {}
+    },
+    {
+      "name": "Élise Chardon",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "âge": "30 ans",
+        "cheveux (aspect)": "copeaux d'érable",
+        "âge (dans le souvenir)": "12 ans",
+        "lieu du souvenir": "Mirecourt",
+        "objet": "canif à manche de buis",
+        "surface": "sur l’établi entre eux deux"
+      }
+    },
+    {
+      "name": "Bastien Malot",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "âge": "16 ans",
+        "caractère (description)": "maigre",
+        "état émotionnel (au moment de l’extrait)": "trop nerveux"
+      }
+    },
+    {
+      "name": "rue des Grilles",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Aubervilliers",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "école Boulle",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "ateliers / atelier d'Élise Chardon",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "ville": "Aubervilliers",
+        "position dans le bâtiment": "rez-de-chaussée d'une maison étroite"
+      }
+    },
+    {
+      "name": "Aurélien Chardon",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "profession": "luthier"
+      }
+    },
+    {
+      "name": "Mirecourt",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "type": "lieu (ville)"
+      }
+    },
+    {
+      "name": "canif à manche de buis",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "emplacement actuel (au moment du souvenir ou postérieur)": "dans la poche de son tablier"
+      }
+    },
+    {
+      "name": "Lyon",
+      "type": "lieu (ville)",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Croix-Rousse",
+      "type": "lieu (quartier)",
+      "aliases": [],
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "name": "Bastien Malot propose une association à Camille Roche",
+      "source": "Bastien Malot",
+      "target": "Camille Roche",
+      "attributes": {}
+    },
+    {
+      "name": "Camille Roche possède un atelier d'archetière",
+      "source": "Camille Roche",
+      "target": "Camille Roche",
+      "attributes": {}
+    }
+  ],
+  "moments": [
+    {
+      "id": 1,
+      "chunk_index": 0,
+      "seq": 0,
+      "summary": "Présentation d’Élise Chardon dans son atelier de lutherie à Aubervilliers, suivie de l’arrivée de Bastien Malot qui demande à être son apprenti.",
+      "resolved_order": 1,
+      "resolved_days": null
+    },
+    {
+      "id": 2,
+      "chunk_index": 1,
+      "seq": 0,
+      "summary": "Élise est plongée dans un souvenir d’enfance : l’hiver de ses 12 ans chez son grand-père luthier à Mirecourt, qui lui offre son premier canif et lui enseigne que « le bois se souvient de tout ».",
+      "resolved_order": 0,
+      "resolved_days": 0.0
+    },
+    {
+      "id": 3,
+      "chunk_index": 1,
+      "seq": 1,
+      "summary": "Le carillon rapporte Élise au présent ; Bastien est dans l’atelier, nerveux, et vient de cassé une volute. Élise ramasse les morceaux, sourit, propose de recommencer en rappelant la leçon de son grand-père.",
+      "resolved_order": 2,
+      "resolved_days": null
+    }
+  ],
+  "constraints": [
+    {
+      "source_id": 2,
+      "relation": "avant",
+      "target_id": 1,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 2,
+      "relation": "avant",
+      "target_id": 3,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    }
+  ],
+  "appearances": {
+    "1": [
+      "Aubervilliers",
+      "Bastien Malot",
+      "ateliers / atelier d'Élise Chardon",
+      "rue des Grilles",
+      "Élise Chardon",
+      "école Boulle"
+    ],
+    "2": [
+      "Aurélien Chardon",
+      "Mirecourt",
+      "canif à manche de buis",
+      "Élise Chardon"
+    ],
+    "3": [
+      "Bastien Malot",
+      "Élise Chardon"
+    ]
+  },
+  "assertions": [
+    {
+      "entity": "Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "âge",
+      "value": "30 ans",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "cheveux (aspect)",
+      "value": "copeaux d'érable",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "ateliers / atelier d'Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "ville",
+      "value": "Aubervilliers",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "ateliers / atelier d'Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "position dans le bâtiment",
+      "value": "rez-de-chaussée d'une maison étroite",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Bastien Malot",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "âge",
+      "value": "16 ans",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Bastien Malot",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "caractère (description)",
+      "value": "maigre",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "âge (dans le souvenir)",
+      "value": "12 ans",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "lieu du souvenir",
+      "value": "Mirecourt",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Aurélien Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "profession",
+      "value": "luthier",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Mirecourt",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "type",
+      "value": "lieu (ville)",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "objet",
+      "value": "canif à manche de buis",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "canif à manche de buis",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "emplacement actuel (au moment du souvenir ou postérieur)",
+      "value": "dans la poche de son tablier",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Bastien Malot",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "état émotionnel (au moment de l’extrait)",
+      "value": "trop nerveux",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "surface",
+      "value": "sur l’établi entre eux deux",
+      "moment_id": 3,
+      "chunk_index": 1
+    }
+  ]
+}

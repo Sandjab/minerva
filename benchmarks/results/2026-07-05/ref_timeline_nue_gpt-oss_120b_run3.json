@@ -1,0 +1,705 @@
+{
+  "entities": [
+    {
+      "name": "e1",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "âge": "30 ans",
+        "cheveux": "copeaux d'érable jusque dans les cheveux"
+      }
+    },
+    {
+      "name": "e2",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "âge": "16 ans"
+      }
+    },
+    {
+      "name": "e3",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "e4",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "type": "atelier de lutherie",
+        "localisation": "rez‑de‑chaussée d'une maison étroite, rue des Grilles, Aubervilliers"
+      }
+    },
+    {
+      "name": "e5",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "e6",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "e7",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Élise Chardon",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "âge": "12 ans",
+        "lieu_de_souvenir": "maison de son grand‑père à Mirecourt"
+      }
+    },
+    {
+      "name": "Bastien Malot",
+      "type": "personnage",
+      "aliases": [],
+      "attributes": {
+        "état_émotionnel": "trop nerveux",
+        "statut": "maître luthier"
+      }
+    },
+    {
+      "name": "Aurélien Chardon",
+      "type": "personnage",
+      "aliases": [
+        "le vieux luthier",
+        "grand‑père d’Élise"
+      ],
+      "attributes": {
+        "fonction": "luthier"
+      }
+    },
+    {
+      "name": "canif de buis",
+      "type": "objet",
+      "aliases": [
+        "canif",
+        "couteau à manche de buis"
+      ],
+      "attributes": {
+        "description": "couteau à manche de buis"
+      }
+    },
+    {
+      "name": "établi",
+      "type": "objet",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "volute",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "morceaux",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "atelier d'Aubervilliers",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Mirecourt",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Camille Roche",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "profession": "archetière"
+      }
+    },
+    {
+      "name": "Saône",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "atelier de la Croix‑Rousse",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Lyon",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "name": "possède",
+      "source": "e1",
+      "target": "e4",
+      "attributes": {}
+    },
+    {
+      "name": "envoyé_par",
+      "source": "e2",
+      "target": "e3",
+      "attributes": {}
+    },
+    {
+      "name": "tend",
+      "source": "e1",
+      "target": "e7",
+      "attributes": {
+        "destinataire": "e2"
+      }
+    },
+    {
+      "name": "reçoit",
+      "source": "e2",
+      "target": "e7",
+      "attributes": {}
+    },
+    {
+      "name": "grand‑père_de",
+      "source": "Aurélien Chardon",
+      "target": "Élise Chardon",
+      "attributes": {}
+    },
+    {
+      "name": "offre",
+      "source": "Aurélien Chardon",
+      "target": "canif de buis",
+      "attributes": {
+        "type": "premier canif"
+      }
+    },
+    {
+      "name": "garde_dans_poche_de_tablier",
+      "source": "Élise Chardon",
+      "target": "canif de buis",
+      "attributes": {}
+    },
+    {
+      "name": "fend",
+      "source": "Bastien Malot",
+      "target": "volute",
+      "attributes": {}
+    },
+    {
+      "name": "ramasse",
+      "source": "Élise Chardon",
+      "target": "morceaux",
+      "attributes": {}
+    },
+    {
+      "name": "pose_sur",
+      "source": "Élise Chardon",
+      "target": "canif de buis",
+      "attributes": {
+        "lieu": "établi entre Élise et Bastien"
+      }
+    },
+    {
+      "name": "reprend_atelier",
+      "source": "Bastien Malot",
+      "target": "atelier d'Aubervilliers",
+      "attributes": {}
+    },
+    {
+      "name": "laisse_sur_établi",
+      "source": "Élise Chardon",
+      "target": "canif de buis",
+      "attributes": {}
+    },
+    {
+      "name": "dit_mot",
+      "source": "Élise Chardon",
+      "target": "Bastien Malot",
+      "attributes": {
+        "texte": "À toi de te souvenir."
+      }
+    },
+    {
+      "name": "prend_train_vers",
+      "source": "Élise Chardon",
+      "target": "Mirecourt",
+      "attributes": {}
+    },
+    {
+      "name": "reçoit_lettre_de",
+      "source": "Camille Roche",
+      "target": "Bastien Malot",
+      "attributes": {}
+    },
+    {
+      "name": "propose_association",
+      "source": "Bastien Malot",
+      "target": "Camille Roche",
+      "attributes": {
+        "texte": "les archets de Roche, les violons de la rue des Grilles"
+      }
+    },
+    {
+      "name": "regarde",
+      "source": "Camille Roche",
+      "target": "Saône",
+      "attributes": {
+        "lieu_observation": "fenêtre de son atelier de la Croix‑Rousse"
+      }
+    },
+    {
+      "name": "répond_en_lignes",
+      "source": "Camille Roche",
+      "target": "Bastien Malot",
+      "attributes": {
+        "texte": "j'arriverai au printemps"
+      }
+    }
+  ],
+  "moments": [
+    {
+      "id": 1,
+      "chunk_index": 0,
+      "seq": 0,
+      "summary": "Ce matin, dans son atelier de lutherie à la rue des Grilles, Élise Chardon rencontre le garçon Bastien Malot qui demande à devenir apprenti ; elle lui tend une gouge.",
+      "resolved_order": 1,
+      "resolved_days": null
+    },
+    {
+      "id": 2,
+      "chunk_index": 1,
+      "seq": 0,
+      "summary": "Élise se rappelle l’hiver de ses douze ans chez son grand‑père Aurélien Chardon, où il lui offre un canif de buis.",
+      "resolved_order": 0,
+      "resolved_days": 0.0
+    },
+    {
+      "id": 3,
+      "chunk_index": 1,
+      "seq": 1,
+      "summary": "Bastien, nerveux, fende une volute ; Élise ramasse les morceaux et pose le canif de buis sur l’établi entre eux deux.",
+      "resolved_order": 2,
+      "resolved_days": null
+    },
+    {
+      "id": 4,
+      "chunk_index": 2,
+      "seq": 0,
+      "summary": "Élise Chardon, cinquante ans, ferme pour la dernière fois la porte de la rue des Grilles ; Bastien Malot, devenu maître luthier, reprend l’atelier d’Aubervilliers, reçoit le canif d’Aurélien sur l’établi avec un mot et prend le train pour Mirecourt.",
+      "resolved_order": 3,
+      "resolved_days": null
+    },
+    {
+      "id": 5,
+      "chunk_index": 2,
+      "seq": 1,
+      "summary": "À Lyon, l’archetière Camille Roche décachette une lettre de Bastien proposant une association entre ses archets et les violons de la rue des Grilles ; elle regarde la Saône depuis son atelier de la Croix‑Rousse et répond qu’elle arrivera au printemps.",
+      "resolved_order": 4,
+      "resolved_days": null
+    }
+  ],
+  "constraints": [
+    {
+      "source_id": 2,
+      "relation": "avant",
+      "target_id": 1,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 1,
+      "relation": "avant",
+      "target_id": 3,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 3,
+      "relation": "avant",
+      "target_id": 4,
+      "gap": {
+        "text": "Vingt ans plus tard",
+        "days": 7300.0
+      }
+    },
+    {
+      "source_id": 5,
+      "relation": "simultané",
+      "target_id": 4,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    }
+  ],
+  "appearances": {
+    "1": [
+      "e1",
+      "e2",
+      "e3",
+      "e4",
+      "e5",
+      "e6",
+      "e7"
+    ],
+    "2": [
+      "Aurélien Chardon",
+      "canif de buis",
+      "Élise Chardon"
+    ],
+    "3": [
+      "Bastien Malot",
+      "canif de buis",
+      "morceaux",
+      "volute",
+      "Élise Chardon",
+      "établi"
+    ],
+    "4": [
+      "Bastien Malot",
+      "Mirecourt",
+      "atelier d'Aubervilliers",
+      "canif de buis",
+      "Élise Chardon",
+      "établi"
+    ],
+    "5": [
+      "Bastien Malot",
+      "Camille Roche",
+      "Lyon",
+      "Saône",
+      "atelier de la Croix‑Rousse"
+    ]
+  },
+  "assertions": [
+    {
+      "entity": "e1",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "âge",
+      "value": "30 ans",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "e1",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "cheveux",
+      "value": "copeaux d'érable jusque dans les cheveux",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "possède",
+      "relation_source": "e1",
+      "relation_target": "e4",
+      "attribute": "",
+      "value": "",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "e4",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "type",
+      "value": "atelier de lutherie",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "e4",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "localisation",
+      "value": "rez‑de‑chaussée d'une maison étroite, rue des Grilles, Aubervilliers",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "e2",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "âge",
+      "value": "16 ans",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "envoyé_par",
+      "relation_source": "e2",
+      "relation_target": "e3",
+      "attribute": "",
+      "value": "",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "tend",
+      "relation_source": "e1",
+      "relation_target": "e7",
+      "attribute": "destinataire",
+      "value": "e2",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "reçoit",
+      "relation_source": "e2",
+      "relation_target": "e7",
+      "attribute": "",
+      "value": "",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "âge",
+      "value": "12 ans",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "lieu_de_souvenir",
+      "value": "maison de son grand‑père à Mirecourt",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Aurélien Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "fonction",
+      "value": "luthier",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "grand‑père_de",
+      "relation_source": "Aurélien Chardon",
+      "relation_target": "Élise Chardon",
+      "attribute": "",
+      "value": "",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "offre",
+      "relation_source": "Aurélien Chardon",
+      "relation_target": "canif de buis",
+      "attribute": "type",
+      "value": "premier canif",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "canif de buis",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "description",
+      "value": "couteau à manche de buis",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "garde_dans_poche_de_tablier",
+      "relation_source": "Élise Chardon",
+      "relation_target": "canif de buis",
+      "attribute": "",
+      "value": "",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Bastien Malot",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "état_émotionnel",
+      "value": "trop nerveux",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "fend",
+      "relation_source": "Bastien Malot",
+      "relation_target": "volute",
+      "attribute": "",
+      "value": "",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "ramasse",
+      "relation_source": "Élise Chardon",
+      "relation_target": "morceaux",
+      "attribute": "",
+      "value": "",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "pose_sur",
+      "relation_source": "Élise Chardon",
+      "relation_target": "canif de buis",
+      "attribute": "lieu",
+      "value": "établi entre Élise et Bastien",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "âge",
+      "value": "50 ans",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Bastien Malot",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "statut",
+      "value": "maître luthier",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "reprend_atelier",
+      "relation_source": "Bastien Malot",
+      "relation_target": "atelier d'Aubervilliers",
+      "attribute": "",
+      "value": "",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "laisse_sur_établi",
+      "relation_source": "Élise Chardon",
+      "relation_target": "canif de buis",
+      "attribute": "",
+      "value": "",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "dit_mot",
+      "relation_source": "Élise Chardon",
+      "relation_target": "Bastien Malot",
+      "attribute": "texte",
+      "value": "À toi de te souvenir.",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "prend_train_vers",
+      "relation_source": "Élise Chardon",
+      "relation_target": "Mirecourt",
+      "attribute": "",
+      "value": "",
+      "moment_id": 4,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Camille Roche",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "profession",
+      "value": "archetière",
+      "moment_id": 5,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "reçoit_lettre_de",
+      "relation_source": "Camille Roche",
+      "relation_target": "Bastien Malot",
+      "attribute": "",
+      "value": "",
+      "moment_id": 5,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "propose_association",
+      "relation_source": "Bastien Malot",
+      "relation_target": "Camille Roche",
+      "attribute": "texte",
+      "value": "les archets de Roche, les violons de la rue des Grilles",
+      "moment_id": 5,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "regarde",
+      "relation_source": "Camille Roche",
+      "relation_target": "Saône",
+      "attribute": "lieu_observation",
+      "value": "fenêtre de son atelier de la Croix‑Rousse",
+      "moment_id": 5,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "répond_en_lignes",
+      "relation_source": "Camille Roche",
+      "relation_target": "Bastien Malot",
+      "attribute": "texte",
+      "value": "j'arriverai au printemps",
+      "moment_id": 5,
+      "chunk_index": 2
+    }
+  ]
+}

@@ -1,0 +1,317 @@
+{
+  "entities": [
+    {
+      "name": "Élise Chardon",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "âge": "30 ans",
+        "apparence": "copeaux d'érable jusque dans les cheveux",
+        "localisation": "rez-de-chaussée d'une maison étroite de la rue des Grilles, à Aubervilliers",
+        "lieu de souvenir": "Mirecourt",
+        "action accomplie": "a été assise devant l’établi par Aurélien Chardon",
+        "lieu": "poche de son tablier"
+      }
+    },
+    {
+      "name": "Bastien Malot",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "âge": "16 ans",
+        "état émotionnel": "trop nerveux"
+      }
+    },
+    {
+      "name": "Aurélien Chardon",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "profession": "luthier"
+      }
+    },
+    {
+      "name": "table",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "matériau": "épicéa"
+      }
+    },
+    {
+      "name": "canif",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "manche en": "buis"
+      }
+    },
+    {
+      "name": "Camille Roche",
+      "type": "personne",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Lyon",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Croix-Rousse",
+      "type": "quartier",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Saône",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "atelier de luthier (rue des Grilles)",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "name": "Bastien Malot propose une association à Camille Roche",
+      "source": "Bastien Malot",
+      "target": "Camille Roche",
+      "attributes": {}
+    },
+    {
+      "name": "Camille Roche possède un atelier d'archetière à Lyon-Croix-Rousse",
+      "source": "Camille Roche",
+      "target": "atelier de luthier (rue des Grilles)",
+      "attributes": {
+        "type d'activité": "fabrication d'archets"
+      }
+    }
+  ],
+  "moments": [
+    {
+      "id": 1,
+      "chunk_index": 0,
+      "seq": 0,
+      "summary": "Présentation d’Élise Chardon et de son atelier, suivie de l’arrivée de Bastien Malot qui demande à devenir son apprenti.",
+      "resolved_order": 0,
+      "resolved_days": 0.0
+    },
+    {
+      "id": 2,
+      "chunk_index": 1,
+      "seq": 0,
+      "summary": "Présentation d’Élise Chardon et de son atelier, suivie de l’arrivée de Bastien Malot qui demande à devenir son apprenti.",
+      "resolved_order": 2,
+      "resolved_days": null
+    },
+    {
+      "id": 3,
+      "chunk_index": 1,
+      "seq": 1,
+      "summary": "Élise est transportée dans un souvenir d’hiver à Mirecourt lorsqu’elle avait 12 ans, où son grand-père Aurélien Chardon lui apprend le métier avec symbolisme du bois.",
+      "resolved_order": 1,
+      "resolved_days": null
+    },
+    {
+      "id": 4,
+      "chunk_index": 1,
+      "seq": 2,
+      "summary": "Le carillon ramène Élise au présent ; Bastien vient de fendre une volute, elle ramasse les morceaux, sourit et place le canif symbolique sur l’établi en répétant la leçon de son grand-père.",
+      "resolved_order": 3,
+      "resolved_days": null
+    }
+  ],
+  "constraints": [
+    {
+      "source_id": 1,
+      "relation": "avant",
+      "target_id": 2,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 3,
+      "relation": "avant",
+      "target_id": 2,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 3,
+      "relation": "avant",
+      "target_id": 4,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    }
+  ],
+  "appearances": {
+    "1": [
+      "Bastien Malot",
+      "Élise Chardon"
+    ],
+    "3": [
+      "Aurélien Chardon",
+      "canif",
+      "table",
+      "Élise Chardon"
+    ],
+    "4": [
+      "Bastien Malot",
+      "Élise Chardon"
+    ]
+  },
+  "assertions": [
+    {
+      "entity": "Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "âge",
+      "value": "30 ans",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "apparence",
+      "value": "copeaux d'érable jusque dans les cheveux",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "localisation",
+      "value": "rez-de-chaussée d'une maison étroite de la rue des Grilles, à Aubervilliers",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Bastien Malot",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "âge",
+      "value": "16 ans",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "âge",
+      "value": "12 ans",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "lieu de souvenir",
+      "value": "Mirecourt",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Aurélien Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "profession",
+      "value": "luthier",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "action accomplie",
+      "value": "a été assise devant l’établi par Aurélien Chardon",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "table",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "matériau",
+      "value": "épicéa",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "canif",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "manche en",
+      "value": "buis",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "lieu",
+      "value": "poche de son tablier",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Bastien Malot",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "état émotionnel",
+      "value": "trop nerveux",
+      "moment_id": 4,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Élise Chardon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "lieu",
+      "value": "entre elle et Bastien Malot sur l’établi",
+      "moment_id": 4,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "Camille Roche possède un atelier d'archetière à Lyon-Croix-Rousse",
+      "relation_source": "Camille Roche",
+      "relation_target": "atelier de luthier (rue des Grilles)",
+      "attribute": "type d'activité",
+      "value": "fabrication d'archets",
+      "moment_id": null,
+      "chunk_index": null
+    }
+  ]
+}

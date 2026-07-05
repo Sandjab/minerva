@@ -1,0 +1,1247 @@
+{
+  "entities": [
+    {
+      "name": "docteur Vaneau",
+      "type": "inconnu",
+      "aliases": [
+        "Paul Vaneau"
+      ],
+      "attributes": {
+        "profession": "médecin",
+        "lien avec Irène Vaneau": "frère",
+        "action_conseil": "écrire au commissaire Brossard"
+      }
+    },
+    {
+      "name": "Marguerite Aubanel",
+      "type": "inconnu",
+      "aliases": [
+        "Lucien Aubanel"
+      ],
+      "attributes": {
+        "nom_usuel": "Margot",
+        "profession": "gérante de librairie",
+        "service_spécifique_envers": "Antoine Sérac",
+        "situation_initiale": "ennui derrière le comptoir de la librairie",
+        "date_dentrée": "printemps (année non précisée, après M1)",
+        "santé": "pris froid à l’inventaire",
+        "confines": "garda le lit une semaine",
+        "action_civique": "garda le secret",
+        "modalité": "ne changea rien à ses samedis"
+      }
+    },
+    {
+      "name": "Antoine Sérac",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "lieu d'arrivée": "Valsonne",
+        "date d'arrivée": "il y a trois ans",
+        "moment d'arrivée": "matin",
+        "condition météo à l'arrivée": "brume",
+        "lieu": "la remise de la rue des Tanneurs",
+        "localisation_relative": "deux rues de la place aux Herbes",
+        "intervalle_de_visite": "chaque samedi",
+        "durée_typique_de_visite": "une à deux heures",
+        "texte": "portulan",
+        "style": "comme on lit un roman",
+        "identité_civile_véritable": "Théo Rivière",
+        "nom": "Antoine Sérac",
+        "but": "tenir encore un compas",
+        "lieu d'origine": "Saint-Elme",
+        "date de condamnation": "dix ans plus tôt",
+        "motif de la condamnation": "relevés truqués pour le pont de la Frène",
+        "sanction": "condamné, a purgé sa peine"
+      }
+    },
+    {
+      "name": "Valsonne",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "malle",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "contenu": "instruments de cuivre"
+      }
+    },
+    {
+      "name": "instruments de cuivre",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "la remise de la rue des Tanneurs",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "ancien usage": "remise"
+      }
+    },
+    {
+      "name": "atelier de cartographie",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Société de géographie de Valsonne",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "source": "Antoine Sérac"
+      }
+    },
+    {
+      "name": "carte des hauteurs du mont Chauvel",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "mont Chauvel",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "zone non cartographiée": "pentes nord"
+      }
+    },
+    {
+      "name": "librairie du Méridien",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "propriétaire": "Marguerite Aubanel",
+        "localisation": "place aux Herbes à Valsonne (2 rues deDistance_à_valsonne)"
+      }
+    },
+    {
+      "name": "papier",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "plume",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "atlas anciens",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "destination": "Antoine Sérac (en réserve par Margot)"
+      }
+    },
+    {
+      "name": "récits de voyage",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "destination": "Antoine Sérac (en réserve par Margot)"
+      }
+    },
+    {
+      "name": "tendre_le_papier",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "action_enseignée": "apprentissage_par_Sérac_à_Lucien"
+      }
+    },
+    {
+      "name": "tenir_la_plume",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "action_enseignée": "apprentissage_par_Sérac_à_Lucien après tendre_le_papier"
+      }
+    },
+    {
+      "name": "Irène Vaneau",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "lieu_travail": "Besançon",
+        "activité": "classer les minutes anciennes",
+        "émotion": "troublée",
+        "lien_frère_sœur": "",
+        "action_conseillée": "écrire au commissaire Brossard",
+        "lien avec Paul Vaneau": "sœur"
+      }
+    },
+    {
+      "name": "Brossard",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "fonction": "commissaire"
+      }
+    },
+    {
+      "name": "Théo Rivière",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "profession": "géomètre",
+        "profession antérieure": "géomètre",
+        "condamné pour": "affaire du pont de la Frène"
+      }
+    },
+    {
+      "name": "Besançon",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "topographie": "toits d'ocre descendant vers les méandres de la Loue"
+      }
+    },
+    {
+      "name": "Loue",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "tribunal",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "carton d'archives",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "greffe",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "contenu_note": "à sa libération, Rivière a retiré une malle d'instruments de cuivre des dépôts"
+      }
+    },
+    {
+      "name": "portulan",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "faute",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "causalité": "seul"
+      }
+    },
+    {
+      "name": "dossier Rivière",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "contenu": "dossiers judiciaires liés à Théo Rivière"
+      }
+    },
+    {
+      "name": "graver",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "lettre de Besançon",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "expéditeur": "Irène Vaneau",
+        "destinataire": "Paul Vaneau"
+      }
+    },
+    {
+      "name": "pont de la Frène",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {
+        "localisation": "Saint-Elme",
+        "événement": "effondrement"
+      }
+    },
+    {
+      "name": "Saint-Elme",
+      "type": "lieu",
+      "aliases": [],
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "name": "fournit",
+      "source": "Marguerite Aubanel",
+      "target": "Antoine Sérac",
+      "attributes": {}
+    },
+    {
+      "name": "fréquence_de_visite",
+      "source": "Antoine Sérac",
+      "target": "librairie du Méridien",
+      "attributes": {}
+    },
+    {
+      "name": "frère_de",
+      "source": "Marguerite Aubanel",
+      "target": "Marguerite Aubanel",
+      "attributes": {
+        "ordre_fraternité": "cadet"
+      }
+    },
+    {
+      "name": "recrutement",
+      "source": "Marguerite Aubanel",
+      "target": "atelier de cartographie",
+      "attributes": {
+        "statut": "apprenti"
+      }
+    },
+    {
+      "name": "enseigne",
+      "source": "Antoine Sérac",
+      "target": "Marguerite Aubanel",
+      "attributes": {}
+    },
+    {
+      "name": "envoyée à",
+      "source": "lettre de Besançon",
+      "target": "Valsonne",
+      "attributes": {}
+    },
+    {
+      "name": "convoque",
+      "source": "Brossard",
+      "target": "Antoine Sérac",
+      "attributes": {}
+    },
+    {
+      "name": "déplie à côté de",
+      "source": "Antoine Sérac",
+      "target": "carte des hauteurs du mont Chauvel",
+      "attributes": {}
+    },
+    {
+      "name": "propose à",
+      "source": "Antoine Sérac",
+      "target": "Brossard",
+      "attributes": {}
+    },
+    {
+      "name": "fait vérifier",
+      "source": "Brossard",
+      "target": "carte des hauteurs du mont Chauvel",
+      "attributes": {}
+    },
+    {
+      "name": "revient à",
+      "source": "carte des hauteurs du mont Chauvel",
+      "target": "Brossard",
+      "attributes": {}
+    },
+    {
+      "name": "classe",
+      "source": "Brossard",
+      "target": "dossier Rivière",
+      "attributes": {}
+    },
+    {
+      "name": "a permis la gravure de",
+      "source": "carte des hauteurs du mont Chauvel",
+      "target": "graver",
+      "attributes": {}
+    },
+    {
+      "name": "Théo Rivière --condamné pour--> pont de la Frène",
+      "source": "Théo Rivière",
+      "target": "pont de la Frène",
+      "attributes": {}
+    },
+    {
+      "name": "Antoine Sérac --anciennement--> Théo Rivière",
+      "source": "Antoine Sérac",
+      "target": "Théo Rivière",
+      "attributes": {}
+    },
+    {
+      "name": "Irène Vaneau --trouve--> dossier Rivière",
+      "source": "Irène Vaneau",
+      "target": "dossier Rivière",
+      "attributes": {}
+    },
+    {
+      "name": "Irène Vaneau --parle à--> Paul Vaneau",
+      "source": "Irène Vaneau",
+      "target": "docteur Vaneau",
+      "attributes": {}
+    },
+    {
+      "name": "Paul Vaneau --conseille à--> Irène Vaneau",
+      "source": "docteur Vaneau",
+      "target": "Irène Vaneau",
+      "attributes": {}
+    },
+    {
+      "name": "Antoine Sérac --dit la vérité à--> Marguerite Aubanel",
+      "source": "Antoine Sérac",
+      "target": "Marguerite Aubanel",
+      "attributes": {}
+    },
+    {
+      "name": "Brossard --reçoit--> lettre de Besançon",
+      "source": "Brossard",
+      "target": "lettre de Besançon",
+      "attributes": {}
+    }
+  ],
+  "moments": [
+    {
+      "id": 1,
+      "chunk_index": 0,
+      "seq": 0,
+      "summary": "Arrivée d’Antoine Sérac à Valsonne trois ans plus tôt avec ses instruments, puis installation et commande d’une carte",
+      "resolved_order": 0,
+      "resolved_days": 0.0
+    },
+    {
+      "id": 2,
+      "chunk_index": 1,
+      "seq": 0,
+      "summary": "Rencontre avec Margot Aubanel et intégration de son frère Lucien dans l’atelier",
+      "resolved_order": 1,
+      "resolved_days": null
+    },
+    {
+      "id": 3,
+      "chunk_index": 3,
+      "seq": 0,
+      "summary": "Irène Vaneau découvre le dossier de Théo Rivière à Besançon et en informe son frère puis le commissaire Brossard.",
+      "resolved_order": 2,
+      "resolved_days": null
+    },
+    {
+      "id": 4,
+      "chunk_index": 4,
+      "seq": 0,
+      "summary": "Marguerite Aubanel tombe malade après l’inventaire ; Antoine Sérac lui lit un portulan, puis lui révèle sa véritable identité (Théo Rivière) et les circonstances de son imposture.",
+      "resolved_order": 3,
+      "resolved_days": null
+    },
+    {
+      "id": 5,
+      "chunk_index": 5,
+      "seq": 0,
+      "summary": "Brossard confronte Antoine Sérac à la lettre de Besançon et au dossier Rivière ; Sérac justifie son imposture en proposant la carte du mont Chauvel comme preuve, celle-ci est vérifiée, validée, puis gravée avec une double signature.",
+      "resolved_order": 4,
+      "resolved_days": null
+    }
+  ],
+  "constraints": [
+    {
+      "source_id": 1,
+      "relation": "avant",
+      "target_id": 2,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 2,
+      "relation": "avant",
+      "target_id": 3,
+      "gap": {
+        "text": "",
+        "days": 1095.0
+      }
+    },
+    {
+      "source_id": 3,
+      "relation": "avant",
+      "target_id": 4,
+      "gap": {
+        "text": "Cet hiver-là",
+        "days": null
+      }
+    },
+    {
+      "source_id": 4,
+      "relation": "avant",
+      "target_id": 5,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    }
+  ],
+  "appearances": {
+    "1": [
+      "Antoine Sérac",
+      "Société de géographie de Valsonne",
+      "Valsonne",
+      "atelier de cartographie",
+      "carte des hauteurs du mont Chauvel",
+      "instruments de cuivre",
+      "la remise de la rue des Tanneurs",
+      "malle",
+      "mont Chauvel"
+    ],
+    "2": [
+      "Antoine Sérac",
+      "Marguerite Aubanel",
+      "atelier de cartographie",
+      "atlas anciens",
+      "librairie du Méridien",
+      "papier",
+      "plume",
+      "récits de voyage",
+      "tendre_le_papier",
+      "tenir_la_plume"
+    ],
+    "3": [
+      "Besançon",
+      "Brossard",
+      "Irène Vaneau",
+      "Loue",
+      "Théo Rivière",
+      "carton d'archives",
+      "docteur Vaneau",
+      "greffe",
+      "instruments de cuivre",
+      "malle",
+      "tribunal"
+    ],
+    "4": [
+      "Antoine Sérac",
+      "Marguerite Aubanel",
+      "docteur Vaneau",
+      "faute",
+      "portulan"
+    ],
+    "5": [
+      "Antoine Sérac",
+      "Brossard",
+      "Société de géographie de Valsonne",
+      "Valsonne",
+      "carte des hauteurs du mont Chauvel",
+      "dossier Rivière",
+      "graver",
+      "lettre de Besançon"
+    ]
+  },
+  "assertions": [
+    {
+      "entity": "Antoine Sérac",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "lieu d'arrivée",
+      "value": "Valsonne",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Antoine Sérac",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "date d'arrivée",
+      "value": "il y a trois ans",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Antoine Sérac",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "moment d'arrivée",
+      "value": "matin",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Antoine Sérac",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "condition météo à l'arrivée",
+      "value": "brume",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "malle",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "contenu",
+      "value": "instruments de cuivre",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "la remise de la rue des Tanneurs",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "ancien usage",
+      "value": "remise",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Antoine Sérac",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "lieu",
+      "value": "la remise de la rue des Tanneurs",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Société de géographie de Valsonne",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "source",
+      "value": "Antoine Sérac",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "mont Chauvel",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "zone non cartographiée",
+      "value": "pentes nord",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Antoine Sérac",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "localisation_relative",
+      "value": "deux rues de la place aux Herbes",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Marguerite Aubanel",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "nom_usuel",
+      "value": "Margot",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Marguerite Aubanel",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "profession",
+      "value": "gérante de librairie",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "librairie du Méridien",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "propriétaire",
+      "value": "Marguerite Aubanel",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "librairie du Méridien",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "localisation",
+      "value": "place aux Herbes à Valsonne (2 rues deDistance_à_valsonne)",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "fournit",
+      "relation_source": "Marguerite Aubanel",
+      "relation_target": "Antoine Sérac",
+      "attribute": "",
+      "value": "",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Marguerite Aubanel",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "service_spécifique_envers",
+      "value": "Antoine Sérac",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "atlas anciens",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "destination",
+      "value": "Antoine Sérac (en réserve par Margot)",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "récits de voyage",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "destination",
+      "value": "Antoine Sérac (en réserve par Margot)",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "fréquence_de_visite",
+      "relation_source": "Antoine Sérac",
+      "relation_target": "librairie du Méridien",
+      "attribute": "",
+      "value": "",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Antoine Sérac",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "intervalle_de_visite",
+      "value": "chaque samedi",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Antoine Sérac",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "durée_typique_de_visite",
+      "value": "une à deux heures",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "frère_de",
+      "relation_source": "Marguerite Aubanel",
+      "relation_target": "Marguerite Aubanel",
+      "attribute": "ordre_fraternité",
+      "value": "cadet",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Marguerite Aubanel",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "situation_initiale",
+      "value": "ennui derrière le comptoir de la librairie",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "recrutement",
+      "relation_source": "Marguerite Aubanel",
+      "relation_target": "atelier de cartographie",
+      "attribute": "statut",
+      "value": "apprenti",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Marguerite Aubanel",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "date_dentrée",
+      "value": "printemps (année non précisée, après M1)",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "enseigne",
+      "relation_source": "Antoine Sérac",
+      "relation_target": "Marguerite Aubanel",
+      "attribute": "",
+      "value": "",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "tendre_le_papier",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "action_enseignée",
+      "value": "apprentissage_par_Sérac_à_Lucien",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "tenir_la_plume",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "action_enseignée",
+      "value": "apprentissage_par_Sérac_à_Lucien après tendre_le_papier",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Irène Vaneau",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "lieu_travail",
+      "value": "Besançon",
+      "moment_id": 3,
+      "chunk_index": 3
+    },
+    {
+      "entity": "Besançon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "topographie",
+      "value": "toits d'ocre descendant vers les méandres de la Loue",
+      "moment_id": 3,
+      "chunk_index": 3
+    },
+    {
+      "entity": "Irène Vaneau",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "activité",
+      "value": "classer les minutes anciennes",
+      "moment_id": 3,
+      "chunk_index": 3
+    },
+    {
+      "entity": "Théo Rivière",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "profession",
+      "value": "géomètre",
+      "moment_id": 3,
+      "chunk_index": 3
+    },
+    {
+      "entity": "greffe",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "contenu_note",
+      "value": "à sa libération, Rivière a retiré une malle d'instruments de cuivre des dépôts",
+      "moment_id": 3,
+      "chunk_index": 3
+    },
+    {
+      "entity": "Irène Vaneau",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "émotion",
+      "value": "troublée",
+      "moment_id": 3,
+      "chunk_index": 3
+    },
+    {
+      "entity": "Irène Vaneau",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "lien_frère_sœur",
+      "value": "",
+      "moment_id": 3,
+      "chunk_index": 3
+    },
+    {
+      "entity": "docteur Vaneau",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "profession",
+      "value": "médecin",
+      "moment_id": 3,
+      "chunk_index": 3
+    },
+    {
+      "entity": "Irène Vaneau",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "action_conseillée",
+      "value": "écrire au commissaire Brossard",
+      "moment_id": 3,
+      "chunk_index": 3
+    },
+    {
+      "entity": "Brossard",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "fonction",
+      "value": "commissaire",
+      "moment_id": 3,
+      "chunk_index": 3
+    },
+    {
+      "entity": "Marguerite Aubanel",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "santé",
+      "value": "pris froid à l’inventaire",
+      "moment_id": 4,
+      "chunk_index": 4
+    },
+    {
+      "entity": "Marguerite Aubanel",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "confines",
+      "value": "garda le lit une semaine",
+      "moment_id": 4,
+      "chunk_index": 4
+    },
+    {
+      "entity": "Antoine Sérac",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "texte",
+      "value": "portulan",
+      "moment_id": 4,
+      "chunk_index": 4
+    },
+    {
+      "entity": "Antoine Sérac",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "style",
+      "value": "comme on lit un roman",
+      "moment_id": 4,
+      "chunk_index": 4
+    },
+    {
+      "entity": "Antoine Sérac",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "identité_civile_véritable",
+      "value": "Théo Rivière",
+      "moment_id": 4,
+      "chunk_index": 4
+    },
+    {
+      "entity": "faute",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "causalité",
+      "value": "seul",
+      "moment_id": 4,
+      "chunk_index": 4
+    },
+    {
+      "entity": "Antoine Sérac",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "nom",
+      "value": "Antoine Sérac",
+      "moment_id": 4,
+      "chunk_index": 4
+    },
+    {
+      "entity": "Antoine Sérac",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "but",
+      "value": "tenir encore un compas",
+      "moment_id": 4,
+      "chunk_index": 4
+    },
+    {
+      "entity": "Marguerite Aubanel",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "action_civique",
+      "value": "garda le secret",
+      "moment_id": 4,
+      "chunk_index": 4
+    },
+    {
+      "entity": "Marguerite Aubanel",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "modalité",
+      "value": "ne changea rien à ses samedis",
+      "moment_id": 4,
+      "chunk_index": 4
+    },
+    {
+      "entity": "",
+      "relation_name": "envoyée à",
+      "relation_source": "lettre de Besançon",
+      "relation_target": "Valsonne",
+      "attribute": "",
+      "value": "",
+      "moment_id": 5,
+      "chunk_index": 5
+    },
+    {
+      "entity": "",
+      "relation_name": "convoque",
+      "relation_source": "Brossard",
+      "relation_target": "Antoine Sérac",
+      "attribute": "",
+      "value": "",
+      "moment_id": 5,
+      "chunk_index": 5
+    },
+    {
+      "entity": "",
+      "relation_name": "déplie à côté de",
+      "relation_source": "Antoine Sérac",
+      "relation_target": "carte des hauteurs du mont Chauvel",
+      "attribute": "",
+      "value": "",
+      "moment_id": 5,
+      "chunk_index": 5
+    },
+    {
+      "entity": "",
+      "relation_name": "propose à",
+      "relation_source": "Antoine Sérac",
+      "relation_target": "Brossard",
+      "attribute": "",
+      "value": "",
+      "moment_id": 5,
+      "chunk_index": 5
+    },
+    {
+      "entity": "",
+      "relation_name": "fait vérifier",
+      "relation_source": "Brossard",
+      "relation_target": "carte des hauteurs du mont Chauvel",
+      "attribute": "",
+      "value": "",
+      "moment_id": 5,
+      "chunk_index": 5
+    },
+    {
+      "entity": "",
+      "relation_name": "revient à",
+      "relation_source": "carte des hauteurs du mont Chauvel",
+      "relation_target": "Brossard",
+      "attribute": "",
+      "value": "",
+      "moment_id": 5,
+      "chunk_index": 5
+    },
+    {
+      "entity": "",
+      "relation_name": "classe",
+      "relation_source": "Brossard",
+      "relation_target": "dossier Rivière",
+      "attribute": "",
+      "value": "",
+      "moment_id": 5,
+      "chunk_index": 5
+    },
+    {
+      "entity": "",
+      "relation_name": "a permis la gravure de",
+      "relation_source": "carte des hauteurs du mont Chauvel",
+      "relation_target": "graver",
+      "attribute": "",
+      "value": "",
+      "moment_id": 5,
+      "chunk_index": 5
+    },
+    {
+      "entity": "Antoine Sérac",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "lieu d'origine",
+      "value": "Saint-Elme",
+      "moment_id": null,
+      "chunk_index": null
+    },
+    {
+      "entity": "Antoine Sérac",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "date de condamnation",
+      "value": "dix ans plus tôt",
+      "moment_id": null,
+      "chunk_index": null
+    },
+    {
+      "entity": "Antoine Sérac",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "motif de la condamnation",
+      "value": "relevés truqués pour le pont de la Frène",
+      "moment_id": null,
+      "chunk_index": null
+    },
+    {
+      "entity": "Antoine Sérac",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "sanction",
+      "value": "condamné, a purgé sa peine",
+      "moment_id": null,
+      "chunk_index": null
+    },
+    {
+      "entity": "Théo Rivière",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "profession antérieure",
+      "value": "géomètre",
+      "moment_id": null,
+      "chunk_index": null
+    },
+    {
+      "entity": "Théo Rivière",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "condamné pour",
+      "value": "affaire du pont de la Frène",
+      "moment_id": null,
+      "chunk_index": null
+    },
+    {
+      "entity": "pont de la Frène",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "localisation",
+      "value": "Saint-Elme",
+      "moment_id": null,
+      "chunk_index": null
+    },
+    {
+      "entity": "pont de la Frène",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "événement",
+      "value": "effondrement",
+      "moment_id": null,
+      "chunk_index": null
+    },
+    {
+      "entity": "dossier Rivière",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "contenu",
+      "value": "dossiers judiciaires liés à Théo Rivière",
+      "moment_id": null,
+      "chunk_index": null
+    },
+    {
+      "entity": "lettre de Besançon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "expéditeur",
+      "value": "Irène Vaneau",
+      "moment_id": null,
+      "chunk_index": null
+    },
+    {
+      "entity": "lettre de Besançon",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "destinataire",
+      "value": "Paul Vaneau",
+      "moment_id": null,
+      "chunk_index": null
+    },
+    {
+      "entity": "docteur Vaneau",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "lien avec Irène Vaneau",
+      "value": "frère",
+      "moment_id": null,
+      "chunk_index": null
+    },
+    {
+      "entity": "docteur Vaneau",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "action_conseil",
+      "value": "écrire au commissaire Brossard",
+      "moment_id": null,
+      "chunk_index": null
+    },
+    {
+      "entity": "Irène Vaneau",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "lien avec Paul Vaneau",
+      "value": "sœur",
+      "moment_id": null,
+      "chunk_index": null
+    }
+  ]
+}

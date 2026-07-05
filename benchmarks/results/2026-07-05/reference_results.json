@@ -1,0 +1,2902 @@
+[
+  {
+    "model": "gpt-oss:120b",
+    "temperature": null,
+    "runs": 3,
+    "text": "reference",
+    "pipeline": "nue",
+    "per_run": [
+      {
+        "time_s": 178.6,
+        "detail": "",
+        "n_entities": 28,
+        "n_relations": 33,
+        "n_predicted_pairs": 29,
+        "entity_precision": 0.536,
+        "entity_recall": 1.0,
+        "entity_f1": 0.698,
+        "relation_precision": 0.517,
+        "relation_recall": 0.846,
+        "relation_f1": 0.642,
+        "merges_ok": 1,
+        "merges_total": 4,
+        "merge_rate": "1/4",
+        "failed_merges": [
+          [
+            [
+              "Antoine Sérac",
+              "Sérac"
+            ],
+            [
+              "Théo Rivière",
+              "Rivière"
+            ]
+          ],
+          [
+            [
+              "Paul Vaneau",
+              "le docteur Paul Vaneau"
+            ],
+            [
+              "le docteur Vaneau",
+              "docteur Vaneau"
+            ]
+          ],
+          [
+            [
+              "Félix Brossard"
+            ],
+            [
+              "le commissaire Brossard",
+              "commissaire Brossard"
+            ]
+          ]
+        ],
+        "missing_entities": [],
+        "false_positive_entities": [
+          "affaire du pont de la Frène",
+          "ancienne remise de la rue des Tanneurs",
+          "atelier de cartographie",
+          "atlas anciens",
+          "carte des hauteurs du mont Chauvel",
+          "dossier Rivière",
+          "géomètre responsable du pont de la Frène",
+          "lettre de Besançon",
+          "malle d'instruments de cuivre",
+          "minutes anciennes du tribunal",
+          "province",
+          "récits de voyage"
+        ],
+        "duplicate_entities": [
+          "Antoine Sérac"
+        ],
+        "missing_relations": [
+          [
+            "Antoine Sérac",
+            "mont Chauvel"
+          ],
+          [
+            "Antoine Sérac",
+            "pont de la Frène"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "Antoine Sérac",
+            "malle d'instruments de cuivre"
+          ],
+          [
+            "Antoine Sérac",
+            "ancienne remise de la rue des Tanneurs"
+          ],
+          [
+            "ancienne remise de la rue des Tanneurs",
+            "rue des Tanneurs"
+          ],
+          [
+            "Antoine Sérac",
+            "atelier de cartographie"
+          ],
+          [
+            "atelier de cartographie",
+            "ancienne remise de la rue des Tanneurs"
+          ],
+          [
+            "Société de géographie de Valsonne",
+            "carte des hauteurs du mont Chauvel"
+          ],
+          [
+            "Antoine Sérac",
+            "atlas anciens"
+          ],
+          [
+            "Antoine Sérac",
+            "récits de voyage"
+          ],
+          [
+            "Lucien Aubanel",
+            "atelier de cartographie"
+          ],
+          [
+            "Irène Vaneau",
+            "minutes anciennes du tribunal"
+          ],
+          [
+            "Théo Rivière",
+            "affaire du pont de la Frène"
+          ],
+          [
+            "Félix Brossard",
+            "dossier Rivière"
+          ],
+          [
+            "Antoine Sérac",
+            "carte des hauteurs du mont Chauvel"
+          ],
+          [
+            "Félix Brossard",
+            "carte des hauteurs du mont Chauvel"
+          ]
+        ],
+        "warnings": []
+      },
+      {
+        "time_s": 168.8,
+        "detail": "",
+        "n_entities": 20,
+        "n_relations": 23,
+        "n_predicted_pairs": 19,
+        "entity_precision": 0.75,
+        "entity_recall": 1.0,
+        "entity_f1": 0.857,
+        "relation_precision": 0.632,
+        "relation_recall": 0.769,
+        "relation_f1": 0.694,
+        "merges_ok": 0,
+        "merges_total": 4,
+        "merge_rate": "0/4",
+        "failed_merges": [
+          [
+            [
+              "Antoine Sérac",
+              "Sérac"
+            ],
+            [
+              "Théo Rivière",
+              "Rivière"
+            ]
+          ],
+          [
+            [
+              "Marguerite Aubanel"
+            ],
+            [
+              "Margot"
+            ]
+          ],
+          [
+            [
+              "Paul Vaneau",
+              "le docteur Paul Vaneau"
+            ],
+            [
+              "le docteur Vaneau",
+              "docteur Vaneau"
+            ]
+          ],
+          [
+            [
+              "Félix Brossard"
+            ],
+            [
+              "le commissaire Brossard",
+              "commissaire Brossard"
+            ]
+          ]
+        ],
+        "missing_entities": [],
+        "false_positive_entities": [
+          "ancienne remise de la rue des Tanneurs",
+          "carte des hauteurs du mont Chauvel",
+          "dossier Rivière",
+          "malle d'instruments de cuivre"
+        ],
+        "duplicate_entities": [
+          "Antoine Sérac"
+        ],
+        "missing_relations": [
+          [
+            "Antoine Sérac",
+            "Saint-Elme"
+          ],
+          [
+            "Antoine Sérac",
+            "mont Chauvel"
+          ],
+          [
+            "Marguerite Aubanel",
+            "Paul Vaneau"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "Antoine Sérac",
+            "ancienne remise de la rue des Tanneurs"
+          ],
+          [
+            "Société de géographie de Valsonne",
+            "carte des hauteurs du mont Chauvel"
+          ],
+          [
+            "Théo Rivière",
+            "malle d'instruments de cuivre"
+          ],
+          [
+            "Irène Vaneau",
+            "Marguerite Aubanel"
+          ],
+          [
+            "Antoine Sérac",
+            "Théo Rivière"
+          ],
+          [
+            "Félix Brossard",
+            "dossier Rivière"
+          ],
+          [
+            "Antoine Sérac",
+            "carte des hauteurs du mont Chauvel"
+          ]
+        ],
+        "warnings": []
+      },
+      {
+        "time_s": 207.5,
+        "detail": "",
+        "n_entities": 25,
+        "n_relations": 30,
+        "n_predicted_pairs": 21,
+        "entity_precision": 0.56,
+        "entity_recall": 1.0,
+        "entity_f1": 0.718,
+        "relation_precision": 0.524,
+        "relation_recall": 0.692,
+        "relation_f1": 0.596,
+        "merges_ok": 0,
+        "merges_total": 4,
+        "merge_rate": "0/4",
+        "failed_merges": [
+          [
+            [
+              "Antoine Sérac",
+              "Sérac"
+            ],
+            [
+              "Théo Rivière",
+              "Rivière"
+            ]
+          ],
+          [
+            [
+              "Marguerite Aubanel"
+            ],
+            [
+              "Margot"
+            ]
+          ],
+          [
+            [
+              "Paul Vaneau",
+              "le docteur Paul Vaneau"
+            ],
+            [
+              "le docteur Vaneau",
+              "docteur Vaneau"
+            ]
+          ],
+          [
+            [
+              "Félix Brossard"
+            ],
+            [
+              "le commissaire Brossard",
+              "commissaire Brossard"
+            ]
+          ]
+        ],
+        "missing_entities": [],
+        "false_positive_entities": [
+          "Pentes nord du mont Chauvel",
+          "Remise de la rue des Tanneurs",
+          "atlas anciens",
+          "carte du Mont Chauvel",
+          "dossier Rivière",
+          "greffe du tribunal de Besançon",
+          "lettre",
+          "malle d'instruments de cuivre",
+          "personne",
+          "récits de voyage"
+        ],
+        "duplicate_entities": [
+          "Antoine Sérac"
+        ],
+        "missing_relations": [
+          [
+            "Antoine Sérac",
+            "Saint-Elme"
+          ],
+          [
+            "Antoine Sérac",
+            "mont Chauvel"
+          ],
+          [
+            "Antoine Sérac",
+            "pont de la Frène"
+          ],
+          [
+            "Marguerite Aubanel",
+            "Paul Vaneau"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "Antoine Sérac",
+            "Remise de la rue des Tanneurs"
+          ],
+          [
+            "personne",
+            "Pentes nord du mont Chauvel"
+          ],
+          [
+            "Antoine Sérac",
+            "atlas anciens"
+          ],
+          [
+            "Antoine Sérac",
+            "récits de voyage"
+          ],
+          [
+            "greffe du tribunal de Besançon",
+            "Théo Rivière"
+          ],
+          [
+            "Théo Rivière",
+            "malle d'instruments de cuivre"
+          ],
+          [
+            "lettre",
+            "Besançon"
+          ],
+          [
+            "Félix Brossard",
+            "dossier Rivière"
+          ],
+          [
+            "Antoine Sérac",
+            "carte du Mont Chauvel"
+          ],
+          [
+            "Félix Brossard",
+            "carte du Mont Chauvel"
+          ]
+        ],
+        "warnings": []
+      }
+    ],
+    "time_s_mean": 184.967,
+    "time_s_std": 20.12,
+    "entity_precision_mean": 0.615,
+    "entity_precision_std": 0.117,
+    "entity_recall_mean": 1.0,
+    "entity_recall_std": 0.0,
+    "entity_f1_mean": 0.758,
+    "entity_f1_std": 0.087,
+    "relation_precision_mean": 0.558,
+    "relation_precision_std": 0.064,
+    "relation_recall_mean": 0.769,
+    "relation_recall_std": 0.077,
+    "relation_f1_mean": 0.644,
+    "relation_f1_std": 0.049,
+    "merge_rate": "1/12"
+  },
+  {
+    "model": "gpt-oss:120b",
+    "temperature": null,
+    "runs": 3,
+    "text": "reference",
+    "pipeline": "actee",
+    "per_run": [
+      {
+        "time_s": 238.6,
+        "detail": "complétude +8, canon 24->24",
+        "n_entities": 24,
+        "n_relations": 31,
+        "n_predicted_pairs": 24,
+        "entity_precision": 0.625,
+        "entity_recall": 1.0,
+        "entity_f1": 0.769,
+        "relation_precision": 0.625,
+        "relation_recall": 0.692,
+        "relation_f1": 0.657,
+        "merges_ok": 2,
+        "merges_total": 4,
+        "merge_rate": "2/4",
+        "failed_merges": [
+          [
+            [
+              "Antoine Sérac",
+              "Sérac"
+            ],
+            [
+              "Théo Rivière",
+              "Rivière"
+            ]
+          ],
+          [
+            [
+              "Paul Vaneau",
+              "le docteur Paul Vaneau"
+            ],
+            [
+              "le docteur Vaneau",
+              "docteur Vaneau"
+            ]
+          ]
+        ],
+        "missing_entities": [],
+        "false_positive_entities": [
+          "atlas anciens et récits de voyage",
+          "carte des hauteurs du mont Chauvel",
+          "dossier Rivière",
+          "l'ancienne remise de la rue des Tanneurs",
+          "lettre de Besançon",
+          "malle d'instruments de cuivre",
+          "portulan",
+          "précision des relevés d'Antoine Sérac"
+        ],
+        "duplicate_entities": [
+          "Antoine Sérac"
+        ],
+        "missing_relations": [
+          [
+            "Antoine Sérac",
+            "Marguerite Aubanel"
+          ],
+          [
+            "Antoine Sérac",
+            "Saint-Elme"
+          ],
+          [
+            "Antoine Sérac",
+            "mont Chauvel"
+          ],
+          [
+            "Marguerite Aubanel",
+            "Paul Vaneau"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "Antoine Sérac",
+            "malle d'instruments de cuivre"
+          ],
+          [
+            "Antoine Sérac",
+            "l'ancienne remise de la rue des Tanneurs"
+          ],
+          [
+            "Société de géographie de Valsonne",
+            "précision des relevés d'Antoine Sérac"
+          ],
+          [
+            "Antoine Sérac",
+            "atlas anciens et récits de voyage"
+          ],
+          [
+            "Félix Brossard",
+            "dossier Rivière"
+          ],
+          [
+            "Antoine Sérac",
+            "carte des hauteurs du mont Chauvel"
+          ],
+          [
+            "Félix Brossard",
+            "carte des hauteurs du mont Chauvel"
+          ],
+          [
+            "Marguerite Aubanel",
+            "atlas anciens et récits de voyage"
+          ],
+          [
+            "l'ancienne remise de la rue des Tanneurs",
+            "Valsonne"
+          ]
+        ],
+        "warnings": []
+      },
+      {
+        "time_s": 276.0,
+        "detail": "complétude +6, canon 21->21",
+        "n_entities": 21,
+        "n_relations": 28,
+        "n_predicted_pairs": 23,
+        "entity_precision": 0.667,
+        "entity_recall": 1.0,
+        "entity_f1": 0.8,
+        "relation_precision": 0.609,
+        "relation_recall": 0.846,
+        "relation_f1": 0.708,
+        "merges_ok": 1,
+        "merges_total": 4,
+        "merge_rate": "1/4",
+        "failed_merges": [
+          [
+            [
+              "Antoine Sérac",
+              "Sérac"
+            ],
+            [
+              "Théo Rivière",
+              "Rivière"
+            ]
+          ],
+          [
+            [
+              "Marguerite Aubanel"
+            ],
+            [
+              "Margot"
+            ]
+          ],
+          [
+            [
+              "Paul Vaneau",
+              "le docteur Paul Vaneau"
+            ],
+            [
+              "le docteur Vaneau",
+              "docteur Vaneau"
+            ]
+          ]
+        ],
+        "missing_entities": [],
+        "false_positive_entities": [
+          "Ancienne remise de la rue des Tanneurs",
+          "Carte des hauteurs du mont Chauvel",
+          "Malle d'instruments de cuivre",
+          "atelier de cartographie",
+          "dossier Rivière",
+          "greffe"
+        ],
+        "duplicate_entities": [
+          "Antoine Sérac"
+        ],
+        "missing_relations": [
+          [
+            "Antoine Sérac",
+            "Saint-Elme"
+          ],
+          [
+            "Antoine Sérac",
+            "mont Chauvel"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "Antoine Sérac",
+            "Malle d'instruments de cuivre"
+          ],
+          [
+            "Antoine Sérac",
+            "Ancienne remise de la rue des Tanneurs"
+          ],
+          [
+            "Antoine Sérac",
+            "atelier de cartographie"
+          ],
+          [
+            "Société de géographie de Valsonne",
+            "Carte des hauteurs du mont Chauvel"
+          ],
+          [
+            "Antoine Sérac",
+            "Théo Rivière"
+          ],
+          [
+            "Félix Brossard",
+            "dossier Rivière"
+          ],
+          [
+            "Antoine Sérac",
+            "Carte des hauteurs du mont Chauvel"
+          ],
+          [
+            "Irène Vaneau",
+            "dossier Rivière"
+          ],
+          [
+            "greffe",
+            "Théo Rivière"
+          ]
+        ],
+        "warnings": []
+      },
+      {
+        "time_s": 249.6,
+        "detail": "complétude +6, canon 34->30",
+        "n_entities": 30,
+        "n_relations": 36,
+        "n_predicted_pairs": 28,
+        "entity_precision": 0.567,
+        "entity_recall": 1.0,
+        "entity_f1": 0.723,
+        "relation_precision": 0.429,
+        "relation_recall": 0.692,
+        "relation_f1": 0.529,
+        "merges_ok": 1,
+        "merges_total": 4,
+        "merge_rate": "1/4",
+        "failed_merges": [
+          [
+            [
+              "Antoine Sérac",
+              "Sérac"
+            ],
+            [
+              "Théo Rivière",
+              "Rivière"
+            ]
+          ],
+          [
+            [
+              "Paul Vaneau",
+              "le docteur Paul Vaneau"
+            ],
+            [
+              "le docteur Vaneau",
+              "docteur Vaneau"
+            ]
+          ],
+          [
+            [
+              "Félix Brossard"
+            ],
+            [
+              "le commissaire Brossard",
+              "commissaire Brossard"
+            ]
+          ]
+        ],
+        "missing_entities": [],
+        "false_positive_entities": [
+          "ancienne remise de la rue des Tanneurs",
+          "atelier de cartographie",
+          "carte des hauteurs du mont Chauvel",
+          "confrères",
+          "dossier Rivière",
+          "greffe du tribunal",
+          "géomètre (non nommé)",
+          "hommes sans passé",
+          "janvier",
+          "lettre de Besançon",
+          "malle d'instruments de cuivre",
+          "portulan"
+        ],
+        "duplicate_entities": [
+          "Antoine Sérac"
+        ],
+        "missing_relations": [
+          [
+            "Antoine Sérac",
+            "Saint-Elme"
+          ],
+          [
+            "Antoine Sérac",
+            "mont Chauvel"
+          ],
+          [
+            "Antoine Sérac",
+            "pont de la Frène"
+          ],
+          [
+            "Marguerite Aubanel",
+            "Paul Vaneau"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "Antoine Sérac",
+            "ancienne remise de la rue des Tanneurs"
+          ],
+          [
+            "Antoine Sérac",
+            "atelier de cartographie"
+          ],
+          [
+            "Société de géographie de Valsonne",
+            "carte des hauteurs du mont Chauvel"
+          ],
+          [
+            "Antoine Sérac",
+            "librairie du Méridien"
+          ],
+          [
+            "Lucien Aubanel",
+            "atelier de cartographie"
+          ],
+          [
+            "Félix Brossard",
+            "hommes sans passé"
+          ],
+          [
+            "Antoine Sérac",
+            "confrères"
+          ],
+          [
+            "géomètre (non nommé)",
+            "Pont de la Frène"
+          ],
+          [
+            "greffe du tribunal",
+            "Théo Rivière"
+          ],
+          [
+            "Théo Rivière",
+            "malle d'instruments de cuivre"
+          ],
+          [
+            "Irène Vaneau",
+            "Marguerite Aubanel"
+          ],
+          [
+            "lettre de Besançon",
+            "janvier"
+          ],
+          [
+            "Félix Brossard",
+            "dossier Rivière"
+          ],
+          [
+            "Antoine Sérac",
+            "carte des hauteurs du mont Chauvel"
+          ],
+          [
+            "Félix Brossard",
+            "carte des hauteurs du mont Chauvel"
+          ],
+          [
+            "Antoine Sérac",
+            "portulan"
+          ]
+        ],
+        "warnings": []
+      }
+    ],
+    "time_s_mean": 254.733,
+    "time_s_std": 19.221,
+    "entity_precision_mean": 0.62,
+    "entity_precision_std": 0.05,
+    "entity_recall_mean": 1.0,
+    "entity_recall_std": 0.0,
+    "entity_f1_mean": 0.764,
+    "entity_f1_std": 0.039,
+    "relation_precision_mean": 0.554,
+    "relation_precision_std": 0.109,
+    "relation_recall_mean": 0.743,
+    "relation_recall_std": 0.089,
+    "relation_f1_mean": 0.631,
+    "relation_f1_std": 0.092,
+    "merge_rate": "4/12"
+  },
+  {
+    "model": "gpt-oss:120b",
+    "temperature": null,
+    "runs": 3,
+    "text": "timeline",
+    "pipeline": "nue",
+    "per_run": [
+      {
+        "time_s": 107.5,
+        "detail": "",
+        "n_entities": 17,
+        "n_relations": 22,
+        "n_predicted_pairs": 17,
+        "entity_precision": 0.647,
+        "entity_recall": 1.0,
+        "entity_f1": 0.786,
+        "relation_precision": 0.588,
+        "relation_recall": 0.625,
+        "relation_f1": 0.606,
+        "merges_ok": 0,
+        "merges_total": 3,
+        "merge_rate": "0/3",
+        "failed_merges": [
+          [
+            [
+              "Élise Chardon"
+            ],
+            [
+              "Élise"
+            ]
+          ],
+          [
+            [
+              "Bastien Malot"
+            ],
+            [
+              "Bastien"
+            ]
+          ],
+          [
+            [
+              "Aurélien Chardon"
+            ],
+            [
+              "Aurélien"
+            ]
+          ]
+        ],
+        "missing_entities": [],
+        "false_positive_entities": [
+          "atelier de la Croix‑Rousse",
+          "atelier d’Élise Chardon",
+          "gouge",
+          "morceaux_de_volute",
+          "printemps",
+          "volute"
+        ],
+        "duplicate_entities": [],
+        "missing_relations": [
+          [
+            "Aurélien Chardon",
+            "Mirecourt"
+          ],
+          [
+            "Bastien Malot",
+            "rue des Grilles"
+          ],
+          [
+            "Camille Roche",
+            "Lyon"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "Bastien Malot",
+            "atelier d’Élise Chardon"
+          ],
+          [
+            "Élise Chardon",
+            "gouge"
+          ],
+          [
+            "Bastien Malot",
+            "volute"
+          ],
+          [
+            "Élise Chardon",
+            "morceaux_de_volute"
+          ],
+          [
+            "Camille Roche",
+            "atelier de la Croix‑Rousse"
+          ],
+          [
+            "atelier de la Croix‑Rousse",
+            "Lyon"
+          ],
+          [
+            "Camille Roche",
+            "printemps"
+          ]
+        ],
+        "warnings": []
+      },
+      {
+        "time_s": 134.0,
+        "detail": "",
+        "n_entities": 20,
+        "n_relations": 20,
+        "n_predicted_pairs": 15,
+        "entity_precision": 0.5,
+        "entity_recall": 0.875,
+        "entity_f1": 0.636,
+        "relation_precision": 0.467,
+        "relation_recall": 0.5,
+        "relation_f1": 0.483,
+        "merges_ok": 0,
+        "merges_total": 3,
+        "merge_rate": "0/3",
+        "failed_merges": [
+          [
+            [
+              "Élise Chardon"
+            ],
+            [
+              "Élise"
+            ]
+          ],
+          [
+            [
+              "Bastien Malot"
+            ],
+            [
+              "Bastien"
+            ]
+          ],
+          [
+            [
+              "Aurélien Chardon"
+            ],
+            [
+              "Aurélien"
+            ]
+          ]
+        ],
+        "missing_entities": [
+          "Lyon"
+        ],
+        "false_positive_entities": [
+          "atelier d'Aubervilliers",
+          "atelier d'Élise",
+          "atelier de la Croix‑Rousse",
+          "gouge",
+          "lettre de Bastien",
+          "maison d'Aurélien Chardon",
+          "morceaux",
+          "table d'épicéa",
+          "volute",
+          "établi"
+        ],
+        "duplicate_entities": [],
+        "missing_relations": [
+          [
+            "Aurélien Chardon",
+            "Mirecourt"
+          ],
+          [
+            "Bastien Malot",
+            "rue des Grilles"
+          ],
+          [
+            "Camille Roche",
+            "Lyon"
+          ],
+          [
+            "Élise Chardon",
+            "rue des Grilles"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "Élise Chardon",
+            "établi"
+          ],
+          [
+            "Aurélien Chardon",
+            "table d'épicéa"
+          ],
+          [
+            "Bastien Malot",
+            "volute"
+          ],
+          [
+            "Élise Chardon",
+            "morceaux"
+          ],
+          [
+            "Bastien Malot",
+            "atelier d'Aubervilliers"
+          ],
+          [
+            "canif à manche de buis",
+            "établi"
+          ],
+          [
+            "maison d'Aurélien Chardon",
+            "Élise Chardon"
+          ],
+          [
+            "Camille Roche",
+            "lettre de Bastien"
+          ]
+        ],
+        "warnings": []
+      },
+      {
+        "time_s": 91.9,
+        "detail": "",
+        "n_entities": 20,
+        "n_relations": 18,
+        "n_predicted_pairs": 14,
+        "entity_precision": 0.4,
+        "entity_recall": 0.75,
+        "entity_f1": 0.522,
+        "relation_precision": 0.5,
+        "relation_recall": 0.5,
+        "relation_f1": 0.5,
+        "merges_ok": 0,
+        "merges_total": 3,
+        "merge_rate": "0/3",
+        "failed_merges": [
+          [
+            [
+              "Élise Chardon"
+            ],
+            [
+              "Élise"
+            ]
+          ],
+          [
+            [
+              "Bastien Malot"
+            ],
+            [
+              "Bastien"
+            ]
+          ],
+          [
+            [
+              "Aurélien Chardon"
+            ],
+            [
+              "Aurélien"
+            ]
+          ]
+        ],
+        "missing_entities": [
+          "rue des Grilles",
+          "Aubervilliers"
+        ],
+        "false_positive_entities": [
+          "atelier d'Aubervilliers",
+          "atelier de la Croix‑Rousse",
+          "e1",
+          "e2",
+          "e3",
+          "e4",
+          "e5",
+          "e6",
+          "e7",
+          "morceaux",
+          "volute",
+          "établi"
+        ],
+        "duplicate_entities": [],
+        "missing_relations": [
+          [
+            "Aurélien Chardon",
+            "Mirecourt"
+          ],
+          [
+            "Bastien Malot",
+            "rue des Grilles"
+          ],
+          [
+            "Camille Roche",
+            "Lyon"
+          ],
+          [
+            "Élise Chardon",
+            "rue des Grilles"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "e1",
+            "e4"
+          ],
+          [
+            "e2",
+            "e3"
+          ],
+          [
+            "e1",
+            "e7"
+          ],
+          [
+            "e2",
+            "e7"
+          ],
+          [
+            "Bastien Malot",
+            "volute"
+          ],
+          [
+            "Élise Chardon",
+            "morceaux"
+          ],
+          [
+            "Bastien Malot",
+            "atelier d'Aubervilliers"
+          ]
+        ],
+        "warnings": []
+      }
+    ],
+    "time_s_mean": 111.133,
+    "time_s_std": 21.284,
+    "entity_precision_mean": 0.516,
+    "entity_precision_std": 0.124,
+    "entity_recall_mean": 0.875,
+    "entity_recall_std": 0.125,
+    "entity_f1_mean": 0.648,
+    "entity_f1_std": 0.132,
+    "relation_precision_mean": 0.518,
+    "relation_precision_std": 0.063,
+    "relation_recall_mean": 0.542,
+    "relation_recall_std": 0.072,
+    "relation_f1_mean": 0.53,
+    "relation_f1_std": 0.067,
+    "merge_rate": "0/9"
+  },
+  {
+    "model": "gpt-oss:120b",
+    "temperature": null,
+    "runs": 3,
+    "text": "timeline",
+    "pipeline": "actee",
+    "per_run": [
+      {
+        "time_s": 154.2,
+        "detail": "complétude +13, canon 21->21",
+        "n_entities": 21,
+        "n_relations": 29,
+        "n_predicted_pairs": 22,
+        "entity_precision": 0.524,
+        "entity_recall": 1.0,
+        "entity_f1": 0.688,
+        "relation_precision": 0.455,
+        "relation_recall": 0.625,
+        "relation_f1": 0.526,
+        "merges_ok": 0,
+        "merges_total": 3,
+        "merge_rate": "0/3",
+        "failed_merges": [
+          [
+            [
+              "Élise Chardon"
+            ],
+            [
+              "Élise"
+            ]
+          ],
+          [
+            [
+              "Bastien Malot"
+            ],
+            [
+              "Bastien"
+            ]
+          ],
+          [
+            [
+              "Aurélien Chardon"
+            ],
+            [
+              "Aurélien"
+            ]
+          ]
+        ],
+        "missing_entities": [],
+        "false_positive_entities": [
+          "archets de Camille Roche",
+          "atelier de la Croix‑Rousse",
+          "atelier de lutherie d’Élise Chardon",
+          "gouge",
+          "lettre de Bastien Malot",
+          "maison d'enfance d'Élise Chardon",
+          "maison de la rue des Grilles",
+          "morceaux de volute",
+          "violons de la rue des Grilles",
+          "volute"
+        ],
+        "duplicate_entities": [],
+        "missing_relations": [
+          [
+            "Aurélien Chardon",
+            "Mirecourt"
+          ],
+          [
+            "Bastien Malot",
+            "rue des Grilles"
+          ],
+          [
+            "Camille Roche",
+            "Lyon"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "Élise Chardon",
+            "atelier de lutherie d’Élise Chardon"
+          ],
+          [
+            "atelier de lutherie d’Élise Chardon",
+            "rue des Grilles"
+          ],
+          [
+            "Bastien Malot",
+            "volute"
+          ],
+          [
+            "Élise Chardon",
+            "morceaux de volute"
+          ],
+          [
+            "Bastien Malot",
+            "atelier de lutherie d’Élise Chardon"
+          ],
+          [
+            "Camille Roche",
+            "lettre de Bastien Malot"
+          ],
+          [
+            "Élise Chardon",
+            "gouge"
+          ],
+          [
+            "atelier de lutherie d’Élise Chardon",
+            "maison de la rue des Grilles"
+          ],
+          [
+            "maison d'enfance d'Élise Chardon",
+            "Mirecourt"
+          ],
+          [
+            "Camille Roche",
+            "archets de Camille Roche"
+          ],
+          [
+            "atelier de lutherie d’Élise Chardon",
+            "violons de la rue des Grilles"
+          ],
+          [
+            "Camille Roche",
+            "atelier de la Croix‑Rousse"
+          ]
+        ],
+        "warnings": []
+      },
+      {
+        "time_s": 140.0,
+        "detail": "complétude +10, canon 29->29",
+        "n_entities": 29,
+        "n_relations": 26,
+        "n_predicted_pairs": 23,
+        "entity_precision": 0.379,
+        "entity_recall": 1.0,
+        "entity_f1": 0.55,
+        "relation_precision": 0.261,
+        "relation_recall": 0.375,
+        "relation_f1": 0.308,
+        "merges_ok": 0,
+        "merges_total": 3,
+        "merge_rate": "0/3",
+        "failed_merges": [
+          [
+            [
+              "Élise Chardon"
+            ],
+            [
+              "Élise"
+            ]
+          ],
+          [
+            [
+              "Bastien Malot"
+            ],
+            [
+              "Bastien"
+            ]
+          ],
+          [
+            [
+              "Aurélien Chardon"
+            ],
+            [
+              "Aurélien"
+            ]
+          ]
+        ],
+        "missing_entities": [],
+        "false_positive_entities": [
+          "a_guidé",
+          "appartient_à",
+          "atelier de la Croix‑Rousse",
+          "atelier d’Aubervilliers",
+          "atelier d’Élise Chardon",
+          "envoyé_par",
+          "gouge",
+          "lettre de Bastien",
+          "maison d’Aurélien Chardon",
+          "porte de la rue des Grilles",
+          "provenance_de",
+          "reçoit",
+          "se_trouve_devant",
+          "situé_à",
+          "table d'épicéa",
+          "train",
+          "volute",
+          "établi"
+        ],
+        "duplicate_entities": [],
+        "missing_relations": [
+          [
+            "Aurélien Chardon",
+            "Mirecourt"
+          ],
+          [
+            "Bastien Malot",
+            "rue des Grilles"
+          ],
+          [
+            "Élise Chardon",
+            "Bastien Malot"
+          ],
+          [
+            "Élise Chardon",
+            "Mirecourt"
+          ],
+          [
+            "Élise Chardon",
+            "rue des Grilles"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "Élise Chardon",
+            "maison d’Aurélien Chardon"
+          ],
+          [
+            "Bastien Malot",
+            "volute"
+          ],
+          [
+            "Élise Chardon",
+            "porte de la rue des Grilles"
+          ],
+          [
+            "Bastien Malot",
+            "atelier d’Aubervilliers"
+          ],
+          [
+            "Élise Chardon",
+            "train"
+          ],
+          [
+            "train",
+            "Mirecourt"
+          ],
+          [
+            "maison d’Aurélien Chardon",
+            "Mirecourt"
+          ],
+          [
+            "Camille Roche",
+            "atelier de la Croix‑Rousse"
+          ],
+          [
+            "Camille Roche",
+            "lettre de Bastien"
+          ],
+          [
+            "envoyé_par",
+            "école Boulle"
+          ],
+          [
+            "situé_à",
+            "rue des Grilles"
+          ],
+          [
+            "situé_à",
+            "Aubervilliers"
+          ],
+          [
+            "se_trouve_devant",
+            "établi"
+          ],
+          [
+            "a_guidé",
+            "Élise Chardon"
+          ],
+          [
+            "appartient_à",
+            "Aurélien Chardon"
+          ],
+          [
+            "provenance_de",
+            "Bastien Malot"
+          ],
+          [
+            "reçoit",
+            "lettre de Bastien"
+          ]
+        ],
+        "warnings": []
+      },
+      {
+        "time_s": 134.5,
+        "detail": "complétude +4, canon 14->14",
+        "n_entities": 14,
+        "n_relations": 18,
+        "n_predicted_pairs": 13,
+        "entity_precision": 0.786,
+        "entity_recall": 1.0,
+        "entity_f1": 0.88,
+        "relation_precision": 0.615,
+        "relation_recall": 0.5,
+        "relation_f1": 0.552,
+        "merges_ok": 0,
+        "merges_total": 3,
+        "merge_rate": "0/3",
+        "failed_merges": [
+          [
+            [
+              "Élise Chardon"
+            ],
+            [
+              "Élise"
+            ]
+          ],
+          [
+            [
+              "Bastien Malot"
+            ],
+            [
+              "Bastien"
+            ]
+          ],
+          [
+            [
+              "Aurélien Chardon"
+            ],
+            [
+              "Aurélien"
+            ]
+          ]
+        ],
+        "missing_entities": [],
+        "false_positive_entities": [
+          "atelier de la Croix‑Rousse",
+          "atelier de lutherie d’Élise Chardon",
+          "gouge"
+        ],
+        "duplicate_entities": [],
+        "missing_relations": [
+          [
+            "Aurélien Chardon",
+            "Mirecourt"
+          ],
+          [
+            "Bastien Malot",
+            "rue des Grilles"
+          ],
+          [
+            "Camille Roche",
+            "Lyon"
+          ],
+          [
+            "Élise Chardon",
+            "rue des Grilles"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "Élise Chardon",
+            "atelier de lutherie d’Élise Chardon"
+          ],
+          [
+            "atelier de lutherie d’Élise Chardon",
+            "rue des Grilles"
+          ],
+          [
+            "Bastien Malot",
+            "atelier de lutherie d’Élise Chardon"
+          ],
+          [
+            "atelier de la Croix‑Rousse",
+            "Lyon"
+          ],
+          [
+            "Camille Roche",
+            "atelier de la Croix‑Rousse"
+          ]
+        ],
+        "warnings": []
+      }
+    ],
+    "time_s_mean": 142.9,
+    "time_s_std": 10.165,
+    "entity_precision_mean": 0.563,
+    "entity_precision_std": 0.206,
+    "entity_recall_mean": 1.0,
+    "entity_recall_std": 0.0,
+    "entity_f1_mean": 0.706,
+    "entity_f1_std": 0.166,
+    "relation_precision_mean": 0.444,
+    "relation_precision_std": 0.177,
+    "relation_recall_mean": 0.5,
+    "relation_recall_std": 0.125,
+    "relation_f1_mean": 0.462,
+    "relation_f1_std": 0.134,
+    "merge_rate": "0/9"
+  },
+  {
+    "model": "qwen3-coder-next:latest",
+    "temperature": null,
+    "runs": 3,
+    "text": "reference",
+    "pipeline": "nue",
+    "per_run": [
+      {
+        "time_s": 57.8,
+        "detail": "",
+        "n_entities": 24,
+        "n_relations": 11,
+        "n_predicted_pairs": 9,
+        "entity_precision": 0.667,
+        "entity_recall": 0.846,
+        "entity_f1": 0.746,
+        "relation_precision": 0.778,
+        "relation_recall": 0.231,
+        "relation_f1": 0.356,
+        "merges_ok": 0,
+        "merges_total": 4,
+        "merge_rate": "0/4",
+        "failed_merges": [
+          [
+            [
+              "Antoine Sérac",
+              "Sérac"
+            ],
+            [
+              "Théo Rivière",
+              "Rivière"
+            ]
+          ],
+          [
+            [
+              "Marguerite Aubanel"
+            ],
+            [
+              "Margot"
+            ]
+          ],
+          [
+            [
+              "Paul Vaneau",
+              "le docteur Paul Vaneau"
+            ],
+            [
+              "le docteur Vaneau",
+              "docteur Vaneau"
+            ]
+          ],
+          [
+            [
+              "Félix Brossard"
+            ],
+            [
+              "le commissaire Brossard",
+              "commissaire Brossard"
+            ]
+          ]
+        ],
+        "missing_entities": [
+          "Besançon",
+          "mont Chauvel"
+        ],
+        "false_positive_entities": [
+          "le comptoir de la librairie du Méridien",
+          "les pentes nord du mont Chauvel",
+          "un atelier de cartographie",
+          "un géomètre (condamné)",
+          "un portulan"
+        ],
+        "duplicate_entities": [
+          "Antoine Sérac",
+          "Paul Vaneau",
+          "rue des Tanneurs"
+        ],
+        "missing_relations": [
+          [
+            "Antoine Sérac",
+            "Saint-Elme"
+          ],
+          [
+            "Antoine Sérac",
+            "Société de géographie de Valsonne"
+          ],
+          [
+            "Antoine Sérac",
+            "Valsonne"
+          ],
+          [
+            "Antoine Sérac",
+            "mont Chauvel"
+          ],
+          [
+            "Antoine Sérac",
+            "pont de la Frène"
+          ],
+          [
+            "Félix Brossard",
+            "Irène Vaneau"
+          ],
+          [
+            "Marguerite Aubanel",
+            "Lucien Aubanel"
+          ],
+          [
+            "Marguerite Aubanel",
+            "Paul Vaneau"
+          ],
+          [
+            "Marguerite Aubanel",
+            "librairie du Méridien"
+          ],
+          [
+            "Paul Vaneau",
+            "Irène Vaneau"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "Antoine Sérac",
+            "la librairie du Méridien"
+          ],
+          [
+            "Lucien Aubanel",
+            "le comptoir de la librairie du Méridien"
+          ]
+        ],
+        "warnings": []
+      },
+      {
+        "time_s": 62.2,
+        "detail": "",
+        "n_entities": 29,
+        "n_relations": 17,
+        "n_predicted_pairs": 12,
+        "entity_precision": 0.586,
+        "entity_recall": 0.923,
+        "entity_f1": 0.717,
+        "relation_precision": 0.583,
+        "relation_recall": 0.308,
+        "relation_f1": 0.403,
+        "merges_ok": 0,
+        "merges_total": 4,
+        "merge_rate": "0/4",
+        "failed_merges": [
+          [
+            [
+              "Antoine Sérac",
+              "Sérac"
+            ],
+            [
+              "Théo Rivière",
+              "Rivière"
+            ]
+          ],
+          [
+            [
+              "Marguerite Aubanel"
+            ],
+            [
+              "Margot"
+            ]
+          ],
+          [
+            [
+              "Paul Vaneau",
+              "le docteur Paul Vaneau"
+            ],
+            [
+              "le docteur Vaneau",
+              "docteur Vaneau"
+            ]
+          ],
+          [
+            [
+              "Félix Brossard"
+            ],
+            [
+              "le commissaire Brossard",
+              "commissaire Brossard"
+            ]
+          ]
+        ],
+        "missing_entities": [
+          "pont de la Frène"
+        ],
+        "false_positive_entities": [
+          "Théo Rivière (alias Antoine Sérac)",
+          "calques du géomète (aujourd’hui identifié comme Théo Rivière)",
+          "effondrement du pont de la Frène à Saint-Elme",
+          "la Remise (ancienne)",
+          "la commande",
+          "la note du greffe",
+          "le géomète condamné (non identifié comme Sérac dans le texte)",
+          "le tribunal (de Besançon)",
+          "l’atelier",
+          "l’escroquerie géométrique à Saint-Elme",
+          "un entrepreneur pressé"
+        ],
+        "duplicate_entities": [
+          "Antoine Sérac"
+        ],
+        "missing_relations": [
+          [
+            "Antoine Sérac",
+            "Marguerite Aubanel"
+          ],
+          [
+            "Antoine Sérac",
+            "Saint-Elme"
+          ],
+          [
+            "Antoine Sérac",
+            "Société de géographie de Valsonne"
+          ],
+          [
+            "Antoine Sérac",
+            "Valsonne"
+          ],
+          [
+            "Antoine Sérac",
+            "mont Chauvel"
+          ],
+          [
+            "Antoine Sérac",
+            "pont de la Frène"
+          ],
+          [
+            "Marguerite Aubanel",
+            "Lucien Aubanel"
+          ],
+          [
+            "Marguerite Aubanel",
+            "Paul Vaneau"
+          ],
+          [
+            "Marguerite Aubanel",
+            "librairie du Méridien"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "Antoine Sérac",
+            "la librairie du Méridien"
+          ],
+          [
+            "Théo Rivière",
+            "effondrement du pont de la Frène à Saint-Elme"
+          ],
+          [
+            "Paul Vaneau",
+            "Félix Brossard"
+          ],
+          [
+            "un entrepreneur pressé",
+            "calques du géomète (aujourd’hui identifié comme Théo Rivière)"
+          ],
+          [
+            "l’escroquerie géométrique à Saint-Elme",
+            "Théo Rivière (alias Antoine Sérac)"
+          ]
+        ],
+        "warnings": []
+      },
+      {
+        "time_s": 62.7,
+        "detail": "",
+        "n_entities": 33,
+        "n_relations": 11,
+        "n_predicted_pairs": 8,
+        "entity_precision": 0.606,
+        "entity_recall": 1.0,
+        "entity_f1": 0.755,
+        "relation_precision": 0.875,
+        "relation_recall": 0.077,
+        "relation_f1": 0.141,
+        "merges_ok": 0,
+        "merges_total": 4,
+        "merge_rate": "0/4",
+        "failed_merges": [
+          [
+            [
+              "Antoine Sérac",
+              "Sérac"
+            ],
+            [
+              "Théo Rivière",
+              "Rivière"
+            ]
+          ],
+          [
+            [
+              "Marguerite Aubanel"
+            ],
+            [
+              "Margot"
+            ]
+          ],
+          [
+            [
+              "Paul Vaneau",
+              "le docteur Paul Vaneau"
+            ],
+            [
+              "le docteur Vaneau",
+              "docteur Vaneau"
+            ]
+          ],
+          [
+            [
+              "Félix Brossard"
+            ],
+            [
+              "le commissaire Brossard",
+              "commissaire Brossard"
+            ]
+          ]
+        ],
+        "missing_entities": [],
+        "false_positive_entities": [
+          "Antoine Sérac / Théo Rivière",
+          "calques de Théo Rivière",
+          "géomètre (condamné)",
+          "la remise (ancienne)",
+          "note du greffe",
+          "un atelier de cartographie",
+          "un entrepreneur pressé",
+          "un malle d'instruments de cuivre",
+          "un portulan",
+          "une carte des hauteurs du mont Chauvel"
+        ],
+        "duplicate_entities": [
+          "Antoine Sérac",
+          "Félix Brossard",
+          "Paul Vaneau"
+        ],
+        "missing_relations": [
+          [
+            "Antoine Sérac",
+            "Lucien Aubanel"
+          ],
+          [
+            "Antoine Sérac",
+            "Marguerite Aubanel"
+          ],
+          [
+            "Antoine Sérac",
+            "Saint-Elme"
+          ],
+          [
+            "Antoine Sérac",
+            "Société de géographie de Valsonne"
+          ],
+          [
+            "Antoine Sérac",
+            "Valsonne"
+          ],
+          [
+            "Antoine Sérac",
+            "mont Chauvel"
+          ],
+          [
+            "Antoine Sérac",
+            "pont de la Frène"
+          ],
+          [
+            "Félix Brossard",
+            "Irène Vaneau"
+          ],
+          [
+            "Marguerite Aubanel",
+            "Lucien Aubanel"
+          ],
+          [
+            "Marguerite Aubanel",
+            "Paul Vaneau"
+          ],
+          [
+            "Marguerite Aubanel",
+            "librairie du Méridien"
+          ],
+          [
+            "Paul Vaneau",
+            "Irène Vaneau"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "un entrepreneur pressé",
+            "calques de Théo Rivière"
+          ]
+        ],
+        "warnings": []
+      }
+    ],
+    "time_s_mean": 60.9,
+    "time_s_std": 2.696,
+    "entity_precision_mean": 0.62,
+    "entity_precision_std": 0.042,
+    "entity_recall_mean": 0.923,
+    "entity_recall_std": 0.077,
+    "entity_f1_mean": 0.739,
+    "entity_f1_std": 0.02,
+    "relation_precision_mean": 0.745,
+    "relation_precision_std": 0.149,
+    "relation_recall_mean": 0.205,
+    "relation_recall_std": 0.118,
+    "relation_f1_mean": 0.3,
+    "relation_f1_std": 0.14,
+    "merge_rate": "0/12"
+  },
+  {
+    "model": "qwen3-coder-next:latest",
+    "temperature": null,
+    "runs": 3,
+    "text": "reference",
+    "pipeline": "actee",
+    "per_run": [
+      {
+        "time_s": 62.1,
+        "detail": "complétude +13, canon 24->19",
+        "n_entities": 19,
+        "n_relations": 8,
+        "n_predicted_pairs": 6,
+        "entity_precision": 0.737,
+        "entity_recall": 0.769,
+        "entity_f1": 0.753,
+        "relation_precision": 0.667,
+        "relation_recall": 0.231,
+        "relation_f1": 0.343,
+        "merges_ok": 1,
+        "merges_total": 4,
+        "merge_rate": "1/4",
+        "failed_merges": [
+          [
+            [
+              "Antoine Sérac",
+              "Sérac"
+            ],
+            [
+              "Théo Rivière",
+              "Rivière"
+            ]
+          ],
+          [
+            [
+              "Marguerite Aubanel"
+            ],
+            [
+              "Margot"
+            ]
+          ],
+          [
+            [
+              "Paul Vaneau",
+              "le docteur Paul Vaneau"
+            ],
+            [
+              "le docteur Vaneau",
+              "docteur Vaneau"
+            ]
+          ]
+        ],
+        "missing_entities": [
+          "Lucien Aubanel",
+          "Irène Vaneau",
+          "Besançon"
+        ],
+        "false_positive_entities": [
+          "géomètre inconnu",
+          "pentes nord du mont Chauvel",
+          "remise rue des Tanneurs"
+        ],
+        "duplicate_entities": [
+          "Antoine Sérac",
+          "Paul Vaneau"
+        ],
+        "missing_relations": [
+          [
+            "Antoine Sérac",
+            "Lucien Aubanel"
+          ],
+          [
+            "Antoine Sérac",
+            "Marguerite Aubanel"
+          ],
+          [
+            "Antoine Sérac",
+            "Saint-Elme"
+          ],
+          [
+            "Antoine Sérac",
+            "Valsonne"
+          ],
+          [
+            "Antoine Sérac",
+            "mont Chauvel"
+          ],
+          [
+            "Félix Brossard",
+            "Irène Vaneau"
+          ],
+          [
+            "Marguerite Aubanel",
+            "Lucien Aubanel"
+          ],
+          [
+            "Marguerite Aubanel",
+            "Paul Vaneau"
+          ],
+          [
+            "Marguerite Aubanel",
+            "librairie du Méridien"
+          ],
+          [
+            "Paul Vaneau",
+            "Irène Vaneau"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "Irène Vaneau",
+            "Paul Vaneau"
+          ],
+          [
+            "Irène Vaneau",
+            "Félix Brossard"
+          ]
+        ],
+        "warnings": [
+          "entité « Théo Rivière » matche plusieurs entrées : ['Antoine Sérac', 'dossier Rivière']",
+          "entité « Irène Vaneau » matche plusieurs entrées : ['Paul Vaneau', 'Irène Vaneau']",
+          "entité « Marguerite Aubanel » matche plusieurs entrées : ['Marguerite Aubanel', 'Lucien Aubanel']"
+        ]
+      },
+      {
+        "time_s": 76.2,
+        "detail": "complétude +15, canon 35->33",
+        "n_entities": 33,
+        "n_relations": 20,
+        "n_predicted_pairs": 15,
+        "entity_precision": 0.576,
+        "entity_recall": 0.923,
+        "entity_f1": 0.709,
+        "relation_precision": 0.733,
+        "relation_recall": 0.308,
+        "relation_f1": 0.433,
+        "merges_ok": 1,
+        "merges_total": 4,
+        "merge_rate": "1/4",
+        "failed_merges": [
+          [
+            [
+              "Antoine Sérac",
+              "Sérac"
+            ],
+            [
+              "Théo Rivière",
+              "Rivière"
+            ]
+          ],
+          [
+            [
+              "Marguerite Aubanel"
+            ],
+            [
+              "Margot"
+            ]
+          ],
+          [
+            [
+              "Félix Brossard"
+            ],
+            [
+              "le commissaire Brossard",
+              "commissaire Brossard"
+            ]
+          ]
+        ],
+        "missing_entities": [
+          "Lucien Aubanel"
+        ],
+        "false_positive_entities": [
+          "atlas anciens",
+          "carton d'archives",
+          "faute",
+          "graver",
+          "greffe",
+          "instruments de cuivre",
+          "la remise de la rue des Tanneurs",
+          "papier",
+          "plume",
+          "portulan",
+          "récits de voyage",
+          "tendre_le_papier",
+          "tenir_la_plume"
+        ],
+        "duplicate_entities": [
+          "Antoine Sérac"
+        ],
+        "missing_relations": [
+          [
+            "Antoine Sérac",
+            "Lucien Aubanel"
+          ],
+          [
+            "Antoine Sérac",
+            "Saint-Elme"
+          ],
+          [
+            "Antoine Sérac",
+            "Société de géographie de Valsonne"
+          ],
+          [
+            "Antoine Sérac",
+            "Valsonne"
+          ],
+          [
+            "Antoine Sérac",
+            "mont Chauvel"
+          ],
+          [
+            "Félix Brossard",
+            "Irène Vaneau"
+          ],
+          [
+            "Marguerite Aubanel",
+            "Lucien Aubanel"
+          ],
+          [
+            "Marguerite Aubanel",
+            "Paul Vaneau"
+          ],
+          [
+            "Marguerite Aubanel",
+            "librairie du Méridien"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "Antoine Sérac",
+            "librairie du Méridien"
+          ],
+          [
+            "Marguerite Aubanel",
+            "Marguerite Aubanel"
+          ],
+          [
+            "carte des hauteurs du mont Chauvel",
+            "graver"
+          ],
+          [
+            "Antoine Sérac",
+            "Théo Rivière"
+          ]
+        ],
+        "warnings": [
+          "entité « Marguerite Aubanel » matche plusieurs entrées : ['Marguerite Aubanel', 'Lucien Aubanel']"
+        ]
+      },
+      {
+        "time_s": 68.9,
+        "detail": "complétude +4, canon 26->23",
+        "n_entities": 23,
+        "n_relations": 21,
+        "n_predicted_pairs": 16,
+        "entity_precision": 0.565,
+        "entity_recall": 0.692,
+        "entity_f1": 0.622,
+        "relation_precision": 0.5,
+        "relation_recall": 0.385,
+        "relation_f1": 0.435,
+        "merges_ok": 1,
+        "merges_total": 4,
+        "merge_rate": "1/4",
+        "failed_merges": [
+          [
+            [
+              "Antoine Sérac",
+              "Sérac"
+            ],
+            [
+              "Théo Rivière",
+              "Rivière"
+            ]
+          ],
+          [
+            [
+              "Marguerite Aubanel"
+            ],
+            [
+              "Margot"
+            ]
+          ],
+          [
+            [
+              "Félix Brossard"
+            ],
+            [
+              "le commissaire Brossard",
+              "commissaire Brossard"
+            ]
+          ]
+        ],
+        "missing_entities": [
+          "Lucien Aubanel",
+          "Irène Vaneau",
+          "Besançon",
+          "mont Chauvel"
+        ],
+        "false_positive_entities": [
+          "apprenti",
+          "calques",
+          "faute de falsification",
+          "géomète inconnu (condamné)",
+          "géomètre (antérieurement identifié comme responsable de l’effondrement)",
+          "géomètre inconnu (condamné)",
+          "portulan",
+          "remise"
+        ],
+        "duplicate_entities": [
+          "Antoine Sérac",
+          "rue des Tanneurs"
+        ],
+        "missing_relations": [
+          [
+            "Antoine Sérac",
+            "Lucien Aubanel"
+          ],
+          [
+            "Antoine Sérac",
+            "Saint-Elme"
+          ],
+          [
+            "Antoine Sérac",
+            "Valsonne"
+          ],
+          [
+            "Antoine Sérac",
+            "mont Chauvel"
+          ],
+          [
+            "Antoine Sérac",
+            "pont de la Frène"
+          ],
+          [
+            "Félix Brossard",
+            "Irène Vaneau"
+          ],
+          [
+            "Marguerite Aubanel",
+            "Lucien Aubanel"
+          ],
+          [
+            "Paul Vaneau",
+            "Irène Vaneau"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "Antoine Sérac",
+            "librairie du Méridien"
+          ],
+          [
+            "Irène Vaneau",
+            "Irène Vaneau"
+          ],
+          [
+            "Irène Vaneau",
+            "apprenti"
+          ],
+          [
+            "Théo Rivière",
+            "calques"
+          ],
+          [
+            "Théo Rivière",
+            "faute de falsification"
+          ],
+          [
+            "Théo Rivière",
+            "Antoine Sérac"
+          ],
+          [
+            "docteur Vaneau",
+            "Félix Brossard"
+          ],
+          [
+            "Irène Vaneau",
+            "Félix Brossard"
+          ]
+        ],
+        "warnings": [
+          "entité « Irène Vaneau » matche plusieurs entrées : ['Marguerite Aubanel', 'Lucien Aubanel', 'Irène Vaneau']"
+        ]
+      }
+    ],
+    "time_s_mean": 69.067,
+    "time_s_std": 7.051,
+    "entity_precision_mean": 0.626,
+    "entity_precision_std": 0.096,
+    "entity_recall_mean": 0.795,
+    "entity_recall_std": 0.118,
+    "entity_f1_mean": 0.695,
+    "entity_f1_std": 0.067,
+    "relation_precision_mean": 0.633,
+    "relation_precision_std": 0.12,
+    "relation_recall_mean": 0.308,
+    "relation_recall_std": 0.077,
+    "relation_f1_mean": 0.404,
+    "relation_f1_std": 0.053,
+    "merge_rate": "3/12"
+  },
+  {
+    "model": "qwen3-coder-next:latest",
+    "temperature": null,
+    "runs": 3,
+    "text": "timeline",
+    "pipeline": "nue",
+    "per_run": [
+      {
+        "time_s": 35.8,
+        "detail": "",
+        "n_entities": 12,
+        "n_relations": 8,
+        "n_predicted_pairs": 6,
+        "entity_precision": 0.917,
+        "entity_recall": 1.0,
+        "entity_f1": 0.957,
+        "relation_precision": 1.0,
+        "relation_recall": 0.5,
+        "relation_f1": 0.667,
+        "merges_ok": 0,
+        "merges_total": 3,
+        "merge_rate": "0/3",
+        "failed_merges": [
+          [
+            [
+              "Élise Chardon"
+            ],
+            [
+              "Élise"
+            ]
+          ],
+          [
+            [
+              "Bastien Malot"
+            ],
+            [
+              "Bastien"
+            ]
+          ],
+          [
+            [
+              "Aurélien Chardon"
+            ],
+            [
+              "Aurélien"
+            ]
+          ]
+        ],
+        "missing_entities": [],
+        "false_positive_entities": [
+          "printemps"
+        ],
+        "duplicate_entities": [],
+        "missing_relations": [
+          [
+            "Aurélien Chardon",
+            "Mirecourt"
+          ],
+          [
+            "Bastien Malot",
+            "rue des Grilles"
+          ],
+          [
+            "Camille Roche",
+            "Lyon"
+          ],
+          [
+            "Élise Chardon",
+            "Aurélien Chardon"
+          ]
+        ],
+        "false_positive_relations": [],
+        "warnings": []
+      },
+      {
+        "time_s": 38.7,
+        "detail": "",
+        "n_entities": 15,
+        "n_relations": 11,
+        "n_predicted_pairs": 7,
+        "entity_precision": 0.8,
+        "entity_recall": 1.0,
+        "entity_f1": 0.889,
+        "relation_precision": 0.857,
+        "relation_recall": 0.5,
+        "relation_f1": 0.632,
+        "merges_ok": 0,
+        "merges_total": 3,
+        "merge_rate": "0/3",
+        "failed_merges": [
+          [
+            [
+              "Élise Chardon"
+            ],
+            [
+              "Élise"
+            ]
+          ],
+          [
+            [
+              "Bastien Malot"
+            ],
+            [
+              "Bastien"
+            ]
+          ],
+          [
+            [
+              "Aurélien Chardon"
+            ],
+            [
+              "Aurélien"
+            ]
+          ]
+        ],
+        "missing_entities": [],
+        "false_positive_entities": [
+          "volute",
+          "établi"
+        ],
+        "duplicate_entities": [
+          "rue des Grilles"
+        ],
+        "missing_relations": [
+          [
+            "Aurélien Chardon",
+            "Mirecourt"
+          ],
+          [
+            "Bastien Malot",
+            "rue des Grilles"
+          ],
+          [
+            "Camille Roche",
+            "Lyon"
+          ],
+          [
+            "Élise Chardon",
+            "Aurélien Chardon"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "canif de buis",
+            "établi"
+          ]
+        ],
+        "warnings": []
+      },
+      {
+        "time_s": 36.1,
+        "detail": "",
+        "n_entities": 16,
+        "n_relations": 0,
+        "n_predicted_pairs": 0,
+        "entity_precision": 0.375,
+        "entity_recall": 0.75,
+        "entity_f1": 0.5,
+        "relation_precision": 0.0,
+        "relation_recall": 0.0,
+        "relation_f1": 0.0,
+        "merges_ok": 0,
+        "merges_total": 3,
+        "merge_rate": "0/3",
+        "failed_merges": [
+          [
+            [
+              "Élise Chardon"
+            ],
+            [
+              "Élise"
+            ]
+          ],
+          [
+            [
+              "Bastien Malot"
+            ],
+            [
+              "Bastien"
+            ]
+          ],
+          [
+            [
+              "Aurélien Chardon"
+            ],
+            [
+              "Aurélien"
+            ]
+          ]
+        ],
+        "missing_entities": [
+          "Aubervilliers",
+          "Mirecourt"
+        ],
+        "false_positive_entities": [
+          "atelier de Camille Roche (Croix-Rousse)",
+          "atelier de lutherie d'Aubervilliers",
+          "canif à manche de buis",
+          "maison de son enfance (Mirecourt)",
+          "mot accompagnant le canif",
+          "réponse",
+          "table d'épicéa",
+          "volute fendue",
+          "établi"
+        ],
+        "duplicate_entities": [
+          "rue des Grilles"
+        ],
+        "missing_relations": [
+          [
+            "Aurélien Chardon",
+            "Mirecourt"
+          ],
+          [
+            "Bastien Malot",
+            "Camille Roche"
+          ],
+          [
+            "Bastien Malot",
+            "rue des Grilles"
+          ],
+          [
+            "Camille Roche",
+            "Lyon"
+          ],
+          [
+            "Élise Chardon",
+            "Aurélien Chardon"
+          ],
+          [
+            "Élise Chardon",
+            "Bastien Malot"
+          ],
+          [
+            "Élise Chardon",
+            "Mirecourt"
+          ],
+          [
+            "Élise Chardon",
+            "rue des Grilles"
+          ]
+        ],
+        "false_positive_relations": [],
+        "warnings": []
+      }
+    ],
+    "time_s_mean": 36.867,
+    "time_s_std": 1.595,
+    "entity_precision_mean": 0.697,
+    "entity_precision_std": 0.285,
+    "entity_recall_mean": 0.917,
+    "entity_recall_std": 0.144,
+    "entity_f1_mean": 0.782,
+    "entity_f1_std": 0.247,
+    "relation_precision_mean": 0.619,
+    "relation_precision_std": 0.541,
+    "relation_recall_mean": 0.333,
+    "relation_recall_std": 0.289,
+    "relation_f1_mean": 0.433,
+    "relation_f1_std": 0.375,
+    "merge_rate": "0/9"
+  },
+  {
+    "model": "qwen3-coder-next:latest",
+    "temperature": null,
+    "runs": 3,
+    "text": "timeline",
+    "pipeline": "actee",
+    "per_run": [
+      {
+        "time_s": 26.6,
+        "detail": "complétude +5, canon 13->12",
+        "n_entities": 12,
+        "n_relations": 2,
+        "n_predicted_pairs": 2,
+        "entity_precision": 0.833,
+        "entity_recall": 1.0,
+        "entity_f1": 0.909,
+        "relation_precision": 0.5,
+        "relation_recall": 0.125,
+        "relation_f1": 0.2,
+        "merges_ok": 0,
+        "merges_total": 3,
+        "merge_rate": "0/3",
+        "failed_merges": [
+          [
+            [
+              "Élise Chardon"
+            ],
+            [
+              "Élise"
+            ]
+          ],
+          [
+            [
+              "Bastien Malot"
+            ],
+            [
+              "Bastien"
+            ]
+          ],
+          [
+            [
+              "Aurélien Chardon"
+            ],
+            [
+              "Aurélien"
+            ]
+          ]
+        ],
+        "missing_entities": [],
+        "false_positive_entities": [
+          "ateliers / atelier d'Élise Chardon",
+          "canif à manche de buis"
+        ],
+        "duplicate_entities": [],
+        "missing_relations": [
+          [
+            "Aurélien Chardon",
+            "Mirecourt"
+          ],
+          [
+            "Bastien Malot",
+            "rue des Grilles"
+          ],
+          [
+            "Camille Roche",
+            "Lyon"
+          ],
+          [
+            "Élise Chardon",
+            "Aurélien Chardon"
+          ],
+          [
+            "Élise Chardon",
+            "Bastien Malot"
+          ],
+          [
+            "Élise Chardon",
+            "Mirecourt"
+          ],
+          [
+            "Élise Chardon",
+            "rue des Grilles"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "Camille Roche",
+            "Camille Roche"
+          ]
+        ],
+        "warnings": []
+      },
+      {
+        "time_s": 51.2,
+        "detail": "complétude +9, canon 17->15",
+        "n_entities": 15,
+        "n_relations": 14,
+        "n_predicted_pairs": 11,
+        "entity_precision": 0.533,
+        "entity_recall": 0.75,
+        "entity_f1": 0.623,
+        "relation_precision": 0.455,
+        "relation_recall": 0.5,
+        "relation_f1": 0.476,
+        "merges_ok": 0,
+        "merges_total": 3,
+        "merge_rate": "0/3",
+        "failed_merges": [
+          [
+            [
+              "Élise Chardon"
+            ],
+            [
+              "Élise"
+            ]
+          ],
+          [
+            [
+              "Bastien Malot"
+            ],
+            [
+              "Bastien"
+            ]
+          ],
+          [
+            [
+              "Aurélien Chardon"
+            ],
+            [
+              "Aurélien"
+            ]
+          ]
+        ],
+        "missing_entities": [
+          "rue des Grilles",
+          "Aubervilliers"
+        ],
+        "false_positive_entities": [
+          "atelier d'lutherie de la rue des Grilles",
+          "atelier de Camille Roche à la Croix-Rousse",
+          "canif à manche de buis",
+          "proposition de Bastien Malot",
+          "réponse à Bastien Malot",
+          "table d'épicéa",
+          "volute"
+        ],
+        "duplicate_entities": [],
+        "missing_relations": [
+          [
+            "Aurélien Chardon",
+            "Mirecourt"
+          ],
+          [
+            "Bastien Malot",
+            "rue des Grilles"
+          ],
+          [
+            "Camille Roche",
+            "Lyon"
+          ],
+          [
+            "Élise Chardon",
+            "rue des Grilles"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "Élise Chardon",
+            "atelier d'lutherie de la rue des Grilles"
+          ],
+          [
+            "Camille Roche",
+            "atelier de Camille Roche à la Croix-Rousse"
+          ],
+          [
+            "Camille Roche",
+            "réponse à Bastien Malot"
+          ],
+          [
+            "Aurélien Chardon",
+            "canif à manche de buis"
+          ],
+          [
+            "Élise Chardon",
+            "canif à manche de buis"
+          ],
+          [
+            "Camille Roche",
+            "proposition de Bastien Malot"
+          ]
+        ],
+        "warnings": []
+      },
+      {
+        "time_s": 25.5,
+        "detail": "complétude +6, canon 10->10",
+        "n_entities": 10,
+        "n_relations": 2,
+        "n_predicted_pairs": 2,
+        "entity_precision": 0.8,
+        "entity_recall": 0.625,
+        "entity_f1": 0.702,
+        "relation_precision": 0.5,
+        "relation_recall": 0.125,
+        "relation_f1": 0.2,
+        "merges_ok": 0,
+        "merges_total": 3,
+        "merge_rate": "0/3",
+        "failed_merges": [
+          [
+            [
+              "Élise Chardon"
+            ],
+            [
+              "Élise"
+            ]
+          ],
+          [
+            [
+              "Bastien Malot"
+            ],
+            [
+              "Bastien"
+            ]
+          ],
+          [
+            [
+              "Aurélien Chardon"
+            ],
+            [
+              "Aurélien"
+            ]
+          ]
+        ],
+        "missing_entities": [
+          "rue des Grilles",
+          "Aubervilliers",
+          "Mirecourt"
+        ],
+        "false_positive_entities": [
+          "atelier de luthier (rue des Grilles)",
+          "table"
+        ],
+        "duplicate_entities": [],
+        "missing_relations": [
+          [
+            "Aurélien Chardon",
+            "Mirecourt"
+          ],
+          [
+            "Bastien Malot",
+            "rue des Grilles"
+          ],
+          [
+            "Camille Roche",
+            "Lyon"
+          ],
+          [
+            "Élise Chardon",
+            "Aurélien Chardon"
+          ],
+          [
+            "Élise Chardon",
+            "Bastien Malot"
+          ],
+          [
+            "Élise Chardon",
+            "Mirecourt"
+          ],
+          [
+            "Élise Chardon",
+            "rue des Grilles"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "Camille Roche",
+            "atelier de luthier (rue des Grilles)"
+          ]
+        ],
+        "warnings": []
+      }
+    ],
+    "time_s_mean": 34.433,
+    "time_s_std": 14.531,
+    "entity_precision_mean": 0.722,
+    "entity_precision_std": 0.165,
+    "entity_recall_mean": 0.792,
+    "entity_recall_std": 0.191,
+    "entity_f1_mean": 0.745,
+    "entity_f1_std": 0.148,
+    "relation_precision_mean": 0.485,
+    "relation_precision_std": 0.026,
+    "relation_recall_mean": 0.25,
+    "relation_recall_std": 0.217,
+    "relation_f1_mean": 0.292,
+    "relation_f1_std": 0.159,
+    "merge_rate": "0/9"
+  }
+]
