@@ -56,7 +56,7 @@ extension). Schéma :
      "level": "core"}
   ],
   "required_merges": [
-    ["mention identité A", "mention identité B"]
+    [["mention identité A", "variante A2"], ["mention identité B", "variante B2"]]
   ],
   "relations": [
     {"pair": ["Nom canonique 1", "Nom canonique 2"], "level": "core"}
@@ -68,8 +68,12 @@ extension). Schéma :
   l'appariement (normalisation partagée avec `minerva.model.normalize`).
 - `relations[].pair` : noms canoniques d'entités **de la référence**
   (core ou optional), non orientés. `level` : `core` ou `optional`.
-- `required_merges` : paires de mentions qui doivent résoudre vers la
-  **même** entité prédite (généralise `valjean_madeleine_merged`).
+- `required_merges` : paires de **groupes de mentions** ; la fusion est
+  réussie si une mention du groupe A et une mention du groupe B résolvent
+  vers la même entité prédite non nulle (généralise
+  `valjean_madeleine_merged`, même logique `resolve_any` que `bench.py` —
+  un groupe à une seule mention échouerait dès que le modèle nomme
+  l'entité autrement sans poser l'alias).
 - Exhaustivité : toute entité/relation défendable du texte figure dans le
   fichier, en `core` si un lecteur attentif la juge indispensable au graphe,
   en `optional` sinon.
@@ -109,8 +113,9 @@ référence (doublons inclus : un nœud dupliqué mappe vers la même entrée).
 - Rappel = paires `core` couvertes / nb paires `core` ; précision =
   (VP + neutres) / nb paires prédites distinctes ; F1 idem.
 
-**Fusions** : pour chaque paire de `required_merges`, réussie si les deux
-mentions résolvent (`graph.resolve`) vers la même entité prédite non nulle.
+**Fusions** : pour chaque paire de groupes de `required_merges`, réussie si
+la première mention résolvable de chaque groupe (`graph.resolve`) mène à la
+même entité prédite non nulle.
 Taux = réussies / total, plus le détail des paires ratées.
 
 Métriques annexes conservées : `n_entities`, `n_relations`, listes
