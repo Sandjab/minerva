@@ -104,14 +104,52 @@ def score_reference(graph: KnowledgeGraph, ref: Reference) -> dict:
     # doublons (entrée couverte 2+ fois) : nœuds de trop, exclus des correctes
     e_p, e_r, e_f1 = _prf(len(entry_hits), n_pred, len(covered), len(core_names))
 
+    # --- relations : paires non orientées DISTINCTES du graphe prédit ---
+    predicted_pairs: dict[frozenset, list[str]] = {}
+    for r in graph.relations:
+        ends = []
+        for end in (r.source, r.target):
+            resolved = graph.resolve(end)
+            entry = entity_entry.get(resolved.name) if resolved else None
+            # extrémité hors référence : marqueur « ? » (aucune entrée ne
+            # commence par « ? »), la paire devient un faux positif
+            ends.append(entry if entry is not None else "?" + normalize(end))
+        predicted_pairs.setdefault(frozenset(ends), [r.source, r.target])
+
+    tp_keys: set[frozenset] = set()
+    n_neutral = 0
+    fp_relations: list[list[str]] = []
+    for pair, sample in predicted_pairs.items():
+        if any(x.startswith("?") for x in pair):
+            fp_relations.append(sample)
+        elif pair in ref.core_pairs:
+            tp_keys.add(pair)
+        elif pair in ref.optional_pairs or any(ref.level[x] == "optional" for x in pair):
+            n_neutral += 1
+        else:
+            fp_relations.append(sample)
+
+    r_p, r_r, r_f1 = _prf(
+        len(tp_keys) + n_neutral, len(predicted_pairs), len(tp_keys), len(ref.core_pairs)
+    )
+    missing_relations = sorted(
+        sorted(p, key=ref.order.__getitem__) for p in ref.core_pairs - tp_keys
+    )
+
     return {
         "n_entities": n_pred,
         "n_relations": len(graph.relations),
+        "n_predicted_pairs": len(predicted_pairs),
         "entity_precision": e_p,
         "entity_recall": e_r,
         "entity_f1": e_f1,
+        "relation_precision": r_p,
+        "relation_recall": r_r,
+        "relation_f1": r_f1,
         "missing_entities": [n for n in core_names if n not in entry_hits],
         "false_positive_entities": sorted(fp_entities),
         "duplicate_entities": sorted(n for n, c in entry_hits.items() if c > 1),
+        "missing_relations": missing_relations,
+        "false_positive_relations": fp_relations,
         "warnings": warnings,
     }

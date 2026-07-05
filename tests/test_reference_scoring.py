@@ -116,3 +116,60 @@ def test_graphe_vide():
     assert s["entity_precision"] == 0.0
     assert s["entity_recall"] == 0.0
     assert s["entity_f1"] == 0.0
+
+
+def test_graphe_parfait_relations():
+    s = scoring.score_reference(perfect_graph(), make_ref())
+    assert s["relation_precision"] == 1.0
+    assert s["relation_recall"] == 1.0
+    assert s["missing_relations"] == []
+    assert s["false_positive_relations"] == []
+
+
+def test_relation_manquante_baisse_le_rappel():
+    g = KnowledgeGraph()
+    g.add_entity(Entity(name="Alice Vernet", type="personne", aliases=["docteur Vernet"]))
+    g.add_entity(Entity(name="Bruno Maillard", type="personne"))
+    g.add_entity(Entity(name="Chaville", type="lieu"))
+    g.add_relation(Relation(name="connaît", source="Alice Vernet", target="Bruno Maillard"))
+    s = scoring.score_reference(g, make_ref())
+    assert s["relation_recall"] == 0.5
+    assert s["missing_relations"] == [["Alice Vernet", "Chaville"]]
+    assert s["relation_precision"] == 1.0
+
+
+def test_paire_optionnelle_neutre():
+    g = perfect_graph()
+    g.add_relation(Relation(name="voisin", source="Bruno Maillard", target="Chaville"))
+    s = scoring.score_reference(g, make_ref())
+    assert s["relation_precision"] == 1.0  # (2 TP + 1 neutre) / 3
+    assert s["relation_recall"] == 1.0
+
+
+def test_relation_vers_entite_optionnelle_neutre():
+    g = perfect_graph()
+    g.add_entity(Entity(name="la Poste", type="organisation"))
+    g.add_relation(Relation(name="travaille à", source="Bruno Maillard", target="la Poste"))
+    s = scoring.score_reference(g, make_ref())
+    assert s["relation_precision"] == 1.0
+    assert s["relation_recall"] == 1.0
+
+
+def test_paire_hors_reference_faux_positif():
+    g = perfect_graph()
+    g.add_relation(Relation(name="voisin", source="Bruno Maillard", target="Chaville"))
+    g.add_entity(Entity(name="Zorglub", type="personne"))
+    g.add_relation(Relation(name="menace", source="Zorglub", target="Alice Vernet"))
+    s = scoring.score_reference(g, make_ref())
+    # paires : {A,B} TP, {A,C} TP, {B,C} neutre, {Zorglub,A} FP -> 3/4
+    assert s["relation_precision"] == 0.75
+    assert s["false_positive_relations"] == [["Zorglub", "Alice Vernet"]]
+
+
+def test_sens_et_predicat_ignores_et_multipredicats_dedupliques():
+    g = perfect_graph()
+    # sens inverse + deuxième prédicat sur la même paire : toujours 1 paire
+    g.add_relation(Relation(name="emploie", source="Bruno Maillard", target="Alice Vernet"))
+    s = scoring.score_reference(g, make_ref())
+    assert s["relation_precision"] == 1.0
+    assert s["relation_recall"] == 1.0
