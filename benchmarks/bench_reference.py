@@ -36,7 +36,7 @@ OLLAMA = "http://localhost:11434/v1"
 CHUNK_SIZE = 700  # plusieurs chunks : cohérence inter-chunks testée
 DEFAULT_MODELS = ["gpt-oss:120b", "qwen3-coder-next:latest"]
 TEXTS = {"reference": "reference_texte.txt", "timeline": "timeline_texte.txt",
-         "fusion": "fusion_texte.txt"}
+         "fusion": "fusion_texte.txt", "chronique": "chronique_texte.txt"}
 # Raffinements composables : complétude, canonicalisation, alias (identité
 # d'emprunt, portée ciblée). canon_alias = canon + alias SANS complétude —
 # reco 120b de l'addendum 9 (la complétude dégrade la précision sur 120b).

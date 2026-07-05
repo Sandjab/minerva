@@ -1,0 +1,883 @@
+{
+  "entities": [
+    {
+      "name": "Hélène Fabre",
+      "type": "inconnu",
+      "aliases": [
+        "la maire"
+      ],
+      "attributes": {
+        "rôle": "maire",
+        "qualité": "maire (implicite par 'la maire')",
+        "fonction": "maire (de Céredac, implied)"
+      }
+    },
+    {
+      "name": "médiathèque Raymond-Fabre",
+      "type": "inconnu",
+      "aliases": [
+        "La médiathèque du Vieux Moulin",
+        "le Vieux Moulin",
+        "la médiathèque intercommunale (encore non nommée mais impliquée via 'nous y mettons des livres')"
+      ],
+      "attributes": {
+        "statut": "ouvrira le 14 juin",
+        "lieu d’implantation": "dans les murs du Vieux Moulin / sur la rive gauche de la Sorgue",
+        "type": "médiathèque intercommunale",
+        "ancienne activité": "broyait le blé de la vallée dans les années cinquante",
+        "statut actuel (par rapport au texte)": "à l'abandon depuis la fermeture de la minoterie"
+      }
+    },
+    {
+      "name": "Les Amis du Vieux Moulin",
+      "type": "inconnu",
+      "aliases": [
+        "l'association"
+      ],
+      "attributes": {}
+    },
+    {
+      "name": "Raymond Fabre",
+      "type": "inconnu",
+      "aliases": [
+        "le meunier (Raymond Fabre)",
+        "fille_de_Raymond_Fabre"
+      ],
+      "attributes": {
+        "qualité": "président des Amis du Vieux Moulin",
+        "ancienne profession": "ancien meunier",
+        "temoignage: durée combat": "dix ans de pétitions avant le rachat par la municipalité",
+        "action : rôle',": "",
+        "attitude": "a demandé qu'on n'en fasse pas trop"
+      }
+    },
+    {
+      "name": "l'inauguration du 14 juin",
+      "type": "inconnu",
+      "aliases": [
+        "l'inauguration"
+      ],
+      "attributes": {
+        "date": "14 juin"
+      }
+    },
+    {
+      "name": "Céredac",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "éditorial": "localité d’origine de l’annonce (par CÉREDAC)",
+        "perception_populaire": "savoir_qu_on_distingue_le_meurier_de_la_maire"
+      }
+    },
+    {
+      "name": "le conseil municipal",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "forme de séance": "réuni en séance publique",
+        "décision": "nomaux='médiathèque Raymond-Fabre'"
+      }
+    },
+    {
+      "name": "Julien Roche",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "qualité": "conseiller d'opposition",
+        "déclaration": "\"On a payé une roue décorative le prix d'une école\"",
+        "attitude": "ironie sur 'une famille qui se donne un bâtiment'"
+      }
+    },
+    {
+      "name": "le budget final",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "la salle",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "la fréquentation",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "estimée": "quatre cents visiteurs par semaine"
+      }
+    },
+    {
+      "name": "la place du Marché",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Delmas & Fils",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "a embauché": "sept apprentis de Céredac pour le chantier"
+      }
+    },
+    {
+      "name": "Sophie Vasseur",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "vient de": "la médiathèque voisine de Roquevert",
+        "promet": "une salle pour les enfants au rez-de-chaussée"
+      }
+    },
+    {
+      "name": "la médiathèque voisine de Roquevert",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "le rez-de-chaussée",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "l'étage",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "la charpente d'origine",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "mardi",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "l'équipe de six personnes",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "semaine portes ouvertes",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "la Sorgue",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "statut_mouvement": "continue de tourner la roue"
+      }
+    }
+  ],
+  "relations": [
+    {
+      "name": "a sauvé",
+      "source": "Les Amis du Vieux Moulin",
+      "target": "médiathèque Raymond-Fabre",
+      "attributes": {
+        "action": "s'est battue pour le sauver de la démolition"
+      }
+    },
+    {
+      "name": "est le père de",
+      "source": "Raymond Fabre",
+      "target": "Hélène Fabre",
+      "attributes": {}
+    },
+    {
+      "name": "a voté contre",
+      "source": "Julien Roche",
+      "target": "le budget final",
+      "attributes": {
+        "du projet de la médiathèque intercommunale": "non précisé, mais impliqué via son opposition"
+      }
+    },
+    {
+      "name": "a quitté",
+      "source": "Julien Roche",
+      "target": "la salle",
+      "attributes": {}
+    },
+    {
+      "name": "a répondu à",
+      "source": "Hélène Fabre",
+      "target": "Julien Roche",
+      "attributes": {}
+    },
+    {
+      "name": "sera utilisée comme argument",
+      "source": "Hélène Fabre",
+      "target": "la fréquentation",
+      "attributes": {
+        "de la médiathèque": "pour trancher le débat"
+      }
+    },
+    {
+      "name": "les habitants prenaient le frais ici",
+      "source": "la place du Marché",
+      "target": "mardi",
+      "attributes": {}
+    },
+    {
+      "name": "dirigera",
+      "source": "Sophie Vasseur",
+      "target": "l'équipe de six personnes",
+      "attributes": {}
+    },
+    {
+      "name": "se situe sous",
+      "source": "l'étage",
+      "target": "la charpente d'origine",
+      "attributes": {}
+    },
+    {
+      "name": "nom_selectionne_par",
+      "source": "médiathèque Raymond-Fabre",
+      "target": "le conseil municipal",
+      "attributes": {}
+    },
+    {
+      "name": "nom_propose_par",
+      "source": "Raymond Fabre",
+      "target": "Les Amis du Vieux Moulin",
+      "attributes": {
+        "non_approuve": "true"
+      }
+    },
+    {
+      "name": "supporte_le_vote",
+      "source": "Raymond Fabre",
+      "target": "Raymond Fabre",
+      "attributes": {
+        "identifie_a_helene_fabre": "true"
+      }
+    },
+    {
+      "name": "opposition_symbole",
+      "source": "Raymond Fabre",
+      "target": "Hélène Fabre",
+      "attributes": {
+        "représentée par un symbole distinctif": "farine sous les ongles / écharpe tricolore"
+      }
+    },
+    {
+      "name": "suit_l inauguration",
+      "source": "semaine portes ouvertes",
+      "target": "l'inauguration du 14 juin",
+      "attributes": {}
+    },
+    {
+      "name": "fonction_actuelle_de_ la_Sorgue",
+      "source": "la Sorgue",
+      "target": "médiathèque Raymond-Fabre",
+      "attributes": {
+        "motif": "décoratif uniquement"
+      }
+    }
+  ],
+  "moments": [
+    {
+      "id": 1,
+      "chunk_index": 0,
+      "seq": 0,
+      "summary": "Annonce de l’ouverture prochaine de la médiathèque intercommunale après trois ans de travaux et deux reports.",
+      "resolved_order": 0,
+      "resolved_days": 0.0
+    },
+    {
+      "id": 2,
+      "chunk_index": 1,
+      "seq": 0,
+      "summary": "Contexte historique du Vieux Moulin et rôle de l’association Les Amis du Vieux Moulin dans sa sauvegarde, avec témoignages de Raymond Fabre et Hélène Fabre.",
+      "resolved_order": 1,
+      "resolved_days": null
+    },
+    {
+      "id": 3,
+      "chunk_index": 1,
+      "seq": 1,
+      "summary": "Réinterprétation du rôle respectif de Raymond et Hélène Fabre dans la transformation du Vieux Moulin en médiathèque.",
+      "resolved_order": 2,
+      "resolved_days": null
+    },
+    {
+      "id": 4,
+      "chunk_index": 3,
+      "seq": 0,
+      "summary": "Le conseiller d’opposition Julien Roche vote contre le budget de la médiathèque et critique son coût, tandis que la maire défend le projet en invoquant la fréquentation future.",
+      "resolved_order": 3,
+      "resolved_days": null
+    },
+    {
+      "id": 5,
+      "chunk_index": 4,
+      "seq": 0,
+      "summary": "Réactions locales sur la place du Marché et précisions sur l’équipe projet : embauches d’apprentis de Céredac, recrutement de Sophie Vasseur comme bibliothécaire, organisation des espaces (salle pour enfants / fonds ancien).",
+      "resolved_order": 4,
+      "resolved_days": null
+    },
+    {
+      "id": 6,
+      "chunk_index": 5,
+      "seq": 0,
+      "summary": "Le conseil municipal décide d’inaugurer la médiathèque sous le nom « médiathèque Raymond-Fabre », malgré l’opposition de l’association, et Julien Roche ironise sur cette décision.",
+      "resolved_order": 5,
+      "resolved_days": null
+    },
+    {
+      "id": 7,
+      "chunk_index": 5,
+      "seq": 1,
+      "summary": "Le calendrier d’inauguration et de portes ouvertes est précisé ; la Sorgue continue de tourner, mais pour motif décoratif.",
+      "resolved_order": 6,
+      "resolved_days": null
+    }
+  ],
+  "constraints": [
+    {
+      "source_id": 1,
+      "relation": "avant",
+      "target_id": 2,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 2,
+      "relation": "avant",
+      "target_id": 3,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 3,
+      "relation": "avant",
+      "target_id": 4,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 4,
+      "relation": "avant",
+      "target_id": 5,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 5,
+      "relation": "avant",
+      "target_id": 6,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 6,
+      "relation": "avant",
+      "target_id": 7,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    }
+  ],
+  "appearances": {
+    "1": [
+      "Céredac",
+      "Hélène Fabre",
+      "le conseil municipal",
+      "médiathèque Raymond-Fabre"
+    ],
+    "2": [
+      "Hélène Fabre",
+      "Les Amis du Vieux Moulin",
+      "Raymond Fabre",
+      "médiathèque Raymond-Fabre"
+    ],
+    "3": [
+      "Hélène Fabre",
+      "Raymond Fabre",
+      "médiathèque Raymond-Fabre"
+    ],
+    "4": [
+      "Hélène Fabre",
+      "Julien Roche",
+      "la fréquentation",
+      "la salle",
+      "le budget final",
+      "le conseil municipal"
+    ],
+    "5": [
+      "Céredac",
+      "Delmas & Fils",
+      "Sophie Vasseur",
+      "l'équipe de six personnes",
+      "l'étage",
+      "la charpente d'origine",
+      "la médiathèque voisine de Roquevert",
+      "la place du Marché",
+      "le rez-de-chaussée",
+      "mardi"
+    ],
+    "6": [
+      "Céredac",
+      "Hélène Fabre",
+      "Julien Roche",
+      "Les Amis du Vieux Moulin",
+      "Raymond Fabre",
+      "le conseil municipal",
+      "mardi",
+      "médiathèque Raymond-Fabre"
+    ],
+    "7": [
+      "l'inauguration du 14 juin",
+      "la Sorgue",
+      "médiathèque Raymond-Fabre",
+      "semaine portes ouvertes"
+    ]
+  },
+  "assertions": [
+    {
+      "entity": "médiathèque Raymond-Fabre",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "statut",
+      "value": "ouvrira le 14 juin",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "médiathèque Raymond-Fabre",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "lieu d’implantation",
+      "value": "dans les murs du Vieux Moulin / sur la rive gauche de la Sorgue",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "médiathèque Raymond-Fabre",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "type",
+      "value": "médiathèque intercommunale",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Céredac",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "éditorial",
+      "value": "localité d’origine de l’annonce (par CÉREDAC)",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Hélène Fabre",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "rôle",
+      "value": "maire",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "le conseil municipal",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "forme de séance",
+      "value": "réuni en séance publique",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "médiathèque Raymond-Fabre",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "ancienne activité",
+      "value": "broyait le blé de la vallée dans les années cinquante",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "médiathèque Raymond-Fabre",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "statut actuel (par rapport au texte)",
+      "value": "à l'abandon depuis la fermeture de la minoterie",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "a sauvé",
+      "relation_source": "Les Amis du Vieux Moulin",
+      "relation_target": "médiathèque Raymond-Fabre",
+      "attribute": "action",
+      "value": "s'est battue pour le sauver de la démolition",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Raymond Fabre",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "qualité",
+      "value": "président des Amis du Vieux Moulin",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Raymond Fabre",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "ancienne profession",
+      "value": "ancien meunier",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "est le père de",
+      "relation_source": "Raymond Fabre",
+      "relation_target": "Hélène Fabre",
+      "attribute": "",
+      "value": "",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Hélène Fabre",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "qualité",
+      "value": "maire (implicite par 'la maire')",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Raymond Fabre",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "temoignage: durée combat",
+      "value": "dix ans de pétitions avant le rachat par la municipalité",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Raymond Fabre",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "action : rôle',",
+      "value": "",
+      "moment_id": 3,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Julien Roche",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "qualité",
+      "value": "conseiller d'opposition",
+      "moment_id": 4,
+      "chunk_index": 3
+    },
+    {
+      "entity": "",
+      "relation_name": "a voté contre",
+      "relation_source": "Julien Roche",
+      "relation_target": "le budget final",
+      "attribute": "du projet de la médiathèque intercommunale",
+      "value": "non précisé, mais impliqué via son opposition",
+      "moment_id": 4,
+      "chunk_index": 3
+    },
+    {
+      "entity": "Julien Roche",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "déclaration",
+      "value": "\"On a payé une roue décorative le prix d'une école\"",
+      "moment_id": 4,
+      "chunk_index": 3
+    },
+    {
+      "entity": "",
+      "relation_name": "a quitté",
+      "relation_source": "Julien Roche",
+      "relation_target": "la salle",
+      "attribute": "",
+      "value": "",
+      "moment_id": 4,
+      "chunk_index": 3
+    },
+    {
+      "entity": "Hélène Fabre",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "fonction",
+      "value": "maire (de Céredac, implied)",
+      "moment_id": 4,
+      "chunk_index": 3
+    },
+    {
+      "entity": "",
+      "relation_name": "a répondu à",
+      "relation_source": "Hélène Fabre",
+      "relation_target": "Julien Roche",
+      "attribute": "",
+      "value": "",
+      "moment_id": 4,
+      "chunk_index": 3
+    },
+    {
+      "entity": "la fréquentation",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "estimée",
+      "value": "quatre cents visiteurs par semaine",
+      "moment_id": 4,
+      "chunk_index": 3
+    },
+    {
+      "entity": "",
+      "relation_name": "sera utilisée comme argument",
+      "relation_source": "Hélène Fabre",
+      "relation_target": "la fréquentation",
+      "attribute": "de la médiathèque",
+      "value": "pour trancher le débat",
+      "moment_id": 4,
+      "chunk_index": 3
+    },
+    {
+      "entity": "Delmas & Fils",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "a embauché",
+      "value": "sept apprentis de Céredac pour le chantier",
+      "moment_id": 5,
+      "chunk_index": 4
+    },
+    {
+      "entity": "",
+      "relation_name": "les habitants prenaient le frais ici",
+      "relation_source": "la place du Marché",
+      "relation_target": "mardi",
+      "attribute": "",
+      "value": "",
+      "moment_id": 5,
+      "chunk_index": 4
+    },
+    {
+      "entity": "Sophie Vasseur",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "vient de",
+      "value": "la médiathèque voisine de Roquevert",
+      "moment_id": 5,
+      "chunk_index": 4
+    },
+    {
+      "entity": "",
+      "relation_name": "dirigera",
+      "relation_source": "Sophie Vasseur",
+      "relation_target": "l'équipe de six personnes",
+      "attribute": "",
+      "value": "",
+      "moment_id": 5,
+      "chunk_index": 4
+    },
+    {
+      "entity": "Sophie Vasseur",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "promet",
+      "value": "une salle pour les enfants au rez-de-chaussée",
+      "moment_id": 5,
+      "chunk_index": 4
+    },
+    {
+      "entity": "",
+      "relation_name": "se situe sous",
+      "relation_source": "l'étage",
+      "relation_target": "la charpente d'origine",
+      "attribute": "",
+      "value": "",
+      "moment_id": 5,
+      "chunk_index": 4
+    },
+    {
+      "entity": "Sophie Vasseur",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "promet",
+      "value": "un fonds ancien à l'étage",
+      "moment_id": 5,
+      "chunk_index": 4
+    },
+    {
+      "entity": "le conseil municipal",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "décision",
+      "value": "nomaux='médiathèque Raymond-Fabre'",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "",
+      "relation_name": "nom_selectionne_par",
+      "relation_source": "médiathèque Raymond-Fabre",
+      "relation_target": "le conseil municipal",
+      "attribute": "",
+      "value": "",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "",
+      "relation_name": "nom_propose_par",
+      "relation_source": "Raymond Fabre",
+      "relation_target": "Les Amis du Vieux Moulin",
+      "attribute": "non_approuve",
+      "value": "true",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "Raymond Fabre",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "attitude",
+      "value": "a demandé qu'on n'en fasse pas trop",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "",
+      "relation_name": "supporte_le_vote",
+      "relation_source": "Raymond Fabre",
+      "relation_target": "Raymond Fabre",
+      "attribute": "identifie_a_helene_fabre",
+      "value": "true",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "Julien Roche",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "attitude",
+      "value": "ironie sur 'une famille qui se donne un bâtiment'",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "Céredac",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "perception_populaire",
+      "value": "savoir_qu_on_distingue_le_meurier_de_la_maire",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "",
+      "relation_name": "opposition_symbole",
+      "relation_source": "Raymond Fabre",
+      "relation_target": "Hélène Fabre",
+      "attribute": "représentée par un symbole distinctif",
+      "value": "farine sous les ongles / écharpe tricolore",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "l'inauguration du 14 juin",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "date",
+      "value": "14 juin",
+      "moment_id": 7,
+      "chunk_index": 5
+    },
+    {
+      "entity": "",
+      "relation_name": "suit_l inauguration",
+      "relation_source": "semaine portes ouvertes",
+      "relation_target": "l'inauguration du 14 juin",
+      "attribute": "",
+      "value": "",
+      "moment_id": 7,
+      "chunk_index": 5
+    },
+    {
+      "entity": "la Sorgue",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "statut_mouvement",
+      "value": "continue de tourner la roue",
+      "moment_id": 7,
+      "chunk_index": 5
+    },
+    {
+      "entity": "",
+      "relation_name": "fonction_actuelle_de_ la_Sorgue",
+      "relation_source": "la Sorgue",
+      "relation_target": "médiathèque Raymond-Fabre",
+      "attribute": "motif",
+      "value": "décoratif uniquement",
+      "moment_id": 7,
+      "chunk_index": 5
+    }
+  ]
+}

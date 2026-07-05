@@ -1,0 +1,818 @@
+{
+  "entities": [
+    {
+      "name": "Médiathèque du Vieux Moulin",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "date d'ouverture": "14 juin",
+        "durée des travaux": "3 ans",
+        "nombre de reports": "2",
+        "fréquentation": "400 visiteurs par semaine",
+        "nom": "médiathèque Raymond-Fabre"
+      }
+    },
+    {
+      "name": "Vieux Moulin",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "activité": "broyait le blé de la vallée (années cinquante)",
+        "état": "à l'abandon depuis la fermeture de la minoterie"
+      }
+    },
+    {
+      "name": "Sorgue",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Céredac",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "connaissance_différence_meunier_maire": ""
+      }
+    },
+    {
+      "name": "Hélène Fabre",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "fonction": "maire de Céredac",
+        "heure de présentation": "lundi soir",
+        "déclaration": "\"Mon père a sauvé les murs ; nous, nous y mettons des livres.\""
+      }
+    },
+    {
+      "name": "Conseil municipal",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "décision_nom": "médiathèque Raymond-Fabre"
+      }
+    },
+    {
+      "name": "Les Amis du Vieux Moulin",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "souhait_nom": "Vieux Moulin"
+      }
+    },
+    {
+      "name": "Raymond Fabre",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "ancien_métier": "meunier",
+        "demande": "pas trop de changement"
+      }
+    },
+    {
+      "name": "Nadia Berthelot",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "rôle": "architecte de la réhabilitation",
+        "citation": "« Une médiathèque n'efface pas un moulin, elle l'habite. »"
+      }
+    },
+    {
+      "name": "Delmas & Fils",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Région",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Grande roue à aubes",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "position": "derrière une paroi de verre"
+      }
+    },
+    {
+      "name": "Chantier de réhabilitation",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "coût_total": "2,4 millions d'euros"
+      }
+    },
+    {
+      "name": "Julien Roche",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "ironie": "une famille qui se donne un bâtiment"
+      }
+    },
+    {
+      "name": "budget final",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Sophie Vasseur",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "profession": "bibliothécaire",
+        "provenance": "Médiathèque de Roquevert",
+        "promet_salle_enfants": "oui",
+        "promet_fonds_ancien": "oui"
+      }
+    },
+    {
+      "name": "Médiathèque de Roquevert",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Place du Marché",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "équipe",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Inauguration (événement)",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "date": "14 juin"
+      }
+    }
+  ],
+  "relations": [
+    {
+      "name": "situé_dans",
+      "source": "Médiathèque du Vieux Moulin",
+      "target": "Vieux Moulin",
+      "attributes": {}
+    },
+    {
+      "name": "sur_rive_gauche_de",
+      "source": "Médiathèque du Vieux Moulin",
+      "target": "Sorgue",
+      "attributes": {}
+    },
+    {
+      "name": "présenter",
+      "source": "Hélène Fabre",
+      "target": "Conseil municipal",
+      "attributes": {
+        "objet": "bâtiment restauré (Médiathèque du Vieux Moulin)"
+      }
+    },
+    {
+      "name": "président_de",
+      "source": "Raymond Fabre",
+      "target": "Les Amis du Vieux Moulin",
+      "attributes": {}
+    },
+    {
+      "name": "père_de",
+      "source": "Raymond Fabre",
+      "target": "Hélène Fabre",
+      "attributes": {}
+    },
+    {
+      "name": "a_sauvé",
+      "source": "Les Amis du Vieux Moulin",
+      "target": "Vieux Moulin",
+      "attributes": {
+        "objet": "murs du bâtiment"
+      }
+    },
+    {
+      "name": "racheté_par",
+      "source": "Vieux Moulin",
+      "target": "Conseil municipal",
+      "attributes": {
+        "durée_pétitions": "10 ans"
+      }
+    },
+    {
+      "name": "confier",
+      "source": "Médiathèque du Vieux Moulin",
+      "target": "Nadia Berthelot",
+      "attributes": {}
+    },
+    {
+      "name": "conserver",
+      "source": "Nadia Berthelot",
+      "target": "Grande roue à aubes",
+      "attributes": {}
+    },
+    {
+      "name": "mener",
+      "source": "Delmas & Fils",
+      "target": "Chantier de réhabilitation",
+      "attributes": {}
+    },
+    {
+      "name": "verser",
+      "source": "Région",
+      "target": "Chantier de réhabilitation",
+      "attributes": {
+        "part": "un tiers du coût"
+      }
+    },
+    {
+      "name": "vote contre",
+      "source": "Julien Roche",
+      "target": "budget final",
+      "attributes": {}
+    },
+    {
+      "name": "embauche_apprentis_de",
+      "source": "Delmas & Fils",
+      "target": "Céredac",
+      "attributes": {
+        "nombre": "sept"
+      }
+    },
+    {
+      "name": "dirige_equipe",
+      "source": "Sophie Vasseur",
+      "target": "équipe",
+      "attributes": {
+        "taille": "six personnes"
+      }
+    },
+    {
+      "name": "tourner",
+      "source": "Sorgue",
+      "target": "Grande roue à aubes",
+      "attributes": {
+        "but": "décor"
+      }
+    }
+  ],
+  "moments": [
+    {
+      "id": 1,
+      "chunk_index": 0,
+      "seq": 0,
+      "summary": "Ouverture de la médiathèque du Vieux Moulin le 14 juin après trois ans de travaux et deux reports.",
+      "resolved_order": 1,
+      "resolved_days": null
+    },
+    {
+      "id": 2,
+      "chunk_index": 1,
+      "seq": 0,
+      "summary": "Sauvetage du Vieux Moulin par l'association Les Amis du Vieux Moulin et rachat du bâtiment par la municipalité après dix ans de pétitions.",
+      "resolved_order": 0,
+      "resolved_days": 0.0
+    },
+    {
+      "id": 3,
+      "chunk_index": 2,
+      "seq": 0,
+      "summary": "Attribution de la réhabilitation du Vieux Moulin à l'architecte Nadia Berthelot, conservation de la grande roue à aubes derrière une paroi de verre, coût du chantier mené par Delmas & Fils avec un tiers versé par la Région, et citation de Berthelot sur le parti‑pris de la médiathèque.",
+      "resolved_order": 2,
+      "resolved_days": null
+    },
+    {
+      "id": 4,
+      "chunk_index": 3,
+      "seq": 0,
+      "summary": "Débat au conseil municipal : Julien Roche vote contre le budget final et critique le coût de la roue décorative, la maire Hélène Fabre réplique en évoquant une fréquentation estimée à 400 visiteurs par semaine.",
+      "resolved_order": 3,
+      "resolved_days": null
+    },
+    {
+      "id": 5,
+      "chunk_index": 4,
+      "seq": 0,
+      "summary": "Nuances à la place du Marché : embauche d’apprentis, nouvelle bibliothécaire et promesses d’espaces enfants/fonds anciens.",
+      "resolved_order": 4,
+      "resolved_days": null
+    },
+    {
+      "id": 6,
+      "chunk_index": 5,
+      "seq": 0,
+      "summary": "Le conseil municipal décide, mardi, d’appeler la médiathèque « médiathèque Raymond‑Fabre », contre le souhait de l’association ; Julien Roche ironise, Céredac note la différence entre meunier et maire. L’inauguration est prévue le 14 juin suivie d’une semaine de portes ouvertes et la Sorgue continue à faire tourner la grande roue à aubes pour le décor.",
+      "resolved_order": 5,
+      "resolved_days": null
+    }
+  ],
+  "constraints": [
+    {
+      "source_id": 2,
+      "relation": "avant",
+      "target_id": 1,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 2,
+      "relation": "avant",
+      "target_id": 3,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 3,
+      "relation": "avant",
+      "target_id": 4,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 4,
+      "relation": "avant",
+      "target_id": 5,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 5,
+      "relation": "avant",
+      "target_id": 6,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    }
+  ],
+  "appearances": {
+    "1": [
+      "Conseil municipal",
+      "Céredac",
+      "Hélène Fabre",
+      "Médiathèque du Vieux Moulin",
+      "Sorgue",
+      "Vieux Moulin"
+    ],
+    "2": [
+      "Conseil municipal",
+      "Hélène Fabre",
+      "Les Amis du Vieux Moulin",
+      "Raymond Fabre",
+      "Vieux Moulin"
+    ],
+    "3": [
+      "Chantier de réhabilitation",
+      "Delmas & Fils",
+      "Grande roue à aubes",
+      "Médiathèque du Vieux Moulin",
+      "Nadia Berthelot",
+      "Région"
+    ],
+    "4": [
+      "Conseil municipal",
+      "Hélène Fabre",
+      "Julien Roche",
+      "Médiathèque du Vieux Moulin",
+      "budget final"
+    ],
+    "5": [
+      "Céredac",
+      "Delmas & Fils",
+      "Médiathèque de Roquevert",
+      "Place du Marché",
+      "Sophie Vasseur",
+      "équipe"
+    ],
+    "6": [
+      "Conseil municipal",
+      "Céredac",
+      "Grande roue à aubes",
+      "Inauguration (événement)",
+      "Julien Roche",
+      "Les Amis du Vieux Moulin",
+      "Médiathèque du Vieux Moulin",
+      "Raymond Fabre",
+      "Sorgue"
+    ]
+  },
+  "assertions": [
+    {
+      "entity": "Médiathèque du Vieux Moulin",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "date d'ouverture",
+      "value": "14 juin",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Médiathèque du Vieux Moulin",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "durée des travaux",
+      "value": "3 ans",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Médiathèque du Vieux Moulin",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "nombre de reports",
+      "value": "2",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "situé_dans",
+      "relation_source": "Médiathèque du Vieux Moulin",
+      "relation_target": "Vieux Moulin",
+      "attribute": "",
+      "value": "",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "sur_rive_gauche_de",
+      "relation_source": "Médiathèque du Vieux Moulin",
+      "relation_target": "Sorgue",
+      "attribute": "",
+      "value": "",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Hélène Fabre",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "fonction",
+      "value": "maire de Céredac",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "présenter",
+      "relation_source": "Hélène Fabre",
+      "relation_target": "Conseil municipal",
+      "attribute": "objet",
+      "value": "bâtiment restauré (Médiathèque du Vieux Moulin)",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Hélène Fabre",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "heure de présentation",
+      "value": "lundi soir",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Vieux Moulin",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "activité",
+      "value": "broyait le blé de la vallée (années cinquante)",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Vieux Moulin",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "état",
+      "value": "à l'abandon depuis la fermeture de la minoterie",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "président_de",
+      "relation_source": "Raymond Fabre",
+      "relation_target": "Les Amis du Vieux Moulin",
+      "attribute": "",
+      "value": "",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Raymond Fabre",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "ancien_métier",
+      "value": "meunier",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "père_de",
+      "relation_source": "Raymond Fabre",
+      "relation_target": "Hélène Fabre",
+      "attribute": "",
+      "value": "",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "a_sauvé",
+      "relation_source": "Les Amis du Vieux Moulin",
+      "relation_target": "Vieux Moulin",
+      "attribute": "objet",
+      "value": "murs du bâtiment",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "racheté_par",
+      "relation_source": "Vieux Moulin",
+      "relation_target": "Conseil municipal",
+      "attribute": "durée_pétitions",
+      "value": "10 ans",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Hélène Fabre",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "déclaration",
+      "value": "\"Mon père a sauvé les murs ; nous, nous y mettons des livres.\"",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Nadia Berthelot",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "rôle",
+      "value": "architecte de la réhabilitation",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "confier",
+      "relation_source": "Médiathèque du Vieux Moulin",
+      "relation_target": "Nadia Berthelot",
+      "attribute": "",
+      "value": "",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "conserver",
+      "relation_source": "Nadia Berthelot",
+      "relation_target": "Grande roue à aubes",
+      "attribute": "",
+      "value": "",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Grande roue à aubes",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "position",
+      "value": "derrière une paroi de verre",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Chantier de réhabilitation",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "coût_total",
+      "value": "2,4 millions d'euros",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "mener",
+      "relation_source": "Delmas & Fils",
+      "relation_target": "Chantier de réhabilitation",
+      "attribute": "",
+      "value": "",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "verser",
+      "relation_source": "Région",
+      "relation_target": "Chantier de réhabilitation",
+      "attribute": "part",
+      "value": "un tiers du coût",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Nadia Berthelot",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "citation",
+      "value": "« Une médiathèque n'efface pas un moulin, elle l'habite. »",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "vote contre",
+      "relation_source": "Julien Roche",
+      "relation_target": "budget final",
+      "attribute": "",
+      "value": "",
+      "moment_id": 4,
+      "chunk_index": 3
+    },
+    {
+      "entity": "Médiathèque du Vieux Moulin",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "fréquentation",
+      "value": "400 visiteurs par semaine",
+      "moment_id": 4,
+      "chunk_index": 3
+    },
+    {
+      "entity": "",
+      "relation_name": "embauche_apprentis_de",
+      "relation_source": "Delmas & Fils",
+      "relation_target": "Céredac",
+      "attribute": "nombre",
+      "value": "sept",
+      "moment_id": 5,
+      "chunk_index": 4
+    },
+    {
+      "entity": "Sophie Vasseur",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "profession",
+      "value": "bibliothécaire",
+      "moment_id": 5,
+      "chunk_index": 4
+    },
+    {
+      "entity": "Sophie Vasseur",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "provenance",
+      "value": "Médiathèque de Roquevert",
+      "moment_id": 5,
+      "chunk_index": 4
+    },
+    {
+      "entity": "",
+      "relation_name": "dirige_equipe",
+      "relation_source": "Sophie Vasseur",
+      "relation_target": "équipe",
+      "attribute": "taille",
+      "value": "six personnes",
+      "moment_id": 5,
+      "chunk_index": 4
+    },
+    {
+      "entity": "Sophie Vasseur",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "promet_salle_enfants",
+      "value": "oui",
+      "moment_id": 5,
+      "chunk_index": 4
+    },
+    {
+      "entity": "Sophie Vasseur",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "promet_fonds_ancien",
+      "value": "oui",
+      "moment_id": 5,
+      "chunk_index": 4
+    },
+    {
+      "entity": "Médiathèque du Vieux Moulin",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "nom",
+      "value": "médiathèque Raymond-Fabre",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "Conseil municipal",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "décision_nom",
+      "value": "médiathèque Raymond-Fabre",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "Les Amis du Vieux Moulin",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "souhait_nom",
+      "value": "Vieux Moulin",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "Raymond Fabre",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "demande",
+      "value": "pas trop de changement",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "Julien Roche",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "ironie",
+      "value": "une famille qui se donne un bâtiment",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "Céredac",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "connaissance_différence_meunier_maire",
+      "value": "",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "Inauguration (événement)",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "date",
+      "value": "14 juin",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "",
+      "relation_name": "tourner",
+      "relation_source": "Sorgue",
+      "relation_target": "Grande roue à aubes",
+      "attribute": "but",
+      "value": "décor",
+      "moment_id": 6,
+      "chunk_index": 5
+    }
+  ]
+}

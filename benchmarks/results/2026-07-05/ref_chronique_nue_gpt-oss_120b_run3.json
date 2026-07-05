@@ -1,0 +1,898 @@
+{
+  "entities": [
+    {
+      "name": "Médiathèque du Vieux Moulin",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "ouverture_date": "14 juin",
+        "durée_travaux": "3 ans",
+        "nombre_reports": "2",
+        "fréquentation": "400 visiteurs par semaine",
+        "nom": "médiathèque Raymond‑Fabre",
+        "date_inauguration": "14 juin"
+      }
+    },
+    {
+      "name": "Vieux Moulin",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "état": "abandonné",
+        "situation_temporelle": "depuis fermeture de la minoterie"
+      }
+    },
+    {
+      "name": "Sorgue",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "activité": "tourner la roue pour le décor"
+      }
+    },
+    {
+      "name": "Céredac",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Hélène Fabre",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "fonction": "maire de Céredac"
+      }
+    },
+    {
+      "name": "Conseil municipal de Céredac",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "date_de_décision_nomination": "mardi"
+      }
+    },
+    {
+      "name": "séance publique",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Les Amis du Vieux Moulin",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Raymond Fabre",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "ancien_métier": "meunier"
+      }
+    },
+    {
+      "name": "Nadia Berthelot",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "profession": "architecte",
+        "parti‑pris": "« Une médiathèque n'efface pas un moulin, elle l'habite. »"
+      }
+    },
+    {
+      "name": "Delmas & Fils",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Région",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "grande roue à aubes",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "visibilité": "visible derrière une paroi de verre"
+      }
+    },
+    {
+      "name": "paroi de verre",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "chantier de réhabilitation",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "coût total": "2,4 millions d'euros"
+      }
+    },
+    {
+      "name": "un tiers du coût du chantier",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Julien Roche",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "budget final",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Sophie Vasseur",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "promesse_salle_enfants": "salle pour les enfants au rez‑de‑chaussée",
+        "promesse_fonds_ancien": "fonds ancien à l'étage sous la charpente d'origine"
+      }
+    },
+    {
+      "name": "Médiathèque de Roquevert",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "Apprentis de Céredac",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "équipe de six personnes",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "\"une famille qui se donne un bâtiment\"",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "inauguration de la Médiathèque du Vieux Moulin (14 juin)",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "semaine de portes ouvertes",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "name": "située_dans",
+      "source": "Médiathèque du Vieux Moulin",
+      "target": "Vieux Moulin",
+      "attributes": {}
+    },
+    {
+      "name": "sur_rive_gauche_de",
+      "source": "Médiathèque du Vieux Moulin",
+      "target": "Sorgue",
+      "attributes": {}
+    },
+    {
+      "name": "présente",
+      "source": "Hélène Fabre",
+      "target": "Médiathèque du Vieux Moulin",
+      "attributes": {
+        "date": "lundi soir"
+      }
+    },
+    {
+      "name": "réuni_en",
+      "source": "Conseil municipal de Céredac",
+      "target": "séance publique",
+      "attributes": {}
+    },
+    {
+      "name": "défend",
+      "source": "Les Amis du Vieux Moulin",
+      "target": "Vieux Moulin",
+      "attributes": {
+        "objectif": "sauver de la démolition"
+      }
+    },
+    {
+      "name": "préside",
+      "source": "Raymond Fabre",
+      "target": "Les Amis du Vieux Moulin",
+      "attributes": {}
+    },
+    {
+      "name": "père_de",
+      "source": "Raymond Fabre",
+      "target": "Hélène Fabre",
+      "attributes": {}
+    },
+    {
+      "name": "a_acheté",
+      "source": "Conseil municipal de Céredac",
+      "target": "Vieux Moulin",
+      "attributes": {
+        "délai_préexistant": "10 ans de pétitions"
+      }
+    },
+    {
+      "name": "a_sauvé_murs",
+      "source": "Raymond Fabre",
+      "target": "Vieux Moulin",
+      "attributes": {}
+    },
+    {
+      "name": "met_des_livres",
+      "source": "Hélène Fabre",
+      "target": "Vieux Moulin",
+      "attributes": {}
+    },
+    {
+      "name": "réhabilitation confiée à",
+      "source": "Médiathèque du Vieux Moulin",
+      "target": "Nadia Berthelot",
+      "attributes": {}
+    },
+    {
+      "name": "conserve",
+      "source": "Nadia Berthelot",
+      "target": "grande roue à aubes",
+      "attributes": {}
+    },
+    {
+      "name": "chantier mené par",
+      "source": "chantier de réhabilitation",
+      "target": "Delmas & Fils",
+      "attributes": {}
+    },
+    {
+      "name": "verse",
+      "source": "Région",
+      "target": "un tiers du coût du chantier",
+      "attributes": {}
+    },
+    {
+      "name": "a voté contre",
+      "source": "Julien Roche",
+      "target": "budget final",
+      "attributes": {}
+    },
+    {
+      "name": "embauche",
+      "source": "Delmas & Fils",
+      "target": "Apprentis de Céredac",
+      "attributes": {
+        "nombre": "7"
+      }
+    },
+    {
+      "name": "venue_de",
+      "source": "Sophie Vasseur",
+      "target": "Médiathèque de Roquevert",
+      "attributes": {}
+    },
+    {
+      "name": "dirigera",
+      "source": "Sophie Vasseur",
+      "target": "équipe de six personnes",
+      "attributes": {}
+    },
+    {
+      "name": "nommer",
+      "source": "Conseil municipal de Céredac",
+      "target": "Médiathèque du Vieux Moulin",
+      "attributes": {
+        "nom": "médiathèque Raymond‑Fabre"
+      }
+    },
+    {
+      "name": "demander_modération",
+      "source": "Raymond Fabre",
+      "target": "Médiathèque du Vieux Moulin",
+      "attributes": {
+        "niveau": "pas trop"
+      }
+    },
+    {
+      "name": "maintenir_vote",
+      "source": "Hélène Fabre",
+      "target": "Conseil municipal de Céredac",
+      "attributes": {}
+    },
+    {
+      "name": "ironiser_sur",
+      "source": "Julien Roche",
+      "target": "\"une famille qui se donne un bâtiment\"",
+      "attributes": {}
+    },
+    {
+      "name": "suivi_par",
+      "source": "inauguration de la Médiathèque du Vieux Moulin (14 juin)",
+      "target": "semaine de portes ouvertes",
+      "attributes": {}
+    }
+  ],
+  "moments": [
+    {
+      "id": 1,
+      "chunk_index": 0,
+      "seq": 0,
+      "summary": "La médiathèque du Vieux Moulin ouvrira le 14 juin après trois ans de travaux et deux reports ; la maire d’Hélène Fabre l’a présentée lundi soir au conseil municipal.",
+      "resolved_order": 0,
+      "resolved_days": 0.0
+    },
+    {
+      "id": 2,
+      "chunk_index": 1,
+      "seq": 0,
+      "summary": "Le Vieux Moulin, abandonné depuis la fermeture de la minoterie, est défendu par l'association Les Amis du Vieux Moulin ; son président Raymond Fabre, ancien meunier et père d’Hélène Fabre, rappelle dix ans de pétitions avant que le Conseil municipal de Céredac rachète le bâtiment. Hélène précise que son père a sauvé les murs et qu’ils y déposent désormais des livres.",
+      "resolved_order": 1,
+      "resolved_days": null
+    },
+    {
+      "id": 3,
+      "chunk_index": 2,
+      "seq": 0,
+      "summary": "La réhabilitation de la médiathèque du Vieux Moulin est confiée à l’architecte Nadia Berthelot ; le chantier, mené par Delmas & Fils, coûte 2,4 M€ dont un tiers versé par la Région. Nadia Berthelot conserve la grande roue à aubes, visible derrière une paroi de verre et affirme : « Une médiathèque n'efface pas un moulin, elle l'habite. »",
+      "resolved_order": 2,
+      "resolved_days": null
+    },
+    {
+      "id": 4,
+      "chunk_index": 3,
+      "seq": 0,
+      "summary": "Julien Roche, conseiller d'opposition, vote contre le budget final et la maire Hélène Fabre défend la fréquentation de la médiathèque du Vieux Moulin.",
+      "resolved_order": 3,
+      "resolved_days": null
+    },
+    {
+      "id": 5,
+      "chunk_index": 4,
+      "seq": 0,
+      "summary": "Sur la place du Marché, Delmas & Fils embauche sept apprentis de Céredac ; la nouvelle bibliothécaire Sophie Vasseur, venue de la médiathèque voisine de Roquevert, dirige une équipe et promet une salle enfant au rez‑de‑chaussée ainsi qu’un fonds ancien à l’étage.",
+      "resolved_order": 4,
+      "resolved_days": null
+    },
+    {
+      "id": 6,
+      "chunk_index": 5,
+      "seq": 0,
+      "summary": "Le Conseil municipal décide d’appeler la médiathèque « médiathèque Raymond‑Fabre », Raymond Fabre demande que l’on n’en fasse pas trop, Hélène Fabre maintient le vote, Julien Roche ironise sur « une famille qui se donne un bâtiment », l’inauguration du 14 juin sera suivie d’une semaine portes ouvertes et la Sorgue continue de tourner la roue pour le décor.",
+      "resolved_order": 5,
+      "resolved_days": null
+    }
+  ],
+  "constraints": [
+    {
+      "source_id": 1,
+      "relation": "avant",
+      "target_id": 2,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 2,
+      "relation": "avant",
+      "target_id": 3,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 3,
+      "relation": "avant",
+      "target_id": 4,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 4,
+      "relation": "avant",
+      "target_id": 5,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 5,
+      "relation": "avant",
+      "target_id": 6,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    }
+  ],
+  "appearances": {
+    "1": [
+      "Conseil municipal de Céredac",
+      "Céredac",
+      "Hélène Fabre",
+      "Médiathèque du Vieux Moulin",
+      "Sorgue",
+      "Vieux Moulin",
+      "séance publique"
+    ],
+    "2": [
+      "Conseil municipal de Céredac",
+      "Hélène Fabre",
+      "Les Amis du Vieux Moulin",
+      "Raymond Fabre",
+      "Vieux Moulin"
+    ],
+    "3": [
+      "Delmas & Fils",
+      "Médiathèque du Vieux Moulin",
+      "Nadia Berthelot",
+      "Région",
+      "chantier de réhabilitation",
+      "grande roue à aubes",
+      "paroi de verre",
+      "un tiers du coût du chantier"
+    ],
+    "4": [
+      "Hélène Fabre",
+      "Julien Roche",
+      "Médiathèque du Vieux Moulin",
+      "budget final",
+      "séance publique"
+    ],
+    "5": [
+      "Apprentis de Céredac",
+      "Céredac",
+      "Delmas & Fils",
+      "Médiathèque de Roquevert",
+      "Sophie Vasseur",
+      "équipe de six personnes"
+    ],
+    "6": [
+      "\"une famille qui se donne un bâtiment\"",
+      "Conseil municipal de Céredac",
+      "Hélène Fabre",
+      "Julien Roche",
+      "Les Amis du Vieux Moulin",
+      "Médiathèque du Vieux Moulin",
+      "Raymond Fabre",
+      "Sorgue",
+      "inauguration de la Médiathèque du Vieux Moulin (14 juin)",
+      "semaine de portes ouvertes"
+    ]
+  },
+  "assertions": [
+    {
+      "entity": "Médiathèque du Vieux Moulin",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "ouverture_date",
+      "value": "14 juin",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Médiathèque du Vieux Moulin",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "durée_travaux",
+      "value": "3 ans",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Médiathèque du Vieux Moulin",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "nombre_reports",
+      "value": "2",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "située_dans",
+      "relation_source": "Médiathèque du Vieux Moulin",
+      "relation_target": "Vieux Moulin",
+      "attribute": "",
+      "value": "",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "sur_rive_gauche_de",
+      "relation_source": "Médiathèque du Vieux Moulin",
+      "relation_target": "Sorgue",
+      "attribute": "",
+      "value": "",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Hélène Fabre",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "fonction",
+      "value": "maire de Céredac",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "présente",
+      "relation_source": "Hélène Fabre",
+      "relation_target": "Médiathèque du Vieux Moulin",
+      "attribute": "date",
+      "value": "lundi soir",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "",
+      "relation_name": "réuni_en",
+      "relation_source": "Conseil municipal de Céredac",
+      "relation_target": "séance publique",
+      "attribute": "",
+      "value": "",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Vieux Moulin",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "état",
+      "value": "abandonné",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Vieux Moulin",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "situation_temporelle",
+      "value": "depuis fermeture de la minoterie",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "défend",
+      "relation_source": "Les Amis du Vieux Moulin",
+      "relation_target": "Vieux Moulin",
+      "attribute": "objectif",
+      "value": "sauver de la démolition",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "préside",
+      "relation_source": "Raymond Fabre",
+      "relation_target": "Les Amis du Vieux Moulin",
+      "attribute": "",
+      "value": "",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Raymond Fabre",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "ancien_métier",
+      "value": "meunier",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "père_de",
+      "relation_source": "Raymond Fabre",
+      "relation_target": "Hélène Fabre",
+      "attribute": "",
+      "value": "",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "a_acheté",
+      "relation_source": "Conseil municipal de Céredac",
+      "relation_target": "Vieux Moulin",
+      "attribute": "délai_préexistant",
+      "value": "10 ans de pétitions",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "a_sauvé_murs",
+      "relation_source": "Raymond Fabre",
+      "relation_target": "Vieux Moulin",
+      "attribute": "",
+      "value": "",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "met_des_livres",
+      "relation_source": "Hélène Fabre",
+      "relation_target": "Vieux Moulin",
+      "attribute": "",
+      "value": "",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Nadia Berthelot",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "profession",
+      "value": "architecte",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "réhabilitation confiée à",
+      "relation_source": "Médiathèque du Vieux Moulin",
+      "relation_target": "Nadia Berthelot",
+      "attribute": "",
+      "value": "",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "conserve",
+      "relation_source": "Nadia Berthelot",
+      "relation_target": "grande roue à aubes",
+      "attribute": "",
+      "value": "",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "grande roue à aubes",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "visibilité",
+      "value": "visible derrière une paroi de verre",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "chantier mené par",
+      "relation_source": "chantier de réhabilitation",
+      "relation_target": "Delmas & Fils",
+      "attribute": "",
+      "value": "",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "chantier de réhabilitation",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "coût total",
+      "value": "2,4 millions d'euros",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "verse",
+      "relation_source": "Région",
+      "relation_target": "un tiers du coût du chantier",
+      "attribute": "",
+      "value": "",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Nadia Berthelot",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "parti‑pris",
+      "value": "« Une médiathèque n'efface pas un moulin, elle l'habite. »",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "a voté contre",
+      "relation_source": "Julien Roche",
+      "relation_target": "budget final",
+      "attribute": "",
+      "value": "",
+      "moment_id": 4,
+      "chunk_index": 3
+    },
+    {
+      "entity": "Médiathèque du Vieux Moulin",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "fréquentation",
+      "value": "400 visiteurs par semaine",
+      "moment_id": 4,
+      "chunk_index": 3
+    },
+    {
+      "entity": "",
+      "relation_name": "embauche",
+      "relation_source": "Delmas & Fils",
+      "relation_target": "Apprentis de Céredac",
+      "attribute": "nombre",
+      "value": "7",
+      "moment_id": 5,
+      "chunk_index": 4
+    },
+    {
+      "entity": "",
+      "relation_name": "venue_de",
+      "relation_source": "Sophie Vasseur",
+      "relation_target": "Médiathèque de Roquevert",
+      "attribute": "",
+      "value": "",
+      "moment_id": 5,
+      "chunk_index": 4
+    },
+    {
+      "entity": "",
+      "relation_name": "dirigera",
+      "relation_source": "Sophie Vasseur",
+      "relation_target": "équipe de six personnes",
+      "attribute": "",
+      "value": "",
+      "moment_id": 5,
+      "chunk_index": 4
+    },
+    {
+      "entity": "Sophie Vasseur",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "promesse_salle_enfants",
+      "value": "salle pour les enfants au rez‑de‑chaussée",
+      "moment_id": 5,
+      "chunk_index": 4
+    },
+    {
+      "entity": "Sophie Vasseur",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "promesse_fonds_ancien",
+      "value": "fonds ancien à l'étage sous la charpente d'origine",
+      "moment_id": 5,
+      "chunk_index": 4
+    },
+    {
+      "entity": "Médiathèque du Vieux Moulin",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "nom",
+      "value": "médiathèque Raymond‑Fabre",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "",
+      "relation_name": "nommer",
+      "relation_source": "Conseil municipal de Céredac",
+      "relation_target": "Médiathèque du Vieux Moulin",
+      "attribute": "nom",
+      "value": "médiathèque Raymond‑Fabre",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "Conseil municipal de Céredac",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "date_de_décision_nomination",
+      "value": "mardi",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "",
+      "relation_name": "demander_modération",
+      "relation_source": "Raymond Fabre",
+      "relation_target": "Médiathèque du Vieux Moulin",
+      "attribute": "niveau",
+      "value": "pas trop",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "",
+      "relation_name": "maintenir_vote",
+      "relation_source": "Hélène Fabre",
+      "relation_target": "Conseil municipal de Céredac",
+      "attribute": "",
+      "value": "",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "",
+      "relation_name": "ironiser_sur",
+      "relation_source": "Julien Roche",
+      "relation_target": "\"une famille qui se donne un bâtiment\"",
+      "attribute": "",
+      "value": "",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "Médiathèque du Vieux Moulin",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "date_inauguration",
+      "value": "14 juin",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "",
+      "relation_name": "suivi_par",
+      "relation_source": "inauguration de la Médiathèque du Vieux Moulin (14 juin)",
+      "relation_target": "semaine de portes ouvertes",
+      "attribute": "",
+      "value": "",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "Sorgue",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "activité",
+      "value": "tourner la roue pour le décor",
+      "moment_id": 6,
+      "chunk_index": 5
+    }
+  ]
+}

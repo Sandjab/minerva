@@ -4595,5 +4595,1358 @@
     "relation_f1_std": 0.118,
     "merge_rate": "2/3",
     "separation_rate": "6/6"
+  },
+  {
+    "model": "qwen3-coder-next:latest",
+    "temperature": null,
+    "runs": 3,
+    "text": "chronique",
+    "pipeline": "nue",
+    "per_run": [
+      {
+        "time_s": 50.5,
+        "detail": "",
+        "n_entities": 26,
+        "n_relations": 10,
+        "n_predicted_pairs": 9,
+        "entity_precision": 0.5,
+        "entity_recall": 0.909,
+        "entity_f1": 0.645,
+        "relation_precision": 0.333,
+        "relation_recall": 0.375,
+        "relation_f1": 0.353,
+        "merges_ok": 0,
+        "merges_total": 2,
+        "merge_rate": "0/2",
+        "failed_merges": [
+          [
+            [
+              "la médiathèque intercommunale"
+            ],
+            [
+              "médiathèque Raymond-Fabre"
+            ]
+          ],
+          [
+            [
+              "Les Amis du Vieux Moulin"
+            ],
+            [
+              "l'association"
+            ]
+          ]
+        ],
+        "separations_ok": 2,
+        "separations_total": 2,
+        "separation_rate": "2/2",
+        "over_merges": [],
+        "missing_entities": [
+          "Céredac"
+        ],
+        "false_positive_entities": [
+          "apprentis de Céredac",
+          "bibliothèque (la médiathèque du Vieux Moulin)",
+          "chantier du Vieux Moulin",
+          "conseil municipal de Céredac",
+          "l'inauguration du 14 juin",
+          "la grande roue à aubes",
+          "les habitants de Céredac",
+          "qu'nul n'en fasse trop",
+          "semaine portes ouvertes",
+          "une famille qui se donne un bâtiment"
+        ],
+        "duplicate_entities": [
+          "Hélène Fabre",
+          "la médiathèque"
+        ],
+        "missing_relations": [
+          [
+            "Hélène Fabre",
+            "Céredac"
+          ],
+          [
+            "Hélène Fabre",
+            "la médiathèque"
+          ],
+          [
+            "Raymond Fabre",
+            "le Vieux Moulin"
+          ],
+          [
+            "le Vieux Moulin",
+            "la Sorgue"
+          ],
+          [
+            "le Vieux Moulin",
+            "la médiathèque"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "conseil municipal de Céredac",
+            "Raymond Fabre"
+          ],
+          [
+            "Raymond Fabre",
+            "qu'nul n'en fasse trop"
+          ],
+          [
+            "Julien Roche",
+            "une famille qui se donne un bâtiment"
+          ],
+          [
+            "les habitants de Céredac",
+            "Raymond Fabre"
+          ],
+          [
+            "l'inauguration du 14 juin",
+            "semaine portes ouvertes"
+          ],
+          [
+            "Sorgue",
+            "la grande roue à aubes"
+          ]
+        ],
+        "warnings": []
+      },
+      {
+        "time_s": 44.7,
+        "detail": "",
+        "n_entities": 22,
+        "n_relations": 3,
+        "n_predicted_pairs": 3,
+        "entity_precision": 0.636,
+        "entity_recall": 0.909,
+        "entity_f1": 0.749,
+        "relation_precision": 0.333,
+        "relation_recall": 0.0,
+        "relation_f1": 0.0,
+        "merges_ok": 0,
+        "merges_total": 2,
+        "merge_rate": "0/2",
+        "failed_merges": [
+          [
+            [
+              "la médiathèque intercommunale"
+            ],
+            [
+              "médiathèque Raymond-Fabre"
+            ]
+          ],
+          [
+            [
+              "Les Amis du Vieux Moulin"
+            ],
+            [
+              "l'association"
+            ]
+          ]
+        ],
+        "separations_ok": 1,
+        "separations_total": 1,
+        "separation_rate": "1/1",
+        "over_merges": [],
+        "missing_entities": [
+          "Les Amis du Vieux Moulin"
+        ],
+        "false_positive_entities": [
+          "l'association (des défenseurs du « Vieux Moulin »)",
+          "l'équipement (médiathèque Raymond-Fabre)",
+          "la famille Fabre",
+          "la fille de Raymond Fabre",
+          "la grande roue à aubes",
+          "sept apprentis de Delmas & Fils",
+          "équipe de six personnes"
+        ],
+        "duplicate_entities": [
+          "Hélène Fabre"
+        ],
+        "missing_relations": [
+          [
+            "Hélène Fabre",
+            "Céredac"
+          ],
+          [
+            "Hélène Fabre",
+            "Raymond Fabre"
+          ],
+          [
+            "Hélène Fabre",
+            "la médiathèque"
+          ],
+          [
+            "Les Amis du Vieux Moulin",
+            "le Vieux Moulin"
+          ],
+          [
+            "Raymond Fabre",
+            "Les Amis du Vieux Moulin"
+          ],
+          [
+            "Raymond Fabre",
+            "le Vieux Moulin"
+          ],
+          [
+            "le Vieux Moulin",
+            "la Sorgue"
+          ],
+          [
+            "le Vieux Moulin",
+            "la médiathèque"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "sept apprentis de Delmas & Fils",
+            "CÉREDAC"
+          ],
+          [
+            "Sophie Vasseur",
+            "équipe de six personnes"
+          ]
+        ],
+        "warnings": []
+      },
+      {
+        "time_s": 50.9,
+        "detail": "",
+        "n_entities": 28,
+        "n_relations": 7,
+        "n_predicted_pairs": 7,
+        "entity_precision": 0.536,
+        "entity_recall": 1.0,
+        "entity_f1": 0.698,
+        "relation_precision": 0.714,
+        "relation_recall": 0.375,
+        "relation_f1": 0.492,
+        "merges_ok": 0,
+        "merges_total": 2,
+        "merge_rate": "0/2",
+        "failed_merges": [
+          [
+            [
+              "la médiathèque intercommunale"
+            ],
+            [
+              "médiathèque Raymond-Fabre"
+            ]
+          ],
+          [
+            [
+              "Les Amis du Vieux Moulin"
+            ],
+            [
+              "l'association"
+            ]
+          ]
+        ],
+        "separations_ok": 2,
+        "separations_total": 2,
+        "separation_rate": "2/2",
+        "over_merges": [],
+        "missing_entities": [],
+        "false_positive_entities": [
+          "association (Les Amis du Vieux Moulin)",
+          "chantier du Vieux Moulin",
+          "charpente d'origine",
+          "fille de Raymond Fabre",
+          "fonds ancien",
+          "fréquentation_estimée",
+          "grande roue à aubes",
+          "membresduconseilmunicipal",
+          "rivage gauche de la Sorgue",
+          "réhabilitation du Vieux Moulin",
+          "équipe de 6 personnes"
+        ],
+        "duplicate_entities": [
+          "Hélène Fabre",
+          "la médiathèque"
+        ],
+        "missing_relations": [
+          [
+            "Hélène Fabre",
+            "Céredac"
+          ],
+          [
+            "Hélène Fabre",
+            "la médiathèque"
+          ],
+          [
+            "Raymond Fabre",
+            "le Vieux Moulin"
+          ],
+          [
+            "le Vieux Moulin",
+            "la Sorgue"
+          ],
+          [
+            "le Vieux Moulin",
+            "la médiathèque"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "Sophie Vasseur",
+            "équipe de 6 personnes"
+          ],
+          [
+            "fonds ancien",
+            "charpente d'origine"
+          ]
+        ],
+        "warnings": []
+      }
+    ],
+    "time_s_mean": 48.7,
+    "time_s_std": 3.47,
+    "entity_precision_mean": 0.557,
+    "entity_precision_std": 0.07,
+    "entity_recall_mean": 0.939,
+    "entity_recall_std": 0.053,
+    "entity_f1_mean": 0.697,
+    "entity_f1_std": 0.052,
+    "relation_precision_mean": 0.46,
+    "relation_precision_std": 0.22,
+    "relation_recall_mean": 0.25,
+    "relation_recall_std": 0.217,
+    "relation_f1_mean": 0.282,
+    "relation_f1_std": 0.254,
+    "merge_rate": "0/6",
+    "separation_rate": "5/5"
+  },
+  {
+    "model": "qwen3-coder-next:latest",
+    "temperature": null,
+    "runs": 3,
+    "text": "chronique",
+    "pipeline": "canon_alias",
+    "per_run": [
+      {
+        "time_s": 52.1,
+        "detail": "canon 30->23, alias 23->22",
+        "n_entities": 22,
+        "n_relations": 15,
+        "n_predicted_pairs": 14,
+        "entity_precision": 0.545,
+        "entity_recall": 0.818,
+        "entity_f1": 0.655,
+        "relation_precision": 0.357,
+        "relation_recall": 0.5,
+        "relation_f1": 0.417,
+        "merges_ok": 1,
+        "merges_total": 2,
+        "merge_rate": "1/2",
+        "failed_merges": [
+          [
+            [
+              "la médiathèque intercommunale"
+            ],
+            [
+              "médiathèque Raymond-Fabre"
+            ]
+          ]
+        ],
+        "separations_ok": 2,
+        "separations_total": 2,
+        "separation_rate": "2/2",
+        "over_merges": [],
+        "missing_entities": [
+          "Nadia Berthelot",
+          "la médiathèque"
+        ],
+        "false_positive_entities": [
+          "l'inauguration du 14 juin",
+          "l'équipe de six personnes",
+          "l'étage",
+          "la charpente d'origine",
+          "la fréquentation",
+          "la salle",
+          "le budget final",
+          "le rez-de-chaussée",
+          "mardi",
+          "semaine portes ouvertes"
+        ],
+        "duplicate_entities": [],
+        "missing_relations": [
+          [
+            "Hélène Fabre",
+            "Céredac"
+          ],
+          [
+            "Hélène Fabre",
+            "la médiathèque"
+          ],
+          [
+            "Raymond Fabre",
+            "le Vieux Moulin"
+          ],
+          [
+            "le Vieux Moulin",
+            "la médiathèque"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "Julien Roche",
+            "le budget final"
+          ],
+          [
+            "Julien Roche",
+            "la salle"
+          ],
+          [
+            "Hélène Fabre",
+            "Julien Roche"
+          ],
+          [
+            "Hélène Fabre",
+            "la fréquentation"
+          ],
+          [
+            "la place du Marché",
+            "mardi"
+          ],
+          [
+            "Sophie Vasseur",
+            "l'équipe de six personnes"
+          ],
+          [
+            "l'étage",
+            "la charpente d'origine"
+          ],
+          [
+            "Raymond Fabre",
+            "Raymond Fabre"
+          ],
+          [
+            "semaine portes ouvertes",
+            "l'inauguration du 14 juin"
+          ]
+        ],
+        "warnings": [
+          "entité « médiathèque Raymond-Fabre » matche plusieurs entrées : ['le Vieux Moulin', 'la médiathèque']"
+        ]
+      },
+      {
+        "time_s": 54.6,
+        "detail": "canon 21->18, alias 18->17",
+        "n_entities": 17,
+        "n_relations": 11,
+        "n_predicted_pairs": 11,
+        "entity_precision": 0.882,
+        "entity_recall": 1.0,
+        "entity_f1": 0.938,
+        "relation_precision": 0.545,
+        "relation_recall": 0.25,
+        "relation_f1": 0.343,
+        "merges_ok": 0,
+        "merges_total": 2,
+        "merge_rate": "0/2",
+        "failed_merges": [
+          [
+            [
+              "la médiathèque intercommunale"
+            ],
+            [
+              "médiathèque Raymond-Fabre"
+            ]
+          ],
+          [
+            [
+              "Les Amis du Vieux Moulin"
+            ],
+            [
+              "l'association"
+            ]
+          ]
+        ],
+        "separations_ok": 1,
+        "separations_total": 1,
+        "separation_rate": "1/1",
+        "over_merges": [],
+        "missing_entities": [],
+        "false_positive_entities": [
+          "7 apprentis",
+          "la grande roue à aubes"
+        ],
+        "duplicate_entities": [],
+        "missing_relations": [
+          [
+            "Hélène Fabre",
+            "Céredac"
+          ],
+          [
+            "Hélène Fabre",
+            "la médiathèque"
+          ],
+          [
+            "Les Amis du Vieux Moulin",
+            "le Vieux Moulin"
+          ],
+          [
+            "Raymond Fabre",
+            "le Vieux Moulin"
+          ],
+          [
+            "le Vieux Moulin",
+            "la Sorgue"
+          ],
+          [
+            "le Vieux Moulin",
+            "la médiathèque"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "Les Amis du Vieux Moulin",
+            "Les Amis du Vieux Moulin"
+          ],
+          [
+            "Hélène Fabre",
+            "Vieux Moulin"
+          ],
+          [
+            "Nadia Berthelot",
+            "la grande roue à aubes"
+          ],
+          [
+            "Delmas & Fils",
+            "Les Amis du Vieux Moulin"
+          ],
+          [
+            "Delmas & Fils",
+            "7 apprentis"
+          ]
+        ],
+        "warnings": []
+      },
+      {
+        "time_s": 44.8,
+        "detail": "canon 21->17, alias 17->17",
+        "n_entities": 17,
+        "n_relations": 8,
+        "n_predicted_pairs": 7,
+        "entity_precision": 0.706,
+        "entity_recall": 0.909,
+        "entity_f1": 0.795,
+        "relation_precision": 0.571,
+        "relation_recall": 0.5,
+        "relation_f1": 0.533,
+        "merges_ok": 1,
+        "merges_total": 2,
+        "merge_rate": "1/2",
+        "failed_merges": [
+          [
+            [
+              "Les Amis du Vieux Moulin"
+            ],
+            [
+              "l'association"
+            ]
+          ]
+        ],
+        "separations_ok": 2,
+        "separations_total": 2,
+        "separation_rate": "2/2",
+        "over_merges": [],
+        "missing_entities": [
+          "Sophie Vasseur"
+        ],
+        "false_positive_entities": [
+          "budget final",
+          "grande roue à aubes",
+          "l'inauguration du 14 juin",
+          "la salle",
+          "la semaine portes ouvertes"
+        ],
+        "duplicate_entities": [],
+        "missing_relations": [
+          [
+            "Hélène Fabre",
+            "Céredac"
+          ],
+          [
+            "Raymond Fabre",
+            "Les Amis du Vieux Moulin"
+          ],
+          [
+            "le Vieux Moulin",
+            "la Sorgue"
+          ],
+          [
+            "le Vieux Moulin",
+            "la médiathèque"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "Hélène Fabre",
+            "Vieux Moulin"
+          ],
+          [
+            "Julien Roche",
+            "budget final"
+          ],
+          [
+            "Julien Roche",
+            "la salle"
+          ]
+        ],
+        "warnings": []
+      }
+    ],
+    "time_s_mean": 50.5,
+    "time_s_std": 5.092,
+    "entity_precision_mean": 0.711,
+    "entity_precision_std": 0.169,
+    "entity_recall_mean": 0.909,
+    "entity_recall_std": 0.091,
+    "entity_f1_mean": 0.796,
+    "entity_f1_std": 0.142,
+    "relation_precision_mean": 0.491,
+    "relation_precision_std": 0.117,
+    "relation_recall_mean": 0.417,
+    "relation_recall_std": 0.144,
+    "relation_f1_mean": 0.431,
+    "relation_f1_std": 0.096,
+    "merge_rate": "2/6",
+    "separation_rate": "5/5"
+  },
+  {
+    "model": "gpt-oss:120b",
+    "temperature": null,
+    "runs": 3,
+    "text": "chronique",
+    "pipeline": "nue",
+    "per_run": [
+      {
+        "time_s": 160.4,
+        "detail": "",
+        "n_entities": 20,
+        "n_relations": 15,
+        "n_predicted_pairs": 15,
+        "entity_precision": 0.7,
+        "entity_recall": 1.0,
+        "entity_f1": 0.824,
+        "relation_precision": 0.533,
+        "relation_recall": 0.5,
+        "relation_f1": 0.516,
+        "merges_ok": 0,
+        "merges_total": 2,
+        "merge_rate": "0/2",
+        "failed_merges": [
+          [
+            [
+              "la médiathèque intercommunale"
+            ],
+            [
+              "médiathèque Raymond-Fabre"
+            ]
+          ],
+          [
+            [
+              "Les Amis du Vieux Moulin"
+            ],
+            [
+              "l'association"
+            ]
+          ]
+        ],
+        "separations_ok": 1,
+        "separations_total": 1,
+        "separation_rate": "1/1",
+        "over_merges": [],
+        "missing_entities": [],
+        "false_positive_entities": [
+          "Chantier de réhabilitation",
+          "Grande roue à aubes",
+          "Inauguration (événement)",
+          "Médiathèque de Roquevert",
+          "budget final",
+          "équipe"
+        ],
+        "duplicate_entities": [],
+        "missing_relations": [
+          [
+            "Hélène Fabre",
+            "Céredac"
+          ],
+          [
+            "Hélène Fabre",
+            "la médiathèque"
+          ],
+          [
+            "Raymond Fabre",
+            "le Vieux Moulin"
+          ],
+          [
+            "le Vieux Moulin",
+            "la Sorgue"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "Médiathèque du Vieux Moulin",
+            "Sorgue"
+          ],
+          [
+            "Nadia Berthelot",
+            "Grande roue à aubes"
+          ],
+          [
+            "Delmas & Fils",
+            "Chantier de réhabilitation"
+          ],
+          [
+            "Région",
+            "Chantier de réhabilitation"
+          ],
+          [
+            "Julien Roche",
+            "budget final"
+          ],
+          [
+            "Sophie Vasseur",
+            "équipe"
+          ],
+          [
+            "Sorgue",
+            "Grande roue à aubes"
+          ]
+        ],
+        "warnings": []
+      },
+      {
+        "time_s": 152.0,
+        "detail": "",
+        "n_entities": 24,
+        "n_relations": 17,
+        "n_predicted_pairs": 15,
+        "entity_precision": 0.583,
+        "entity_recall": 1.0,
+        "entity_f1": 0.737,
+        "relation_precision": 0.267,
+        "relation_recall": 0.375,
+        "relation_f1": 0.312,
+        "merges_ok": 0,
+        "merges_total": 2,
+        "merge_rate": "0/2",
+        "failed_merges": [
+          [
+            [
+              "la médiathèque intercommunale"
+            ],
+            [
+              "médiathèque Raymond-Fabre"
+            ]
+          ],
+          [
+            [
+              "Les Amis du Vieux Moulin"
+            ],
+            [
+              "l'association"
+            ]
+          ]
+        ],
+        "separations_ok": 1,
+        "separations_total": 1,
+        "separation_rate": "1/1",
+        "over_merges": [],
+        "missing_entities": [],
+        "false_positive_entities": [
+          "Budget final",
+          "Chantier de réhabilitation",
+          "Conseil municipal de Céredac",
+          "Grande roue à aubes",
+          "apprentis de Céredac",
+          "famille qui se donne un bâtiment",
+          "fonds ancien",
+          "salle pour enfants",
+          "semaine portes ouvertes",
+          "équipe"
+        ],
+        "duplicate_entities": [],
+        "missing_relations": [
+          [
+            "Hélène Fabre",
+            "Céredac"
+          ],
+          [
+            "Hélène Fabre",
+            "la médiathèque"
+          ],
+          [
+            "Raymond Fabre",
+            "le Vieux Moulin"
+          ],
+          [
+            "le Vieux Moulin",
+            "la Sorgue"
+          ],
+          [
+            "le Vieux Moulin",
+            "la médiathèque"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "Hélène Fabre",
+            "Conseil municipal de Céredac"
+          ],
+          [
+            "Chantier de réhabilitation",
+            "Delmas & Fils"
+          ],
+          [
+            "Région",
+            "Chantier de réhabilitation"
+          ],
+          [
+            "Julien Roche",
+            "Budget final"
+          ],
+          [
+            "Delmas & Fils",
+            "apprentis de Céredac"
+          ],
+          [
+            "Sophie Vasseur",
+            "équipe"
+          ],
+          [
+            "Sophie Vasseur",
+            "salle pour enfants"
+          ],
+          [
+            "Sophie Vasseur",
+            "fonds ancien"
+          ],
+          [
+            "Conseil municipal de Céredac",
+            "Raymond Fabre"
+          ],
+          [
+            "Julien Roche",
+            "famille qui se donne un bâtiment"
+          ],
+          [
+            "Médiathèque du Vieux Moulin",
+            "semaine portes ouvertes"
+          ]
+        ],
+        "warnings": []
+      },
+      {
+        "time_s": 157.8,
+        "detail": "",
+        "n_entities": 25,
+        "n_relations": 23,
+        "n_predicted_pairs": 23,
+        "entity_precision": 0.48,
+        "entity_recall": 1.0,
+        "entity_f1": 0.649,
+        "relation_precision": 0.304,
+        "relation_recall": 0.75,
+        "relation_f1": 0.433,
+        "merges_ok": 0,
+        "merges_total": 2,
+        "merge_rate": "0/2",
+        "failed_merges": [
+          [
+            [
+              "la médiathèque intercommunale"
+            ],
+            [
+              "médiathèque Raymond-Fabre"
+            ]
+          ],
+          [
+            [
+              "Les Amis du Vieux Moulin"
+            ],
+            [
+              "l'association"
+            ]
+          ]
+        ],
+        "separations_ok": 1,
+        "separations_total": 1,
+        "separation_rate": "1/1",
+        "over_merges": [],
+        "missing_entities": [],
+        "false_positive_entities": [
+          "\"une famille qui se donne un bâtiment\"",
+          "Apprentis de Céredac",
+          "Conseil municipal de Céredac",
+          "Médiathèque de Roquevert",
+          "budget final",
+          "chantier de réhabilitation",
+          "grande roue à aubes",
+          "inauguration de la Médiathèque du Vieux Moulin (14 juin)",
+          "paroi de verre",
+          "semaine de portes ouvertes",
+          "séance publique",
+          "un tiers du coût du chantier",
+          "équipe de six personnes"
+        ],
+        "duplicate_entities": [],
+        "missing_relations": [
+          [
+            "Hélène Fabre",
+            "Céredac"
+          ],
+          [
+            "le Vieux Moulin",
+            "la Sorgue"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "Médiathèque du Vieux Moulin",
+            "Sorgue"
+          ],
+          [
+            "Conseil municipal de Céredac",
+            "séance publique"
+          ],
+          [
+            "Conseil municipal de Céredac",
+            "Vieux Moulin"
+          ],
+          [
+            "Hélène Fabre",
+            "Vieux Moulin"
+          ],
+          [
+            "Nadia Berthelot",
+            "grande roue à aubes"
+          ],
+          [
+            "chantier de réhabilitation",
+            "Delmas & Fils"
+          ],
+          [
+            "Région",
+            "un tiers du coût du chantier"
+          ],
+          [
+            "Julien Roche",
+            "budget final"
+          ],
+          [
+            "Delmas & Fils",
+            "Apprentis de Céredac"
+          ],
+          [
+            "Sophie Vasseur",
+            "Médiathèque de Roquevert"
+          ],
+          [
+            "Sophie Vasseur",
+            "équipe de six personnes"
+          ],
+          [
+            "Conseil municipal de Céredac",
+            "Médiathèque du Vieux Moulin"
+          ],
+          [
+            "Raymond Fabre",
+            "Médiathèque du Vieux Moulin"
+          ],
+          [
+            "Hélène Fabre",
+            "Conseil municipal de Céredac"
+          ],
+          [
+            "Julien Roche",
+            "\"une famille qui se donne un bâtiment\""
+          ],
+          [
+            "inauguration de la Médiathèque du Vieux Moulin (14 juin)",
+            "semaine de portes ouvertes"
+          ]
+        ],
+        "warnings": []
+      }
+    ],
+    "time_s_mean": 156.733,
+    "time_s_std": 4.3,
+    "entity_precision_mean": 0.588,
+    "entity_precision_std": 0.11,
+    "entity_recall_mean": 1.0,
+    "entity_recall_std": 0.0,
+    "entity_f1_mean": 0.737,
+    "entity_f1_std": 0.088,
+    "relation_precision_mean": 0.368,
+    "relation_precision_std": 0.144,
+    "relation_recall_mean": 0.542,
+    "relation_recall_std": 0.191,
+    "relation_f1_mean": 0.42,
+    "relation_f1_std": 0.103,
+    "merge_rate": "0/6",
+    "separation_rate": "3/3"
+  },
+  {
+    "model": "gpt-oss:120b",
+    "temperature": null,
+    "runs": 3,
+    "text": "chronique",
+    "pipeline": "canon_alias",
+    "per_run": [
+      {
+        "time_s": 187.9,
+        "detail": "canon 26->24, alias 24->24",
+        "n_entities": 24,
+        "n_relations": 23,
+        "n_predicted_pairs": 20,
+        "entity_precision": 0.542,
+        "entity_recall": 0.909,
+        "entity_f1": 0.679,
+        "relation_precision": 0.3,
+        "relation_recall": 0.5,
+        "relation_f1": 0.375,
+        "merges_ok": 0,
+        "merges_total": 2,
+        "merge_rate": "0/2",
+        "failed_merges": [
+          [
+            [
+              "la médiathèque intercommunale"
+            ],
+            [
+              "médiathèque Raymond-Fabre"
+            ]
+          ],
+          [
+            [
+              "Les Amis du Vieux Moulin"
+            ],
+            [
+              "l'association"
+            ]
+          ]
+        ],
+        "separations_ok": 2,
+        "separations_total": 2,
+        "separation_rate": "2/2",
+        "over_merges": [],
+        "missing_entities": [
+          "la médiathèque"
+        ],
+        "false_positive_entities": [
+          "apprentis de Céredac",
+          "budget final",
+          "chantier de réhabilitation",
+          "fonds ancien",
+          "grande roue à aubes",
+          "minoterie",
+          "médiathèque de Roquevert",
+          "paroi de verre",
+          "salle pour les enfants",
+          "séance publique",
+          "équipe de six personnes"
+        ],
+        "duplicate_entities": [],
+        "missing_relations": [
+          [
+            "Hélène Fabre",
+            "Céredac"
+          ],
+          [
+            "Hélène Fabre",
+            "la médiathèque"
+          ],
+          [
+            "Raymond Fabre",
+            "Les Amis du Vieux Moulin"
+          ],
+          [
+            "le Vieux Moulin",
+            "la médiathèque"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "médiathèque Raymond-Fabre",
+            "médiathèque Raymond-Fabre"
+          ],
+          [
+            "Hélène Fabre",
+            "médiathèque Raymond-Fabre"
+          ],
+          [
+            "conseil municipal",
+            "séance publique"
+          ],
+          [
+            "Nadia Berthelot",
+            "médiathèque Raymond-Fabre"
+          ],
+          [
+            "grande roue à aubes",
+            "Nadia Berthelot"
+          ],
+          [
+            "chantier de réhabilitation",
+            "Delmas & Fils"
+          ],
+          [
+            "Julien Roche",
+            "budget final"
+          ],
+          [
+            "Hélène Fabre",
+            "Julien Roche"
+          ],
+          [
+            "Delmas & Fils",
+            "apprentis de Céredac"
+          ],
+          [
+            "Sophie Vasseur",
+            "médiathèque de Roquevert"
+          ],
+          [
+            "Sophie Vasseur",
+            "équipe de six personnes"
+          ],
+          [
+            "Sophie Vasseur",
+            "salle pour les enfants"
+          ],
+          [
+            "Sophie Vasseur",
+            "fonds ancien"
+          ],
+          [
+            "Sorgue",
+            "grande roue à aubes"
+          ]
+        ],
+        "warnings": [
+          "entité « médiathèque Raymond-Fabre » matche plusieurs entrées : ['le Vieux Moulin', 'la médiathèque']"
+        ]
+      },
+      {
+        "time_s": 145.7,
+        "detail": "canon 21->21, alias 21->21",
+        "n_entities": 21,
+        "n_relations": 15,
+        "n_predicted_pairs": 15,
+        "entity_precision": 0.667,
+        "entity_recall": 1.0,
+        "entity_f1": 0.8,
+        "relation_precision": 0.6,
+        "relation_recall": 0.625,
+        "relation_f1": 0.612,
+        "merges_ok": 0,
+        "merges_total": 2,
+        "merge_rate": "0/2",
+        "failed_merges": [
+          [
+            [
+              "la médiathèque intercommunale"
+            ],
+            [
+              "médiathèque Raymond-Fabre"
+            ]
+          ],
+          [
+            [
+              "Les Amis du Vieux Moulin"
+            ],
+            [
+              "l'association"
+            ]
+          ]
+        ],
+        "separations_ok": 1,
+        "separations_total": 1,
+        "separation_rate": "1/1",
+        "over_merges": [],
+        "missing_entities": [],
+        "false_positive_entities": [
+          "Grande roue à aubes",
+          "Médiathèque de Roquevert",
+          "Paroi de verre",
+          "budget final",
+          "chantier de réhabilitation",
+          "roue décorative",
+          "équipe"
+        ],
+        "duplicate_entities": [],
+        "missing_relations": [
+          [
+            "Les Amis du Vieux Moulin",
+            "le Vieux Moulin"
+          ],
+          [
+            "Raymond Fabre",
+            "Les Amis du Vieux Moulin"
+          ],
+          [
+            "Raymond Fabre",
+            "le Vieux Moulin"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "Nadia Berthelot",
+            "Grande roue à aubes"
+          ],
+          [
+            "Delmas & Fils",
+            "chantier de réhabilitation"
+          ],
+          [
+            "Région",
+            "chantier de réhabilitation"
+          ],
+          [
+            "Julien Roche",
+            "budget final"
+          ],
+          [
+            "Sophie Vasseur",
+            "équipe"
+          ],
+          [
+            "Sorgue",
+            "roue décorative"
+          ]
+        ],
+        "warnings": []
+      },
+      {
+        "time_s": 187.1,
+        "detail": "canon 23->23, alias 23->23",
+        "n_entities": 23,
+        "n_relations": 20,
+        "n_predicted_pairs": 20,
+        "entity_precision": 0.609,
+        "entity_recall": 1.0,
+        "entity_f1": 0.757,
+        "relation_precision": 0.45,
+        "relation_recall": 0.625,
+        "relation_f1": 0.523,
+        "merges_ok": 0,
+        "merges_total": 2,
+        "merge_rate": "0/2",
+        "failed_merges": [
+          [
+            [
+              "la médiathèque intercommunale"
+            ],
+            [
+              "médiathèque Raymond-Fabre"
+            ]
+          ],
+          [
+            [
+              "Les Amis du Vieux Moulin"
+            ],
+            [
+              "l'association"
+            ]
+          ]
+        ],
+        "separations_ok": 2,
+        "separations_total": 2,
+        "separation_rate": "2/2",
+        "over_merges": [],
+        "missing_entities": [],
+        "false_positive_entities": [
+          "Fonds ancien",
+          "Médiathèque de Roquevert",
+          "Salle pour les enfants",
+          "budget final",
+          "chantier de réhabilitation du Vieux Moulin",
+          "famille qui se donne un bâtiment",
+          "grande roue à aubes",
+          "Équipe de six personnes"
+        ],
+        "duplicate_entities": [
+          "la médiathèque"
+        ],
+        "missing_relations": [
+          [
+            "Hélène Fabre",
+            "Céredac"
+          ],
+          [
+            "le Vieux Moulin",
+            "la Sorgue"
+          ],
+          [
+            "le Vieux Moulin",
+            "la médiathèque"
+          ]
+        ],
+        "false_positive_relations": [
+          [
+            "Hélène Fabre",
+            "Vieux Moulin"
+          ],
+          [
+            "Nadia Berthelot",
+            "grande roue à aubes"
+          ],
+          [
+            "chantier de réhabilitation du Vieux Moulin",
+            "Delmas & Fils"
+          ],
+          [
+            "Julien Roche",
+            "budget final"
+          ],
+          [
+            "Hélène Fabre",
+            "Julien Roche"
+          ],
+          [
+            "Sophie Vasseur",
+            "Médiathèque de Roquevert"
+          ],
+          [
+            "Sophie Vasseur",
+            "Équipe de six personnes"
+          ],
+          [
+            "Sophie Vasseur",
+            "Salle pour les enfants"
+          ],
+          [
+            "Sophie Vasseur",
+            "Fonds ancien"
+          ],
+          [
+            "Julien Roche",
+            "famille qui se donne un bâtiment"
+          ],
+          [
+            "Sorgue",
+            "grande roue à aubes"
+          ]
+        ],
+        "warnings": []
+      }
+    ],
+    "time_s_mean": 173.567,
+    "time_s_std": 24.137,
+    "entity_precision_mean": 0.606,
+    "entity_precision_std": 0.063,
+    "entity_recall_mean": 0.97,
+    "entity_recall_std": 0.053,
+    "entity_f1_mean": 0.745,
+    "entity_f1_std": 0.061,
+    "relation_precision_mean": 0.45,
+    "relation_precision_std": 0.15,
+    "relation_recall_mean": 0.583,
+    "relation_recall_std": 0.072,
+    "relation_f1_mean": 0.503,
+    "relation_f1_std": 0.12,
+    "merge_rate": "0/6",
+    "separation_rate": "5/5"
   }
 ]

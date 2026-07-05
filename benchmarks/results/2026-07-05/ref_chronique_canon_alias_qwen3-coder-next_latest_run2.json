@@ -1,0 +1,842 @@
+{
+  "entities": [
+    {
+      "name": "Hélène Fabre",
+      "type": "inconnu",
+      "aliases": [
+        "la maire"
+      ],
+      "attributes": {
+        "fonction": "maire de Céredac",
+        "contexte": "au conseil municipal réuni en séance publique lundi soir",
+        "action": "préside à l'ouverture de la médiathèque (mise en place des livres)",
+        "texte implicite": "la fréquentation justifie le choix et dépasse les critiques budgétaires"
+      }
+    },
+    {
+      "name": "la médiathèque intercommunale du Vieux Moulin",
+      "type": "inconnu",
+      "aliases": [
+        "médiathèque intercommunale"
+      ],
+      "attributes": {
+        "statut": "ouvrira le 14 juin",
+        "localisation": "dans les murs du Vieux Moulin, sur la rive gauche de la Sorgue",
+        "durée_travaux_précédents": "trois ans",
+        "nombre_reports": "deux",
+        "coût de la grande roue à aubes": "critiqué comme équivalent au prix d'une école par Julien Roche",
+        "fréquentation estimée": "quatre cents visiteurs par semaine"
+      }
+    },
+    {
+      "name": "Les Amis du Vieux Moulin",
+      "type": "inconnu",
+      "aliases": [
+        "sauvetage du Vieux Moulin",
+        "le chantier de réhabilitation du Vieux Moulin"
+      ],
+      "attributes": {
+        "coût total": "2,4 millions d'euros"
+      }
+    },
+    {
+      "name": "Vieux Moulin",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "statut": "restauré",
+        "ancienne activité": "moulin à blé opérationnel dans les années 1950",
+        "état actuel au moment du flashback": "abandonné",
+        "cause d’abandon": "fermeture de la minoterie"
+      }
+    },
+    {
+      "name": "Sorgue",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "mouvement": "continuera de tourner la roue"
+      }
+    },
+    {
+      "name": "Céredac",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "valeur symbolique": "on connaît la différence entre le meunier (farine sous les ongles) et la maire (écharpe tricolore)"
+      }
+    },
+    {
+      "name": "conseil municipal",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "décision": "l'équipement s'appellera « médiathèque Raymond-Fabre »"
+      }
+    },
+    {
+      "name": "Raymond Fabre",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "action": "a participé à la sauvegarde du Vieux Moulin (premier mouvement de contestation)",
+        "délai pour rachat par la municipalité": "dix ans de pétitions"
+      }
+    },
+    {
+      "name": "Nadia Berthelot",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "fonction": "architecte chargé de la réhabilitation du Vieux Moulin"
+      }
+    },
+    {
+      "name": "Delmas & Fils",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "emplois créés": "7 apprentis de Céredac pour le chantier"
+      }
+    },
+    {
+      "name": "la grande roue à aubes",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "disposition actuelle": "visible derrière une paroi de verre",
+        "rôle": "pour le décor, cette fois (c’est-à-dire non fonctionnel)"
+      }
+    },
+    {
+      "name": "Région",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "part financière": "un tiers du coût total (soit 800 000 €)"
+      }
+    },
+    {
+      "name": "Julien Roche",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "fonction": "conseiller d'opposition",
+        "comportement": "a voté contre le budget final de la médiathèque intercommunale",
+        "texte": "\"On a payé une roue décorative le prix d'une école\"",
+        "ton": "ironique",
+        "nature": "citation ironique"
+      }
+    },
+    {
+      "name": "la place du Marché",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "usage traditionnel": "où les habitants prenaient le frais le mardi"
+      }
+    },
+    {
+      "name": "Sophie Vasseur",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {
+        "fonction future": "dirigera l’équipe de six personnes à la médiathèque intercommunale du Vieux Moulin"
+      }
+    },
+    {
+      "name": "médiathèque voisine de Roquevert",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    },
+    {
+      "name": "7 apprentis",
+      "type": "inconnu",
+      "aliases": [],
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "name": "présidence",
+      "source": "Les Amis du Vieux Moulin",
+      "target": "Raymond Fabre",
+      "attributes": {
+        "identité": "ancien meunier"
+      }
+    },
+    {
+      "name": "lien familial",
+      "source": "Hélène Fabre",
+      "target": "Raymond Fabre",
+      "attributes": {
+        "type de lien": "fille de"
+      }
+    },
+    {
+      "name": "lien fonctionnel",
+      "source": "Hélène Fabre",
+      "target": "conseil municipal",
+      "attributes": {
+        "rôle": "maire"
+      }
+    },
+    {
+      "name": "action collective",
+      "source": "Les Amis du Vieux Moulin",
+      "target": "Les Amis du Vieux Moulin",
+      "attributes": {}
+    },
+    {
+      "name": "coordination",
+      "source": "Raymond Fabre",
+      "target": "conseil municipal",
+      "attributes": {
+        "action": "a obtenu le rachat du bâtiment par la municipalité"
+      }
+    },
+    {
+      "name": "métaphorique",
+      "source": "Hélène Fabre",
+      "target": "Vieux Moulin",
+      "attributes": {
+        "continuité de l’usage": "remplace l’action patrimoniale de son père (sauvegarde des murs) par une action culturelle (mise en place des livres)"
+      }
+    },
+    {
+      "name": "a conservé",
+      "source": "Nadia Berthelot",
+      "target": "la grande roue à aubes",
+      "attributes": {}
+    },
+    {
+      "name": "a mené",
+      "source": "Delmas & Fils",
+      "target": "Les Amis du Vieux Moulin",
+      "attributes": {}
+    },
+    {
+      "name": "embauche",
+      "source": "Delmas & Fils",
+      "target": "7 apprentis",
+      "attributes": {
+        "origine": "Céredac"
+      }
+    },
+    {
+      "name": "affectation",
+      "source": "Sophie Vasseur",
+      "target": "médiathèque voisine de Roquevert",
+      "attributes": {
+        "origine professionnelle": "elle vient de cette médiathèque"
+      }
+    },
+    {
+      "name": "promesse",
+      "source": "Sophie Vasseur",
+      "target": "la médiathèque intercommunale du Vieux Moulin",
+      "attributes": {
+        "aménagement prévu": "salle pour les enfants au rez-de-chaussée et fonds ancien à l’étage, sous la charpente d’origine"
+      }
+    }
+  ],
+  "moments": [
+    {
+      "id": 1,
+      "chunk_index": 0,
+      "seq": 0,
+      "summary": "Annonce de l’ouverture imminente de la médiathèque intercommunale du Vieux Moulin après trois ans de travaux.",
+      "resolved_order": 1,
+      "resolved_days": null
+    },
+    {
+      "id": 2,
+      "chunk_index": 1,
+      "seq": 0,
+      "summary": "Rétrospection sur l’histoire du Vieux Moulin : fermeture de la minoterie, menace de démolition, et rôle clé des Amis du Vieux Moulin puis d’Hélène Fabre.",
+      "resolved_order": 0,
+      "resolved_days": 0.0
+    },
+    {
+      "id": 3,
+      "chunk_index": 2,
+      "seq": 0,
+      "summary": "Présentation détaillée de la réhabilitation du Vieux Moulin : architecte, opérateur du chantier, coût et choix esthétique.",
+      "resolved_order": 2,
+      "resolved_days": null
+    },
+    {
+      "id": 4,
+      "chunk_index": 3,
+      "seq": 0,
+      "summary": "Dé battement budgétaire au conseil municipal : Julien Roche s’oppose aubudget de la médiathèque, critiquant le coût de la grande roue ; la maire rappelle l’impact attendu en matière de fréquentation.",
+      "resolved_order": 3,
+      "resolved_days": null
+    },
+    {
+      "id": 5,
+      "chunk_index": 4,
+      "seq": 0,
+      "summary": "Sur la place du Marché, les habitants expriment des avis nuancés ; détails pratiques sur l’embauche de apprentis et la gestion de la médiathèque.",
+      "resolved_order": 4,
+      "resolved_days": null
+    },
+    {
+      "id": 6,
+      "chunk_index": 5,
+      "seq": 0,
+      "summary": "Le conseil municipal décide le nom « médiathèque Raymond-Fabre », malgré les désaccords et l’ironie de Julien Roche ; la grande roue continue detourner à titre décoratif.",
+      "resolved_order": 5,
+      "resolved_days": null
+    }
+  ],
+  "constraints": [
+    {
+      "source_id": 2,
+      "relation": "avant",
+      "target_id": 1,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 2,
+      "relation": "avant",
+      "target_id": 3,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 3,
+      "relation": "avant",
+      "target_id": 4,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 4,
+      "relation": "avant",
+      "target_id": 5,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    },
+    {
+      "source_id": 5,
+      "relation": "avant",
+      "target_id": 6,
+      "gap": {
+        "text": "",
+        "days": null
+      }
+    }
+  ],
+  "appearances": {
+    "1": [
+      "Céredac",
+      "Hélène Fabre",
+      "Sorgue",
+      "Vieux Moulin",
+      "conseil municipal",
+      "la médiathèque intercommunale du Vieux Moulin"
+    ],
+    "2": [
+      "Hélène Fabre",
+      "Les Amis du Vieux Moulin",
+      "Raymond Fabre",
+      "Vieux Moulin",
+      "conseil municipal"
+    ],
+    "3": [
+      "Delmas & Fils",
+      "Les Amis du Vieux Moulin",
+      "Nadia Berthelot",
+      "Région",
+      "la grande roue à aubes"
+    ],
+    "4": [
+      "Hélène Fabre",
+      "Julien Roche",
+      "conseil municipal",
+      "la grande roue à aubes",
+      "la médiathèque intercommunale du Vieux Moulin"
+    ],
+    "5": [
+      "7 apprentis",
+      "Céredac",
+      "Delmas & Fils",
+      "Sophie Vasseur",
+      "la médiathèque intercommunale du Vieux Moulin",
+      "la place du Marché",
+      "médiathèque voisine de Roquevert"
+    ],
+    "6": [
+      "Céredac",
+      "Hélène Fabre",
+      "Julien Roche",
+      "Raymond Fabre",
+      "Sorgue",
+      "conseil municipal",
+      "la grande roue à aubes"
+    ]
+  },
+  "assertions": [
+    {
+      "entity": "la médiathèque intercommunale du Vieux Moulin",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "statut",
+      "value": "ouvrira le 14 juin",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "la médiathèque intercommunale du Vieux Moulin",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "localisation",
+      "value": "dans les murs du Vieux Moulin, sur la rive gauche de la Sorgue",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "la médiathèque intercommunale du Vieux Moulin",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "durée_travaux_précédents",
+      "value": "trois ans",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "la médiathèque intercommunale du Vieux Moulin",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "nombre_reports",
+      "value": "deux",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Vieux Moulin",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "statut",
+      "value": "restauré",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Hélène Fabre",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "fonction",
+      "value": "maire de Céredac",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Hélène Fabre",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "contexte",
+      "value": "au conseil municipal réuni en séance publique lundi soir",
+      "moment_id": 1,
+      "chunk_index": 0
+    },
+    {
+      "entity": "Vieux Moulin",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "ancienne activité",
+      "value": "moulin à blé opérationnel dans les années 1950",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Vieux Moulin",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "état actuel au moment du flashback",
+      "value": "abandonné",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Vieux Moulin",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "cause d’abandon",
+      "value": "fermeture de la minoterie",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "présidence",
+      "relation_source": "Les Amis du Vieux Moulin",
+      "relation_target": "Raymond Fabre",
+      "attribute": "identité",
+      "value": "ancien meunier",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "lien familial",
+      "relation_source": "Hélène Fabre",
+      "relation_target": "Raymond Fabre",
+      "attribute": "type de lien",
+      "value": "fille de",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "lien fonctionnel",
+      "relation_source": "Hélène Fabre",
+      "relation_target": "conseil municipal",
+      "attribute": "rôle",
+      "value": "maire",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Raymond Fabre",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "action",
+      "value": "a participé à la sauvegarde du Vieux Moulin (premier mouvement de contestation)",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "action collective",
+      "relation_source": "Les Amis du Vieux Moulin",
+      "relation_target": "Les Amis du Vieux Moulin",
+      "attribute": "",
+      "value": "",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Raymond Fabre",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "délai pour rachat par la municipalité",
+      "value": "dix ans de pétitions",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "coordination",
+      "relation_source": "Raymond Fabre",
+      "relation_target": "conseil municipal",
+      "attribute": "action",
+      "value": "a obtenu le rachat du bâtiment par la municipalité",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Hélène Fabre",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "action",
+      "value": "préside à l'ouverture de la médiathèque (mise en place des livres)",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "",
+      "relation_name": "métaphorique",
+      "relation_source": "Hélène Fabre",
+      "relation_target": "Vieux Moulin",
+      "attribute": "continuité de l’usage",
+      "value": "remplace l’action patrimoniale de son père (sauvegarde des murs) par une action culturelle (mise en place des livres)",
+      "moment_id": 2,
+      "chunk_index": 1
+    },
+    {
+      "entity": "Nadia Berthelot",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "fonction",
+      "value": "architecte chargé de la réhabilitation du Vieux Moulin",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "a conservé",
+      "relation_source": "Nadia Berthelot",
+      "relation_target": "la grande roue à aubes",
+      "attribute": "",
+      "value": "",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "la grande roue à aubes",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "disposition actuelle",
+      "value": "visible derrière une paroi de verre",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "",
+      "relation_name": "a mené",
+      "relation_source": "Delmas & Fils",
+      "relation_target": "Les Amis du Vieux Moulin",
+      "attribute": "",
+      "value": "",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Les Amis du Vieux Moulin",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "coût total",
+      "value": "2,4 millions d'euros",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Région",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "part financière",
+      "value": "un tiers du coût total (soit 800 000 €)",
+      "moment_id": 3,
+      "chunk_index": 2
+    },
+    {
+      "entity": "Julien Roche",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "fonction",
+      "value": "conseiller d'opposition",
+      "moment_id": 4,
+      "chunk_index": 3
+    },
+    {
+      "entity": "Julien Roche",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "comportement",
+      "value": "a voté contre le budget final de la médiathèque intercommunale",
+      "moment_id": 4,
+      "chunk_index": 3
+    },
+    {
+      "entity": "Julien Roche",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "texte",
+      "value": "\"On a payé une roue décorative le prix d'une école\"",
+      "moment_id": 4,
+      "chunk_index": 3
+    },
+    {
+      "entity": "la médiathèque intercommunale du Vieux Moulin",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "coût de la grande roue à aubes",
+      "value": "critiqué comme équivalent au prix d'une école par Julien Roche",
+      "moment_id": 4,
+      "chunk_index": 3
+    },
+    {
+      "entity": "la médiathèque intercommunale du Vieux Moulin",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "fréquentation estimée",
+      "value": "quatre cents visiteurs par semaine",
+      "moment_id": 4,
+      "chunk_index": 3
+    },
+    {
+      "entity": "Hélène Fabre",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "texte implicite",
+      "value": "la fréquentation justifie le choix et dépasse les critiques budgétaires",
+      "moment_id": 4,
+      "chunk_index": 3
+    },
+    {
+      "entity": "Delmas & Fils",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "emplois créés",
+      "value": "7 apprentis de Céredac pour le chantier",
+      "moment_id": 5,
+      "chunk_index": 4
+    },
+    {
+      "entity": "",
+      "relation_name": "embauche",
+      "relation_source": "Delmas & Fils",
+      "relation_target": "7 apprentis",
+      "attribute": "origine",
+      "value": "Céredac",
+      "moment_id": 5,
+      "chunk_index": 4
+    },
+    {
+      "entity": "la place du Marché",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "usage traditionnel",
+      "value": "où les habitants prenaient le frais le mardi",
+      "moment_id": 5,
+      "chunk_index": 4
+    },
+    {
+      "entity": "",
+      "relation_name": "affectation",
+      "relation_source": "Sophie Vasseur",
+      "relation_target": "médiathèque voisine de Roquevert",
+      "attribute": "origine professionnelle",
+      "value": "elle vient de cette médiathèque",
+      "moment_id": 5,
+      "chunk_index": 4
+    },
+    {
+      "entity": "Sophie Vasseur",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "fonction future",
+      "value": "dirigera l’équipe de six personnes à la médiathèque intercommunale du Vieux Moulin",
+      "moment_id": 5,
+      "chunk_index": 4
+    },
+    {
+      "entity": "",
+      "relation_name": "promesse",
+      "relation_source": "Sophie Vasseur",
+      "relation_target": "la médiathèque intercommunale du Vieux Moulin",
+      "attribute": "aménagement prévu",
+      "value": "salle pour les enfants au rez-de-chaussée et fonds ancien à l’étage, sous la charpente d’origine",
+      "moment_id": 5,
+      "chunk_index": 4
+    },
+    {
+      "entity": "conseil municipal",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "décision",
+      "value": "l'équipement s'appellera « médiathèque Raymond-Fabre »",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "Raymond Fabre",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "action",
+      "value": "a demandé qu'on n'en fasse pas trop",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "Hélène Fabre",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "action",
+      "value": "a maintenu le vote en faveur du nom Raymond-Fabre",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "Julien Roche",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "ton",
+      "value": "ironique",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "Julien Roche",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "nature",
+      "value": "citation ironique",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "Céredac",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "valeur symbolique",
+      "value": "on connaît la différence entre le meunier (farine sous les ongles) et la maire (écharpe tricolore)",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "Sorgue",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "mouvement",
+      "value": "continuera de tourner la roue",
+      "moment_id": 6,
+      "chunk_index": 5
+    },
+    {
+      "entity": "la grande roue à aubes",
+      "relation_name": "",
+      "relation_source": "",
+      "relation_target": "",
+      "attribute": "rôle",
+      "value": "pour le décor, cette fois (c’est-à-dire non fonctionnel)",
+      "moment_id": 6,
+      "chunk_index": 5
+    }
+  ]
+}

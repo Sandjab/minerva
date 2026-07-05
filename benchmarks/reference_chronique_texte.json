@@ -1,0 +1,134 @@
+{
+  "text": "chronique_texte.txt",
+  "entities": [
+    {
+      "name": "Hélène Fabre",
+      "type": "personne",
+      "variants": ["Hélène Fabre", "la maire de Céredac", "la maire"],
+      "level": "core"
+    },
+    {
+      "name": "Raymond Fabre",
+      "type": "personne",
+      "variants": ["Raymond Fabre", "ancien meunier", "le meunier"],
+      "level": "core"
+    },
+    {
+      "name": "Nadia Berthelot",
+      "type": "personne",
+      "variants": ["Nadia Berthelot", "l'architecte"],
+      "level": "core"
+    },
+    {
+      "name": "Julien Roche",
+      "type": "personne",
+      "variants": ["Julien Roche", "conseiller d'opposition", "Roche"],
+      "level": "core"
+    },
+    {
+      "name": "Sophie Vasseur",
+      "type": "personne",
+      "variants": ["Sophie Vasseur", "la bibliothécaire"],
+      "level": "core"
+    },
+    {
+      "name": "Les Amis du Vieux Moulin",
+      "type": "organisation",
+      "variants": ["Les Amis du Vieux Moulin", "l'association Les Amis du Vieux Moulin", "l'association"],
+      "level": "core"
+    },
+    {
+      "name": "Delmas & Fils",
+      "type": "organisation",
+      "variants": ["Delmas & Fils", "l'entreprise Delmas & Fils"],
+      "level": "core"
+    },
+    {
+      "name": "Céredac",
+      "type": "lieu",
+      "variants": ["Céredac"],
+      "level": "core"
+    },
+    {
+      "name": "le Vieux Moulin",
+      "type": "lieu",
+      "variants": ["le Vieux Moulin", "Vieux Moulin"],
+      "level": "core"
+    },
+    {
+      "name": "la médiathèque",
+      "type": "lieu",
+      "variants": ["la médiathèque intercommunale", "la médiathèque", "médiathèque Raymond-Fabre", "la médiathèque du Vieux Moulin"],
+      "level": "core"
+    },
+    {
+      "name": "la Sorgue",
+      "type": "lieu",
+      "variants": ["la Sorgue"],
+      "level": "core"
+    },
+    {
+      "name": "la municipalité",
+      "type": "organisation",
+      "variants": ["la municipalité"],
+      "level": "optional"
+    },
+    {
+      "name": "le conseil municipal",
+      "type": "organisation",
+      "variants": ["le conseil municipal"],
+      "level": "optional"
+    },
+    {
+      "name": "la Région",
+      "type": "organisation",
+      "variants": ["la Région"],
+      "level": "optional"
+    },
+    {
+      "name": "la place du Marché",
+      "type": "lieu",
+      "variants": ["la place du Marché", "place du Marché"],
+      "level": "optional"
+    },
+    {
+      "name": "Roquevert",
+      "type": "lieu",
+      "variants": ["Roquevert"],
+      "level": "optional"
+    },
+    {
+      "name": "la médiathèque de Roquevert",
+      "type": "lieu",
+      "variants": ["la médiathèque voisine de Roquevert", "la médiathèque voisine"],
+      "level": "optional"
+    }
+  ],
+  "required_merges": [
+    [["la médiathèque intercommunale"], ["médiathèque Raymond-Fabre"]],
+    [["Les Amis du Vieux Moulin"], ["l'association"]]
+  ],
+  "forbidden_merges": [
+    [["Hélène Fabre", "la maire de Céredac"], ["Raymond Fabre", "le meunier"]],
+    [["Raymond Fabre"], ["médiathèque Raymond-Fabre"]]
+  ],
+  "relations": [
+    {"pair": ["Hélène Fabre", "Céredac"], "level": "core"},
+    {"pair": ["Hélène Fabre", "la médiathèque"], "level": "core"},
+    {"pair": ["Raymond Fabre", "Les Amis du Vieux Moulin"], "level": "core"},
+    {"pair": ["Raymond Fabre", "Hélène Fabre"], "level": "core"},
+    {"pair": ["Raymond Fabre", "le Vieux Moulin"], "level": "core"},
+    {"pair": ["Nadia Berthelot", "la médiathèque"], "level": "optional"},
+    {"pair": ["Delmas & Fils", "la médiathèque"], "level": "optional"},
+    {"pair": ["Julien Roche", "la médiathèque"], "level": "optional"},
+    {"pair": ["Sophie Vasseur", "la médiathèque"], "level": "optional"},
+    {"pair": ["le Vieux Moulin", "la Sorgue"], "level": "core"},
+    {"pair": ["la médiathèque", "le Vieux Moulin"], "level": "core"},
+    {"pair": ["Les Amis du Vieux Moulin", "le Vieux Moulin"], "level": "core"},
+    {"pair": ["Sophie Vasseur", "Roquevert"], "level": "optional"},
+    {"pair": ["Delmas & Fils", "Céredac"], "level": "optional"},
+    {"pair": ["la médiathèque", "la Région"], "level": "optional"},
+    {"pair": ["Hélène Fabre", "le conseil municipal"], "level": "optional"},
+    {"pair": ["le Vieux Moulin", "Céredac"], "level": "optional"}
+  ]
+}
