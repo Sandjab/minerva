@@ -1,0 +1,46 @@
+{
+  "text": "timeline_texte.txt",
+  "entities": [
+    {"name": "Élise Chardon", "type": "personne",
+     "variants": ["Élise Chardon", "Élise"], "level": "core"},
+    {"name": "Bastien Malot", "type": "personne",
+     "variants": ["Bastien Malot", "Bastien"], "level": "core"},
+    {"name": "Aurélien Chardon", "type": "personne",
+     "variants": ["Aurélien Chardon", "Aurélien", "grand-père Aurélien"], "level": "core"},
+    {"name": "Camille Roche", "type": "personne",
+     "variants": ["Camille Roche", "Camille"], "level": "core"},
+    {"name": "rue des Grilles", "type": "lieu",
+     "variants": ["rue des Grilles", "la rue des Grilles", "atelier de la rue des Grilles", "l'atelier de la rue des Grilles"],
+     "level": "core"},
+    {"name": "Aubervilliers", "type": "lieu", "variants": ["Aubervilliers"], "level": "core"},
+    {"name": "Mirecourt", "type": "lieu", "variants": ["Mirecourt"], "level": "core"},
+    {"name": "Lyon", "type": "lieu", "variants": ["Lyon"], "level": "core"},
+    {"name": "école Boulle", "type": "organisation",
+     "variants": ["école Boulle", "l'école Boulle"], "level": "optional"},
+    {"name": "la Croix-Rousse", "type": "lieu",
+     "variants": ["la Croix-Rousse", "Croix-Rousse"], "level": "optional"},
+    {"name": "la Saône", "type": "lieu", "variants": ["la Saône", "Saône"], "level": "optional"},
+    {"name": "canif de buis", "type": "objet",
+     "variants": ["canif de buis", "le canif de buis", "canif", "le canif", "couteau à manche de buis", "canif d'Aurélien"],
+     "level": "optional"}
+  ],
+  "required_merges": [
+    [["Élise Chardon"], ["Élise"]],
+    [["Bastien Malot"], ["Bastien"]],
+    [["Aurélien Chardon"], ["Aurélien"]]
+  ],
+  "relations": [
+    {"pair": ["Élise Chardon", "Bastien Malot"], "level": "core"},
+    {"pair": ["Élise Chardon", "Aurélien Chardon"], "level": "core"},
+    {"pair": ["Élise Chardon", "rue des Grilles"], "level": "core"},
+    {"pair": ["Bastien Malot", "rue des Grilles"], "level": "core"},
+    {"pair": ["Aurélien Chardon", "Mirecourt"], "level": "core"},
+    {"pair": ["Élise Chardon", "Mirecourt"], "level": "core"},
+    {"pair": ["Camille Roche", "Lyon"], "level": "core"},
+    {"pair": ["Bastien Malot", "Camille Roche"], "level": "core"},
+    {"pair": ["rue des Grilles", "Aubervilliers"], "level": "optional"},
+    {"pair": ["Élise Chardon", "Aubervilliers"], "level": "optional"},
+    {"pair": ["Bastien Malot", "Aubervilliers"], "level": "optional"},
+    {"pair": ["Camille Roche", "rue des Grilles"], "level": "optional"}
+  ]
+}
