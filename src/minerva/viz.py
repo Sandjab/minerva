@@ -74,13 +74,27 @@ def build_payload(graph: KnowledgeGraph) -> dict:
                ent_first.get(k[1], -1), ent_first.get(k[2], -1))
         for k, rr in rel_rank.items()
     }
+    def _rel_attrs_at(key: tuple[str, str, str], at: int) -> dict:
+        # Même règle que relation_state(policy="final", at=…) — dernière
+        # valeur au rang <= at, à égalité la première gagne — mais on garde
+        # aussi le moment du constat retenu (provenance dans le tooltip).
+        best: dict[str, tuple[int, dict]] = {}
+        for a in rel_asserts.get(key, []):
+            r = rank.get(a["moment_id"], -1) if a["moment_id"] is not None else -1
+            if r > at:
+                continue
+            prev = best.get(a["attribute"])
+            if prev is None or r > prev[0]:
+                best[a["attribute"]] = (r, a)
+        return {attr: {"value": a["value"], "moment_id": a["moment_id"]}
+                for attr, (_, a) in best.items()}
+
     def _state_at(m) -> dict:
-        rel_state = graph.relation_state(policy="final", at=m.id)
         return {
             "entities": [n for n, fr in ent_first.items() if fr <= rank[m.id]],
             "relations": [i for i, k in enumerate(rel_keys) if rel_first[k] <= rank[m.id]],
             "attributes": graph.entity_state(policy="final", at=m.id),
-            "rel_attributes": [rel_state.get(k, {}) for k in rel_keys],
+            "rel_attributes": [_rel_attrs_at(k, rank[m.id]) for k in rel_keys],
         }
 
     states = [_state_at(m) for m in moments]

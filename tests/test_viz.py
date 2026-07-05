@@ -150,10 +150,31 @@ def test_states_les_attributs_d_entite_suivent_le_moment():
 def test_states_les_attributs_de_relation_suivent_le_moment():
     # « lieu : évêché » n'est constaté qu'à m2 (ordre 1) ; liste alignée sur
     # les index de p["relations"], même convention que states["relations"].
+    # Chaque valeur porte le moment du constat retenu (provenance du tooltip).
     p = build_payload(_graph())
     assert "lieu" not in p["states"][0]["rel_attributes"][0]
-    assert p["states"][1]["rel_attributes"][0]["lieu"] == "évêché"
-    assert p["states"][2]["rel_attributes"][0]["lieu"] == "évêché"
+    assert p["states"][1]["rel_attributes"][0]["lieu"] == {
+        "value": "évêché", "moment_id": 2
+    }
+    assert p["states"][2]["rel_attributes"][0]["lieu"] == {
+        "value": "évêché", "moment_id": 2
+    }
+
+
+def test_states_attribut_de_relation_change_de_valeur_moment_retenu_suit():
+    g = _graph()
+    # « lieu » reconstaté à m3 (ordre 2) : avant, la valeur de m2 fait foi ;
+    # après, la nouvelle valeur ET son moment.
+    g.add_assertion(Assertion(relation_name="héberge", relation_source="Myriel",
+                              relation_target="Valjean", attribute="lieu",
+                              value="jardin", moment_id=3))
+    p = build_payload(g)
+    assert p["states"][1]["rel_attributes"][0]["lieu"] == {
+        "value": "évêché", "moment_id": 2
+    }
+    assert p["states"][2]["rel_attributes"][0]["lieu"] == {
+        "value": "jardin", "moment_id": 3
+    }
 
 
 def test_payload_base_sans_moments_se_degrade_sans_crash():

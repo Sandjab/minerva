@@ -102,10 +102,6 @@ function nodeAttrs(e) {
   const s = D.states[state.atIndex];
   return s ? (s.attributes[e.name] || {}) : e.attributes;
 }
-function relAttrs(i) {
-  const s = D.states[state.atIndex];
-  return s ? (s.rel_attributes[i] || {}) : D.relations[i].attributes;
-}
 const rankOf = {}; D.moments.forEach(m => { rankOf[m.id] = m.order; });
 
 function nodeTooltip(n) {
@@ -118,13 +114,22 @@ function nodeTooltip(n) {
 function linkTooltip(l) {
   const r = D.relations[l.i];
   let h = `<b>${esc(r.source)} —${esc(r.name)}→ ${esc(r.target)}</b>`;
-  for (const [k, v] of Object.entries(relAttrs(l.i))) h += `<br>${esc(k)} : ${esc(v)}`;
-  // Journal limité à ce qu'on sait au moment courant (cohérent avec les
-  // attributs datés au-dessus) ; sans moments, tout est montré.
-  const atOrder = D.moments.length ? D.moments[state.atIndex].order : null;
-  for (const a of r.assertions) {
-    if (atOrder != null && a.moment_id != null && rankOf[a.moment_id] > atOrder) continue;
-    h += `<br>${esc(a.attribute)} = ${esc(a.value)}` + (a.moment_id != null ? ` (M${Number(a.moment_id)})` : "");
+  // Une ligne par attribut : valeur courante + moment du constat retenu.
+  // L'historique (valeurs antérieures différentes, au rang <= courant) ne se
+  // déroule que s'il existe — l'attribut EST dérivé du journal, pas de doublon.
+  const s = D.states[state.atIndex];
+  const attrs = s ? s.rel_attributes[l.i]
+                  : Object.fromEntries(Object.entries(D.relations[l.i].attributes)
+                      .map(([k, v]) => [k, {value: v, moment_id: null}]));
+  const atOrder = s ? D.moments[state.atIndex].order : Infinity;
+  for (const [k, cur] of Object.entries(attrs)) {
+    h += `<br>${esc(k)} : ${esc(cur.value)}` + (cur.moment_id != null ? ` (M${Number(cur.moment_id)})` : "");
+    for (const a of r.assertions) {
+      if (a.attribute !== k || a.value === cur.value) continue;
+      const rk = a.moment_id != null ? rankOf[a.moment_id] : -1;
+      if (rk > atOrder) continue;
+      h += `<br>&nbsp;&nbsp;antérieur : ${esc(a.value)}` + (a.moment_id != null ? ` (M${Number(a.moment_id)})` : "");
+    }
   }
   return h;
 }
@@ -185,7 +190,7 @@ function repaintGraph() {   // idiome force-graph : re-poser un accessor le fait
 
 // ---------- Timeline de montage (SVG vanilla, layout ordinal) ----------
 const SVGNS = "http://www.w3.org/2000/svg";
-const COLW = 84, ROWH = 30, LEFT = 150, TOP = 46;
+const COLW = 84, ROWH = 30, LEFT = 190, TOP = 46;
 const tlSvg = document.getElementById("timeline");
 function el(tag, attrs) {
   const node = document.createElementNS(SVGNS, tag);
