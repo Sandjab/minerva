@@ -74,11 +74,16 @@ def build_payload(graph: KnowledgeGraph) -> dict:
                ent_first.get(k[1], -1), ent_first.get(k[2], -1))
         for k, rr in rel_rank.items()
     }
-    states = [
-        {"entities": [n for n, fr in ent_first.items() if fr <= rank[m.id]],
-         "relations": [i for i, k in enumerate(rel_keys) if rel_first[k] <= rank[m.id]]}
-        for m in moments
-    ]
+    def _state_at(m) -> dict:
+        rel_state = graph.relation_state(policy="final", at=m.id)
+        return {
+            "entities": [n for n, fr in ent_first.items() if fr <= rank[m.id]],
+            "relations": [i for i, k in enumerate(rel_keys) if rel_first[k] <= rank[m.id]],
+            "attributes": graph.entity_state(policy="final", at=m.id),
+            "rel_attributes": [rel_state.get(k, {}) for k in rel_keys],
+        }
+
+    states = [_state_at(m) for m in moments]
 
     return {
         "entities": [

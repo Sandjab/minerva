@@ -96,19 +96,36 @@ function showTip(html, x, y) {   // html : gabarit local dont TOUTES les interpo
 }
 function hideTip() { tipEl.style.display = "none"; }
 
+// Attributs à l'instant du slider (précalculés en Python) ; sans moments,
+// repli sur l'état final — il n'y a pas de temps à suivre.
+function nodeAttrs(e) {
+  const s = D.states[state.atIndex];
+  return s ? (s.attributes[e.name] || {}) : e.attributes;
+}
+function relAttrs(i) {
+  const s = D.states[state.atIndex];
+  return s ? (s.rel_attributes[i] || {}) : D.relations[i].attributes;
+}
+const rankOf = {}; D.moments.forEach(m => { rankOf[m.id] = m.order; });
+
 function nodeTooltip(n) {
   const e = byName[n.id];
   let h = `<b>${esc(e.name)}</b> (${esc(e.type)})`;
   if (e.aliases.length) h += `<br>alias : ${e.aliases.map(esc).join(", ")}`;
-  for (const [k, v] of Object.entries(e.attributes)) h += `<br>${esc(k)} : ${esc(v)}`;
+  for (const [k, v] of Object.entries(nodeAttrs(e))) h += `<br>${esc(k)} : ${esc(v)}`;
   return h;
 }
 function linkTooltip(l) {
   const r = D.relations[l.i];
   let h = `<b>${esc(r.source)} —${esc(r.name)}→ ${esc(r.target)}</b>`;
-  for (const [k, v] of Object.entries(r.attributes)) h += `<br>${esc(k)} : ${esc(v)}`;
-  for (const a of r.assertions)
+  for (const [k, v] of Object.entries(relAttrs(l.i))) h += `<br>${esc(k)} : ${esc(v)}`;
+  // Journal limité à ce qu'on sait au moment courant (cohérent avec les
+  // attributs datés au-dessus) ; sans moments, tout est montré.
+  const atOrder = D.moments.length ? D.moments[state.atIndex].order : null;
+  for (const a of r.assertions) {
+    if (atOrder != null && a.moment_id != null && rankOf[a.moment_id] > atOrder) continue;
     h += `<br>${esc(a.attribute)} = ${esc(a.value)}` + (a.moment_id != null ? ` (M${Number(a.moment_id)})` : "");
+  }
   return h;
 }
 

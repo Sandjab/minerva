@@ -134,6 +134,28 @@ def test_states_le_premier_rang_d_une_relation_gagne():
     assert 0 in p["states"][1]["relations"]
 
 
+def test_states_les_attributs_d_entite_suivent_le_moment():
+    g = _graph()
+    # « mort » n'est constaté qu'à m3 (ordre 2) : le tooltip ne doit pas le
+    # montrer avant — la sémantique du snapshot daté est celle
+    # d'entity_state(at=…), déjà testée ; ici on vérifie le câblage payload.
+    g.add_assertion(Assertion(entity="Valjean", attribute="mort",
+                              value="oui", moment_id=3))
+    p = build_payload(g)
+    assert "mort" not in p["states"][0]["attributes"]["Valjean"]
+    assert "mort" not in p["states"][1]["attributes"]["Valjean"]
+    assert p["states"][2]["attributes"]["Valjean"]["mort"] == "oui"
+
+
+def test_states_les_attributs_de_relation_suivent_le_moment():
+    # « lieu : évêché » n'est constaté qu'à m2 (ordre 1) ; liste alignée sur
+    # les index de p["relations"], même convention que states["relations"].
+    p = build_payload(_graph())
+    assert "lieu" not in p["states"][0]["rel_attributes"][0]
+    assert p["states"][1]["rel_attributes"][0]["lieu"] == "évêché"
+    assert p["states"][2]["rel_attributes"][0]["lieu"] == "évêché"
+
+
 def test_payload_base_sans_moments_se_degrade_sans_crash():
     g = KnowledgeGraph()
     g.add_entity(Entity(name="Javert", type="personnage"))
