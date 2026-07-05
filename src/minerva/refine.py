@@ -13,9 +13,16 @@ from __future__ import annotations
 
 from pydantic import BaseModel, Field
 
+from .chunking import DEFAULT_CHUNK_SIZE, split_text
 from .extraction import sanitize
 from .llm import ExtractionResult, LLMBackend
 from .model import KnowledgeGraph
+
+# Fenêtre de relecture de la passe alias : une passe qui met tout le texte dans
+# un prompt ne tient pas à l'échelle roman (dépassement de contexte). On relit
+# par fenêtres, la liste GLOBALE des entités étant fournie à chacune pour relier
+# des mentions dispersées. Défaut = taille de chunk d'extraction.
+ALIAS_WINDOW = DEFAULT_CHUNK_SIZE
 
 # --- Passe de complétude -------------------------------------------------------
 
@@ -208,20 +215,29 @@ def resolve_aliases(
     backend: LLMBackend,
     *,
     scope: str = "impersonation",
+    window_size: int = ALIAS_WINDOW,
 ) -> KnowledgeGraph:
     """Relit le TEXTE pour proposer (LLM) puis appliquer (code) les fusions que
     la seule liste de noms ne révèle pas — au premier chef les identités
     d'emprunt. `scope` : « impersonation » (ciblé) ou « broad » (élargi aux
-    périphrases narratives). Réutilise l'application déterministe des fusions."""
+    périphrases narratives). Réutilise l'application déterministe des fusions.
+
+    Passe à l'échelle : le texte est relu par fenêtres d'au plus `window_size`
+    caractères (un appel LLM par fenêtre), la liste GLOBALE des entités étant
+    fournie à chacune pour relier des mentions dispersées. Un texte plus court
+    que la fenêtre = un seul appel (comportement d'origine). Les groupes de
+    toutes les fenêtres sont cumulés puis appliqués une fois — `apply_canoni-
+    calization` dédoublonne (garde-fou `claimed`)."""
     try:
         system = _ALIAS_SYSTEMS[scope]
     except KeyError:
         raise ValueError(
             f"scope inconnu : {scope!r} (attendu : {sorted(_ALIAS_SYSTEMS)})"
         )
-    user = (
-        "Texte source :\n\n" + text
-        + "\n\nEntités extraites :\n" + _entity_listing(graph)
-    )
-    result = backend.parse(system, user, CanonicalizationResult)
-    return apply_canonicalization(graph, result.groups)
+    listing = _entity_listing(graph)  # globale, identique à chaque fenêtre
+    groups: list[MergeGroup] = []
+    for window in split_text(text, window_size):
+        user = "Texte source :\n\n" + window + "\n\nEntités extraites :\n" + listing
+        result = backend.parse(system, user, CanonicalizationResult)
+        groups.extend(result.groups)
+    return apply_canonicalization(graph, groups)

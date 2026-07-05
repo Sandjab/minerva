@@ -230,3 +230,31 @@ def test_resolve_aliases_scope_selects_distinct_system_prompt():
 
     assert b_cible.systems[0] and b_large.systems[0]
     assert b_cible.systems[0] != b_large.systems[0]
+
+
+def test_resolve_aliases_windows_long_text_carrying_global_entities():
+    """Passe alias scalable : sur un texte plus long que la fenêtre, un appel
+    par fenêtre, chacun portant la liste GLOBALE des entités (pour relier des
+    mentions dispersées sur un roman sans mettre tout le texte dans un prompt)."""
+    g = impersonation_graph()
+    backend = FakeBackend(CanonicalizationResult())
+
+    resolve_aliases(g, "Alpha.\n\nBeta.\n\nGamma.", backend, window_size=8)
+
+    assert len(backend.prompts) == 3  # une fenêtre par paragraphe
+    for prompt in backend.prompts:
+        assert "Antoine Sérac" in prompt  # liste globale fournie à chaque fenêtre
+    # chaque fenêtre ne porte que son fragment de texte
+    assert "Beta." in backend.prompts[1] and "Alpha." not in backend.prompts[1]
+
+
+def test_resolve_aliases_single_window_unchanged():
+    """Non-régression : un texte qui tient dans la fenêtre = un seul appel
+    (comportement d'avant le fenêtrage)."""
+    g = impersonation_graph()
+    backend = FakeBackend(CanonicalizationResult(groups=[
+        MergeGroup(canonical="Antoine Sérac", members=["Antoine Sérac", "Théo Rivière"]),
+    ]))
+    merged = resolve_aliases(g, "… il s'appelait Théo Rivière …", backend)
+    assert len(backend.prompts) == 1
+    assert merged.resolve("Antoine Sérac") is merged.resolve("Théo Rivière")

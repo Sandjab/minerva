@@ -12,6 +12,7 @@ from .chunking import DEFAULT_CHUNK_SIZE
 from .extraction import extract_graph
 from .llm import make_backend
 from .model import KnowledgeGraph
+from .refine import canonicalize_graph, resolve_aliases
 
 
 def _cmd_extract(args: argparse.Namespace) -> int:
@@ -24,6 +25,20 @@ def _cmd_extract(args: argparse.Namespace) -> int:
         print(f"chunk {done}/{total}", file=sys.stderr)
 
     graph = extract_graph(text, backend, chunk_size=args.chunk_size, on_progress=progress)
+    if args.refine:
+        # Pipeline canon_alias (reco qualité, addendum 9) : canonicalisation puis
+        # alias, à température 0. Backend dédié temp 0 côté openai/Ollama ; le
+        # backend anthropic n'accepte pas de température, on le réutilise.
+        refine_backend = (
+            make_backend(args.provider, model=args.model,
+                         base_url=args.base_url, temperature=0)
+            if args.provider == "openai" else backend
+        )
+        before = len(graph.entities)
+        graph = canonicalize_graph(graph, refine_backend)
+        graph = resolve_aliases(graph, text, refine_backend)
+        print(f"raffinement canon_alias : {before} -> {len(graph.entities)} entités",
+              file=sys.stderr)
     store.save(graph, args.output)
     print(
         f"{len(graph.entities)} entités, {len(graph.relations)} relations, "
@@ -133,6 +148,12 @@ def build_parser() -> argparse.ArgumentParser:
     p_extract.add_argument("--model", default=None, help="identifiant du modèle")
     p_extract.add_argument("--base-url", default=None, help="URL d'un serveur compatible OpenAI (ex. http://localhost:11434/v1)")
     p_extract.add_argument("--chunk-size", type=int, default=DEFAULT_CHUNK_SIZE)
+    p_extract.add_argument(
+        "--refine", action="store_true",
+        help="appliquer le pipeline canon_alias (canonicalisation + alias, "
+             "température 0) — reco qualité ; la passe alias relit le texte par "
+             "fenêtres pour tenir à l'échelle roman",
+    )
     p_extract.add_argument("--temperature", type=float, default=None,
                            help="température d'échantillonnage (backend openai/Ollama uniquement)")
     p_extract.set_defaults(func=_cmd_extract)

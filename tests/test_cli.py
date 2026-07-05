@@ -2,9 +2,17 @@
 change entre deux moments doit se lire dans `show`, et `timeline` doit donner
 l'ordre diégétique résolu."""
 
-from minerva.cli import _format_entity, _format_timeline
+from minerva.cli import _format_entity, _format_timeline, build_parser
 from minerva.model import Assertion, Entity, KnowledgeGraph
 from minerva.timeline import AVANT, Gap
+
+
+def test_extract_refine_flag_defaut_off():
+    """`--refine` est câblé et désactivé par défaut (extraction nue reste le
+    comportement d'origine ; le pipeline canon_alias est opt-in)."""
+    parser = build_parser()
+    assert parser.parse_args(["extract", "in.txt", "-o", "out.db"]).refine is False
+    assert parser.parse_args(["extract", "in.txt", "-o", "out.db", "--refine"]).refine is True
 
 
 def _graph():

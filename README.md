@@ -15,6 +15,46 @@ une base SQLite ; les sous-commandes ci-dessous la produisent puis l'explorent.
   - **API Anthropic** : `--provider anthropic` (défaut), qui lit la clé dans
     l'environnement.
 
+## Recette : d'un roman à sa restitution graphique
+
+Chaîne complète, de l'ingestion du texte à la page HTML interactive (exemple
+Ollama local ; adapter `--model` / `--provider`) :
+
+    # 1. Ingestion + extraction, pipeline qualité (canon_alias)
+    minerva extract roman.txt -o roman.sqlite \
+        --provider openai --base-url http://localhost:11434/v1 \
+        --model gpt-oss:120b --refine
+
+    # 2. Vérifier ce qui a été extrait
+    minerva show roman.sqlite                    # entités + relations
+    minerva show roman.sqlite --entity "Nom"     # détail + historique daté d'un attribut
+    minerva timeline roman.sqlite                # ordre diégétique des moments
+
+    # 3. (optionnel) Exporter le graphe brut en JSON
+    minerva export roman.sqlite -o roman.json
+
+    # 4. Restitution graphique : page HTML autonome (double-clic)
+    minerva viz roman.sqlite -o roman.html
+
+### À l'échelle d'un roman — ce qu'il faut savoir
+
+Le pipeline est **validé sur des extraits courts** ; sur un roman entier, trois
+points d'attention, non encore mesurés à cette échelle :
+
+- **Temps.** L'extraction est séquentielle (un appel LLM par chunk). Sur
+  gpt-oss:120b, compter **plusieurs heures** pour un roman ; `qwen3-coder-next`
+  est ~3× plus rapide (qualité moindre, surtout sur le rappel des relations et
+  les fusions) — arbitrage vitesse / qualité.
+- **Cohérence inter-chunks.** Le prompt d'extraction ne rappelle qu'un plafond
+  d'entités déjà vues (`MAX_KNOWN_ENTITIES_IN_PROMPT`, 200) ; au-delà, un
+  personnage revu bien plus loin peut être ré-extrait en doublon — la
+  canonicalisation (`--refine`) en rattrape une partie.
+- **Visualisation.** La page `viz` précalcule chaque état du slider en Python ;
+  à plusieurs centaines d'entités, le rendu et le slider peuvent devenir lourds.
+
+Sans `--refine`, l'extraction nue reste l'option la plus sûre à très grande
+échelle (elle découpe proprement en chunks, sans passe globale).
+
 ## Sous-commandes
 
 ### Extraction (`minerva extract`)
@@ -28,8 +68,13 @@ continue) est gérée à la fusion.
 
 Options : `--provider {anthropic,openai}` (défaut `anthropic`), `--model`,
 `--base-url` (serveur compatible OpenAI, ex. Ollama), `--chunk-size`,
-`--temperature` (backend `openai`/Ollama uniquement). En sortie : le nombre
-d'entités, de relations et de moments écrits.
+`--temperature` (backend `openai`/Ollama uniquement), et **`--refine`** — applique
+le pipeline **canon_alias** (canonicalisation des coréférences puis passe
+d'identité d'emprunt, à température 0), la meilleure qualité mesurée sur les
+benchs. Sans `--refine`, l'extraction reste « nue » (rapide, mais ne fusionne pas
+les alias ni les identités d'emprunt). La passe d'identité d'emprunt relit le
+texte **par fenêtres** (elle ne charge donc pas tout le roman dans un seul prompt).
+En sortie : le nombre d'entités, de relations et de moments écrits.
 
 ### Consultation (`minerva show`)
 
