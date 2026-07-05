@@ -81,6 +81,14 @@ def _prf(n_correct: int, n_pred: int, n_covered: int, n_core: int) -> tuple:
     return round(precision, 3), round(recall, 3), round(f1, 3)
 
 
+def _resolve_any(graph: KnowledgeGraph, mentions: list[str]) -> Entity | None:
+    for m in mentions:
+        e = graph.resolve(m)
+        if e is not None:
+            return e
+    return None
+
+
 def score_reference(graph: KnowledgeGraph, ref: Reference) -> dict:
     warnings = list(ref.variant_collisions)
 
@@ -136,6 +144,15 @@ def score_reference(graph: KnowledgeGraph, ref: Reference) -> dict:
         sorted(p, key=ref.order.__getitem__) for p in ref.core_pairs - tp_keys
     )
 
+    # --- fusions exigées : les deux groupes mènent à la même entité ---
+    failed_merges = []
+    for group_a, group_b in ref.required_merges:
+        ea = _resolve_any(graph, group_a)
+        eb = _resolve_any(graph, group_b)
+        if ea is None or eb is None or ea is not eb:
+            failed_merges.append([group_a, group_b])
+    n_merges = len(ref.required_merges)
+
     return {
         "n_entities": n_pred,
         "n_relations": len(graph.relations),
@@ -146,6 +163,10 @@ def score_reference(graph: KnowledgeGraph, ref: Reference) -> dict:
         "relation_precision": r_p,
         "relation_recall": r_r,
         "relation_f1": r_f1,
+        "merges_ok": n_merges - len(failed_merges),
+        "merges_total": n_merges,
+        "merge_rate": f"{n_merges - len(failed_merges)}/{n_merges}",
+        "failed_merges": failed_merges,
         "missing_entities": [n for n in core_names if n not in entry_hits],
         "false_positive_entities": sorted(fp_entities),
         "duplicate_entities": sorted(n for n, c in entry_hits.items() if c > 1),
@@ -153,3 +174,41 @@ def score_reference(graph: KnowledgeGraph, ref: Reference) -> dict:
         "false_positive_relations": fp_relations,
         "warnings": warnings,
     }
+
+
+def validate_reference(ref: Reference) -> list[str]:
+    """Cohérence interne d'un fichier de référence (test de garde)."""
+    errors = list(ref.variant_collisions)
+    for entry in ref.entries:
+        if entry["level"] not in VALID_LEVELS:
+            errors.append(f"niveau invalide pour « {entry['name']} » : {entry['level']}")
+        if not entry["variants"]:
+            errors.append(f"aucun variant pour « {entry['name']} »")
+    seen_pairs: set[frozenset] = set()
+    for r in ref.data["relations"]:
+        pair = r["pair"]
+        if r["level"] not in VALID_LEVELS:
+            errors.append(f"niveau invalide pour la paire {pair} : {r['level']}")
+        if len(pair) != 2 or pair[0] == pair[1]:
+            errors.append(f"paire invalide : {pair}")
+        for name in pair:
+            if name not in ref.order:
+                errors.append(f"paire {pair} : entrée inconnue « {name} »")
+        key = frozenset(pair)
+        if key in seen_pairs:
+            errors.append(f"paire dupliquée : {pair}")
+        seen_pairs.add(key)
+    for group_a, group_b in ref.required_merges:
+        owners: set[str] = set()
+        for mention in [*group_a, *group_b]:
+            keys = [k for k in _mention_keys(mention) if k in ref.variant_index]
+            if not keys:
+                errors.append(f"fusion {[group_a, group_b]} : « {mention} » hors variants")
+            else:
+                owners.add(ref.variant_index[keys[0]])
+        if len(owners) > 1:
+            errors.append(
+                f"fusion {[group_a, group_b]} : mentions dans des entrées "
+                f"différentes {sorted(owners)}"
+            )
+    return errors

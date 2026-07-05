@@ -173,3 +173,57 @@ def test_sens_et_predicat_ignores_et_multipredicats_dedupliques():
     s = scoring.score_reference(g, make_ref())
     assert s["relation_precision"] == 1.0
     assert s["relation_recall"] == 1.0
+
+
+def test_fusion_reussie():
+    s = scoring.score_reference(perfect_graph(), make_ref())
+    assert s["merge_rate"] == "1/1"
+    assert s["failed_merges"] == []
+
+
+def test_fusion_ratee():
+    g = KnowledgeGraph()
+    g.add_entity(Entity(name="Alice Vernet", type="personne"))  # sans alias
+    g.add_entity(Entity(name="Vernet", type="personne", aliases=["docteur Vernet"]))
+    s = scoring.score_reference(g, make_ref())
+    assert s["merge_rate"] == "0/1"
+    assert s["failed_merges"] == [[["Alice Vernet"], ["docteur Vernet"]]]
+
+
+def test_fusion_mention_absente_du_graphe():
+    g = KnowledgeGraph()
+    g.add_entity(Entity(name="Bruno Maillard", type="personne"))
+    s = scoring.score_reference(g, make_ref())
+    assert s["merge_rate"] == "0/1"
+
+
+def test_validation_reference_saine():
+    assert scoring.validate_reference(make_ref()) == []
+
+
+def test_validation_detecte_les_incoherences():
+    bad = {
+        "text": "bad.txt",
+        "entities": [
+            {"name": "A", "type": "personne", "variants": ["A", "Double"], "level": "core"},
+            {"name": "B", "type": "personne", "variants": ["B", "Double"], "level": "core"},
+            {"name": "C", "type": "personne", "variants": [], "level": "exotique"},
+        ],
+        "required_merges": [[["Fantôme"], ["A"]], [["A"], ["B"]]],
+        "relations": [
+            {"pair": ["A", "Inconnu"], "level": "core"},
+            {"pair": ["A", "A"], "level": "core"},
+            {"pair": ["A", "B"], "level": "core"},
+            {"pair": ["B", "A"], "level": "optional"},
+        ],
+    }
+    errors = scoring.validate_reference(scoring.Reference(bad))
+    text = "\n".join(errors)
+    assert "Double" in text          # variant en collision
+    assert "exotique" in text        # niveau invalide
+    assert "aucun variant" in text   # C sans variant
+    assert "Inconnu" in text         # paire vers entrée inexistante
+    assert "['A', 'A']" in text      # paire réflexive
+    assert "dupliquée" in text       # {A,B} deux fois
+    assert "Fantôme" in text         # fusion hors variants
+    assert "entrées différentes" in text  # fusion A/B inter-entrées
