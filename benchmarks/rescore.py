@@ -25,6 +25,12 @@ _bench = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_bench)
 score = _bench.score
 
+_spec_ref = importlib.util.spec_from_file_location(
+    "reference_scoring", HERE / "reference_scoring.py"
+)
+_ref_scoring = importlib.util.module_from_spec(_spec_ref)
+_spec_ref.loader.exec_module(_ref_scoring)
+
 
 def load_graph(path: Path) -> tuple[KnowledgeGraph, int]:
     """Recharge un graphe sauvegardé via le pipeline courant.
@@ -48,8 +54,41 @@ def load_graph(path: Path) -> tuple[KnowledgeGraph, int]:
     return graph, skipped
 
 
+def rescore_reference(results_dir: Path) -> None:
+    """Re-score les graphes ref_*.json contre les références exhaustives
+    courantes. Une entrée par graphe (modèle × texte × pipeline × run) —
+    pas de ré-agrégation : sortie d'inspection."""
+    refs = {
+        key: _ref_scoring.load_reference(
+            HERE / f"reference_{name.removesuffix('.txt')}.json"
+        )
+        for key, name in (("reference", "reference_texte.txt"),
+                          ("timeline", "timeline_texte.txt"))
+    }
+    rescored = []
+    for graph_path in sorted(results_dir.glob("ref_*.json")):
+        text_key = graph_path.name.split("_")[1]
+        if text_key not in refs:
+            print(f"!! texte inconnu pour {graph_path.name}")
+            continue
+        graph, skipped = load_graph(graph_path)
+        entry = {"graph": graph_path.name, "skipped_records": skipped}
+        entry.update(_ref_scoring.score_reference(graph, refs[text_key]))
+        rescored.append(entry)
+        print(f"== {graph_path.name}: eP={entry['entity_precision']} "
+              f"eR={entry['entity_recall']} rP={entry['relation_precision']} "
+              f"rR={entry['relation_recall']} fusions={entry['merge_rate']}")
+    out = results_dir / "reference_results_rescored.json"
+    out.write_text(json.dumps(rescored, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"-> {out}")
+
+
 def main(results_dir: Path) -> None:
+    if any(results_dir.glob("ref_*.json")):
+        rescore_reference(results_dir)
     results_path = results_dir / "bench_results.json"
+    if not results_path.exists():
+        return
     recorded = {
         e["model"]: e
         for e in json.loads(results_path.read_text(encoding="utf-8"))
