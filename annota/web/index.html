@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>annota — atelier d'annotation</title>
+<style>
+  :root{
+    --bg:#0e1116; --panel:#161b22; --panel2:#1c232d; --line:#2a323d;
+    --txt:#d7dde5; --dim:#8b97a5; --accent:hsl(210 90% 58%);
+    --fs:13px; --pad:11px; --gap:8px;
+    --ok:#3fb950; --warn:#d29922; --noise:#6e7681;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;height:100vh;overflow:hidden;background:var(--bg);color:var(--txt);
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;font-size:var(--fs)}
+  .app{display:flex;flex-direction:column;height:100vh}
+  /* topbar */
+  .topbar{display:flex;align-items:center;gap:14px;padding:9px 14px;border-bottom:1px solid var(--line);background:var(--panel)}
+  .topbar .title{font-weight:600}
+  .topbar .title .db{color:var(--dim);font-family:ui-monospace,monospace;font-weight:400;margin-left:6px}
+  .topbar select{background:var(--panel2);color:var(--txt);border:1px solid var(--line);border-radius:6px;padding:4px 7px;font-size:12px}
+  .topbar .prog{flex:1;height:7px;background:var(--panel2);border-radius:7px;overflow:hidden;max-width:340px}
+  .topbar .prog i{display:block;height:100%;background:var(--accent);transition:width .2s}
+  .topbar .progtxt{font-size:11px;color:var(--dim);font-family:ui-monospace,monospace}
+  .topbar .scorebtn{margin-left:auto;background:var(--accent);color:#06121f;border:none;border-radius:6px;padding:6px 13px;font-size:12px;font-weight:600;cursor:pointer}
+  /* main */
+  .main{flex:1;display:grid;grid-template-columns:290px 1fr;min-height:0}
+  .list{border-right:1px solid var(--line);overflow-y:auto;padding:6px}
+  .clusterhdr{font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.05em;padding:9px 6px 3px;font-family:ui-monospace,monospace}
+  .grouped{border-left:2px solid var(--accent);margin:0 0 4px 4px;border-radius:0 6px 6px 0;padding-left:5px}
+  .cand{display:flex;align-items:center;gap:8px;padding:6px 7px;border-radius:6px;cursor:pointer;margin-bottom:2px;border:1px solid transparent}
+  .cand:hover{background:var(--panel2)}
+  .cand.sel{background:var(--panel2);border-color:var(--accent)}
+  .cand .sf{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .cand .kind{font-size:9px;color:var(--dim);font-family:ui-monospace,monospace;border:1px solid var(--line);border-radius:3px;padding:0 3px}
+  .dot{width:8px;height:8px;border-radius:50%;flex:0 0 auto;background:var(--line)}
+  .dot.done{background:var(--ok)} .dot.discard{background:var(--noise)}
+  /* context */
+  .ctx{overflow-y:auto;padding:var(--pad);display:flex;flex-direction:column;gap:var(--gap)}
+  .ctx h3{margin:0;display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:15px}
+  .ctx .clbadge{font-size:10px;color:var(--dim);font-family:ui-monospace,monospace}
+  .warn{background:rgba(210,153,34,.12);border:1px solid var(--warn);color:var(--warn);border-radius:8px;padding:8px 10px;font-size:12px}
+  .block{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:var(--pad)}
+  .block .lbl{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--dim);margin-bottom:6px}
+  table.attrs{width:100%;border-collapse:collapse;font-size:12.5px}
+  table.attrs td{padding:3px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+  table.attrs td.k{color:var(--dim);width:36%;font-family:ui-monospace,monospace}
+  .passage{font-size:12.5px;line-height:1.55;color:#c3ccd6;padding:6px 0;border-bottom:1px solid var(--line)}
+  .passage:last-child{border-bottom:none}
+  mark{background:hsl(210 90% 58% / .28);color:#fff;border-radius:3px;padding:0 2px}
+  .summ{font-size:12px;color:var(--dim);font-style:italic}
+  .empty{color:var(--dim);padding:20px;text-align:center}
+  /* annotation bar */
+  .annobar{border-top:1px solid var(--line);padding:var(--pad);display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--panel);position:sticky;bottom:0}
+  .palette{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+  .chip{border:1px solid var(--line);border-radius:14px;padding:3px 10px;font-size:11px;cursor:pointer;font-family:ui-monospace,monospace;background:var(--panel2)}
+  .chip:hover{border-color:var(--accent)}
+  .chip.cur{border-color:var(--accent);background:hsl(210 90% 58% / .18)}
+  #refinput{background:var(--bg);border:1px solid var(--line);color:var(--txt);border-radius:6px;padding:5px 8px;font-size:12px;width:130px;font-family:ui-monospace,monospace}
+  select.type{background:var(--panel2);color:var(--txt);border:1px solid var(--line);border-radius:6px;padding:5px 7px;font-size:12px}
+  .btn{border:none;border-radius:6px;padding:6px 12px;font-size:12px;font-weight:600;cursor:pointer}
+  .btn.validate{background:var(--ok);color:#06180a}
+  .btn.discard{background:var(--panel2);color:var(--warn);border:1px solid var(--line)}
+  .curref{font-size:11px;color:var(--dim);font-family:ui-monospace,monospace}
+  /* hints */
+  .hints{display:flex;gap:14px;flex-wrap:wrap;padding:6px 14px;border-top:1px solid var(--line);background:var(--bg);font-size:11px;color:var(--dim)}
+  .hints span{display:flex;align-items:center;gap:5px}
+  .kbd{font-family:ui-monospace,monospace;font-size:10px;background:var(--panel2);border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:1px 4px;color:var(--dim)}
+  /* score overlay */
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:10}
+  .overlay.on{display:flex}
+  .scorecard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;width:min(560px,92vw);max-height:86vh;overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+  .scorecard h2{margin:0 0 12px;font-size:16px;display:flex;align-items:center}
+  .scorecard .x{margin-left:auto;cursor:pointer;color:var(--dim);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
+  .metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+  .metric{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:10px}
+  .metric .name{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.05em}
+  .metric .prf{font-family:ui-monospace,monospace;font-size:13px;margin-top:4px}
+  .metric .prf b{color:var(--accent)}
+  .pairs{font-family:ui-monospace,monospace;font-size:11.5px;line-height:1.5}
+  .pairs .over{color:var(--warn)} .pairs .under{color:var(--accent)}
+  .counts{font-size:12px;color:var(--dim);margin-bottom:10px;font-family:ui-monospace,monospace}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="topbar" id="topbar"></div>
+  <div class="main"><div class="list" id="list"></div><div class="ctx" id="ctx"></div></div>
+  <div class="hints">
+    <span><span class="kbd">J</span><span class="kbd">K</span> naviguer</span>
+    <span><span class="kbd">R</span> référent</span>
+    <span><span class="kbd">1-6</span> type</span>
+    <span><span class="kbd">X</span> écarter</span>
+    <span><span class="kbd">⏎</span> valider</span>
+  </div>
+</div>
+<div class="overlay" id="overlay"><div class="scorecard" id="scorecard"></div></div>
+
+<script>
+// ---------- helper DOM (aucun innerHTML) ----------
+function h(tag, attrs, ...kids){
+  const el = document.createElement(tag);
+  if(attrs) for(const k in attrs){
+    const v = attrs[k];
+    if(v==null||v===false) continue;
+    if(k==='class') el.className = v;
+    else if(k==='style') el.style.cssText = v;
+    else if(k.slice(0,2)==='on') el[k.toLowerCase()] = v;
+    else el.setAttribute(k, v);
+  }
+  for(const kid of kids.flat()){
+    if(kid==null||kid===false) continue;
+    el.append(kid.nodeType ? kid : document.createTextNode(String(kid)));
+  }
+  return el;
+}
+function highlightNodes(text, sf){
+  const base = (sf||'').split(' ')[0];
+  if(!base) return [document.createTextNode(text)];
+  const re = new RegExp('('+base.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+  const parts = text.split(re);          // segments alternés : impairs = correspondances
+  const out = [];
+  parts.forEach((seg,i)=>{ if(seg==='') return; out.push(i%2===1 ? h('mark',null,seg) : document.createTextNode(seg)); });
+  return out.length ? out : [document.createTextNode(text)];
+}
+
+function countLbl(text, shown, total){ return total>shown ? text+' — '+shown+' / '+total : text; }
+
+const TYPES = ['personnage','lieu','objet','organisation','document','autre'];
+const state = { candidates:[], sizes:{}, filter:'alias', selected:null, refs:[] };
+
+function keyOf(c){ return c.entity_id+'|'+c.kind+'|'+c.surface_form; }
+function isAnnotated(c){ return !!(c.annotation && (c.annotation.referent_id || c.annotation.discarded)); }
+function visible(){
+  return state.candidates.filter(c=>
+    state.filter==='alias' ? state.sizes[c.predicted_cluster]>1
+    : state.filter==='unannotated' ? !isAnnotated(c)
+    : true);
+}
+
+async function load(){
+  const r = await fetch('/api/candidates');
+  state.candidates = (await r.json()).candidates;
+  const sizes = {}; state.candidates.forEach(c=>{ sizes[c.predicted_cluster]=(sizes[c.predicted_cluster]||0)+1; });
+  state.sizes = sizes;
+  const set = new Set();
+  state.candidates.forEach(c=>{ if(c.annotation && c.annotation.referent_id) set.add(c.annotation.referent_id); });
+  state.refs = [...set];
+  const vis = visible();
+  if(vis.length) state.selected = keyOf(vis[0]);
+  render();
+}
+
+async function saveDecision(c, patch){
+  const cur = c.annotation || {};
+  const payload = {
+    entity_id:c.entity_id, kind:c.kind, surface_form:c.surface_form,
+    referent_id: 'referent_id' in patch ? patch.referent_id : cur.referent_id||null,
+    referent_type: 'referent_type' in patch ? patch.referent_type : cur.referent_type||null,
+    discarded: 'discarded' in patch ? patch.discarded : cur.discarded||false,
+  };
+  await fetch('/api/annotate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+  c.annotation = {referent_id:payload.referent_id, referent_type:payload.referent_type, discarded:payload.discarded};
+  if(payload.referent_id && !state.refs.includes(payload.referent_id)) state.refs.push(payload.referent_id);
+}
+
+function currentType(c){ return (c.annotation && c.annotation.referent_type) || c.entity_type || 'autre'; }
+
+async function assignReferent(c, ref){ await saveDecision(c,{referent_id:ref, referent_type:currentType(c), discarded:false}); advance(); }
+async function discard(c){ await saveDecision(c,{discarded:true, referent_id:null}); advance(); }
+async function setType(c, t){ await saveDecision(c,{referent_type:t}); render(); }
+
+function advance(){
+  const vis = visible();
+  let i = vis.findIndex(c=>keyOf(c)===state.selected);
+  if(i>=0 && i<vis.length-1) state.selected = keyOf(vis[i+1]);
+  else if(vis.length) state.selected = keyOf(vis[Math.min(i,vis.length-1)]);
+  render();
+}
+
+// ---------- render ----------
+function render(){
+  document.documentElement.style.setProperty('--accent','hsl(210 90% 58%)');
+  renderTopbar(); renderList(); renderCtx();
+}
+
+function renderTopbar(){
+  const tb = document.getElementById('topbar');
+  const total = state.candidates.length;
+  const done = state.candidates.filter(isAnnotated).length;
+  const vis = visible().length;
+  const sel = h('select',{onchange:e=>{state.filter=e.target.value; const v=visible(); state.selected=v.length?keyOf(v[0]):null; render();}},
+    h('option',{value:'alias', selected:state.filter==='alias'?'selected':null},'Clusters à alias'),
+    h('option',{value:'unannotated', selected:state.filter==='unannotated'?'selected':null},'Non annotés'),
+    h('option',{value:'all', selected:state.filter==='all'?'selected':null},'Tous'));
+  tb.replaceChildren(
+    h('span',{class:'title'},'annota',h('span',{class:'db'},'· '+vis+'/'+total+' candidats')),
+    sel,
+    h('span',{class:'prog'}, h('i',{style:'width:'+(total?Math.round(done/total*100):0)+'%'})),
+    h('span',{class:'progtxt'}, done+'/'+total+' annotés'),
+    h('button',{class:'scorebtn', onclick:showScore},'▸ Score')
+  );
+}
+
+function renderList(){
+  const listEl = document.getElementById('list');
+  const vis = visible();
+  if(!vis.length){ listEl.replaceChildren(h('div',{class:'empty'},'Aucun candidat pour ce filtre.')); return; }
+  const byC = {}; vis.forEach(c=>{ (byC[c.predicted_cluster]=byC[c.predicted_cluster]||[]).push(c); });
+  const nodes = [];
+  Object.entries(byC).forEach(([cl,items])=>{
+    nodes.push(h('div',{class:'clusterhdr'},'entité #'+cl+(items.length>1?' · '+items.length+' formes':'')));
+    nodes.push(h('div',{class:items.length>1?'grouped':''}, items.map(candEl)));
+  });
+  listEl.replaceChildren(...nodes);
+}
+
+function candEl(c){
+  const k = keyOf(c), a = c.annotation||{};
+  const dot = h('span',{class:'dot'+(a.discarded?' discard':(a.referent_id?' done':''))});
+  return h('div',{class:'cand'+(k===state.selected?' sel':''), onclick:()=>{state.selected=k; render();}},
+    dot, h('span',{class:'sf'}, c.surface_form), h('span',{class:'kind'}, c.kind));
+}
+
+function renderCtx(){
+  const ctx = document.getElementById('ctx');
+  const c = state.candidates.find(x=>keyOf(x)===state.selected);
+  if(!c){ ctx.replaceChildren(h('div',{class:'empty'},'Sélectionne un candidat.')); return; }
+  const ctxo = c.context||{};
+  const kids = [];
+  kids.push(h('h3',null, c.surface_form, h('span',{class:'clbadge'},'entité #'+c.predicted_cluster+' · '+c.entity_type+' · '+c.kind)));
+  (ctxo.warnings||[]).forEach(w=> kids.push(h('div',{class:'warn'}, '⚠ '+w)));
+  const attrs = ctxo.attributes||[];
+  if(attrs.length){
+    const nT = ctxo.n_attributes_total!=null?ctxo.n_attributes_total:attrs.length;
+    kids.push(h('div',{class:'block'}, h('div',{class:'lbl'},countLbl('Attributs extraits', attrs.length, nT)),
+      h('table',{class:'attrs'}, attrs.map(a=> h('tr',null, h('td',{class:'k'},a.name), h('td',null,a.value))))));
+  }
+  const passages = ctxo.passages||[];
+  if(passages.length){
+    const nT = ctxo.n_passages_total!=null?ctxo.n_passages_total:passages.length;
+    kids.push(h('div',{class:'block'}, h('div',{class:'lbl'},countLbl('Passages sources', passages.length, nT)),
+      passages.map(p=> h('div',{class:'passage'}, highlightNodes(p, c.surface_form)))));
+  }
+  const summaries = ctxo.summaries||[];
+  if(summaries.length){
+    kids.push(h('div',{class:'block'}, h('div',{class:'lbl'},'Résumés de moments'),
+      summaries.map(s=> h('div',{class:'summ'}, '“'+s+'”'))));
+  }
+  if(!attrs.length && !passages.length && !summaries.length){
+    kids.push(h('div',{class:'warn'},'Aucun contexte pour ce candidat — probable bruit d’extraction. Écarter (X) si ce n’est pas une entité.'));
+  }
+  kids.push(annoBar(c));
+  ctx.replaceChildren(h('div',{style:'display:flex;flex-direction:column;gap:var(--gap)'}, kids));
+}
+
+function annoBar(c){
+  const a = c.annotation||{};
+  const chips = state.refs.map(r=> h('span',{class:'chip'+(a.referent_id===r?' cur':''), onclick:()=>assignReferent(c,r)}, r));
+  const input = h('input',{id:'refinput', type:'text', placeholder:'nouvel id (Entrée)'});
+  input.onkeydown = e=>{ if(e.key==='Enter' && input.value.trim()){ assignReferent(c, input.value.trim()); } };
+  const typeSel = h('select',{class:'type', onchange:e=>setType(c, e.target.value)},
+    TYPES.map(t=> h('option',{value:t, selected:t===currentType(c)?'selected':null}, t)));
+  const bar = [
+    h('div',{class:'palette'}, chips, input),
+    typeSel,
+    h('button',{class:'btn validate', onclick:()=>{ const inp=document.getElementById('refinput'); if(inp&&inp.value.trim()) assignReferent(c,inp.value.trim()); else if(a.referent_id) advance(); }},'Valider'),
+    h('button',{class:'btn discard', onclick:()=>discard(c)},'Écarter'),
+  ];
+  if(a.discarded) bar.push(h('span',{class:'curref'},'écarté'));
+  else if(a.referent_id) bar.push(h('span',{class:'curref'},'→ '+a.referent_id));
+  return h('div',{class:'annobar'}, bar);
+}
+
+// ---------- score ----------
+async function showScore(){
+  const r = await fetch('/api/score');
+  const s = await r.json();
+  const fmt = m=> h('span',null, 'P ',h('b',null,m.p.toFixed(3)),' · R ',h('b',null,m.r.toFixed(3)),' · F1 ',h('b',null,m.f.toFixed(3)));
+  const pairList = (arr,cls,label)=> h('div',null,
+    h('div',{class:'lbl',style:'margin-top:8px'}, label+' ('+arr.length+')'),
+    h('div',{class:'pairs '+cls}, arr.slice(0,12).map(pr=> h('div',null, pr[0]+'  ⟷  '+pr[1])), arr.length>12?h('div',null,'… +'+(arr.length-12)):null));
+  const card = document.getElementById('scorecard');
+  card.replaceChildren(
+    h('h2',null,'Score de fusion canon_alias',
+      h('span',{class:'x', onclick:()=>document.getElementById('overlay').classList.remove('on')},'✕ Échap')),
+    h('div',{class:'counts'}, s.n_evaluated+' surface forms évaluées · '+s.n_discarded+' écartées'),
+    h('div',{class:'metrics'},
+      h('div',{class:'metric'}, h('div',{class:'name'},'B³'), h('div',{class:'prf'}, fmt(s.bcubed))),
+      h('div',{class:'metric'}, h('div',{class:'name'},'LEA'), h('div',{class:'prf'}, fmt(s.lea)))),
+    pairList(s.over_merged,'over','Sur-fusionnées (à séparer)'),
+    pairList(s.under_merged,'under','Sous-fusionnées (à réunir)')
+  );
+  document.getElementById('overlay').classList.add('on');
+}
+
+// ---------- keyboard ----------
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape'){ document.getElementById('overlay').classList.remove('on'); return; }
+  const inInput = ['INPUT','SELECT','TEXTAREA'].includes(document.activeElement.tagName);
+  const c = state.candidates.find(x=>keyOf(x)===state.selected);
+  if(!c) return;
+  if(e.key==='r'||e.key==='R'){ if(!inInput){ e.preventDefault(); const inp=document.getElementById('refinput'); if(inp) inp.focus(); } return; }
+  if(inInput) return;  // laisser taper dans les champs
+  const vis = visible();
+  let i = vis.findIndex(x=>keyOf(x)===state.selected);
+  if(e.key==='j'||e.key==='J'){ if(i<vis.length-1){state.selected=keyOf(vis[i+1]); render();} }
+  else if(e.key==='k'||e.key==='K'){ if(i>0){state.selected=keyOf(vis[i-1]); render();} }
+  else if(e.key==='x'||e.key==='X'){ discard(c); }
+  else if(e.key==='Enter'){ if(c.annotation&&c.annotation.referent_id) advance(); }
+  else if('123456'.includes(e.key)){ setType(c, TYPES[+e.key-1]); }
+});
+
+load();
+</script>
+</body>
+</html>

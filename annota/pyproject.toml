@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "annota"
+version = "0.1.0"
+description = "Atelier d'annotation d'entités & éval de fusion pour minerva"
+requires-python = ">=3.10"
+dependencies = []  # minerva fourni par le venv partagé (installé en -e)
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.scripts]
+annota = "annota.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["annota*"]
