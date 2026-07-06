@@ -1,6 +1,6 @@
 import math
 
-from annota.metrics import bcubed, confusion_pairs
+from annota.metrics import bcubed, confusion_pairs, lea
 
 
 def _almost(a, b):
@@ -45,3 +45,22 @@ def test_discards_excluded_from_universe():
     gold = {"a": "X", "b": "X"}              # 'noise' non annoté / écarté
     p, r, f = bcubed(pred, gold)
     assert (p, r, f) == (1.0, 1.0, 1.0)      # comme si 'noise' n'existait pas
+
+
+def test_lea_identical_is_one():
+    pred = {"a": "1", "b": "1", "c": "2"}
+    gold = {"a": "X", "b": "X", "c": "Y"}
+    p, r, f = lea(pred, gold)
+    assert _almost(p, 1.0) and _almost(r, 1.0) and _almost(f, 1.0)
+
+
+def test_lea_over_merge_penalizes_precision():
+    # pred fusionne {a,b,c} ; gold = {a,b} + {c}
+    pred = {"a": "1", "b": "1", "c": "1"}
+    gold = {"a": "X", "b": "X", "c": "Y"}
+    # recall : gold {a,b} (link=1) retrouvé dans pred → resolution=1 ; gold {c}
+    #   singleton mais NON singleton dans pred → resolution=0 ; (2·1+1·0)/3 = 2/3
+    # precision : pred {a,b,c} (link=3) ; seul lien (a,b) dans un même gold → 1/3 ;
+    #   importance 3 → (3·(1/3))/3 = 1/3
+    p, r, f = lea(pred, gold)
+    assert _almost(r, 2 / 3) and _almost(p, 1 / 3)

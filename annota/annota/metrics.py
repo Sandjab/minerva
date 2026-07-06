@@ -56,3 +56,50 @@ def confusion_pairs(pred: dict, gold: dict) -> tuple[list, list]:
         elif same_gold and not same_pred:
             under.append((a, b))
     return (over, under)
+
+
+def _link(size: int) -> float:
+    return 1.0 if size == 1 else size * (size - 1) / 2.0
+
+
+def _lea_directional(key: dict, resp: dict) -> float:
+    """Score LEA directionnel (recall si key=gold,resp=pred ; precision si inversé).
+
+    Chaque entité `key` pèse par sa taille (importance) et sa résolvabilité
+    (fraction de ses liens internes retrouvés dans une même entité `resp`).
+    Convention singleton (Moosavi & Strube 2016) : un singleton n'est résolu que
+    s'il est aussi singleton côté `resp`."""
+    key_clusters: dict = {}
+    for m, c in key.items():
+        key_clusters.setdefault(c, []).append(m)
+    num = den = 0.0
+    for members in key_clusters.values():
+        size = len(members)
+        importance = size
+        den += importance
+        if size == 1:
+            (m,) = members
+            resp_c = resp[m]
+            is_resp_singleton = sum(1 for x in resp if resp[x] == resp_c) == 1
+            resolution = 1.0 if is_resp_singleton else 0.0
+        else:
+            by_resp: dict = {}
+            for m in members:
+                by_resp[resp[m]] = by_resp.get(resp[m], 0) + 1
+            found = sum(_link(cnt) for cnt in by_resp.values() if cnt >= 2)
+            resolution = found / _link(size)
+        num += importance * resolution
+    return 0.0 if den == 0 else num / den
+
+
+def lea(pred: dict, gold: dict) -> tuple[float, float, float]:
+    """LEA (précision, rappel, F1) sur l'univers commun."""
+    universe = _common_universe(pred, gold)
+    if not universe:
+        return (0.0, 0.0, 0.0)
+    p = {m: pred[m] for m in universe}
+    g = {m: gold[m] for m in universe}
+    recall = _lea_directional(g, p)
+    precision = _lea_directional(p, g)
+    f1 = 0.0 if precision + recall == 0 else 2 * precision * recall / (precision + recall)
+    return (precision, recall, f1)
