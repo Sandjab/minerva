@@ -125,6 +125,8 @@ function highlightNodes(text, sf){
   return out.length ? out : [document.createTextNode(text)];
 }
 
+function countLbl(text, shown, total){ return total>shown ? text+' — '+shown+' / '+total : text; }
+
 const TYPES = ['personnage','lieu','objet','organisation','document','autre'];
 const state = { candidates:[], sizes:{}, filter:'alias', selected:null, refs:[] };
 
@@ -231,12 +233,14 @@ function renderCtx(){
   (ctxo.warnings||[]).forEach(w=> kids.push(h('div',{class:'warn'}, '⚠ '+w)));
   const attrs = ctxo.attributes||[];
   if(attrs.length){
-    kids.push(h('div',{class:'block'}, h('div',{class:'lbl'},'Attributs extraits'),
+    const nT = ctxo.n_attributes_total!=null?ctxo.n_attributes_total:attrs.length;
+    kids.push(h('div',{class:'block'}, h('div',{class:'lbl'},countLbl('Attributs extraits', attrs.length, nT)),
       h('table',{class:'attrs'}, attrs.map(a=> h('tr',null, h('td',{class:'k'},a.name), h('td',null,a.value))))));
   }
   const passages = ctxo.passages||[];
   if(passages.length){
-    kids.push(h('div',{class:'block'}, h('div',{class:'lbl'},'Passages sources (chunks)'),
+    const nT = ctxo.n_passages_total!=null?ctxo.n_passages_total:passages.length;
+    kids.push(h('div',{class:'block'}, h('div',{class:'lbl'},countLbl('Passages sources', passages.length, nT)),
       passages.map(p=> h('div',{class:'passage'}, highlightNodes(p, c.surface_form)))));
   }
   const summaries = ctxo.summaries||[];

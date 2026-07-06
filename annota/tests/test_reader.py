@@ -42,6 +42,27 @@ def test_context_warns_on_chunk_index_out_of_range(minerva_db):
     assert ctx["warnings"]  # avertissement de mismatch, pas d'exception
 
 
+def test_context_windows_around_mention_not_full_chunk(minerva_db):
+    # un chunk long : le passage doit être une fenêtre autour de la mention,
+    # pas le chunk entier (sinon illisible pour les personnages principaux).
+    conn = sqlite3.connect(minerva_db["db"])
+    long_chunk = "a" * 300 + " Élise arrive ici. " + "b" * 300
+    ctx = context_for_entity(conn, entity_id=1, chunks=[long_chunk], window=30)
+    assert ctx["passages"], "au moins une fenêtre attendue"
+    assert all("Élise" in p for p in ctx["passages"])
+    assert all(len(p) < len(long_chunk) for p in ctx["passages"]), "fenêtré, pas le chunk entier"
+    assert any(p.startswith("…") or p.endswith("…") for p in ctx["passages"]), "bords tronqués"
+
+
+def test_context_caps_and_exposes_totals(minerva_db):
+    conn = sqlite3.connect(minerva_db["db"])
+    chunks = build_chunks(minerva_db["source"].read_text(encoding="utf-8"))
+    ctx = context_for_entity(conn, entity_id=1, chunks=chunks, max_attributes=1)
+    assert len(ctx["attributes"]) <= 1
+    assert ctx["n_attributes_total"] >= len(ctx["attributes"])
+    assert "n_passages_total" in ctx
+
+
 @pytest.mark.skipif(not os.path.exists("out/roman.sqlite"), reason="base réelle absente")
 def test_real_base_has_421_surface_forms():
     conn = sqlite3.connect("out/roman.sqlite")
