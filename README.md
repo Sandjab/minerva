@@ -18,7 +18,8 @@ une base SQLite ; les sous-commandes ci-dessous la produisent puis l'explorent.
 ## Recette : d'un roman à sa restitution graphique
 
 Chaîne complète, de l'ingestion du texte à la page HTML interactive (exemple
-Ollama local ; adapter `--model` / `--provider`) :
+Ollama local ; pour Claude ou OpenRouter, voir *Autres backends d'extraction*
+plus bas) :
 
     # 1. Ingestion + extraction, pipeline qualité (canon_alias)
     minerva extract roman.txt -o roman.sqlite \
@@ -35,6 +36,35 @@ Ollama local ; adapter `--model` / `--provider`) :
 
     # 4. Restitution graphique : page HTML autonome (double-clic)
     minerva viz roman.sqlite -o roman.html
+
+### Autres backends d'extraction
+
+Seule l'étape 1 (`extract`) dépend du backend ; les étapes 2 à 4 sont
+identiques. Deux variantes de la commande d'extraction.
+
+**API Anthropic (Claude).** `--provider anthropic` est le défaut et le modèle
+vaut `claude-opus-4-8` quand `--model` est omis. La clé est lue dans
+l'environnement (`ANTHROPIC_API_KEY`, ou un profil `ant auth login`) ; ce
+backend n'accepte ni `--base-url` ni `--temperature`.
+
+    export ANTHROPIC_API_KEY=...
+    minerva extract roman.txt -o roman.sqlite --refine
+
+**OpenRouter (compatible OpenAI — non testé).** OpenRouter expose une API
+compatible OpenAI : on réutilise le backend `openai` en pointant `--base-url`
+vers son endpoint, la clé OpenRouter placée dans `OPENAI_API_KEY`.
+
+    export OPENAI_API_KEY=sk-or-v1-...           # clé OpenRouter
+    minerva extract roman.txt -o roman.sqlite \
+        --provider openai --base-url https://openrouter.ai/api/v1 \
+        --model openai/gpt-4o --refine
+
+**Réserve (à traiter plus tard).** Le backend impose une sortie structurée
+(`response_format: json_schema`) que tous les modèles routés par OpenRouter ne
+supportent pas : un modèle qui l'ignore ou la refuse fait échouer l'extraction
+(d'où le modèle OpenAI dans l'exemple). Chemin non validé de bout en bout, et
+sans clé dédiée `OPENROUTER_API_KEY` ni les en-têtes `HTTP-Referer` / `X-Title`
+recommandés par OpenRouter.
 
 ### À l'échelle d'un roman — ce qu'il faut savoir
 
