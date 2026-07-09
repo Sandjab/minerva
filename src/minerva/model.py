@@ -163,13 +163,24 @@ class KnowledgeGraph:
         existing = self.resolve(entity.name)
         if existing is None:
             key = normalize(entity.name)
+            # Type normalisé en minuscules à l'écriture (convention « types en
+            # minuscules ») : le sentinel « inconnu » devient insensible à la
+            # casse et les variantes (« Personnage ») sont repliées.
             stored = Entity(
                 name=entity.name.strip(),
-                type=entity.type.strip() or "inconnu",
+                type=entity.type.strip().lower() or "inconnu",
             )
             self._entities[key] = stored
             self._index_stripped(key, key)
             existing = stored
+        elif existing.type == "inconnu":
+            # « inconnu » est le défaut des chemins d'auto-création (extrémité
+            # de relation, sujet d'assertion), pas une valeur extraite : un vrai
+            # type le comble. Deux vrais types en conflit -> première extraction
+            # typée gagne (on n'écrase jamais un type déjà réel).
+            incoming = entity.type.strip().lower()
+            if incoming and incoming != "inconnu":
+                existing.type = incoming
         self._register_aliases(existing, entity.aliases)
         for attr, value in entity.attributes.items():
             self.add_assertion(Assertion(entity=existing.name, attribute=attr, value=value))

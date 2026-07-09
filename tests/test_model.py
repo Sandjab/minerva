@@ -25,6 +25,60 @@ def test_merge_preserves_existing_attribute_values():
     assert e is not None and e.attributes["âge"] == "8 ans"  # première extraction gagne
 
 
+def test_real_type_upgrades_inconnu_placeholder():
+    """« inconnu » n'est pas une valeur extraite mais le défaut des chemins
+    d'auto-création (extrémité de relation, sujet d'assertion) : un vrai type
+    doit le remplacer, sinon une entité vue d'abord comme extrémité reste
+    typée « inconnu » même quand le LLM la déclare plus tard."""
+    g = KnowledgeGraph()
+    g.add_relation(Relation(name="protège", source="Jean Valjean", target="Cosette"))
+    created = g.resolve("Cosette")
+    assert created is not None and created.type == "inconnu"  # créée comme extrémité
+    g.add_entity(Entity(name="Cosette", type="personnage"))
+    upgraded = g.resolve("Cosette")
+    assert upgraded is not None and upgraded.type == "personnage"  # le vrai type comble le défaut
+
+
+def test_first_real_type_wins_over_later_real_type():
+    """Deux vrais types en conflit : la première extraction typée gagne — on
+    préserve l'invariant « première extraction gagne » pour les vrais types."""
+    g = KnowledgeGraph()
+    g.add_entity(Entity(name="Javert", type="personnage"))
+    g.add_entity(Entity(name="Javert", type="objet"))
+    e = g.resolve("Javert")
+    assert e is not None and e.type == "personnage"
+
+
+def test_inconnu_never_downgrades_a_real_type():
+    """Le défaut « inconnu » ne doit jamais écraser un vrai type déjà acquis
+    (ex. entité typée puis revue comme simple extrémité de relation)."""
+    g = KnowledgeGraph()
+    g.add_entity(Entity(name="Cosette", type="personnage"))
+    g.add_relation(Relation(name="protège", source="Jean Valjean", target="Cosette"))
+    e = g.resolve("Cosette")
+    assert e is not None and e.type == "personnage"
+
+
+def test_entity_type_is_normalized_to_lowercase():
+    """Le type est stocké en minuscules (convention « types en minuscules ») :
+    `add_entity` normalise à la frontière d'écriture, ce qui replie les variantes
+    de casse (« Personnage » -> « personnage »)."""
+    g = KnowledgeGraph()
+    g.add_entity(Entity(name="Javert", type="Personnage"))
+    e = g.resolve("Javert")
+    assert e is not None and e.type == "personnage"
+
+
+def test_case_variant_of_inconnu_stays_a_placeholder():
+    """Une entité créée avec une variante de casse d'« inconnu » reste un
+    placeholder comblable par un vrai type — robustesse soulignée en revue."""
+    g = KnowledgeGraph()
+    g.add_entity(Entity(name="carnet", type="INCONNU"))
+    g.add_entity(Entity(name="carnet", type="objet"))
+    e = g.resolve("carnet")
+    assert e is not None and e.type == "objet"
+
+
 def test_alias_resolves_to_canonical_entity():
     g = KnowledgeGraph()
     g.add_entity(Entity(name="Jean Valjean", type="personnage", aliases=["M. Madeleine"]))
