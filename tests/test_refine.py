@@ -354,6 +354,55 @@ def test_type_entities_no_inconnu_skips_backend():
     assert backend.prompts == []
 
 
+class TypingByPromptBackend:
+    """Backend factice qui type « objet » CHAQUE entité listée dans le prompt
+    (une par ligne « - nom »). Contrairement à `FakeBackend` (réponse fixe), il
+    répond selon le lot reçu : indispensable pour vérifier que le fenêtrage
+    applique les types de TOUS les lots, pas seulement du premier."""
+
+    def __init__(self):
+        self.prompts = []
+
+    def parse(self, system, user, output_model):
+        self.prompts.append(user)
+        names = [line[2:] for line in user.splitlines() if line.startswith("- ")]
+        return TypingResult(types=[EntityType(name=n, type="objet") for n in names])
+
+
+def test_type_entities_windows_many_inconnu_into_batches():
+    """Passe de typage scalable : sur plus d'entités « inconnu » que la taille de
+    lot, un appel LLM par lot (chacun ne portant que son sous-ensemble), et les
+    types de TOUS les lots sont appliqués — sinon typer un roman entier en un
+    seul prompt dépasse le contexte et perd des entités."""
+    g = KnowledgeGraph()
+    for i in range(5):
+        g.add_entity(Entity(name=f"objet{i}", type="inconnu"))
+    backend = TypingByPromptBackend()
+
+    n = type_entities(g, backend, batch_size=2)
+
+    assert len(backend.prompts) == 3  # ceil(5/2) : lots de 2, 2, 1
+    assert n == 5  # toutes les entités typées, à travers les lots
+    for i in range(5):
+        assert g.resolve(f"objet{i}").type == "objet"
+    # chaque lot ne porte que son sous-ensemble d'entités
+    assert backend.prompts[0].count("\n- objet") == 2
+    assert backend.prompts[2].count("\n- objet") == 1
+
+
+def test_type_entities_single_batch_unchanged():
+    """Non-régression : moins d'entités que la taille de lot = un seul appel
+    (comportement d'avant le fenêtrage)."""
+    g = untyped_graph()
+    backend = FakeBackend(TypingResult(types=[EntityType(name="carnet noir", type="objet")]))
+
+    n = type_entities(g, backend)
+
+    assert len(backend.prompts) == 1
+    assert n == 1
+    assert g.resolve("carnet noir").type == "objet"
+
+
 # --- Orchestration du raffinement ---------------------------------------------
 
 class DispatchBackend:
