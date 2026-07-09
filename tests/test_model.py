@@ -59,6 +59,26 @@ def test_inconnu_never_downgrades_a_real_type():
     assert e is not None and e.type == "personnage"
 
 
+def test_entity_type_is_normalized_to_lowercase():
+    """Le type est stocké en minuscules (convention « types en minuscules ») :
+    `add_entity` normalise à la frontière d'écriture, ce qui replie les variantes
+    de casse (« Personnage » -> « personnage »)."""
+    g = KnowledgeGraph()
+    g.add_entity(Entity(name="Javert", type="Personnage"))
+    e = g.resolve("Javert")
+    assert e is not None and e.type == "personnage"
+
+
+def test_case_variant_of_inconnu_stays_a_placeholder():
+    """Une entité créée avec une variante de casse d'« inconnu » reste un
+    placeholder comblable par un vrai type — robustesse soulignée en revue."""
+    g = KnowledgeGraph()
+    g.add_entity(Entity(name="carnet", type="INCONNU"))
+    g.add_entity(Entity(name="carnet", type="objet"))
+    e = g.resolve("carnet")
+    assert e is not None and e.type == "objet"
+
+
 def test_alias_resolves_to_canonical_entity():
     g = KnowledgeGraph()
     g.add_entity(Entity(name="Jean Valjean", type="personnage", aliases=["M. Madeleine"]))
