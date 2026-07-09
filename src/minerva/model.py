@@ -170,6 +170,14 @@ class KnowledgeGraph:
             self._entities[key] = stored
             self._index_stripped(key, key)
             existing = stored
+        elif existing.type == "inconnu":
+            # « inconnu » est le défaut des chemins d'auto-création (extrémité
+            # de relation, sujet d'assertion), pas une valeur extraite : un vrai
+            # type le comble. Deux vrais types en conflit -> première extraction
+            # typée gagne (on n'écrase jamais un type déjà réel).
+            incoming = entity.type.strip()
+            if incoming and incoming != "inconnu":
+                existing.type = incoming
         self._register_aliases(existing, entity.aliases)
         for attr, value in entity.attributes.items():
             self.add_assertion(Assertion(entity=existing.name, attribute=attr, value=value))

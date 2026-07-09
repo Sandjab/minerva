@@ -3,15 +3,23 @@ complétude n'ajoute que du nouveau (la fusion dédoublonne), et la
 canonicalisation fusionne les coréférents sans perdre ni attributs ni
 relations, en refusant les propositions incohérentes du LLM."""
 
+import pytest
+from pydantic import ValidationError
+
 from minerva.llm import ExtractedAttribute, ExtractedEntity, ExtractedRelation, ExtractionResult
-from minerva.model import Entity, KnowledgeGraph, Relation
+from minerva.model import Assertion, Entity, KnowledgeGraph, Relation
 from minerva.refine import (
+    ENTITY_TYPES,
     CanonicalizationResult,
+    EntityType,
     MergeGroup,
+    TypingResult,
     apply_canonicalization,
     canonicalize_graph,
     complete_graph,
+    refine_graph,
     resolve_aliases,
+    type_entities,
 )
 
 
@@ -258,3 +266,119 @@ def test_resolve_aliases_single_window_unchanged():
     merged = resolve_aliases(g, "… il s'appelait Théo Rivière …", backend)
     assert len(backend.prompts) == 1
     assert merged.resolve("Antoine Sérac") is merged.resolve("Théo Rivière")
+
+
+# --- Passe de typage des entités « inconnu » ----------------------------------
+
+def untyped_graph() -> KnowledgeGraph:
+    """« carnet noir » n'apparaît que comme extrémité de relation et sujet de
+    fait : il est créé « inconnu », jamais déclaré comme entité typée — le cas
+    qui domine le taux d'inconnu à l'extraction."""
+    g = KnowledgeGraph()
+    g.add_entity(Entity(name="Élise", type="personnage"))
+    g.add_relation(Relation(name="écrit dans", source="Élise", target="carnet noir"))
+    g.add_assertion(Assertion(entity="carnet noir", attribute="couleur", value="noir"))
+    return g
+
+
+def test_type_entities_assigns_type_to_inconnu():
+    g = untyped_graph()
+    carnet = g.resolve("carnet noir")
+    assert carnet is not None and carnet.type == "inconnu"
+    backend = FakeBackend(TypingResult(types=[EntityType(name="carnet noir", type="objet")]))
+
+    n = type_entities(g, backend)
+
+    assert n == 1
+    typed = g.resolve("carnet noir")
+    assert typed is not None and typed.type == "objet"
+
+
+def test_type_entities_ignores_real_types_and_unknown_names():
+    """La passe ne touche QUE les « inconnu » : elle n'écrase pas un vrai type
+    et ignore un nom qu'elle ne connaît pas."""
+    g = untyped_graph()
+    backend = FakeBackend(TypingResult(types=[
+        EntityType(name="Élise", type="objet"),        # déjà typée -> ignorée
+        EntityType(name="fantôme", type="objet"),      # inconnue du graphe -> ignorée
+        EntityType(name="carnet noir", type="objet"),  # seule application valide
+    ]))
+
+    n = type_entities(g, backend)
+
+    assert n == 1
+    elise = g.resolve("Élise")
+    assert elise is not None and elise.type == "personnage"
+
+
+def test_type_entities_prompt_lists_inconnu_with_context():
+    g = untyped_graph()
+    backend = FakeBackend(TypingResult())
+
+    type_entities(g, backend)
+
+    prompt = backend.prompts[0]
+    assert "carnet noir" in prompt            # l'entité à typer
+    assert "couleur=noir" in prompt           # son contexte d'attribut
+    assert "écrit dans" in prompt             # son contexte relationnel
+    assert "Élise" not in prompt.split("carnet noir")[0]  # les entités déjà typées ne sont pas à typer
+
+
+def test_entity_type_vocabulary_is_closed():
+    """Le type est contraint à la liste fermée (via `enum` du json_schema) :
+    un type hors-liste est rejeté, ce qui normalise les étiquettes (plus de
+    « personnages » vs « personnage », plus de « boisson »/« meuble » épars)."""
+    EntityType(name="carnet noir", type="objet")  # dans la liste : OK
+    with pytest.raises(ValidationError):
+        EntityType.model_validate({"name": "carnet noir", "type": "boisson"})  # hors liste : rejeté
+    assert "personnage" in ENTITY_TYPES and "autre" in ENTITY_TYPES
+    assert "boisson" not in ENTITY_TYPES
+
+
+def test_typing_prompt_lists_the_closed_vocabulary():
+    g = untyped_graph()
+    backend = FakeBackend(TypingResult())
+    type_entities(g, backend)
+    system = backend.systems[0]
+    for allowed in ENTITY_TYPES:
+        assert allowed in system  # la liste fermée est fournie au modèle
+
+
+def test_type_entities_no_inconnu_skips_backend():
+    """Rien à typer -> aucun appel LLM (économie sur les graphes déjà propres)."""
+    g = KnowledgeGraph()
+    g.add_entity(Entity(name="Élise", type="personnage"))
+    backend = FakeBackend(TypingResult())
+
+    assert type_entities(g, backend) == 0
+    assert backend.prompts == []
+
+
+# --- Orchestration du raffinement ---------------------------------------------
+
+class DispatchBackend:
+    """Backend factice qui répond selon le type de sortie demandé (les passes de
+    raffinement n'utilisent pas le même modèle de résultat)."""
+
+    def __init__(self, by_output):
+        self._by = by_output
+
+    def parse(self, system, user, output_model):
+        return self._by.get(output_model, output_model())
+
+
+def test_refine_graph_enchaine_fusion_puis_typage():
+    """`refine_graph` = canonicalisation -> alias -> typage : après lui, une
+    entité restée « inconnu » à l'extraction est typée."""
+    g = untyped_graph()  # Élise (personnage) + « carnet noir » (inconnu)
+    backend = DispatchBackend({
+        CanonicalizationResult: CanonicalizationResult(),  # aucune fusion proposée
+        TypingResult: TypingResult(types=[EntityType(name="carnet noir", type="objet")]),
+    })
+
+    refined = refine_graph(g, "texte source", backend)
+
+    carnet = refined.resolve("carnet noir")
+    assert carnet is not None and carnet.type == "objet"
+    elise = refined.resolve("Élise")
+    assert elise is not None and elise.type == "personnage"  # inchangée

@@ -11,12 +11,14 @@ Dans les deux cas le LLM propose, le code applique — jamais l'inverse.
 
 from __future__ import annotations
 
+from typing import Literal, get_args
+
 from pydantic import BaseModel, Field
 
 from .chunking import DEFAULT_CHUNK_SIZE, split_text
 from .extraction import sanitize
 from .llm import ExtractionResult, LLMBackend
-from .model import KnowledgeGraph
+from .model import Entity, KnowledgeGraph
 
 # Fenêtre de relecture de la passe alias : une passe qui met tout le texte dans
 # un prompt ne tient pas à l'échelle roman (dépassement de contexte). On relit
@@ -241,3 +243,99 @@ def resolve_aliases(
         result = backend.parse(system, user, CanonicalizationResult)
         groups.extend(result.groups)
     return apply_canonicalization(graph, groups)
+
+
+# --- Passe de typage des entités « inconnu » ----------------------------------
+#
+# La plupart des entités ne sont citées que dans les relations et les faits :
+# elles sont auto-créées « inconnu » et jamais déclarées comme entités typées.
+# Cette passe fait juger au LLM le type de chacune d'après son nom et son
+# contexte (attributs, relations), puis l'applique via `add_entity` — qui comble
+# « inconnu » sans écraser un vrai type. Le LLM propose, le code applique.
+
+# Vocabulaire fermé des types d'entités. Une fois la couverture réglée (chaque
+# entité reçoit un type), fermer la liste normalise les étiquettes : plus de
+# « personnages » vs « personnage », et les sur-granularités (« boisson »,
+# « meuble »...) se replient sur « objet ». Contrainte à deux niveaux : l'`enum`
+# du json_schema (décodage contraint) ET le rappel dans le prompt. « autre » =
+# soupape obligatoire, à n'employer que si aucun autre type ne convient.
+EntityTypeName = Literal[
+    "personnage", "lieu", "organisation", "objet", "document", "autre"
+]
+ENTITY_TYPES: tuple[str, ...] = get_args(EntityTypeName)
+
+TYPING_SYSTEM = (
+    "Tu assignes un TYPE à des entités déjà extraites d'un récit mais restées "
+    "non typées. On te donne pour chacune son nom et ce qu'on sait d'elle "
+    "(attributs, relations). Choisis le `type` de CHAQUE entité STRICTEMENT dans "
+    "cette liste fermée : " + ", ".join(ENTITY_TYPES) + ". Déduis-le du nom et du "
+    "contexte ; pour un humain nommé, « personnage » ; n'emploie « autre » que si "
+    "aucun autre type ne convient. N'invente aucune entité."
+)
+
+
+class EntityType(BaseModel):
+    name: str
+    type: EntityTypeName
+
+
+class TypingResult(BaseModel):
+    types: list[EntityType] = Field(default_factory=list)
+
+
+def _inconnu_listing(graph: KnowledgeGraph) -> str:
+    """Les entités « inconnu » avec leur contexte typant (attributs, relations)."""
+    lines = []
+    for e in graph.entities:
+        if e.type != "inconnu":
+            continue
+        attrs = ", ".join(f"{k}={v}" for k, v in e.attributes.items())
+        rels = [
+            f"{r.source} --{r.name}--> {r.target}"
+            for r in graph.relations
+            if e.name in (r.source, r.target)
+        ]
+        context = []
+        if attrs:
+            context.append("attributs : " + attrs)
+        if rels:
+            context.append("relations : " + " ; ".join(rels[:5]))
+        suffix = f" ({' | '.join(context)})" if context else ""
+        lines.append(f"- {e.name}{suffix}")
+    return "\n".join(lines)
+
+
+def type_entities(graph: KnowledgeGraph, backend: LLMBackend) -> int:
+    """Type en place les entités restées « inconnu ». Renvoie le nombre typé.
+
+    N'appelle le LLM que s'il reste des entités à typer. N'écrase jamais un vrai
+    type et ignore un nom absent du graphe (garde-fous déterministes)."""
+    listing = _inconnu_listing(graph)
+    if not listing:
+        return 0
+    result = backend.parse(TYPING_SYSTEM, "Entités à typer :\n" + listing, TypingResult)
+    applied = 0
+    for proposed in result.types:
+        incoming = proposed.type.strip().lower()
+        if not incoming or incoming == "inconnu":
+            continue
+        entity = graph.resolve(proposed.name)
+        if entity is None or entity.type != "inconnu":
+            continue
+        graph.add_entity(Entity(name=entity.name, type=incoming))  # comble « inconnu »
+        applied += 1
+    return applied
+
+
+# --- Pipeline de raffinement ---------------------------------------------------
+
+def refine_graph(graph: KnowledgeGraph, text: str, backend: LLMBackend) -> KnowledgeGraph:
+    """Enchaîne les passes de raffinement dans l'ordre : canonicalisation
+    (coréférence sur les noms), alias (identités d'emprunt révélées par le
+    texte), puis typage des entités restées « inconnu ». Le typage vient EN
+    DERNIER : il opère sur le jeu d'entités final (après fusions), donc sans
+    typer une entité qui aurait ensuite fusionné. Renvoie le graphe raffiné."""
+    graph = canonicalize_graph(graph, backend)
+    graph = resolve_aliases(graph, text, backend)
+    type_entities(graph, backend)
+    return graph

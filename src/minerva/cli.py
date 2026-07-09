@@ -12,7 +12,7 @@ from .chunking import DEFAULT_CHUNK_SIZE
 from .extraction import extract_graph
 from .llm import make_backend
 from .model import KnowledgeGraph
-from .refine import canonicalize_graph, resolve_aliases
+from .refine import refine_graph
 
 
 def _cmd_extract(args: argparse.Namespace) -> int:
@@ -26,18 +26,18 @@ def _cmd_extract(args: argparse.Namespace) -> int:
 
     graph = extract_graph(text, backend, chunk_size=args.chunk_size, on_progress=progress)
     if args.refine:
-        # Pipeline canon_alias (reco qualité, addendum 9) : canonicalisation puis
-        # alias, à température 0. Backend dédié temp 0 côté openai/Ollama ; le
-        # backend anthropic n'accepte pas de température, on le réutilise.
+        # Pipeline de raffinement (reco qualité, addendum 9) : canonicalisation,
+        # alias, puis typage des entités « inconnu », à température 0. Backend
+        # dédié temp 0 côté openai/Ollama ; le backend anthropic n'accepte pas de
+        # température, on le réutilise.
         refine_backend = (
             make_backend(args.provider, model=args.model,
                          base_url=args.base_url, temperature=0)
             if args.provider == "openai" else backend
         )
         before = len(graph.entities)
-        graph = canonicalize_graph(graph, refine_backend)
-        graph = resolve_aliases(graph, text, refine_backend)
-        print(f"raffinement canon_alias : {before} -> {len(graph.entities)} entités",
+        graph = refine_graph(graph, text, refine_backend)
+        print(f"raffinement canon_alias + typage : {before} -> {len(graph.entities)} entités",
               file=sys.stderr)
     store.save(graph, args.output)
     print(
