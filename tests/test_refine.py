@@ -403,6 +403,52 @@ def test_type_entities_single_batch_unchanged():
     assert g.resolve("carnet noir").type == "objet"
 
 
+class TypesFirstOnlyBackend:
+    """Backend « paresseux » : ne type que la PREMIÈRE entité listée dans chaque
+    prompt (simule un LLM qui en oublie à chaque appel — la cause du résiduel
+    observé à l'échelle roman). La boucle de convergence doit rattraper les
+    oubliés en re-soumettant les « inconnu » restants dans de nouveaux lots."""
+
+    def __init__(self):
+        self.calls = 0
+
+    def parse(self, system, user, output_model):
+        self.calls += 1
+        names = [line[2:] for line in user.splitlines() if line.startswith("- ")]
+        return TypingResult(types=[EntityType(name=n, type="objet") for n in names[:1]])
+
+
+def test_type_entities_loops_until_all_typed():
+    """Boucle de convergence : un LLM qui oublie des entités par appel est rattrapé
+    en re-typant les « inconnu » restants jusqu'à ce qu'un passage ne progresse
+    plus. Sans boucle, seule la 1re entité serait typée."""
+    g = KnowledgeGraph()
+    for name in ("a", "b", "c"):
+        g.add_entity(Entity(name=name, type="inconnu"))
+    backend = TypesFirstOnlyBackend()  # ne type qu'UNE entité par appel
+
+    n = type_entities(g, backend)
+
+    assert n == 3  # les trois typées, à travers plusieurs passages
+    assert all(g.resolve(x).type == "objet" for x in ("a", "b", "c"))
+    assert backend.calls == 3  # un passage par entité récupérée, puis arrêt (0 inconnu)
+
+
+def test_type_entities_stops_when_no_progress():
+    """Terminaison : si un passage ne type plus rien (restants irrécupérables —
+    bruit d'extraction, noms non résolus), la boucle s'arrête au lieu de tourner
+    indéfiniment."""
+    g = KnowledgeGraph()
+    g.add_entity(Entity(name="(trajet — pas une entité)", type="inconnu"))
+    backend = FakeBackend(TypingResult())  # ne type jamais rien : aucun progrès
+
+    n = type_entities(g, backend)
+
+    assert n == 0
+    assert g.resolve("(trajet — pas une entité)").type == "inconnu"
+    assert len(backend.prompts) == 1  # un seul passage, puis arrêt faute de progrès
+
+
 # --- Orchestration du raffinement ---------------------------------------------
 
 class DispatchBackend:

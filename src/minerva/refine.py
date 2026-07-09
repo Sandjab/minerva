@@ -316,17 +316,13 @@ def _inconnu_lines(graph: KnowledgeGraph) -> list[str]:
     return lines
 
 
-def type_entities(
-    graph: KnowledgeGraph, backend: LLMBackend, *, batch_size: int = TYPING_BATCH
-) -> int:
-    """Type en place les entités restées « inconnu ». Renvoie le nombre typé.
+def _type_pass(graph: KnowledgeGraph, backend: LLMBackend, batch_size: int) -> int:
+    """Un passage de typage : les entités « inconnu » sont soumises au LLM par lots
+    d'au plus `batch_size` (un appel par lot), les types de tous les lots étant
+    appliqués ensemble. Renvoie le nombre d'entités effectivement typées.
 
-    N'appelle le LLM que s'il reste des entités à typer. N'écrase jamais un vrai
-    type et ignore un nom absent du graphe (garde-fous déterministes).
-
-    Passe à l'échelle : les entités « inconnu » sont typées par lots d'au plus
-    `batch_size` (un appel LLM par lot), les types de tous les lots étant appliqués
-    ensemble. Moins d'entités qu'un lot = un seul appel (comportement d'origine)."""
+    N'appelle pas le LLM s'il ne reste rien à typer. N'écrase jamais un vrai type
+    et ignore un nom absent du graphe (garde-fous déterministes)."""
     lines = _inconnu_lines(graph)
     if not lines:
         return 0
@@ -346,6 +342,24 @@ def type_entities(
         graph.add_entity(Entity(name=entity.name, type=incoming))  # comble « inconnu »
         applied += 1
     return applied
+
+
+def type_entities(
+    graph: KnowledgeGraph, backend: LLMBackend, *, batch_size: int = TYPING_BATCH
+) -> int:
+    """Type en place les entités restées « inconnu ». Renvoie le nombre total typé.
+
+    Boucle jusqu'à convergence : re-typer les « inconnu » restants tant qu'un
+    passage en type au moins un. Face à des centaines d'entités, le modèle en
+    oublie dans un lot ; re-soumis, l'oublié tombe dans un lot différent (plus
+    petit) et se fait typer — le résiduel d'un run à l'échelle roman s'efface ainsi.
+    Terminaison garantie : le nombre d'« inconnu » décroît strictement à chaque
+    passage productif ; un passage sans progrès (0 inconnu, ou restants
+    irrécupérables) arrête la boucle."""
+    total = 0
+    while (applied := _type_pass(graph, backend, batch_size)) > 0:
+        total += applied
+    return total
 
 
 # --- Pipeline de raffinement ---------------------------------------------------
