@@ -183,6 +183,69 @@ def test_canonicalisation_preserve_le_journal_temporel():
     assert merged.resolve("Monseigneur Bienvenu").attributes == {"ville": "Digne"}
 
 
+# --- Garde-fou : fusions interdites entre types incompatibles ------------------
+
+def test_apply_canonicalization_refuses_incompatible_types():
+    """Deux entités de types réels différents ne fusionnent pas, même si le LLM
+    les groupe : « personnage » et « lieu » restent distincts."""
+    g = KnowledgeGraph()
+    g.add_entity(Entity(name="Javert", type="personnage"))
+    g.add_entity(Entity(name="Paris", type="lieu"))
+
+    merged = apply_canonicalization(g, [
+        MergeGroup(canonical="Javert", members=["Javert", "Paris"]),
+    ])
+
+    assert len(merged.entities) == 2  # aucune fusion
+    assert merged.resolve("Paris") is not merged.resolve("Javert")
+
+
+def test_apply_canonicalization_merges_inconnu_into_typed():
+    """« inconnu » est compatible avec tout : il fusionne avec un membre typé et
+    hérite de son type (le typage vient après les fusions, cas dominant)."""
+    g = KnowledgeGraph()
+    g.add_entity(Entity(name="Javert", type="personnage"))
+    g.add_entity(Entity(name="l'inspecteur", type="inconnu"))
+
+    merged = apply_canonicalization(g, [
+        MergeGroup(canonical="Javert", members=["Javert", "l'inspecteur"]),
+    ])
+
+    assert len(merged.entities) == 1
+    assert merged.resolve("l'inspecteur").name == "Javert"
+
+
+def test_apply_canonicalization_excludes_incompatible_member_keeps_rest():
+    """Sur un groupe mixte, l'intrus de type incompatible est écarté mais le reste
+    du groupe fusionne : personnage + inconnu fusionnent, le lieu est exclu."""
+    g = KnowledgeGraph()
+    g.add_entity(Entity(name="Javert", type="personnage"))
+    g.add_entity(Entity(name="l'inspecteur", type="inconnu"))
+    g.add_entity(Entity(name="Paris", type="lieu"))
+
+    merged = apply_canonicalization(g, [
+        MergeGroup(canonical="Javert", members=["Javert", "l'inspecteur", "Paris"]),
+    ])
+
+    assert len(merged.entities) == 2  # Javert (+ l'inspecteur) et Paris
+    assert merged.resolve("l'inspecteur").name == "Javert"  # fusionné
+    assert merged.resolve("Paris").name == "Paris"  # exclu, intact
+
+
+def test_apply_canonicalization_all_inconnu_still_merges():
+    """Non-régression : des entités toutes « inconnu » (cas dominant avant typage)
+    fusionnent normalement — le garde-fou par type ne s'active pas."""
+    g = KnowledgeGraph()
+    g.add_entity(Entity(name="la vieille", type="inconnu"))
+    g.add_entity(Entity(name="Madame Bontemps", type="inconnu"))
+
+    merged = apply_canonicalization(g, [
+        MergeGroup(canonical="Madame Bontemps", members=["Madame Bontemps", "la vieille"]),
+    ])
+
+    assert len(merged.entities) == 1
+
+
 # --- Passe d'alias / identité d'emprunt (relit le TEXTE) ----------------------
 
 def impersonation_graph() -> KnowledgeGraph:

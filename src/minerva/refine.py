@@ -114,10 +114,20 @@ def apply_canonicalization(
     plan: list[tuple[str, list[str]]] = []  # (nom canonique, autres membres)
     for group in groups:
         members: list[str] = []
+        group_type = "inconnu"  # type de référence, comblé par le 1er type réel
         for name in group.members:
             entity = graph.resolve(name)
             if entity is None or entity.name in claimed or entity.name in members:
                 continue
+            # Garde-fou par type : on ne fusionne jamais deux types réels
+            # différents (« personnage » ≠ « lieu »). « inconnu » est compatible
+            # avec tout (il héritera du type). Le 1er type réel fixe la référence ;
+            # un membre au type réel divergent est écarté, le reste du groupe fusionne.
+            if entity.type != "inconnu":
+                if group_type == "inconnu":
+                    group_type = entity.type
+                elif entity.type != group_type:
+                    continue
             members.append(entity.name)
         if len(members) < 2:
             continue
