@@ -183,6 +183,69 @@ def test_canonicalisation_preserve_le_journal_temporel():
     assert merged.resolve("Monseigneur Bienvenu").attributes == {"ville": "Digne"}
 
 
+# --- Garde-fou : fusions interdites entre types incompatibles ------------------
+
+def test_apply_canonicalization_refuses_incompatible_types():
+    """Deux entités de types réels différents ne fusionnent pas, même si le LLM
+    les groupe : « personnage » et « lieu » restent distincts."""
+    g = KnowledgeGraph()
+    g.add_entity(Entity(name="Javert", type="personnage"))
+    g.add_entity(Entity(name="Paris", type="lieu"))
+
+    merged = apply_canonicalization(g, [
+        MergeGroup(canonical="Javert", members=["Javert", "Paris"]),
+    ])
+
+    assert len(merged.entities) == 2  # aucune fusion
+    assert merged.resolve("Paris") is not merged.resolve("Javert")
+
+
+def test_apply_canonicalization_merges_inconnu_into_typed():
+    """« inconnu » est compatible avec tout : il fusionne avec un membre typé et
+    hérite de son type (le typage vient après les fusions, cas dominant)."""
+    g = KnowledgeGraph()
+    g.add_entity(Entity(name="Javert", type="personnage"))
+    g.add_entity(Entity(name="l'inspecteur", type="inconnu"))
+
+    merged = apply_canonicalization(g, [
+        MergeGroup(canonical="Javert", members=["Javert", "l'inspecteur"]),
+    ])
+
+    assert len(merged.entities) == 1
+    assert merged.resolve("l'inspecteur").name == "Javert"
+
+
+def test_apply_canonicalization_excludes_incompatible_member_keeps_rest():
+    """Sur un groupe mixte, l'intrus de type incompatible est écarté mais le reste
+    du groupe fusionne : personnage + inconnu fusionnent, le lieu est exclu."""
+    g = KnowledgeGraph()
+    g.add_entity(Entity(name="Javert", type="personnage"))
+    g.add_entity(Entity(name="l'inspecteur", type="inconnu"))
+    g.add_entity(Entity(name="Paris", type="lieu"))
+
+    merged = apply_canonicalization(g, [
+        MergeGroup(canonical="Javert", members=["Javert", "l'inspecteur", "Paris"]),
+    ])
+
+    assert len(merged.entities) == 2  # Javert (+ l'inspecteur) et Paris
+    assert merged.resolve("l'inspecteur").name == "Javert"  # fusionné
+    assert merged.resolve("Paris").name == "Paris"  # exclu, intact
+
+
+def test_apply_canonicalization_all_inconnu_still_merges():
+    """Non-régression : des entités toutes « inconnu » (cas dominant avant typage)
+    fusionnent normalement — le garde-fou par type ne s'active pas."""
+    g = KnowledgeGraph()
+    g.add_entity(Entity(name="la vieille", type="inconnu"))
+    g.add_entity(Entity(name="Madame Bontemps", type="inconnu"))
+
+    merged = apply_canonicalization(g, [
+        MergeGroup(canonical="Madame Bontemps", members=["Madame Bontemps", "la vieille"]),
+    ])
+
+    assert len(merged.entities) == 1
+
+
 # --- Passe d'alias / identité d'emprunt (relit le TEXTE) ----------------------
 
 def impersonation_graph() -> KnowledgeGraph:
@@ -352,6 +415,101 @@ def test_type_entities_no_inconnu_skips_backend():
 
     assert type_entities(g, backend) == 0
     assert backend.prompts == []
+
+
+class TypingByPromptBackend:
+    """Backend factice qui type « objet » CHAQUE entité listée dans le prompt
+    (une par ligne « - nom »). Contrairement à `FakeBackend` (réponse fixe), il
+    répond selon le lot reçu : indispensable pour vérifier que le fenêtrage
+    applique les types de TOUS les lots, pas seulement du premier."""
+
+    def __init__(self):
+        self.prompts = []
+
+    def parse(self, system, user, output_model):
+        self.prompts.append(user)
+        names = [line[2:] for line in user.splitlines() if line.startswith("- ")]
+        return TypingResult(types=[EntityType(name=n, type="objet") for n in names])
+
+
+def test_type_entities_windows_many_inconnu_into_batches():
+    """Passe de typage scalable : sur plus d'entités « inconnu » que la taille de
+    lot, un appel LLM par lot (chacun ne portant que son sous-ensemble), et les
+    types de TOUS les lots sont appliqués — sinon typer un roman entier en un
+    seul prompt dépasse le contexte et perd des entités."""
+    g = KnowledgeGraph()
+    for i in range(5):
+        g.add_entity(Entity(name=f"objet{i}", type="inconnu"))
+    backend = TypingByPromptBackend()
+
+    n = type_entities(g, backend, batch_size=2)
+
+    assert len(backend.prompts) == 3  # ceil(5/2) : lots de 2, 2, 1
+    assert n == 5  # toutes les entités typées, à travers les lots
+    for i in range(5):
+        assert g.resolve(f"objet{i}").type == "objet"
+    # chaque lot ne porte que son sous-ensemble d'entités
+    assert backend.prompts[0].count("\n- objet") == 2
+    assert backend.prompts[2].count("\n- objet") == 1
+
+
+def test_type_entities_single_batch_unchanged():
+    """Non-régression : moins d'entités que la taille de lot = un seul appel
+    (comportement d'avant le fenêtrage)."""
+    g = untyped_graph()
+    backend = FakeBackend(TypingResult(types=[EntityType(name="carnet noir", type="objet")]))
+
+    n = type_entities(g, backend)
+
+    assert len(backend.prompts) == 1
+    assert n == 1
+    assert g.resolve("carnet noir").type == "objet"
+
+
+class TypesFirstOnlyBackend:
+    """Backend « paresseux » : ne type que la PREMIÈRE entité listée dans chaque
+    prompt (simule un LLM qui en oublie à chaque appel — la cause du résiduel
+    observé à l'échelle roman). La boucle de convergence doit rattraper les
+    oubliés en re-soumettant les « inconnu » restants dans de nouveaux lots."""
+
+    def __init__(self):
+        self.calls = 0
+
+    def parse(self, system, user, output_model):
+        self.calls += 1
+        names = [line[2:] for line in user.splitlines() if line.startswith("- ")]
+        return TypingResult(types=[EntityType(name=n, type="objet") for n in names[:1]])
+
+
+def test_type_entities_loops_until_all_typed():
+    """Boucle de convergence : un LLM qui oublie des entités par appel est rattrapé
+    en re-typant les « inconnu » restants jusqu'à ce qu'un passage ne progresse
+    plus. Sans boucle, seule la 1re entité serait typée."""
+    g = KnowledgeGraph()
+    for name in ("a", "b", "c"):
+        g.add_entity(Entity(name=name, type="inconnu"))
+    backend = TypesFirstOnlyBackend()  # ne type qu'UNE entité par appel
+
+    n = type_entities(g, backend)
+
+    assert n == 3  # les trois typées, à travers plusieurs passages
+    assert all(g.resolve(x).type == "objet" for x in ("a", "b", "c"))
+    assert backend.calls == 3  # un passage par entité récupérée, puis arrêt (0 inconnu)
+
+
+def test_type_entities_stops_when_no_progress():
+    """Terminaison : si un passage ne type plus rien (restants irrécupérables —
+    bruit d'extraction, noms non résolus), la boucle s'arrête au lieu de tourner
+    indéfiniment."""
+    g = KnowledgeGraph()
+    g.add_entity(Entity(name="(trajet — pas une entité)", type="inconnu"))
+    backend = FakeBackend(TypingResult())  # ne type jamais rien : aucun progrès
+
+    n = type_entities(g, backend)
+
+    assert n == 0
+    assert g.resolve("(trajet — pas une entité)").type == "inconnu"
+    assert len(backend.prompts) == 1  # un seul passage, puis arrêt faute de progrès
 
 
 # --- Orchestration du raffinement ---------------------------------------------

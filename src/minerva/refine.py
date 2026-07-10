@@ -114,10 +114,20 @@ def apply_canonicalization(
     plan: list[tuple[str, list[str]]] = []  # (nom canonique, autres membres)
     for group in groups:
         members: list[str] = []
+        group_type = "inconnu"  # type de référence, comblé par le 1er type réel
         for name in group.members:
             entity = graph.resolve(name)
             if entity is None or entity.name in claimed or entity.name in members:
                 continue
+            # Garde-fou par type : on ne fusionne jamais deux types réels
+            # différents (« personnage » ≠ « lieu »). « inconnu » est compatible
+            # avec tout (il héritera du type). Le 1er type réel fixe la référence ;
+            # un membre au type réel divergent est écarté, le reste du groupe fusionne.
+            if entity.type != "inconnu":
+                if group_type == "inconnu":
+                    group_type = entity.type
+                elif entity.type != group_type:
+                    continue
             members.append(entity.name)
         if len(members) < 2:
             continue
@@ -264,6 +274,16 @@ EntityTypeName = Literal[
 ]
 ENTITY_TYPES: tuple[str, ...] = get_args(EntityTypeName)
 
+# Taille de lot de la passe de typage. À l'échelle roman, les entités « inconnu »
+# se comptent par centaines ; les mettre toutes dans un seul prompt déborde le
+# contexte et fait oublier des entités au modèle. On type par lots d'au plus
+# TYPING_BATCH entités (un appel LLM par lot). Chaque entité étant typée
+# indépendamment, d'après son propre nom+contexte, les lots sont DISJOINTS — pas
+# de liste globale à répéter à chaque appel, contrairement à la passe alias
+# (`ALIAS_WINDOW`) où une mention doit voir toutes les entités. Un graphe plus
+# petit qu'un lot = un seul appel (comportement d'avant le fenêtrage).
+TYPING_BATCH = 50
+
 TYPING_SYSTEM = (
     "Tu assignes un TYPE à des entités déjà extraites d'un récit mais restées "
     "non typées. On te donne pour chacune son nom et ce qu'on sait d'elle "
@@ -283,8 +303,9 @@ class TypingResult(BaseModel):
     types: list[EntityType] = Field(default_factory=list)
 
 
-def _inconnu_listing(graph: KnowledgeGraph) -> str:
-    """Les entités « inconnu » avec leur contexte typant (attributs, relations)."""
+def _inconnu_lines(graph: KnowledgeGraph) -> list[str]:
+    """Une ligne par entité « inconnu », avec son contexte typant (attributs,
+    relations). Renvoyée en liste pour être découpée en lots (cf. `TYPING_BATCH`)."""
     lines = []
     for e in graph.entities:
         if e.type != "inconnu":
@@ -302,20 +323,26 @@ def _inconnu_listing(graph: KnowledgeGraph) -> str:
             context.append("relations : " + " ; ".join(rels[:5]))
         suffix = f" ({' | '.join(context)})" if context else ""
         lines.append(f"- {e.name}{suffix}")
-    return "\n".join(lines)
+    return lines
 
 
-def type_entities(graph: KnowledgeGraph, backend: LLMBackend) -> int:
-    """Type en place les entités restées « inconnu ». Renvoie le nombre typé.
+def _type_pass(graph: KnowledgeGraph, backend: LLMBackend, batch_size: int) -> int:
+    """Un passage de typage : les entités « inconnu » sont soumises au LLM par lots
+    d'au plus `batch_size` (un appel par lot), les types de tous les lots étant
+    appliqués ensemble. Renvoie le nombre d'entités effectivement typées.
 
-    N'appelle le LLM que s'il reste des entités à typer. N'écrase jamais un vrai
-    type et ignore un nom absent du graphe (garde-fous déterministes)."""
-    listing = _inconnu_listing(graph)
-    if not listing:
+    N'appelle pas le LLM s'il ne reste rien à typer. N'écrase jamais un vrai type
+    et ignore un nom absent du graphe (garde-fous déterministes)."""
+    lines = _inconnu_lines(graph)
+    if not lines:
         return 0
-    result = backend.parse(TYPING_SYSTEM, "Entités à typer :\n" + listing, TypingResult)
+    proposals: list[EntityType] = []
+    for start in range(0, len(lines), batch_size):
+        batch = "\n".join(lines[start : start + batch_size])
+        result = backend.parse(TYPING_SYSTEM, "Entités à typer :\n" + batch, TypingResult)
+        proposals.extend(result.types)
     applied = 0
-    for proposed in result.types:
+    for proposed in proposals:
         incoming = proposed.type.strip().lower()
         if not incoming or incoming == "inconnu":
             continue
@@ -325,6 +352,24 @@ def type_entities(graph: KnowledgeGraph, backend: LLMBackend) -> int:
         graph.add_entity(Entity(name=entity.name, type=incoming))  # comble « inconnu »
         applied += 1
     return applied
+
+
+def type_entities(
+    graph: KnowledgeGraph, backend: LLMBackend, *, batch_size: int = TYPING_BATCH
+) -> int:
+    """Type en place les entités restées « inconnu ». Renvoie le nombre total typé.
+
+    Boucle jusqu'à convergence : re-typer les « inconnu » restants tant qu'un
+    passage en type au moins un. Face à des centaines d'entités, le modèle en
+    oublie dans un lot ; re-soumis, l'oublié tombe dans un lot différent (plus
+    petit) et se fait typer — le résiduel d'un run à l'échelle roman s'efface ainsi.
+    Terminaison garantie : le nombre d'« inconnu » décroît strictement à chaque
+    passage productif ; un passage sans progrès (0 inconnu, ou restants
+    irrécupérables) arrête la boucle."""
+    total = 0
+    while (applied := _type_pass(graph, backend, batch_size)) > 0:
+        total += applied
+    return total
 
 
 # --- Pipeline de raffinement ---------------------------------------------------
